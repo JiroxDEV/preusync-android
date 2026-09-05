@@ -1,0 +1,47 @@
+{
+  "name": "java",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while)\\b" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0b[01]+\\b|\\b0x[\\da-f]*\\.?[\\da-fp-]+\\b|(?:\\b\\d+\\.?\\d*|\\B\\.\\d+)(?:[Ee][+-]?\\d+)?[fFlL]?", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "(^|[^.])(?:\\+[+=]?|-[-=]?|!=?|<=?|>>?>?=?|==?|&[&=]?|\\|[|=]?|\\*=?|\\/=?|%=?|\\^=?|[?:~])", "lookbehind": true }
+      ]
+    }
+  ],
+  "insertBefore": {
+    "function": [
+      {
+        "name": "annotation",
+        "patterns": [
+          { "regex": "(^|[^.])@\\w+", "lookbehind": true, "greedy": true }
+        ]
+      }
+    ],
+    "class-name": [
+      {
+        "name": "generics",
+        "patterns": [
+          { "regex": "<\\s*\\w+(?:\\.\\w+)?(?:\\s*,\\s*\\w+(?:\\.\\w+)?)*>", "flags": "CASE_INSENSITIVE", "inside": {
+            "tokens": [
+              { "name": "keyword", "patterns": [ { "regex": ".+" } ] },
+              { "name": "punctuation", "patterns": [ { "regex": "[<>(),.:]" } ] }
+            ]
+          }}
+        ]
+      }
+    ]
+  }
+}

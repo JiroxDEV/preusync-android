@@ -1,0 +1,43 @@
+{
+  "name": "racket",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#\\|[\\s\\S]*?\\|#" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b[0-9]+\\/[0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:#lang|#reader|#\\%(?:module-begin|plain-module-begin|declare|provide|require)|lambda|λ|case-lambda|let|let\\*|letrec|let-values|let\\*-values|letrec-values|if|cond|else|define|define-macro|define-syntax|define-syntax-rule|set!|begin|begin0|begin-for-syntax|when|unless|for|for/list|for/vector|for/hash|for/and|for/or|for/fold|for/sum|for/product|for/lists|for/first|for/last|and|or|match|match-let|match-lambda|match-define|require|provide|module|module\\+|export|all-defined-out|all-from-out|rename-out|except-out|prefix-out|struct|struct-copy)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:car|cdr|caar|cadr|cdar|cddr|caaar|caadr|cadar|caddr|cdaar|cdadr|cddar|cdddr|car|cdr|null\\?|list\\?|pair\\?|cons|list|append|reverse|length|map|filter|foldl|foldr|member|assoc|remove|empty\\?|eq\\?|eqv\\?|equal\\?|number\\?|string\\?|symbol\\?|boolean\\?|vector\\?|hash\\?|void|display|printf|fprintf)\\b" }
+      ]
+    },
+    {
+      "name": "character",
+      "patterns": [
+        { "regex": "#\\\\[^\\s]*" }
+      ]
+    }
+  ]
+}

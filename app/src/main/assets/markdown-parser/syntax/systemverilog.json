@@ -1,0 +1,18 @@
+{
+  "name": "systemverilog",
+  "extend": "verilog",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:class|endclass|program|endprogram|interface|endinterface|clocking|endclocking|modport|virtual|extends|implements|super|this|constraint|solve|before|rand|randc|dist|foreach|new|extern|pure|context|ref|static|automatic|local|protected|covergroup|coverpoint|cross|bins|illegal_bins|ignore_bins|option|type_option|sample|cover|sequence|property|assert|assume|expect|restrict|and|or|not|iff|throughout|within|intersect|first_match|ended|disable|iff)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:logic|bit|reg|wire|integer|real|shortreal|time|byte|shortint|int|longint|event|string|enum|struct|union|typedef)\\b" }
+      ]
+    }
+  ]
+}

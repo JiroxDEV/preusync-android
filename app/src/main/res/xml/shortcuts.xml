@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    XML: shortcuts.xml
+    Versión: v1.2.0
+    Descripción: Configuración de accesos directos (shortcuts) para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shortcut 1: New Post -->
+    <shortcut
+        android:shortcutId="new_post"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_new_post"
+        android:shortcutShortLabel="@string/shortcut_new_post"
+        android:shortcutLongLabel="@string/shortcut_new_post_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+
+        <intent
+            android:action="NEW_POST"
+            android:targetPackage="binaryqva.educative.preusync"
+            android:targetClass="binaryqva.educative.preusync.ui.activities.HomeActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+    <!-- Shortcut 2: News -->
+    <shortcut
+        android:shortcutId="news"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_news"
+        android:shortcutShortLabel="@string/shortcut_news"
+        android:shortcutLongLabel="@string/shortcut_news_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+
+        <intent
+            android:action="NEWS"
+            android:targetPackage="binaryqva.educative.preusync"
+            android:targetClass="binaryqva.educative.preusync.ui.activities.HomeActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+    <!-- Shortcut 3: Schedule -->
+    <shortcut
+        android:shortcutId="schedule"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_schedule"
+        android:shortcutShortLabel="@string/shortcut_schedule"
+        android:shortcutLongLabel="@string/shortcut_schedule_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+
+        <intent
+            android:action="SCHEDULE"
+            android:targetPackage="binaryqva.educative.preusync"
+            android:targetClass="binaryqva.educative.preusync.ui.activities.HomeActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+    <!-- Shortcut 4: Posts -->
+    <shortcut
+        android:shortcutId="posts"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_posts"
+        android:shortcutShortLabel="@string/shortcut_posts"
+        android:shortcutLongLabel="@string/shortcut_posts_long"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+
+        <intent
+            android:action="POSTS"
+            android:targetPackage="binaryqva.educative.preusync"
+            android:targetClass="binaryqva.educative.preusync.ui.activities.HomeActivity"/>
+
+        <categories android:name="android.shortcut.conversation"/>
+
+    </shortcut>
+
+</shortcuts>
+
+

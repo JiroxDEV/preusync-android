@@ -1,0 +1,18 @@
+{
+  "name": "cuda",
+  "extend": "cpp",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:__global__|__device__|__host__|__shared__|__constant__|__managed__|__restrict__|__noinline__|__forceinline__|__align__|threadIdx|blockIdx|blockDim|gridDim|warpSize|atomicAdd|atomicSub|atomicExch|atomicMin|atomicMax|atomicInc|atomicDec|atomicCAS|atomicAnd|atomicOr|atomicXor|syncthreads|syncwarp|__syncthreads_count|__syncthreads_and|__syncthreads_or|__threadfence|__threadfence_block|__threadfence_system)\\b" }
+      ]
+    },
+    {
+      "name": "qualifier",
+      "patterns": [
+        { "regex": "<<<[^>]*>>>" }
+      ]
+    }
+  ]
+}

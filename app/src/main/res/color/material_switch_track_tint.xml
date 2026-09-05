@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Color: material_switch_track_tint.xml
+    Versión: v1.0.8
+    Descripción: Recurso de color para la pista del interruptor Material Switch..
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_enabled="false"
+        android:state_checked="false"
+        android:color="?attr/colorControlHighlight"
+        android:alpha="@dimen/m3_comp_switch_disabled_track_opacity" />
+    <item
+        android:state_enabled="false"
+        android:state_checked="true"
+        android:color="?attr/colorControlHighlight"
+        android:alpha="@dimen/m3_comp_switch_disabled_track_opacity" />
+    <item
+        android:state_checked="true"
+        android:color="?attr/colorAccent" />
+    <item
+        android:state_checked="false"
+        android:color="?attr/colorControlHighlight"
+        android:state_hovered="true" />
+    <item
+        android:state_focused="true"
+        android:state_checked="false"
+        android:color="?attr/colorControlHighlight" />
+    <item
+        android:state_checked="false"
+        android:state_pressed="true"
+        android:color="?attr/colorControlHighlight" />
+    <item
+        android:state_checked="false"
+        android:color="?attr/colorControlHighlight" />
+</selector>
+
+

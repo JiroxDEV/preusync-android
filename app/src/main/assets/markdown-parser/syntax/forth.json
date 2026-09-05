@@ -1,0 +1,38 @@
+{
+  "name": "forth",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\\\.*" },
+        { "regex": "\\([^)]*\\)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\\.\"[^\\n]*\"" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+\\b" },
+        { "regex": "\\$[0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "word-definition",
+      "patterns": [
+        { "regex": ":[\\s]+[^\\s]+" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:IF|ELSE|THEN|BEGIN|UNTIL|WHILE|REPEAT|DO|LOOP|\\+LOOP|CASE|OF|ENDOF|ENDCASE|EXIT|RECURSE|CREATE|DOES>|IMMEDIATE|POSTPONE|\\['\\]|LITERAL|STATE|VARIABLE|CONSTANT|VALUE|TO|ALLOT|CELLS|CELL\\+|CHAR|CHAR\\+|ALIGN|ALIGNED)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: dimens.xml
+    Versión: v1.5.0
+    Descripción: Recurso de dimensiones para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!-- Estilos globales -->
+    <dimen name="button_corner_radius_normal">100dp</dimen>
+    <dimen name="button_corner_radius_pressed">14dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="screen_header_padding_top">24dp</dimen>
+    <dimen name="standard_icon_size_state">80dp</dimen>
+
+    <!-- Material 3 -->
+    <dimen name="m3_comp_extended_fab_small_container_height">48dp</dimen>
+    <dimen name="m3_comp_extended_fab_primary_container_container_elevation">6dp</dimen>
+    <dimen name="m3_comp_extended_fab_small_icon_size">24dp</dimen>
+    <dimen name="m3_comp_loading_indicator_container_height">48dp</dimen>
+    <dimen name="m3_comp_loading_indicator_container_width">48dp</dimen>
+    <dimen name="mtrl_switch_text_padding">12dp</dimen>
+    <dimen name="mtrl_switch_thumb_icon_size">24dp</dimen>
+
+    <!-- Márgenes -->
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="marginbottom_0dp">0dp</dimen>
+    <dimen name="marginbottom_145dp">145dp</dimen>
+    <dimen name="marginbottom_15dp">15dp</dimen>
+    <dimen name="marginbottom_25dp">25dp</dimen>
+    <dimen name="marginbottom_30dp">30dp</dimen>
+    <dimen name="marginbottom_40dp">40dp</dimen>
+    <dimen name="marginbottom_70dp">70dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="padding_14dp">14dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_1dp">1dp</dimen>
+    <dimen name="padding_2dp">2dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="padding_3dp">3dp</dimen>
+    <dimen name="padding_6dp">6dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_bottom_50dp">50dp</dimen>
+    <dimen name="padding_end_24dp">24dp</dimen>
+    <dimen name="padding_top_21dp">21dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_11sp">11sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_13sp">13sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="text_size_25sp">25sp</dimen>
+    <dimen name="text_size_30sp">30sp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+</resources>
+

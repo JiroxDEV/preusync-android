@@ -1,0 +1,25 @@
+{
+  "name": "batch",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "::[^\\n]*" },
+        { "regex": "rem\\s.*", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "%[^%]+%" },
+        { "regex": "![^!]+!" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:call|echo|set|if|else|for|in|do|goto|exit|pause|rem|shift|start|title|errorlevel|defined|not|exist|off|on)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

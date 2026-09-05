@@ -1,0 +1,38 @@
+{
+  "name": "seed7",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\(\\*[\\s\\S]*?\\*\\)" },
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+#[0-9a-zA-Z]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:const|type|var|func|return|begin|end|if|then|else|elsif|case|of|otherwise|when|while|do|repeat|until|for|to|downto|step|in|and|or|xor|not|div|mod|rem|array|enum|set|struct|ref|val|local|global)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:integer|bigInteger|rational|bigRational|float|complex|char|string|wchar|wstring|boolean|void|exception|file|process|time|duration|array|hash|set|bitset)\\b" }
+      ]
+    }
+  ]
+}

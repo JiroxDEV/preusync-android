@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_loading.xml
+    Versión: v1.0.0
+    Descripción: Elemento de carga genérico para listas (spinner o indicador de progreso).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_loading.xml
+    ============================================================================
+
+    📌 ESTADO DE CARGA (TYPE_LOADING)
+    ============================================================================
+
+    Este layout se muestra durante la carga inicial de los posts del usuario,
+    cuando aún no hay datos disponibles.
+
+    🔥 NOTA: Este ítem solo aparece cuando el perfil ya está cargado pero los
+    posts aún no se han obtenido (o se están recargando). Es diferente del
+    loader principal de perfil (profileLoader) que se muestra antes de tener
+    cualquier dato del perfil.
+
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_32dp">
+
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:indicatorSize="48dp" />
+
+</LinearLayout>
+
+

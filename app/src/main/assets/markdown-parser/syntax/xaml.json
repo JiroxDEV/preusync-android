@@ -1,0 +1,18 @@
+{
+  "name": "xaml",
+  "extend": "xml",
+  "tokens": [
+    {
+      "name": "element",
+      "patterns": [
+        { "regex": "</?(?:Window|Page|UserControl|ResourceDictionary|Application|Grid|StackPanel|DockPanel|Canvas|Border|Button|TextBox|TextBlock|Label|Image|ListView|GridView|DataGrid|ScrollViewer|Frame|ContentControl|ItemsControl|Menu|ToolBar|StatusBar)\\b[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\b(?:Name|x:Name|x:Key|x:Class|x:TypeArguments|Binding|Mode|Path|Source|RelativeSource|StaticResource|DynamicResource|TemplateBinding|DataContext|Command|CommandParameter|Style|TargetType|BasedOn|Trigger|Setter|Property|Value)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

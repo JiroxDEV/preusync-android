@@ -1,0 +1,50 @@
+{
+  "name": "autohotkey",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "%[a-zA-Z_]\\w*%" },
+        { "regex": "\\b[a-zA-Z_]\\w*(?=\\s*:=)" }
+      ]
+    },
+    {
+      "name": "hotkey",
+      "patterns": [
+        { "regex": "[#!^+&<>*~$]*[a-zA-Z0-9]+(?:::)" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|else|loop|while|for|break|continue|return|goto|gosub|exit|send|run|msgbox|inputbox|fileappend|filedelete|filecreatedir|fileexist|fileread|filemove|filecopy|registry|iniwrite|iniread|sleep|setTimer|critical|thread|suspend|pause|reload|exitapp|#include|#if|#ifwinactive|#ifwinexist|#persistent|#singleinstance|#noenv|#warn)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:A_ScriptDir|A_WorkingDir|A_AhkVersion|A_OSVersion|A_YYYY|A_MM|A_DD|A_Hour|A_Min|A_Sec|A_Now|A_TickCount|A_IsCompiled|A_IsAdmin|A_ScreenWidth|A_ScreenHeight)\\b" }
+      ]
+    }
+  ]
+}

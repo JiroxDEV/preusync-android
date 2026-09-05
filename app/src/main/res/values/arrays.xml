@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: arrays.xml
+    Versión: v1.1.0
+    Descripción: Recurso de arreglos (arrays) para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!-- Opciones para el idioma -->
+    <string-array name="language_entries">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+
+    <!-- Opciones para la pestaña de inicio por defecto -->
+    <string-array name="tab_entries">
+        <item>@string/tab_home</item>
+        <item>@string/tab_news</item>
+        <item>@string/tab_events</item>
+        <item>@string/tab_posts</item>
+        <item>@string/tab_profile</item>
+    </string-array>
+    <string-array name="tab_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Opciones para el tema -->
+    <string-array name="theme_entries">
+        <item>@string/theme_default</item>
+        <item>@string/theme_light</item>
+        <item>@string/theme_dark</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>theme_default</item>
+        <item>theme_light</item>
+        <item>theme_dark</item>
+    </string-array>
+
+    <!-- Opciones para el tamaño de fuente -->
+    <string-array name="font_size_entries">
+        <item>@string/font_size_small</item>
+        <item>@string/font_size_medium</item>
+        <item>@string/font_size_large</item>
+        <item>@string/font_size_xlarge</item>
+    </string-array>
+    <string-array name="font_size_values">
+        <item>0.85</item>
+        <item>1.0</item>
+        <item>1.15</item>
+        <item>1.3</item>
+    </string-array>
+
+    <!-- Opciones para la familia tipográfica -->
+    <string-array name="font_family_entries">
+        <item>@string/font_family_system</item>
+        <item>@string/font_family_sans</item>
+        <item>@string/font_family_serif</item>
+        <item>@string/font_family_monospace</item>
+    </string-array>
+    <string-array name="font_family_values">
+        <item>system</item>
+        <item>sans-serif</item>
+        <item>serif</item>
+        <item>monospace</item>
+    </string-array>
+
+    <!-- Opciones para la velocidad de animación -->
+    <string-array name="anim_speed_entries">
+        <item>@string/anim_fast</item>
+        <item>@string/anim_normal</item>
+        <item>@string/anim_slow</item>
+    </string-array>
+    <string-array name="anim_speed_values">
+        <item>0.5</item>
+        <item>1.0</item>
+        <item>2.0</item>
+    </string-array>
+
+    <!-- Opciones para las frecuencias de sincronización -->
+    <string-array name="sync_freq_entries">
+        <item>@string/freq_30min</item>
+        <item>@string/freq_1h</item>
+        <item>@string/freq_2h</item>
+        <item>@string/freq_4h</item>
+        <item>@string/freq_12h</item>
+        <item>@string/freq_24h</item>
+    </string-array>
+    <string-array name="sync_freq_values">
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>720</item>
+        <item>1440</item>
+    </string-array>
+
+    <!-- Opciones para la antelación de recordatorios -->
+    <string-array name="lead_time_entries">
+        <item>@string/lead_1h</item>
+        <item>@string/lead_12h</item>
+        <item>@string/lead_24h</item>
+        <item>@string/lead_48h</item>
+    </string-array>
+    <string-array name="lead_time_values">
+        <item>1</item>
+        <item>12</item>
+        <item>24</item>
+        <item>48</item>
+    </string-array>
+
+    <!-- Opciones para la frecuencia de actualizaciones automáticas -->
+    <string-array name="update_freq_entries">
+        <item>@string/update_3d</item>
+        <item>@string/update_7d</item>
+        <item>@string/update_15d</item>
+        <item>@string/update_30d</item>
+    </string-array>
+    <string-array name="update_freq_values">
+        <item>3</item>
+        <item>7</item>
+        <item>15</item>
+        <item>30</item>
+    </string-array>
+</resources>
+
+

@@ -1,0 +1,41 @@
+{
+  "name": "ejs",
+  "tokens": [
+    {
+      "name": "scriptlet",
+      "patterns": [
+        { "regex": "<%[\\s\\S]*?%>", "greedy": true }
+      ]
+    },
+    {
+      "name": "output",
+      "patterns": [
+        { "regex": "<%=[\\s\\S]*?%>", "greedy": true }
+      ]
+    },
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<%#.*?%>" }
+      ]
+    },
+    {
+      "name": "include",
+      "patterns": [
+        { "regex": "<%-?\\s*include[^%]*%>" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[\\w:-]+[^>]*>", "greedy": true }
+      ]
+    },
+    {
+      "name": "entity",
+      "patterns": [
+        { "regex": "&[\\w#]+;" }
+      ]
+    }
+  ]
+}

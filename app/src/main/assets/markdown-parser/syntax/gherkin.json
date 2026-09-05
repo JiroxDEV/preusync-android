@@ -1,0 +1,42 @@
+{
+  "name": "gherkin",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:Feature|Background|Scenario|Scenario Outline|Scenario Template|Examples|Given|When|Then|And|But|\\*)\\b" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "@[A-Za-z0-9_]+" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "<[^>]+>" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    }
+  ]
+}

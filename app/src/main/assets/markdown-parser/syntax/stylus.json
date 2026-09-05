@@ -1,0 +1,37 @@
+{
+  "name": "stylus",
+  "extend": "css",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_][\\w-]*" }
+      ]
+    },
+    {
+      "name": "mixin",
+      "patterns": [
+        { "regex": "\\b[a-zA-Z_][\\w-]*\\([^\\)]*\\)" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:unit|percentage|ceil|floor|round|min|max|abs|sin|cos|tan|join|split|push|pop|shift|unshift|keys|values|length)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!]+|\\?|:" }
+      ]
+    }
+  ]
+}

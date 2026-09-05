@@ -1,0 +1,36 @@
+{
+  "name": "sql",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "--[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:ADD|ALL|ALTER|AND|ANY|AS|ASC|AUTO_INCREMENT|BETWEEN|BY|CASE|CHECK|COLUMN|CONSTRAINT|CREATE|CROSS|DATABASE|DEFAULT|DELETE|DESC|DISTINCT|DROP|ELSE|EXISTS|EXPLAIN|FOREIGN|FROM|FULL|GROUP|HAVING|IF|IN|INDEX|INNER|INSERT|INTERSECT|INTO|IS|JOIN|KEY|LEFT|LIKE|LIMIT|NOT|NULL|ON|OR|ORDER|OUTER|PRIMARY|REFERENCES|RIGHT|SELECT|SET|TABLE|THEN|TO|TOP|UNION|UNIQUE|UPDATE|USING|VALUES|VIEW|WHEN|WHERE|WITH)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:AVG|COUNT|MAX|MIN|SUM|COALESCE|IFNULL|NULLIF|UPPER|LOWER|LENGTH|SUBSTRING|TRIM|CONCAT|NOW|CURDATE|CURTIME|DATE|TIME|YEAR|MONTH|DAY|HOUR|MINUTE|SECOND|CAST|CONVERT|COALESCE)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

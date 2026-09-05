@@ -1,0 +1,35 @@
+{
+  "name": "sed",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "address",
+      "patterns": [
+        { "regex": "/[^/\\\\]*(?:\\\\.[^/\\\\]*)*/" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\b(?:a|c|d|D|g|G|h|H|i|n|N|p|P|q|r|s|t|w|x|y|:|=|b|n|r|R|t|T|v|w|W|z|\\{|\\}|\\||!|\\?)\\b" }
+      ]
+    },
+    {
+      "name": "flag",
+      "patterns": [
+        { "regex": "[0-9]+|g|p|w|I|M|e" }
+      ]
+    }
+  ]
+}

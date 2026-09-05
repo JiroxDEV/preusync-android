@@ -1,0 +1,30 @@
+{
+  "name": "vba",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "'[^\\n]*" },
+        { "regex": "Rem\\s.*", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:As|And|Boolean|Byte|ByRef|ByVal|Call|Case|CBool|CByte|CCur|CDate|CDbl|CInt|CLng|Close|Const|Currency|Date|Debug|Dim|Do|Double|Each|Else|ElseIf|End|Enum|Erase|Error|Event|Exit|False|FileAttr|For|Function|Get|GoSub|GoTo|If|Imp|In|Input|Integer|Is|LBound|Len|Let|Lib|Like|Line|Lock|Long|Loop|LSet|Mod|New|Next|Not|Object|On|Open|Option|Or|Output|ParamArray|Preserve|Print|Private|Property|Public|ReDim|Resume|Return|Select|Set|Single|Static|Step|Stop|String|Sub|Then|To|True|Type|UBound|Unlock|Until|Variant|Wend|While|With|Write|Xor)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

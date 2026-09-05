@@ -1,0 +1,18 @@
+{
+  "name": "xslt",
+  "extend": "xml",
+  "tokens": [
+    {
+      "name": "element",
+      "patterns": [
+        { "regex": "</?(?:xsl:stylesheet|xsl:transform|xsl:template|xsl:apply-templates|xsl:call-template|xsl:value-of|xsl:for-each|xsl:if|xsl:choose|xsl:when|xsl:otherwise|xsl:sort|xsl:variable|xsl:param|xsl:with-param|xsl:key|xsl:output|xsl:strip-space|xsl:preserve-space|xsl:include|xsl:import|xsl:message|xsl:attribute|xsl:element|xsl:text|xsl:comment|xsl:processing-instruction|xsl:copy|xsl:copy-of|xsl:number|xsl:fallback)\\b[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:current|document|element-available|format-number|function-available|generate-id|key|system-property|unparsed-entity-uri|concat|contains|normalize-space|starts-with|string|string-length|substring|substring-after|substring-before|translate|ceiling|floor|number|round|sum|boolean|false|lang|not|true|id)\\b" }
+      ]
+    }
+  ]
+}

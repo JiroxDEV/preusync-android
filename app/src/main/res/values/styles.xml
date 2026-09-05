@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: styles.xml
+    Versión: v4.1.0
+    Descripción: Recurso de estilos para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!--Estilos para vistas individuales (NO temas)-->
+    <style name="ImageViewIconStyle">
+        <item name="tint">?attr/colorAccent</item>
+    </style>
+
+    <!-- Global Unification Styles -->
+    <style name="Widget.PreuSync.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">?attr/colorBackgroundCard</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="TextAppearance.PreuSync" parent="android:TextAppearance" />
+
+    <style name="TextAppearance.PreuSync.HeaderTitle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="Base.Widget.Material3.ExtendedFloatingActionButton" parent="@style/Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:textAppearance">?textAppearanceLabelLarge</item>
+        <item name="android:textColor">?attr/colorText</item>
+        <item name="android:minHeight">@dimen/m3_comp_extended_fab_small_container_height</item>
+        <item name="android:stateListAnimator">@animator/m3_extended_fab_state_list_animator</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="elevation">@dimen/m3_comp_extended_fab_primary_container_container_elevation</item>
+        <item name="enforceMaterialTheme">true</item>
+        <item name="extendMotionSpec">@animator/m3_extended_fab_change_size_expand_motion_spec</item>
+        <item name="hideMotionSpec">@animator/m3_extended_fab_hide_motion_spec</item>
+        <item name="iconSize">@dimen/m3_comp_extended_fab_small_icon_size</item>
+        <item name="iconTint">?attr/colorText</item>
+        <item name="rippleColor">?attr/colorControlHighlight</item>
+        <item name="shapeAppearance">?shapeAppearanceCornerLarge</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="showMotionSpec">@animator/m3_extended_fab_show_motion_spec</item>
+        <item name="shrinkMotionSpec">@animator/m3_extended_fab_change_size_collapse_motion_spec</item>
+    </style>
+    <style name="Widget.Material3.LoadingIndicator" parent="@android:style/Widget">
+        <item name="android:contentDescription">@string/m3_loading_indicator_content_description</item>
+        <item name="containerColor">@android:color/transparent</item>
+        <item name="containerHeight">@dimen/m3_comp_loading_indicator_container_height</item>
+        <item name="containerWidth">@dimen/m3_comp_loading_indicator_container_width</item>
+        <item name="indicatorColor">?attr/colorAccent</item>
+        <item name="indicatorSize">34.0dip</item>
+    </style>
+    <style name="BottomNavigationView.ActiveIndicator" parent="AppTheme">
+        <item name="android:height">32dp</item>
+        <item name="android:width">48dp</item>
+        <item name="android:color">?attr/colorControlNormal</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+    </style>
+    <style name="Widget.PreuSync.Button.Global" parent="Widget.Material3.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="rippleColor">?attr/colorControlHighlight</item>
+        <item name="cornerRadius">@dimen/button_corner_radius_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+    <style name="Widget.Material3.TextInputLayout.OutlinedBox" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/m3_textfield_label_color</item>
+        <item name="boxStrokeColor">@color/textinputlayout_tint</item>
+        <item name="boxStrokeErrorColor">?colorError</item>
+        <item name="counterOverflowTextAppearance">?textAppearanceBodySmall</item>
+        <item name="counterOverflowTextColor">?colorError</item>
+        <item name="counterTextAppearance">?textAppearanceBodySmall</item>
+        <item name="counterTextColor">@color/m3_textfield_indicator_text_color</item>
+        <item name="cursorColor">?attr/colorAccent</item>
+        <item name="cursorErrorColor">?colorError</item>
+        <item name="endIconTint">@color/textinputlayout_tint</item>
+        <item name="errorIconTint">?colorError</item>
+        <item name="errorTextAppearance">?textAppearanceBodySmall</item>
+        <item name="errorTextColor">?colorError</item>
+        <item name="helperTextTextAppearance">?textAppearanceBodySmall</item>
+        <item name="helperTextTextColor">@color/m3_textfield_indicator_text_color</item>
+        <item name="hintTextAppearance">?textAppearanceBodySmall</item>
+        <item name="hintTextColor">@color/textinputlayout_tint</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox</item>
+        <item name="passwordToggleDrawable">@drawable/m3_password_eye</item>
+        <item name="placeholderTextAppearance">?textAppearanceBodyLarge</item>
+        <item name="placeholderTextColor">@color/textinputlayout_tint</item>
+        <item name="prefixTextAppearance">?textAppearanceTitleMedium</item>
+        <item name="prefixTextColor">@color/m3_textfield_indicator_text_color</item>
+        <item name="shapeAppearance">@style/Widget.PreuSync.TextInputLayout.ShapeAppearance</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="startIconTint">@color/textinputlayout_tint</item>
+        <item name="suffixTextAppearance">?textAppearanceTitleMedium</item>
+        <item name="suffixTextColor">@color/m3_textfield_indicator_text_color</item>
+    </style>
+    <style name="Widget.PreuSync.TextInputLayout.ShapeAppearance" parent="ShapeAppearance.MaterialComponents">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+    </style>
+    <style name="Widget.Material3.CompoundButton.MaterialSwitch" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:textAppearance">?textAppearanceBodyMedium</item>
+        <item name="android:minHeight">?minTouchTargetSize</item>
+        <item name="android:thumb">@drawable/mtrl_switch_thumb</item>
+        <item name="materialThemeOverlay">@null</item>
+        <item name="switchPadding">@dimen/mtrl_switch_text_padding</item>
+        <item name="thumbIconSize">@dimen/mtrl_switch_thumb_icon_size</item>
+        <item name="thumbIconTint">?attr/colorControlNormal</item>
+        <item name="thumbTint">@color/material_switch_thumb_tint</item>
+        <item name="track">@drawable/mtrl_switch_track</item>
+        <item name="trackDecoration">@drawable/mtrl_switch_track_decoration</item>
+        <item name="trackDecorationTint">?attr/colorAccent</item>
+        <item name="trackTint">@color/material_switch_track_tint</item>
+    </style>
+    <style name="MaterialSwitchStyle">
+        <item name="thumbIconTint">?attr/colorControlNormal</item>
+        <item name="thumbTint">@color/material_switch_thumb_tint</item>
+        <item name="trackDecorationTint">?attr/colorAccent</item>
+        <item name="trackTint">@color/material_switch_track_tint</item>
+    </style>
+    <style name="PopupMenuStyle" parent="Widget.Material3.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_menu_popup</item>
+        <item name="android:textColor">?attr/colorText</item>
+    </style>
+    <!--Temas para diferentes familias tipográficas (heredan del tema base)-->
+    <style name="Theme.PreuSync.Static.Sans" parent="Theme.PreuSync.Static">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.PreuSync.Static.Serif" parent="Theme.PreuSync.Static">
+        <item name="android:fontFamily">serif</item>
+    </style>
+    <style name="Theme.PreuSync.Static.Mono" parent="Theme.PreuSync.Static">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+    <!--Si usas tema dinámico (Material You), crea versiones similares-->
+    <style name="Theme.PreuSync.Dynamic.Sans" parent="Theme.PreuSync.Dynamic">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.PreuSync.Dynamic.Serif" parent="Theme.PreuSync.Dynamic">
+        <item name="android:fontFamily">serif</item>
+    </style>
+    <style name="Theme.PreuSync.Dynamic.Mono" parent="Theme.PreuSync.Dynamic">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+</resources>
+
+

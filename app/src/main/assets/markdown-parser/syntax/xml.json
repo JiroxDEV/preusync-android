@@ -1,0 +1,78 @@
+{
+  "name": "xml",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<!--[\\s\\S]*?!-->" }
+      ]
+    },
+    {
+      "name": "prolog",
+      "patterns": [
+        { "regex": "<\\?[\\s\\S]+?\\?>" }
+      ]
+    },
+    {
+      "name": "doctype",
+      "patterns": [
+        { "regex": "<!DOCTYPE[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "cdata",
+      "patterns": [
+        { "regex": "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[^>\\s]+\\s*\\/?>", "flags": "CASE_INSENSITIVE" },
+        { "regex": "<\\/[^>]+>", "flags": "CASE_INSENSITIVE" },
+        { "regex": "<\\w+", "flags": "CASE_INSENSITIVE", "greedy": true }
+      ],
+      "inside": {
+        "tokens": [
+          {
+            "name": "attr-name",
+            "patterns": [
+              { "regex": "\\s+[^=<>\\s\"']+(?=\\s*=)", "flags": "CASE_INSENSITIVE" }
+            ]
+          },
+          {
+            "name": "attr-value",
+            "patterns": [
+              { "regex": "=\"[^\"]*\"", "greedy": true },
+              { "regex": "='[^']*'", "greedy": true },
+              { "regex": "=[^\\s>]+", "greedy": true }
+            ],
+            "inside": {
+              "tokens": [
+                { "name": "entity", "patterns": [ { "regex": "&[\\w\\d#]+;" } ] }
+              ]
+            }
+          },
+          {
+            "name": "punctuation",
+            "patterns": [
+              { "regex": "[<>\\/\\?=]" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "entity",
+      "patterns": [
+        { "regex": "&[\\w\\d#]+;" }
+      ]
+    },
+    {
+      "name": "plain-text",
+      "patterns": [
+        { "regex": "[^<>&]+" }
+      ]
+    }
+  ]
+}

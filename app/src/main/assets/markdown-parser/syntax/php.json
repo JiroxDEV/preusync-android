@@ -1,0 +1,32 @@
+{
+  "name": "php",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|and|array|as|break|callable|case|catch|class|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|eval|exit|extends|final|finally|fn|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|match|namespace|new|or|print|private|protected|public|readonly|require|require_once|return|static|switch|throw|trait|try|unset|use|var|while|xor|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:int|float|string|bool|array|object|callable|iterable|void|never|mixed|null|true|false|self|parent|static|__CLASS__|__DIR__|__FILE__|__FUNCTION__|__LINE__|__METHOD__|__NAMESPACE__|__TRAIT__)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "<<<'?[A-Z_][a-zA-Z0-9_]*'?[\\s\\S]*?^[A-Z_][a-zA-Z0-9_]*", "flags": "MULTILINE", "greedy": true }
+      ]
+    }
+  ]
+}

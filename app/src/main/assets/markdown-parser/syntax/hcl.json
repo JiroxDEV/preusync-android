@@ -1,0 +1,49 @@
+{
+  "name": "hcl",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "#[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "\\b(?:resource|data|module|provider|variable|output|locals|terraform|backend|provisioner|connection)\\b" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\b[a-z_][a-z_0-9]*\\s*=" }
+      ]
+    },
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\$\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:string|number|bool|list|map|set|object|tuple|any)\\b" }
+      ]
+    }
+  ]
+}

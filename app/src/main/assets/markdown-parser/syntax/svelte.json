@@ -1,0 +1,52 @@
+{
+  "name": "svelte",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<!--[\\s\\S]*?-->" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[A-Za-z][\\w-]*[^>]*>", "greedy": true }
+      ]
+    },
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "\\{#if\\s[^}]+\\}" },
+        { "regex": "\\{:else\\}" },
+        { "regex": "\\{:else if\\s[^}]+\\}" },
+        { "regex": "\\{:then\\}" },
+        { "regex": "\\{:catch\\}" },
+        { "regex": "\\{#each\\s[^}]+\\}" },
+        { "regex": "\\{#await\\s[^}]+\\}" },
+        { "regex": "\\{#key\\s[^}]+\\}" },
+        { "regex": "\\{\\/if\\}" },
+        { "regex": "\\{\\/each\\}" },
+        { "regex": "\\{\\/await\\}" },
+        { "regex": "\\{\\/key\\}" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:let|export|const|function|async|await|import|from|default)\\b" }
+      ]
+    },
+    {
+      "name": "reactive",
+      "patterns": [
+        { "regex": "\\$:" }
+      ]
+    }
+  ]
+}

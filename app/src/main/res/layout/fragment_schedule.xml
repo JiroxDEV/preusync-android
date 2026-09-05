@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: fragment_schedule.xml
+    Versión: v1.9.0
+    Descripción: Fragmento de horario escolar que muestra la tabla de clases según el grupo seleccionado.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scheduleLayoutContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_8dp">
+
+    <!-- Selector de grupo -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/groupTextInputLayout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_group"
+        app:startIconDrawable="@drawable/ic_group"
+        app:startIconTint="@color/textinputlayout_tint"
+        app:endIconTint="@color/textinputlayout_tint"
+        app:boxStrokeColor="@color/textinputlayout_tint"
+        app:hintTextColor="@color/textinputlayout_tint">
+
+        <AutoCompleteTextView
+            android:id="@+id/groupAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:maxLines="1"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Loader de grupos (visible mientras se cargan los grupos) -->
+    <LinearLayout
+        android:id="@+id/groupsLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_8dp"
+        android:visibility="gone">
+
+        <com.google.android.material.loadingindicator.LoadingIndicator
+            android:id="@+id/loadingIndicatorGrupos"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:indicatorSize="32dp" />
+    </LinearLayout>
+
+    <!-- Contenedor principal con SwipeRefresh -->
+    <binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ViewFlipper para cambiar entre estados -->
+        <ViewFlipper
+            android:id="@+id/viewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 0: LOADING (tabla cargando) -->
+            <LinearLayout
+                android:id="@+id/loadingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.loadingindicator.LoadingIndicator
+                    android:id="@+id/loadingIndicatorTabla"
+                    android:layout_width="@dimen/standard_icon_size_state"
+                    android:layout_height="@dimen/standard_icon_size_state"
+                    app:indicatorSize="@dimen/standard_icon_size_state" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_12dp"
+                    android:text="@string/label_loading_schedule"
+                    android:textColor="?attr/colorTextHint"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+            <!-- 1: CONTENT (tabla del horario) -->
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_1dp"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                        android:background="@drawable/border_table"
+                        app:strokeWidth="0dp">
+
+                        <TableLayout
+                            android:id="@+id/scheduleTable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:stretchColumns="2,3,4,5,6" />
+                    </com.google.android.material.card.MaterialCardView>
+                </HorizontalScrollView>
+            </ScrollView>
+
+            <!-- 2: EMPTY -->
+            <LinearLayout
+                android:id="@+id/emptyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/emptyImage"
+                    android:layout_width="@dimen/standard_icon_size_state"
+                    android:layout_height="@dimen/standard_icon_size_state"
+                    android:src="@drawable/ic_empty_events" />
+
+                <TextView
+                    android:id="@+id/emptyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_8dp"
+                    android:text="@string/message_no_schedule"
+                    android:textSize="@dimen/text_size_20sp"
+                    android:textColor="?attr/colorText" />
+            </LinearLayout>
+
+            <!-- 3: ERROR -->
+            <LinearLayout
+                android:id="@+id/errorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/errorImage"
+                    android:layout_width="@dimen/standard_icon_size_state"
+                    android:layout_height="@dimen/standard_icon_size_state"
+                    android:src="@drawable/ic_error_events" />
+
+                <TextView
+                    android:id="@+id/errorTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_8dp"
+                    android:text="@string/error_loading_data"
+                    android:textSize="@dimen/text_size_20sp"
+                    android:textColor="?attr/colorText" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/retryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_12dp"
+                    android:text="@string/button_retry"
+                    style="@style/Widget.PreuSync.Button.Global" />
+            </LinearLayout>
+        </ViewFlipper>
+    </binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout>
+
+</LinearLayout>
+
+

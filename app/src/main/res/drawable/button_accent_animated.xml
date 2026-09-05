@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: button_accent_animated.xml
+    Versión: v1.0.0
+    Descripción: Botón con animación de fondo utilizando el color de acento.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado normal -->
+    <item android:id="@+id/stateNormal" android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorSecondary" />
+            <corners android:radius="@dimen/button_corner_radius_normal" />
+        </shape>
+    </item>
+    <!-- Estado presionado -->
+    <item android:id="@+id/statePressed" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorSecondary" />
+            <corners android:radius="@dimen/button_corner_radius_pressed" />
+        </shape>
+    </item>
+    <!-- Transición de normal a presionado -->
+    <transition android:fromId="@id/stateNormal" android:toId="@id/statePressed">
+        <set>
+            <objectAnimator
+                android:propertyName="cornerRadius"
+                android:valueFrom="@dimen/button_corner_radius_normal"
+                android:valueTo="@dimen/button_corner_radius_pressed"
+                android:duration="80" />
+        </set>
+    </transition>
+    <!-- Transición de presionado a normal -->
+    <transition android:fromId="@id/statePressed" android:toId="@id/stateNormal">
+        <set>
+            <objectAnimator
+                android:propertyName="cornerRadius"
+                android:valueFrom="@dimen/button_corner_radius_pressed"
+                android:valueTo="@dimen/button_corner_radius_normal"
+                android:duration="120" />
+        </set>
+    </transition>
+</animated-selector>
+
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_error_ephemeris.xml
+    Versión: v1.0.0
+    Descripción: Elemento de lista que muestra un error al cargar efemérides, con opción de reintento.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_error_ephemeris.xml
+    ============================================================================
+
+    📌 ESTADO DE ERROR PARA EFEMÉRIDES (TYPE_ERROR)
+    ============================================================================
+
+    Este layout se muestra cuando falla la carga de efemérides en EphemeridesFragment.
+
+    Contiene:
+      - Icono de error
+      - Mensaje de error
+      - Botón "Reintentar"
+
+    🔥 NOTA: Este layout se muestra como un ítem más del RecyclerView,
+    lo que permite que el RecyclerView siempre esté visible y pueda
+    consumir eventos táctiles, evitando interferencias con el ViewPager.
+
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_32dp"
+    android:minHeight="200dp">
+
+    <!-- Icono de error -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_error_events"
+        android:contentDescription="@string/error_loading_data" />
+
+    <!-- Mensaje de error -->
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:text="@string/error_loading_data"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="?attr/colorTextHint"
+        android:gravity="center"
+        tools:text="Error al cargar las efemérides" />
+
+    <!-- Botón Reintentar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:text="@string/button_retry"
+        style="@style/Widget.PreuSync.Button.Global" />
+
+</LinearLayout>
+
+

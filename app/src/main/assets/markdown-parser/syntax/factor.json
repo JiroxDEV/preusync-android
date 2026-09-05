@@ -1,0 +1,43 @@
+{
+  "name": "factor",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "![^\\n]*" },
+        { "regex": "#![^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "word-definition",
+      "patterns": [
+        { "regex": ":[\\s]+[^\\s]+" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:USING:|IN:|TUPLE:|SYMBOL:|MACRO:|GENERIC:|GENERIC#|HOOK:|INSTANCE:|PRIVATE>|USE:|MIXIN:|INTERSECTION:|SINGLETON:|C:|UNION:|FORGET:|MAIN:|QUALIFIED:|QUALIFIED-WITH:|FROM:|EXCLUDE:|RENAME:|ERROR:|DEFER:|ALIAS:|INLINE:|SYNTAX:|MEMO:|IDENTITY-MEMO:|flushable|foldable|call|execute)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "\\s+[+\\-*/%<>=!&|^]+\\s+" }
+      ]
+    }
+  ]
+}

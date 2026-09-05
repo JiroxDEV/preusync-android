@@ -1,0 +1,89 @@
+/**
+ * ============================================================================
+ * Proyecto: PreuSync
+ * Clase: SchoolEventsFragment.java
+ * Versión: v8.0.0
+ * Descripción: Fragmento para la visualización de eventos escolares. 
+ *              Utiliza el adaptador unificado EventsAdapter y soporte Room.
+ * Autor: JiroxDEV
+ * Licensed under the GNU Affero General Public License v3
+ * ============================================================================
+ */
+
+package binaryqva.educative.preusync.ui.fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+import binaryqva.educative.preusync.R;
+import binaryqva.educative.preusync.network.models.Event;
+import binaryqva.educative.preusync.ui.activities.HomeActivity;
+import binaryqva.educative.preusync.ui.adapters.EventsAdapter;
+import binaryqva.educative.preusync.ui.viewmodels.SchoolEventsViewModel;
+
+public class SchoolEventsFragment extends PaginatedFeedFragment<Event> {
+
+    private static final String CACHE_KEY_EVENTS_SCHOOL = "school_events_feed";
+
+    private SchoolEventsViewModel eventsViewModel;
+    private EventsAdapter eventsAdapter;
+
+    @Override protected int getLayoutResId() { return R.layout.fragment_events_school; }
+    @Override protected String getCacheKey() { return CACHE_KEY_EVENTS_SCHOOL; }
+
+    @Override
+    protected RecyclerView.Adapter createAdapter(List<Event> data) {
+        if (eventsAdapter == null) {
+            eventsAdapter = new EventsAdapter(requireContext());
+            eventsAdapter.setOnEventClickListener(event -> {
+                if (getActivity() instanceof HomeActivity) {
+                    ((HomeActivity) getActivity()).showEventDetailsBottomSheet(event);
+                }
+            });
+            eventsAdapter.setOnRetryListener(() -> eventsViewModel.refresh());
+            eventsAdapter.setOnRetryLoadMoreListener(() -> eventsViewModel.loadMore());
+        }
+        eventsAdapter.setData(data);
+        return eventsAdapter;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        eventsViewModel = new ViewModelProvider(requireActivity()).get(SchoolEventsViewModel.class);
+        
+        int paddingBottom = (int) (80 * getResources().getDisplayMetrics().density);
+        recyclerView.setPadding(recyclerView.getPaddingLeft(), recyclerView.getPaddingTop(),
+                recyclerView.getPaddingRight(), paddingBottom);
+        recyclerView.setClipToPadding(false);
+
+        observeViewModel();
+        eventsViewModel.refresh();
+        return view;
+    }
+
+    private void observeViewModel() {
+        eventsViewModel.getPaginationState().observe(getViewLifecycleOwner(), this::handlePaginationState);
+    }
+
+    @Override protected void loadMoreItems() { if (eventsViewModel != null) eventsViewModel.loadMore(); }
+
+    @Override
+    public void resetAndReload() {
+        if (eventsViewModel != null) eventsViewModel.refresh();
+        else super.resetAndReload();
+    }
+}
+
+

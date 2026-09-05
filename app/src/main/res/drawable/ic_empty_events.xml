@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: ic_empty_events.xml
+    Versión: v1.0.0
+    Descripción: Icono de estado vacío para la lista de eventos.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!-- Created by Apktool M – https://maximoff.su/apktool -->
+<vector
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:width="100dp"
+	android:height="100dp"
+	android:viewportWidth="24.0"
+	android:viewportHeight="24.0">
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.7804912"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M3.58,8.77L14.38,3.30A1.67 1.67 0 0 1 16.63,4.04L21.16,12.98A1.67 1.67 0 0 1 20.42,15.23L9.62,20.70A1.67 1.67 0 0 1 7.37,19.96L2.84,11.02A1.67 1.67 0 0 1 3.58,8.77z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M7.70,8.93C8.25,8.93,8.69,9.38,8.69,9.93C8.69,10.48,8.25,10.92,7.70,10.92C7.15,10.92,6.70,10.48,6.70,9.93C6.70,9.38,7.15,8.93,7.70,8.93z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M10.43,7.36C10.98,7.36,11.42,7.81,11.42,8.36C11.42,8.91,10.98,9.35,10.43,9.35C9.88,9.35,9.43,8.91,9.43,8.36C9.43,7.81,9.88,7.36,10.43,7.36z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M13.29,5.91C13.84,5.91,14.28,6.35,14.28,6.90C14.28,7.45,13.84,7.90,13.29,7.90C12.74,7.90,12.29,7.45,12.29,6.90C12.29,6.35,12.74,5.91,13.29,5.91z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M6.70,11.98C7.25,11.98,7.70,12.42,7.70,12.97C7.70,13.52,7.25,13.97,6.70,13.97C6.15,13.97,5.71,13.52,5.71,12.97C5.71,12.42,6.15,11.98,6.70,11.98z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M9.12,16.96C9.67,16.96,10.11,17.41,10.11,17.96C10.11,18.51,9.67,18.95,9.12,18.95C8.57,18.95,8.12,18.51,8.12,17.96C8.12,17.41,8.57,16.96,9.12,16.96z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="0.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.0"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M11.75,15.63C12.30,15.63,12.75,16.08,12.75,16.63C12.75,17.18,12.30,17.62,11.75,17.62C11.20,17.62,10.76,17.18,10.76,16.63C10.76,16.08,11.20,15.63,11.75,15.63z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.93658936"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M15.23,9.10C16.88,9.10,18.22,10.44,18.22,12.09C18.22,13.74,16.88,15.08,15.23,15.08C13.58,15.08,12.24,13.74,12.24,12.09C12.24,10.44,13.58,9.10,15.23,9.10z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.93658936"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="round"
+		android:pathData="M17.18,14.39L20.80,17.72" />
+</vector>
+
+

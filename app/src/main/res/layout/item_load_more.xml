@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_load_more.xml
+    Versión: v1.0.0
+    Descripción: Pie de página con botón "Cargar más" para listas paginadas.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_load_more.xml
+    ============================================================================
+
+    📌 BOTÓN "CARGAR MÁS" (TYPE_LOAD_MORE)
+    ============================================================================
+
+    Este layout se muestra al final de la lista de posts cuando hay más
+    elementos disponibles para cargar.
+
+    Contiene:
+      - Botón "Cargar más" (visible cuando no hay carga en progreso)
+      - LoadingIndicator (visible durante la carga)
+
+    🔥 NOTA: La carga se activa mediante un clic en el botón, no por scroll
+    automático. Esto evita los saltos bruscos que ocurrían con la carga
+    automática en el NestedScrollView.
+
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="@dimen/padding_16dp">
+
+    <!-- LoadingIndicator (visible durante la carga) -->
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/loadMoreProgress"
+        style="@style/Widget.Material3.LoadingIndicator"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:indicatorSize="32dp"
+        android:visibility="gone" />
+
+    <!-- Botón "Cargar más" (visible cuando no hay carga) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loadMoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_load_more"
+        android:visibility="visible"
+        style="@style/Widget.PreuSync.Button.Global" />
+
+</LinearLayout>
+
+

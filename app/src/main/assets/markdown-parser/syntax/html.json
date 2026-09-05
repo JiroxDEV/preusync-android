@@ -1,0 +1,18 @@
+{
+  "name": "html",
+  "extend": "xml",
+  "tokens": [
+    {
+      "name": "entity",
+      "patterns": [
+        { "regex": "&[a-zA-Z]+;|&#\\d+;|&#x[0-9a-fA-F]+;" }
+      ]
+    },
+    {
+      "name": "doctype",
+      "patterns": [
+        { "regex": "<!DOCTYPE\\s+html[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

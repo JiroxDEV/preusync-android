@@ -1,0 +1,30 @@
+{
+  "name": "reasonml",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:and|as|assert|async|await|begin|class|constraint|do|done|downto|else|end|exception|external|false|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|module|mutable|new|nonrec|object|of|open|or|pri|rec|sig|struct|switch|then|to|true|try|type|val|virtual|when|while|with)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:int|float|string|char|bool|unit|list|array|option|ref|exn)\\b" }
+      ]
+    },
+    {
+      "name": "jsx",
+      "patterns": [
+        { "regex": "<\\/?[A-Z][\\w]*[^>]*>", "greedy": true }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "\\[@?[a-z][\\w]*\\]" }
+      ]
+    }
+  ]
+}

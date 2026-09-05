@@ -1,0 +1,49 @@
+{
+  "name": "commonlisp",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#\\|[\\s\\S]*?\\|#" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b[0-9]+\\/\\d+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": ":[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:block|case|catch|cond|declare|defclass|defconstant|defgeneric|define-condition|define-method-combination|define-modify-macro|define-setf-expander|defmacro|defmethod|defparameter|defsetf|defstruct|deftype|defun|defvar|do|do*|dolist|dotimes|ecase|etypecase|eval-when|flet|go|handler-bind|handler-case|if|in-package|labels|lambda|let|let*|load-time-value|locally|loop|macrolet|multiple-value-bind|multiple-value-call|multiple-value-prog1|proclaim|prog|prog*|prog1|prog2|progn|restart-bind|restart-case|return|return-from|setf|shiftf|tagbody|the|throw|typecase|unless|unwind-protect|when|with-accessors|with-compilation-unit|with-condition-restarts|with-hash-table-iterator|with-input-from-string|with-open-file|with-open-stream|with-output-to-string|with-package-iterator|with-simple-restart|with-slots|with-standard-io-syntax)\\b" }
+      ]
+    },
+    {
+      "name": "special",
+      "patterns": [
+        { "regex": "\\b(?:nil|t)\\b" }
+      ]
+    },
+    {
+      "name": "character",
+      "patterns": [
+        { "regex": "#\\\\.{1}" }
+      ]
+    }
+  ]
+}

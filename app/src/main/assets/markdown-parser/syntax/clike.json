@@ -1,0 +1,65 @@
+{
+  "name": "clike",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|$)", "lookbehind": true },
+        { "regex": "(^|[^\\\\:])\\/\\/.*", "lookbehind": true, "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1", "global": true }
+      ]
+    },
+    {
+      "name": "class-name",
+      "patterns": [
+        { "regex": "((?:\\b(?:class|interface|extends|implements|trait|instanceof|new)\\s+)|(?:catch\\s+\\())[\\w.\\\\]+", "lookbehind": true }
+      ],
+      "inside": {
+        "tokens": [
+          { "name": "punctuation", "patterns": [ { "regex": "[.\\\\]" } ] }
+        ]
+      }
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false)\\b" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "[a-z0-9_]+(?=\\()", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0x[\\da-f]+\\b|(?:\\b\\d+\\.?\\d*|\\B\\.\\d+)(?:e[+-]?\\d+)?", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "--?|\\+\\+?|!=?=?|<=?|>=?|==?=?|&&?|\\|\\|?|\\?|\\*|\\/|~|\\^|%" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{}\\[\\];(),.:]" }
+      ]
+    }
+  ]
+}

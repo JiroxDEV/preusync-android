@@ -1,0 +1,36 @@
+{
+  "name": "ini",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "\\[[^\\]]+\\]" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "^[^=\\n]+(?==)", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "value",
+      "patterns": [
+        { "regex": "=.*" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false|yes|no|on|off)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "orgmode",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#\\+.*" }
+      ]
+    },
+    {
+      "name": "heading",
+      "patterns": [
+        { "regex": "^\\*+\\s.*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*[^*]+\\*" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "/[^/]+/" }
+      ]
+    },
+    {
+      "name": "code",
+      "patterns": [
+        { "regex": "~[^~]+~" },
+        { "regex": "=[^=]+=" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "\\[\\[\\S+\\]\\[\\S+\\]\\]" }
+      ]
+    },
+    {
+      "name": "todo",
+      "patterns": [
+        { "regex": "\\b(?:TODO|DONE|FIXME|BUG|HACK|XXX)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "property",
+      "patterns": [
+        { "regex": ":PROPERTIES:" },
+        { "regex": ":END:" }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "#\\+BEGIN_\\w+" },
+        { "regex": "#\\+END_\\w+" }
+      ]
+    }
+  ]
+}

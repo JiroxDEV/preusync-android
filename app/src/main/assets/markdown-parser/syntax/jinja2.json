@@ -1,0 +1,35 @@
+{
+  "name": "jinja2",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{#.*?#\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "statement",
+      "patterns": [
+        { "regex": "\\{%[^%]*?%\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\{\\{[^}]*?\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\{\\{[^}]*?\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|elif|else|endif|for|in|endfor|block|endblock|extends|include|import|macro|endmacro|call|endcall|filter|endfilter|set|endset|with|endwith|raw|endraw|autoescape|endautoescape)\\b" }
+      ]
+    }
+  ]
+}

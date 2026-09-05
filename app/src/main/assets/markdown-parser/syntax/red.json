@@ -1,0 +1,50 @@
+{
+  "name": "red",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\\{[^}]*\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[+-]?[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b[0-9]+\\.[0-9]+\\.[0-9]+\\b" },
+        { "regex": "\\b[0-9]+x[0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "file",
+      "patterns": [
+        { "regex": "%[^\\s\\[\\]()\"]+" }
+      ]
+    },
+    {
+      "name": "path",
+      "patterns": [
+        { "regex": "%[a-z-]+/" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|either|unless|while|until|loop|repeat|foreach|forall|break|return|exit|continue|func|function|does|has|context|object|make|to|copy|take|append|insert|remove|alter|find|select|sort|reverse|pick|poke|print|probe|mold|form|split|parse|load|save|read|write|open|close|do|reduce|compose|collect|keep|either|case|switch|default)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=&|!]+" }
+      ]
+    }
+  ]
+}

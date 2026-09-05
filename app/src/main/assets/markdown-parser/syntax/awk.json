@@ -1,0 +1,53 @@
+{
+  "name": "awk",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "pattern",
+      "patterns": [
+        { "regex": "/(?:[^/\\\\]|\\\\.)+/", "greedy": true }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$(?:[0-9]+|[A-Za-z_]\\w*)" }
+      ]
+    },
+    {
+      "name": "builtin-variable",
+      "patterns": [
+        { "regex": "\\b(?:ARGC|ARGV|CONVFMT|ENVIRON|ERRNO|FIELDWIDTHS|FILENAME|FNR|FS|IGNORECASE|NF|NR|OFMT|OFS|ORS|RLENGTH|RS|RSTART|SUBSEP)\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:BEGIN|END|if|else|while|for|in|do|break|continue|next|delete|exit|function|return|getline|close|fflush|system|print|printf|sprintf|sub|gsub|index|length|match|split|substr|tolower|toupper|srand|rand|atan2|cos|exp|int|log|sin|sqrt)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%^]=?|&&?|\\|\\|?|!|~|>|<|==|!=|>=|<=|\\?" }
+      ]
+    }
+  ]
+}

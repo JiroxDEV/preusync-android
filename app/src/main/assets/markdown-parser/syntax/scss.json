@@ -1,0 +1,37 @@
+{
+  "name": "scss",
+  "extend": "css",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//.*" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "mixin",
+      "patterns": [
+        { "regex": "@mixin\\s+[a-zA-Z][\\w-]*" },
+        { "regex": "@include\\s+[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "@function\\s+[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "@(?:if|else|else if|for|each|while|warn|error|debug|at-root|return|extend|import|use|forward|mixin|include|function)\\b" }
+      ]
+    }
+  ]
+}

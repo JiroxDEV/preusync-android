@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: fragment_news.xml
+    Versión: v2.2.0
+    Descripción: Fragmento que visualiza el feed de noticias institucionales y externas con paginación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/newsLayoutContainer">
+
+    <binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/wrapper">
+
+            <!-- Barra superior -->
+            <LinearLayout
+                android:id="@+id/actionBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="@dimen/padding_end_24dp"
+                android:paddingBottom="@dimen/padding_8dp"
+                android:background="?attr/colorBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/titleText"
+                    style="@style/TextAppearance.PreuSync.HeaderTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_8dp"
+                    android:text="@string/title_news"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- 🔴 Contenedor principal con altura match_parent -->
+            <FrameLayout
+                android:id="@+id/mainContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorBackground">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/padding_8dp"
+                    android:paddingBottom="@dimen/padding_16dp"
+                    android:paddingStart="@dimen/padding_8dp"
+                    android:paddingEnd="@dimen/padding_8dp"
+                    android:visibility="gone"
+                    tools:listitem="@layout/item_news" />
+
+                <LinearLayout
+                    android:id="@+id/loaderLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.google.android.material.loadingindicator.LoadingIndicator
+                        android:id="@+id/loadingIndicator"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        app:indicatorSize="@dimen/standard_icon_size_state" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/emptyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/emptyImage"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        android:src="@drawable/ic_empty_news" />
+
+                    <TextView
+                        android:id="@+id/emptyTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_8dp"
+                        android:text="@string/message_empty_news"
+                        android:textSize="@dimen/text_size_20sp"
+                        android:textColor="?attr/colorText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/errorLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/errorImage"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        android:src="@drawable/ic_error_news" />
+
+                    <TextView
+                        android:id="@+id/errorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_8dp"
+                        android:text="@string/error_loading_data"
+                        android:textSize="@dimen/text_size_20sp"
+                        android:textColor="?attr/colorText" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout>
+</LinearLayout>
+
+

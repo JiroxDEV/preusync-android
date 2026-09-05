@@ -1,0 +1,30 @@
+{
+  "name": "rtf",
+  "tokens": [
+    {
+      "name": "control",
+      "patterns": [
+        { "regex": "\\\\[a-zA-Z]+\\d*\\s?" }
+      ]
+    },
+    {
+      "name": "group",
+      "patterns": [
+        { "regex": "\\{" },
+        { "regex": "\\}" }
+      ]
+    },
+    {
+      "name": "escape",
+      "patterns": [
+        { "regex": "\\\\'" }
+      ]
+    },
+    {
+      "name": "text",
+      "patterns": [
+        { "regex": "[^{}\\\\]+" }
+      ]
+    }
+  ]
+}

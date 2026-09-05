@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: colors.xml
+    Versión: v2.2.0
+    Descripción: Recurso de colores para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!-- M3 Expressive Light Blue - LIGHT PALETTE -->
+    <color name="colorPrimary">#006684</color>
+    <color name="colorPrimaryDark">#003544</color>
+    <color name="colorAccent">#006684</color>
+    <color name="colorControlNormal">#70787D</color>
+    <color name="colorControlHighlight">#D0E4FF</color>
+    <color name="colorSecondary">#BFE9FF</color>
+    <color name="colorBackground">#F8FDFF</color>
+    <color name="colorBackgroundCard">#DCE4E9</color>
+    <color name="colorText">#191C1E</color>
+    <color name="colorTextHint">#40484C</color>
+    <color name="colorError">#BA1A1A</color>
+    <color name="colorExito">#006B4F</color>
+    <color name="colorWarning">#7F5700</color>
+
+    <!-- Horario Light -->
+    <color name="colorHorarioPrincipal">#BFE9FF</color>
+    <color name="colorHorarioAsignatura">#DCE4E9</color>
+    <color name="colorHorarioLibre">#F1F4F5</color>
+    <color name="colorHorarioResaltadoPrincipal">#006684</color>
+    <color name="colorHorarioResaltadoSecundario">#003544</color>
+</resources>
+
+

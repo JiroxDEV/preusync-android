@@ -1,0 +1,36 @@
+{
+  "name": "avro-idl",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:protocol|schema|record|enum|fixed|array|map|union|import|doc|namespace|error|throws|oneway|void|boolean|int|long|float|double|bytes|string|null|true|false)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@[a-zA-Z_]\\w*(\\([^\\)]*\\))?" }
+      ]
+    }
+  ]
+}

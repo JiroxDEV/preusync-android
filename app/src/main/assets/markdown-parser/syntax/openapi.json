@@ -1,0 +1,36 @@
+{
+  "name": "openapi",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "\\b(?:openapi|info|servers|paths|components|security|tags|externalDocs|summary|description|operationId|parameters|requestBody|responses|schema|type|format|properties|required|enum|example)\\b" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "url",
+      "patterns": [
+        { "regex": "https?://\\S+" }
+      ]
+    }
+  ]
+}

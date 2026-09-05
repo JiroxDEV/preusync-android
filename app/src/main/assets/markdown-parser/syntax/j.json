@@ -1,0 +1,42 @@
+{
+  "name": "j",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "NB\\..*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b_?[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b[0-9]+r[0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "verb",
+      "patterns": [
+        { "regex": "[+\\-*/%^=<>~|.,;:#!@$]+" }
+      ]
+    },
+    {
+      "name": "adverb-conjunction",
+      "patterns": [
+        { "regex": "[/\\\\]|\\[|\\]|\\{|\\}|\\.\\.|::|&|@|`" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:i\\.|j\\.|e\\.|p\\.|o\\.|x\\.|\\w+_)\\b" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: attrs.xml
+    Versión: v1.2.0
+    Descripción: Recurso de atributos personalizados (attrs) para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <attr name="colorExito" format="color" ></attr>
+    <attr name="colorWarning" format="color" ></attr>
+    <attr name="colorHorarioPrincipal" format="color" ></attr>
+    <attr name="colorHorarioAsignatura" format="color" ></attr>
+    <attr name="colorHorarioLibre" format="color" ></attr>
+    <attr name="colorHorarioResaltadoPrincipal" format="color" ></attr>
+    <attr name="colorHorarioResaltadoSecundario" format="color" ></attr>
+    <attr name="colorBackground" format="color" ></attr>
+    <attr name="colorBackgroundCard" format="color" ></attr>
+    <attr name="colorText" format="color" ></attr>
+    <attr name="colorTextHint" format="color" ></attr>
+
+    <!-- Standard Material/AppCompat attributes for Java R class access -->
+    <attr name="colorAccent" format="reference|color" />
+    <attr name="colorPrimary" format="reference|color" />
+    <attr name="colorPrimaryDark" format="reference|color" />
+    <attr name="colorSecondary" format="reference|color" />
+    <attr name="colorOnSecondary" format="reference|color" />
+    <attr name="colorError" format="reference|color" />
+    <attr name="colorControlNormal" format="reference|color" />
+    <attr name="colorControlHighlight" format="reference|color" />
+
+    <!-- LoadingIndicator attributes -->
+    <attr name="containerColor" format="color" />
+    <attr name="containerHeight" format="dimension" />
+    <attr name="containerWidth" format="dimension" />
+</resources>
+
+

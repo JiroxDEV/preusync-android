@@ -1,0 +1,57 @@
+{
+  "name": "markdown",
+  "tokens": [
+    {
+      "name": "heading",
+      "patterns": [
+        { "regex": "^#{1,6}\\s.*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*\\*[^*]+\\*\\*" },
+        { "regex": "__[^_]+__" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "\\*[^*]+\\*" },
+        { "regex": "_[^_]+_" }
+      ]
+    },
+    {
+      "name": "code",
+      "patterns": [
+        { "regex": "`[^`]+`" },
+        { "regex": "```[\\s\\S]*?```", "greedy": true }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "\\[[^\\]]*\\]\\([^\\)]*\\)" }
+      ]
+    },
+    {
+      "name": "image",
+      "patterns": [
+        { "regex": "!\\[[^\\]]*\\]\\([^\\)]*\\)" }
+      ]
+    },
+    {
+      "name": "blockquote",
+      "patterns": [
+        { "regex": "^>\\s.*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "list",
+      "patterns": [
+        { "regex": "^[\\s]*[-\\*\\+]\\s.*", "flags": "MULTILINE" },
+        { "regex": "^[\\s]*\\d+\\.\\s.*", "flags": "MULTILINE" }
+      ]
+    }
+  ]
+}

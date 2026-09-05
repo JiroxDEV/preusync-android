@@ -1,0 +1,41 @@
+{
+  "name": "llvm-ir",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:define|declare|global|constant|local_unnamed_addr|global_unnamed_addr|dso_local|dso_preemptable|hidden|protected|dllimport|dllexport|thread_local|localexec|initialexec|localdynamic|unnamed_addr|addrspace|align|allocsize|alwaysinline|builtin|cold|convergent|dereferenceable|hot|immarg|inaccessiblememonly|inaccessiblemem_or_argmemonly|inalloca|inlinehint|jumptable|minsize|naked|nobuiltin|nonnull|norecurse|noredzone|noreturn|nosync|nounwind|optnone|optsize|readnone|readonly|returned|returns_twice|safestack|sanitize_address|sanitize_memory|sanitize_thread|speculatable|ssp|sspreq|sspstrong|strictofp|safestack|shadowcallstack|uwtable|willreturn|writeonly)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:void|i1|i8|i16|i32|i64|i128|half|float|double|fp128|x86_fp80|ppc_fp128|x86_mmx|label|metadata|opaque|token)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "%[a-zA-Z_.][\\w.]*" }
+      ]
+    },
+    {
+      "name": "label",
+      "patterns": [
+        { "regex": "^[a-zA-Z0-9_.]+:" }
+      ]
+    }
+  ]
+}

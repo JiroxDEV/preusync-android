@@ -1,0 +1,42 @@
+{
+  "name": "tcl",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\\{[^}]*\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\b(?:proc|return|global|variable|upvar|uplevel|namespace|package|require|if|else|elseif|switch|foreach|for|while|break|continue|catch|error|eval|after|vwait|update|bind|button|entry|text|canvas|pack|grid|place|destroy|toplevel|wm|focus|grab|tkwait|tk|itcl|oo|class|method|superclass|mixin|public|private|protected)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|]+" }
+      ]
+    }
+  ]
+}

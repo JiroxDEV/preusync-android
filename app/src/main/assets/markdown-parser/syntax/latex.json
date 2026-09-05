@@ -1,0 +1,44 @@
+{
+  "name": "latex",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "%.*" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\\\[a-zA-Z]+\\*?" }
+      ]
+    },
+    {
+      "name": "special",
+      "patterns": [
+        { "regex": "\\\\[\\^_~&%$#@]" }
+      ]
+    },
+    {
+      "name": "environment",
+      "patterns": [
+        { "regex": "\\\\begin\\{[^}]+\\}" },
+        { "regex": "\\\\end\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "math",
+      "patterns": [
+        { "regex": "\\$[^$]*\\$" },
+        { "regex": "\\\\\\([^\\)]*\\\\\\)" },
+        { "regex": "\\\\\\[[^\\]]*\\\\\\]" }
+      ]
+    },
+    {
+      "name": "argument",
+      "patterns": [
+        { "regex": "\\{[^}]*\\}" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "objectivec",
+  "extend": "c",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:@interface|@implementation|@protocol|@class|@private|@protected|@public|@required|@optional|@property|@synthesize|@dynamic|@try|@catch|@finally|@throw|@end|@selector|@encode|@defs|@synchronized|@autoreleasepool|@import|@available|id|Class|SEL|IMP|BOOL|instancetype|nil|Nil|YES|NO|self|super|__strong|__weak|__unsafe_unretained|__autoreleasing|__block|__bridge|__bridge_retained|__bridge_transfer)\\b" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?[fF]?\\b" },
+        { "regex": "@\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?[fF]?" },
+        { "regex": "@\\{[^}]*\\}" },
+        { "regex": "@\\[[^\\]]*\\]" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "@\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "message",
+      "patterns": [
+        { "regex": "\\[\\s*[\\w\\.]+\\s+[\\w:]+[^\\]]*\\]" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "restructuredtext",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\.\\..*" }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "^.+\\n[=~\\-`:'\\^\"\\*\\+\\#]+", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*\\*[^*]+\\*\\*" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "\\*[^*]+\\*" }
+      ]
+    },
+    {
+      "name": "literal",
+      "patterns": [
+        { "regex": "``[^`]+``" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "\\.\\.\\s[a-zA-Z-]+\\s?::" }
+      ]
+    },
+    {
+      "name": "role",
+      "patterns": [
+        { "regex": ":[a-zA-Z]+:`[^`]+`" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "`[^`]+`_" }
+      ]
+    }
+  ]
+}

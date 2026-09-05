@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Color: textinputlayout_tint.xml
+    Versión: v1.0.1
+    Descripción: Recurso de color para el borde y los iconos del campo de texto (TextInputLayout)..
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:color="?attr/colorAccent" />
+    <item android:state_enabled="true" android:color="?attr/colorTextHint" />
+    <item android:color="?attr/colorTextHint" />
+</selector>
+
+

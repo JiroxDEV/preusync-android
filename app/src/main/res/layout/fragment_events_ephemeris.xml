@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: fragment_events_ephemeris.xml
+    Versión: v1.6.0
+    Descripción: Fragmento que muestra la lista de efemérides diarias con selector de fecha.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/eventsEphemerisLayoutContainer">
+
+    <binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/wrapper">
+
+            <!-- Selector de fecha -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dateSelectorCardView"
+                style="@style/Widget.PreuSync.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/dateSelector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12dp">
+
+                    <TextView
+                        android:id="@+id/dateText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/text_size_18sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:textColorPrimary"
+                        android:text="22 de mayo de 2025" />  <!-- Este es dinámico, no se cambia -->
+
+                    <ImageButton
+                        android:id="@+id/changeDateButton"
+                        style="@style/ImageViewIconStyle"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_calendar"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/button_select" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Contenido principal -->
+            <LinearLayout
+                android:id="@+id/mainContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="?attr/colorBackground"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    tools:listitem="@layout/item_ephemeris" />
+
+                <LinearLayout
+                    android:id="@+id/ephemerisLoader"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding_8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.loadingindicator.LoadingIndicator
+                        android:id="@+id/loadingIndicatorEventosEfeme"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        app:indicatorSize="@dimen/standard_icon_size_state" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/emptyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding_8dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/emptyImage"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        android:src="@drawable/ic_empty_events" />
+
+                    <TextView
+                        android:id="@+id/emptyTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_8dp"
+                        android:gravity="center"
+                        android:text="@string/message_empty_ephemerides"
+                        android:textSize="@dimen/text_size_20sp"
+                        android:textColor="?attr/colorText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/errorLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/padding_8dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/errorImage"
+                        android:layout_width="@dimen/standard_icon_size_state"
+                        android:layout_height="@dimen/standard_icon_size_state"
+                        android:src="@drawable/ic_error_events" />
+
+                    <TextView
+                        android:id="@+id/errorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_8dp"
+                        android:gravity="center"
+                        android:text="@string/error_loading_data"
+                        android:textSize="@dimen/text_size_20sp"
+                        android:textColor="?attr/colorText" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout>
+</LinearLayout>
+
+

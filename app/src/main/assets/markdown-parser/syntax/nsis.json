@@ -1,0 +1,31 @@
+{
+  "name": "nsis",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[A-Za-z_]\\w*" },
+        { "regex": "\\$\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:Name|OutFile|InstallDir|RequestExecutionLevel|Section|SectionEnd|Function|FunctionEnd|Page|UninstPage|SetCompressor|SilentInstall|SilentUninstall|AutoCloseWindow|ShowInstDetails|ShowUninstDetails|BrandingText|Caption|SubCaption|ComponentText|DirText|CompletedText|SetShellVarContext|StrCpy|StrCmp|StrLen|IntCmp|IntCmpU|IntOp|IfErrors|IfFileExists|IfRebootFlag|MessageBox|DetailPrint|ExpandEnvStrings|GetFullPathName|SearchPath|ReadRegStr|WriteRegStr|DeleteRegValue|DeleteRegKey|EnumRegKey|EnumRegValue|CreateDirectory|CopyFiles|Rename|Delete|RMDir|SetOutPath|File|Exec|ExecWait|ExecShell|BringToFront|HideWindow|AllowSkipFiles|SetDetailsView|SetDetailsPrint|SetAutoClose|SetBrandingImage|AddBrandingImage|GetDlgItem|SetCtlColors|CreateFont|SendMessage|IsWindow|ShowWindow|EnableWindow|FindWindow|GetDlgItem|LockWindow|Release|GetFunctionAddress|Call|GetTempFileName|GetFileTime|GetFileTimeLocal|SetFileAttributes|WriteINIStr|ReadINIStr|DeleteINISec|DeleteINIStr|ReserveFile|SetPluginUnload|InitPluginsDir|SetErrorLevel|SetErrors|ClearErrors)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

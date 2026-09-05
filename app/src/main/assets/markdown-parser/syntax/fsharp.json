@@ -1,0 +1,44 @@
+{
+  "name": "fsharp",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "\\(\\*[\\s\\S]*?\\*\\)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "@\"[^\"]*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|and|as|assert|base|begin|class|default|delegate|do|done|downcast|downto|elif|else|end|exception|extern|false|finally|for|fun|function|global|if|in|inherit|inline|interface|internal|lazy|let|match|member|module|mutable|namespace|new|not|null|of|open|or|override|private|public|rec|return|select|static|struct|then|to|true|try|type|upcast|use|val|void|when|while|with|xor|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:int|float|decimal|string|char|bool|unit|obj|list|array|seq|option|Async|Task|Result)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^@:]+|\\|>|<\\||->|::|<-" }
+      ]
+    }
+  ]
+}

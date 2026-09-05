@@ -1,0 +1,24 @@
+{
+  "name": "haxe",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|break|case|cast|catch|class|continue|default|do|dynamic|else|enum|extends|extern|false|final|for|function|if|implements|import|in|inline|interface|macro|new|null|override|package|private|public|return|static|super|switch|this|throw|true|try|untyped|using|var|while)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Void|Bool|Int|Float|Dynamic|String|Array|Map|Date|Error|Std|Math|Lambda|Reflect|StringBuf|StringTools|Sys|Type)\\b" }
+      ]
+    },
+    {
+      "name": "metadata",
+      "patterns": [
+        { "regex": "@:[\\w]+(?:\\([^\\)]*\\))?" }
+      ]
+    }
+  ]
+}

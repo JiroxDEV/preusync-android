@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: bottomsheet_avatar_selector.xml
+    Versión: v1.0.6
+    Descripción: Panel deslizable para seleccionar o subir un avatar de perfil.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/avatarSelectorContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_8dp"
+    android:background="?attr/colorBackground"
+    android:orientation="vertical">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/bottomSheetDragHandle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/avatarSelectorTitle"
+        style="@style/TextAppearance.PreuSync.HeaderTitle"
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_8dp"
+        android:text="@string/title_select_avatar" />
+
+    <LinearLayout
+        android:id="@+id/avatars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_2dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/uploadImageLayout"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/margin_5dp"
+                android:padding="@dimen/padding_8dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/ripple_selectable_item">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/uploadCardView"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:cardBackgroundColor="?attr/colorAccent"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="360dp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:id="@+id/uploadImageView"
+                        android:focusable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/card_elevation"
+                        android:src="@drawable/ic_upload"
+                        android:scaleType="fitCenter"
+                        app:tint="?attr/colorBackground"
+                        android:contentDescription="@string/button_upload" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/uploadImageText"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/button_upload"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/initialLayout"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/margin_5dp"
+                android:padding="@dimen/padding_8dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/ripple_selectable_item">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/initialCardView"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:cardBackgroundColor="?attr/colorAccent"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="360dp"
+                    app:strokeWidth="0dp">
+
+                    <TextView
+                        android:id="@+id/initialCardText"
+                        android:focusable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_8dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="A"
+                        android:textSize="@dimen/text_size_16sp"
+                        android:textColor="?attr/colorBackground" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/initialText"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/label_your_initial"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/roleLayout"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="@dimen/margin_5dp"
+                android:padding="@dimen/padding_8dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/ripple_selectable_item">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/roleCardView"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:cardBackgroundColor="?attr/colorAccent"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="360dp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:id="@+id/roleImageView"
+                        android:focusable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/card_elevation"
+                        android:src="@drawable/ic_school"
+                        android:scaleType="fitCenter"
+                        app:tint="?attr/colorBackground"
+                        android:contentDescription="@string/hint_role" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/roleText"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/label_your_role"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorAccent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

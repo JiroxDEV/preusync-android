@@ -1,0 +1,37 @@
+{
+  "name": "protobuf",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:syntax|package|import|option|message|enum|service|rpc|returns|oneof|map|reserved|extend|extensions|group|required|optional|repeated)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:int32|int64|uint32|uint64|sint32|sint64|fixed32|fixed64|sfixed32|sfixed64|float|double|bool|string|bytes)\\b" }
+      ]
+    }
+  ]
+}

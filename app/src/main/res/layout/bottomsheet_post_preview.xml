@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: bottomsheet_post_preview.xml
+    Versión: v1.1.0
+    Descripción: Panel deslizable para previsualizar una publicación antes de publicarla.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/postPreviewContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_8dp"
+    android:background="?attr/colorBackground"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/actionBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/heading"
+            android:focusable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/title_post_preview"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_20sp" />
+        <ImageView
+            android:id="@+id/closeImage"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="@dimen/card_elevation"
+            android:src="@drawable/ic_close"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple_circular" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/contentTextView"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_8dp"
+        android:textColor="?attr/colorText"
+        android:textSize="@dimen/text_size_14sp" />
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/previewLoading"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center" />
+</LinearLayout>
+
+

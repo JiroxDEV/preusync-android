@@ -1,0 +1,18 @@
+{
+  "name": "processing",
+  "extend": "java",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|break|case|catch|class|color|continue|default|do|double|else|extends|false|final|float|for|if|implements|import|int|interface|new|null|private|protected|public|return|static|super|switch|this|throw|true|try|void|while)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:size|background|fill|stroke|noFill|noStroke|line|ellipse|rect|triangle|quad|arc|curve|bezier|text|setup|draw|mousePressed|keyPressed|mouseX|mouseY|pmouseX|pmouseY|width|height|frameCount|frameRate|noLoop|loop|redraw|println|print|random|noise|map|constrain|dist|abs|sin|cos|tan|atan2|sqrt|sq|lerp|lerpColor|sin|cos|PI|TWO_PI|HALF_PI|QUARTER_PI|P2D|P3D|OPENGL|ARGB|RGB|HSB)\\b" }
+      ]
+    }
+  ]
+}

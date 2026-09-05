@@ -1,0 +1,41 @@
+{
+  "name": "nginx",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "\\b(?:server|listen|server_name|location|root|index|try_files|proxy_pass|rewrite|return|error_page|access_log|error_log|ssl_certificate|ssl_certificate_key|include|upstream|worker_processes|worker_connections|events|http|mail|stream)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_][\\w]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"[^\"]*\"" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+[kKmMgG]?\\b" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{};]" }
+      ]
+    }
+  ]
+}

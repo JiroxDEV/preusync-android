@@ -1,0 +1,29 @@
+{
+  "name": "git-commit",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:Signed-off-by|Acked-by|Reviewed-by|Tested-by|Reported-by|Co-authored-by|Closes|Fixes|Resolves|Ref|BREAKING CHANGE)\\b" }
+      ]
+    },
+    {
+      "name": "hash",
+      "patterns": [
+        { "regex": "\\b[0-9a-fA-F]{7,40}\\b" }
+      ]
+    },
+    {
+      "name": "header",
+      "patterns": [
+        { "regex": "^.{1,72}(?=\\n\\n)" }
+      ]
+    }
+  ]
+}

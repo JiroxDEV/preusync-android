@@ -1,0 +1,57 @@
+{
+  "name": "asciidoc",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "////[\\s\\S]*?////", "greedy": true },
+        { "regex": "//.*" }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "^=+\\s+.*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold-italic",
+      "patterns": [
+        { "regex": "\\*\\*\\*[^*]+\\*\\*\\*" },
+        { "regex": "___[^_]+___" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*\\*[^*]+\\*\\*" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "\\*[^*]+\\*" },
+        { "regex": "_[^_]+_" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "(?:https?|ftp|file|irc)://[^\\s]+\\[[^\\]]+\\]" },
+        { "regex": "link:[^\\s]+\\[[^\\]]+\\]" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\{[a-z]+\\}" }
+      ]
+    },
+    {
+      "name": "macro",
+      "patterns": [
+        { "regex": "\\w+::[^\\s]+\\[[^\\]]+\\]" }
+      ]
+    }
+  ]
+}

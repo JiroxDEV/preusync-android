@@ -1,0 +1,24 @@
+{
+  "name": "apex",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|break|case|catch|class|const|continue|default|do|else|enum|extends|final|finally|for|global|if|implements|inherited|insert|instanceof|interface|merge|new|null|on|override|private|protected|public|return|select|sharing|static|super|switch|testmethod|this|throw|trigger|try|undelete|update|upsert|virtual|void|webservice|when|while|with|without)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Schema|System|Database|Messaging|SObject|List|Set|Map|Exception)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@\\w+(?:\\(.*?\\))?" }
+      ]
+    }
+  ]
+}

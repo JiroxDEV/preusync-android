@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_title_news.xml
+    Versión: v1.0.0
+    Descripción: Título de sección para noticias en el inicio (ej: "Noticias destacadas").
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/featuredNewsTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp"
+    android:paddingTop="@dimen/padding_8dp"
+    android:text="@string/label_featured_news"
+    android:textStyle="bold"
+    android:textColor="?attr/colorAccent"
+    android:textSize="@dimen/text_size_20sp"
+    android:singleLine="true" />
+
+

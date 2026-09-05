@@ -1,0 +1,12 @@
+{
+  "name": "docbook",
+  "extend": "xml",
+  "tokens": [
+    {
+      "name": "element",
+      "patterns": [
+        { "regex": "<\\/?(?:article|book|chapter|section|para|emphasis|literal|link|ulink|olink|itemizedlist|orderedlist|listitem|table|thead|tbody|tgroup|row|entry|figure|mediaobject|imageobject|imagedata|textobject|inlinemediaobject|footnote|xref|indexterm|glossterm|bibliography|title|subtitle|author|date|revhistory|revision)\\b[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

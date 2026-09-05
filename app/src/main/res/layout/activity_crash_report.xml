@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: activity_crash_report.xml
+    Versión: v1.1.0
+    Descripción: Pantalla de reporte de errores fatales para enviar diagnósticos al soporte.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_corner_radius">
+
+            <TextView
+                android:id="@+id/crashTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_debug_error"
+                android:textSize="@dimen/text_size_24sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorError"
+                android:layout_marginBottom="@dimen/padding_16dp"
+                android:layout_marginTop="@dimen/padding_16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/error_crash_report_message"
+                android:textColor="?attr/colorText"
+                android:textSize="@dimen/text_size_14sp"
+                android:layout_marginBottom="@dimen/padding_16dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.PreuSync.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:cardElevation="0dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/padding_12dp">
+
+                    <TextView
+                        android:id="@+id/errorText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorText"
+                        android:fontFamily="monospace"
+                        android:textSize="@dimen/text_size_11sp"
+                        android:textIsSelectable="true"/>
+                </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Nueva sección de reporte -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reportDescriptionLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_corner_radius"
+                android:hint="¿Qué estabas haciendo cuando ocurrió el error?">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reportDescriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:minLines="3"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sendReportButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_12dp"
+                android:text="@string/button_send_report_to_github"
+                app:icon="@drawable/ic_campaign"
+                style="@style/Widget.Material3.Button.TonalButton" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/padding_12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/copyErrorButton"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_copy"
+                    android:layout_marginEnd="@dimen/padding_8dp"
+                    app:icon="@drawable/ic_copy"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/shareErrorButton"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_share"
+                    app:icon="@drawable/ic_share"/>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/closeDebugButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_12dp"
+                android:text="@string/button_exit"
+                style="@style/Widget.PreuSync.Button.Global"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Menu: menu_bottom_nav.xml
+    Versión: v1.0.0
+    Descripción: Menú de navegación inferior con las cinco pestañas principales.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navInicio"
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/navNoticias"
+        android:icon="@drawable/ic_nav_news"
+        android:title="@string/title_news" />
+    <item
+        android:id="@+id/navEventos"
+        android:icon="@drawable/ic_nav_events"
+        android:title="@string/title_events" />
+    <item
+        android:id="@+id/navPosts"
+        android:icon="@drawable/ic_nav_posts"
+        android:title="@string/title_posts" />
+    <item
+        android:id="@+id/navPerfil"
+        android:icon="@drawable/ic_nav_profile"
+        android:title="@string/title_profile" />
+</menu>
+
+

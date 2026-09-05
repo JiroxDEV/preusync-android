@@ -1,0 +1,29 @@
+{
+  "name": "bbcode",
+  "tokens": [
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "\\[[/]?[a-zA-Z]+\\s*[^\\]]*\\]" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\b[a-zA-Z]+=" }
+      ]
+    },
+    {
+      "name": "value",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "text",
+      "patterns": [
+        { "regex": "[^\\[\\]]+" }
+      ]
+    }
+  ]
+}

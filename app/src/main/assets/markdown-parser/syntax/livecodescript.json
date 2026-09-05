@@ -1,0 +1,81 @@
+{
+  "name": "livecodescript",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true },
+        { "regex": "(?:--|#|//)[^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:\\\\.|[^\"\\\\])*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "constant",
+      "patterns": [
+        { "regex": "\\b(?i:true|false|empty|null|nothing|space|tab|return|cr|lf|crlf|formfeed|colon|comma|quote|backslash|eof|pi|zero|one|two|three|four|five|six|seven|eight|nine|ten|endoffile|newline|linefeed)\\b" }
+      ]
+    },
+    {
+      "name": "handler-definition",
+      "patterns": [
+        { "regex": "(?i)\\b(private\\s+)?(command|function|on|getprop|setprop|before|after)\\s+[A-Za-z_]\\w*", "greedy": true }
+      ]
+    },
+    {
+      "name": "handler-end",
+      "patterns": [
+        { "regex": "(?i)\\bend\\s+[A-Za-z_]\\w*\\b" },
+        { "regex": "(?i)\\bend\\s+(if|repeat|switch|try)\\b" }
+      ]
+    },
+    {
+      "name": "control-keyword",
+      "patterns": [
+        { "regex": "\\b(?i:if|then|else\\s+if|else|end\\s+if|repeat|while|until|forever|for|each|with|without|in|ascending|descending|by|end\\s+repeat|switch|case|default|end\\s+switch|try|catch|throw|finally|end\\s+try|next\\s+repeat|exit\\s+repeat|exit|pass|send|call|return|break|continue|this\\s+card|this\\s+stack|this\\s+me|the\\s+target|the\\s+result|the\\s+owner|the\\s+long\\s+name|the\\s+short\\s+name|the\\s+abbreviated\\s+name|the\\s+id|the\\s+number|the\\s+rect|the\\s+location|the\\s+visible|the\\s+enabled|the\\s+text|the\\s+label|the\\s+script|the\\s+properties)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%^]" },
+        { "regex": "&&?|<>|>=?|<=?|=" },
+        { "regex": "\\b(?i:div|mod|wrap|and|or|not|is\\s+not|is\\s+a|is\\s+an|is\\s+among|is\\s+within|is\\s+in|is|contains|begins\\s+with|ends\\s+with|there\\s+is\\s+a|there\\s+is\\s+an|there\\s+is\\s+no|there\\s+is\\s+not\\s+a|there\\s+is\\s+not\\s+an|bitAnd|bitOr|bitXor|bitNot)\\b" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?i:abs|acos|aliasReference|altKey|alternateLanguages|androidHasPermission|annuity|arrayDecode|arrayEncode|asin|atan|atan2|average|averageDeviation|avg|avgDev|base64Decode|base64Encode|baseConvert|binaryDecode|binaryEncode|byteOffset|byteToNum|cachedURL|cachedURLs|capsLockKey|charToNum|cipherNames|clickChar|clickChunk|clickField|clickH|clickLine|clickLoc|clickStack|clickText|clickV|codepointOffset|codepointProperty|codepointToNum|codeunitOffset|commandKey|commandNames|compound|compress|constantNames|controlKey|cos|date|dateFormat|dateItems|dateTime|decompress|detailedFiles|directories|diskSpace|DNSServers|dragDestination|exp|exp1|exp2|exp10|extents|files|flushEvents|folders|format|functionNames|geometricMean|globalLoc|globalNames|harmonicMean|hasMemory|hostAddress|hostAddressToName|hostName|hostNameToAddress|isNumber|ISOToMac|itemDelimiter|itemOffset|keys|length|len|libURLErrorData|libUrlFormData|libURLftpCommand|libURLLastHTTPHeaders|libURLLastRHHeaders|libUrlMultipartFormAddPart|libUrlMultipartFormData|libURLVersion|lineDelimiter|lineOffset|ln|ln1|localNames|log2|log10|longFilePath|lower|macToISO|matchChunk|matchText|matrixMultiply|max|md5Digest|median|merge|milliseconds|millisecs|millisecond|millisec|min|monthNames|mouseChar|mouseChunk|mouseClick|mouseColor|mouseField|mouseH|mouseLine|mouseLoc|mouseStack|mouseText|mouseV|nativeCharToNum|normalizeText|number|numToByte|numToChar|numToCodepoint|numToNativeChar|offset|openFiles|openProcesses|openProcessIDs|openSockets|optionKey|paragraphOffset|paramCount|params|peerAddress|pendingMessages|platform|popStdDev|populationStandardDeviation|popVariance|populationVariance|processID|random|randomBytes|replaceText|result|round|sampVariance|screenLoc|screenRect|seconds|secs|selectedButton|selectedChunk|selectedField|selectedImage|selectedLine|selectedLoc|selectedObject|selectedText|sentenceOffset|sha1Digest|shell|shiftKey|shortFilePath|sin|specialFolderPath|sqrt|stack|standardDeviation|statRound|stdDev|sum|sysError|systemVersion|tan|target|tempName|textDecode|textEncode|ticks|time|toLower|toUpper|tokenOffset|tool|transpose|truewordOffset|trunc|uniDecode|uniEncode|upper|urlDecode|urlEncode|urlStatus|uuid|value|variableNames|variance|version|waitDepth|weekdayNames|wordOffset|xsltApplyStylesheet|xsltApplyStylesheetFromFile|xsltLoadStylesheet|xsltLoadStylesheetFromFile)\\b" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\b(?i:accept|add|androidRequestPermission|answer|answer_color|answer_effect|answer_file|answer_folder|answer_record|answer_text|ask|ask_file|ask_password|beep|breakpoint|cancel|clear|click|close|close_printing|combine|constant|convert|copy|create|cut|decrypt|delete|dial|dispatch|divide|do|doMenu|drag|edit|encrypt|export|filter|find|focus|get|global|go|grab|hide|import|include|input|insert|intersect|kill|libURLDownloadToFile|libURLFollowHttpRedirects|libURLftpUpload|libURLftpUploadFile|libURLresetAll|libUrlSetAuthCallback|libURLSetCustomHTTPHeaders|libUrlSetExpect100|libURLSetFTPListCommand|libURLSetFTPMode|libURLSetFTPStopTime|libURLSetStatusCallback|load|local|lock|mark|modal|move|multiply|new|open|open_printing|paste|play|pop|post|prepare|preOpenStack|print|push|put|read|read_from_file|record|redo|relayer|remove|rename|replace|reply|request|require|reset|reset_cursors|reset_paint|reset_printing|resetAll|resolve|revert|save|seek|select|send|set|show|sort|split|start|stop|subtract|type|undo|union|unload|unlock|visual_effect|wait|write)\\b" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0x[0-9a-fA-F]+\\b" },
+        { "regex": "\\b(?:\\d+\\.?\\d*|\\B\\.\\d+)(?:[eE][+-]?\\d+)?\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\bg[A-Z]\\w*\\b" },
+        { "regex": "\\bs[A-Z]\\w*\\b" },
+        { "regex": "\\bt[A-Z]\\w*\\b" },
+        { "regex": "\\bp[A-Z]\\w*\\b" },
+        { "regex": "\\$_\\w+" },
+        { "regex": "\\b[A-Za-z_]\\w*(?=\\s*:)" }
+      ]
+    }
+  ]
+}

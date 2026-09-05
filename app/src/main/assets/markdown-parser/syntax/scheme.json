@@ -1,0 +1,46 @@
+{
+  "name": "scheme",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#\\|[\\s\\S]*?\\|#" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "#[xX][0-9a-fA-F]+\\b" },
+        { "regex": "#[oO][0-7]+\\b" },
+        { "regex": "#[bB][01]+\\b" },
+        { "regex": "#[dD][0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:define|lambda|let|let\\*|letrec|let-values|let\\*-values|if|cond|else|case|and|or|not|begin|do|delay|force|guard|parameterize|quasiquote|quote|syntax|syntax-rules|set!|unquote|unquote-splicing|module|import|export)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:car|cdr|caar|cadr|cdar|cddr|cons|list|append|reverse|map|for-each|member|assoc|length|null\\?|pair\\?|symbol\\?|number\\?|string\\?|boolean\\?|vector\\?|procedure\\?|eq\\?|eqv\\?|equal\\?|call/cc|call-with-current-continuation|display|newline|read|write)\\b" }
+      ]
+    },
+    {
+      "name": "character",
+      "patterns": [
+        { "regex": "#\\\\[^\\s]*" }
+      ]
+    }
+  ]
+}

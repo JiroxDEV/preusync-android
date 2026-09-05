@@ -1,0 +1,35 @@
+{
+  "name": "algol",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "comment[\\s\\S]*?;" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:begin|end|if|then|else|case|of|for|while|do|step|until|go|to|goto|label|switch|procedure|integer|real|boolean|array|own|string|value|true|false|not|and|or|eq|ne|lt|le|gt|ge)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": ":=|[-+*/<>=!]+|&|[|]" }
+      ]
+    }
+  ]
+}

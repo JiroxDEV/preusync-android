@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: activity_splash.xml
+    Versión: v2.1.0
+    Descripción: Pantalla de arranque que inicializa servicios y verifica la sesión del usuario.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/splashLayoutContainer">
+    <RelativeLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_8dp"
+        android:background="?colorBackground">
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="288dp"
+            android:layout_height="288dp"
+            android:src="@drawable/splash_logo"
+            android:scaleType="fitCenter"
+            style="@style/ImageViewIconStyle"
+            android:layout_centerInParent="true" />
+        <com.google.android.material.loadingindicator.LoadingIndicator
+            android:id="@+id/loadingIndicator"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:indicatorSize="50dp"
+            android:layout_below="@id/logoImage"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>
+
+

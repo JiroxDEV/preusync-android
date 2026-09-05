@@ -1,0 +1,30 @@
+{
+  "name": "less",
+  "extend": "css",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//.*" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "@[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "mixin",
+      "patterns": [
+        { "regex": "\\.(?:[a-zA-Z][\\w-]*\\([^\\)]*\\))" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:lighten|darken|saturate|desaturate|fadein|fadeout|fade|spin|mix|percentage|round|ceil|floor|abs|sin|cos|tan|asin|acos|atan|pi|pow|sqrt|mod|min|max|isnumber|isstring|iscolor|iskeyword|isurl|ispixel|ispercentage|isem|isunit|unit|escape|e|%|replace|length|extract|each|if|boolean|color)\\b" }
+      ]
+    }
+  ]
+}

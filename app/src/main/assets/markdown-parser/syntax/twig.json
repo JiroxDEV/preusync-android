@@ -1,0 +1,29 @@
+{
+  "name": "twig",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{#.*?#\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "\\{%[^%]*?%\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "output",
+      "patterns": [
+        { "regex": "\\{\\{[^}]*?\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|else|elseif|endif|for|else|endfor|in|block|endblock|extends|use|include|embed|macro|endmacro|import|from|set|endset|do|filter|endfilter|spaceless|endspaceless|autoescape|endautoescape|verbatim|endverbatim|sandbox|endsandbox)\\b" }
+      ]
+    }
+  ]
+}

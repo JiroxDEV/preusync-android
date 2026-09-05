@@ -1,0 +1,41 @@
+{
+  "name": "tex",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "%.*" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\\\[a-zA-Z@]+" }
+      ]
+    },
+    {
+      "name": "special",
+      "patterns": [
+        { "regex": "[#$%&_{}~\\^]" }
+      ]
+    },
+    {
+      "name": "parameter",
+      "patterns": [
+        { "regex": "\\#[0-9]" }
+      ]
+    },
+    {
+      "name": "math",
+      "patterns": [
+        { "regex": "\\$[^$]*\\$" }
+      ]
+    },
+    {
+      "name": "group",
+      "patterns": [
+        { "regex": "\\{[^}]*\\}" }
+      ]
+    }
+  ]
+}

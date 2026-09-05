@@ -1,0 +1,23 @@
+{
+  "name": "git-rebase",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "command",
+      "patterns": [
+        { "regex": "\\b(?:pick|reword|edit|squash|fixup|exec|break|drop|label|reset|merge)\\b" }
+      ]
+    },
+    {
+      "name": "hash",
+      "patterns": [
+        { "regex": "\\b[0-9a-fA-F]{7,40}\\b" }
+      ]
+    }
+  ]
+}

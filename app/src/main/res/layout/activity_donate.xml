@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: activity_donate.xml
+    Versión: v1.0.1
+    Descripción: Pantalla de donaciones para apoyar el desarrollo del proyecto.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/donateLayoutContainer">
+    <LinearLayout
+        android:id="@+id/actionBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="@dimen/padding_top_21dp"
+        android:paddingBottom="@dimen/padding_8dp"
+        android:background="?attr/colorBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="@dimen/padding_3dp"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/ripple_circular"
+            style="@style/ImageViewIconStyle" />
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/button_donate"
+            android:textSize="@dimen/text_size_25sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="@dimen/padding_bottom_50dp"
+        android:background="?attr/colorBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/presentationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="@dimen/padding_8dp"
+            android:text="@string/label_donation_description"
+            android:textColor="?attr/colorTextHint"
+            android:textSize="@dimen/text_size_12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
+
+

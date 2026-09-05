@@ -1,0 +1,18 @@
+{
+  "name": "actionscript",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:as|break|case|catch|class|const|continue|default|delete|do|dynamic|each|else|extends|false|final|finally|for|function|get|if|implements|import|in|include|instanceof|interface|internal|is|namespace|native|new|null|override|package|private|protected|public|return|set|static|super|switch|this|throw|true|try|typeof|use|var|void|while|with)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Array|Boolean|Date|Error|Function|int|Math|Number|Object|RegExp|String|uint|XML|XMLList)\\b" }
+      ]
+    }
+  ]
+}

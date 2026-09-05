@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_profile_stats.xml
+    Versión: v1.0.0
+    Descripción: Elemento de estadísticas del perfil (posts, likes, dislikes).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_profile_stats.xml
+    ============================================================================
+
+    📌 ESTADÍSTICAS DEL PERFIL (TYPE_PROFILE_STATS)
+    ============================================================================
+
+    Este layout muestra las estadísticas del usuario:
+      - Total de posts publicados
+      - Total de "Me gusta" recibidos
+      - Total de "No me gusta" recibidos
+
+    Los datos se enriquecen desde el ViewModel y se actualizan automáticamente
+    cuando cambian.
+
+    🔥 NOTA: Este es un ítem más del RecyclerView, lo que permite que el scroll
+    sea suave y sin conflictos.
+
+    ============================================================================
+-->
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statsContainer"
+    style="@style/Widget.PreuSync.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/padding_8dp"
+    android:layout_marginEnd="@dimen/padding_8dp"
+    android:layout_marginTop="@dimen/card_elevation"
+    android:layout_marginBottom="@dimen/card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_16dp"
+        android:gravity="center"
+        android:weightSum="3">
+
+        <!-- Posts -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/statsPostsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/text_size_20sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorAccent"
+                tools:text="42" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_posts"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorTextHint" />
+        </LinearLayout>
+
+        <!-- Likes -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/statsLikesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/text_size_20sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorAccent"
+                tools:text="156" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_likes"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorTextHint" />
+        </LinearLayout>
+
+        <!-- Dislikes -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/statsDislikesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="@dimen/text_size_20sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorAccent"
+                tools:text="12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_label_dislikes"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorTextHint" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+

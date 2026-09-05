@@ -1,0 +1,24 @@
+{
+  "name": "swift",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:actor|associatedtype|async|await|break|case|catch|class|continue|default|defer|deinit|didSet|do|dynamic|else|enum|extension|fallthrough|false|fileprivate|final|for|func|get|guard|if|import|in|indirect|infix|init|inout|internal|is|isolated|lazy|left|let|macro|mutating|nil|nonisolated|nonmutating|open|operator|optional|override|postfix|precedencegroup|prefix|private|protocol|public|repeat|required|rethrows|return|right|self|Self|set|some|static|struct|subscript|super|switch|throw|throws|true|try|typealias|unowned|var|weak|where|while|willSet)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Int|UInt|Float|Double|Bool|String|Character|Array|Dictionary|Set|Optional|Result|Error|Any|AnyObject|Never|Void)\\b" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "@\\w+(\\([^\\)]*\\))?" }
+      ]
+    }
+  ]
+}

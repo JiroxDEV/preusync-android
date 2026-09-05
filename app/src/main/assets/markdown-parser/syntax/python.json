@@ -1,0 +1,71 @@
+{
+  "name": "python",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "(^|[^\\\\])#.*", "lookbehind": true }
+      ]
+    },
+    {
+      "name": "triple-quoted-string",
+      "patterns": [
+        { "regex": "(\"\"\"|''')[\\s\\S]+?\\1", "global": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "(\"|')(?:\\\\.|(?!\\1)[^\\\\\\r\\n])*\\1", "global": true }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "((?:^|\\s)def[ \\t]+)[a-zA-Z_]\\w*(?=\\s*\\()", "lookbehind": true }
+      ]
+    },
+    {
+      "name": "class-name",
+      "patterns": [
+        { "regex": "(\\bclass\\s+)\\w+", "lookbehind": true, "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|nonlocal|pass|print|raise|return|try|while|with|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:__import__|abs|all|any|apply|ascii|basestring|bin|bool|buffer|bytearray|bytes|callable|chr|classmethod|cmp|coerce|compile|complex|delattr|dict|dir|divmod|enumerate|eval|execfile|file|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|intern|isinstance|issubclass|iter|len|list|locals|long|map|max|memoryview|min|next|object|oct|open|ord|pow|property|range|raw_input|reduce|reload|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|unichr|unicode|vars|xrange|zip)\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:True|False|None)\\b" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "(?:\\b(?=\\d)|\\B(?=\\.))(?:0[bo])?(?:(?:\\d|0x[\\da-f])[\\da-f]*\\.?\\d*|\\.\\d+)(?:e[+-]?\\d+)?j?\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[-+%=]=?|!=|\\*\\*?=?|\\/\\/?=?|<[<=>]?|>[=>]?|[&|^~]|\\b(?:or|and|not)\\b" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{}\\[\\];(),.:]" }
+      ]
+    }
+  ]
+}

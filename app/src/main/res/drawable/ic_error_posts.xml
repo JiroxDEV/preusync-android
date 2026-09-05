@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: ic_error_posts.xml
+    Versión: v1.0.0
+    Descripción: Icono de error para la lista de publicaciones.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!-- Created by Apktool M – https://maximoff.su/apktool -->
+<vector
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:width="100dp"
+	android:height="100dp"
+	android:viewportWidth="24.0"
+	android:viewportHeight="24.0">
+	<path
+		android:fillColor="#FFFFFF"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M2.74,14.77L10.69,12.24A0.86 0.86 0 0 1 11.77,12.80L13.32,17.70A0.86 0.86 0 0 1 12.77,18.77L4.81,21.30A0.86 0.86 0 0 1 3.74,20.74L2.18,15.85A0.86 0.86 0 0 1 2.74,14.77z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M4.10,15.96L5.73,15.43A0.27 0.27 0 0 1 6.08,15.61L6.58,17.16A0.27 0.27 0 0 1 6.40,17.51L4.77,18.04A0.27 0.27 0 0 1 4.43,17.86L3.92,16.30A0.27 0.27 0 0 1 4.10,15.96z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M7.42,15.03L10.13,14.16" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M7.93,16.48L10.64,15.61" />
+	<path
+		android:fillColor="#FFFFFF"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M4.96,5.23L12.91,2.70A0.86 0.86 0 0 1 13.99,3.26L15.54,8.15A0.86 0.86 0 0 1 14.99,9.23L7.03,11.76A0.86 0.86 0 0 1 5.96,11.20L4.40,6.30A0.86 0.86 0 0 1 4.96,5.23z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="miter"
+		android:strokeLineCap="square"
+		android:pathData="M6.30,6.42L10.14,5.18A0.25 0.25 0 0 1 10.46,5.34L10.93,6.80A0.25 0.25 0 0 1 10.76,7.12L6.93,8.35A0.25 0.25 0 0 1 6.61,8.19L6.14,6.74A0.25 0.25 0 0 1 6.30,6.42z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="1.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.9425261"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M7.35,9.89L13.62,7.79" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.7402302"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M20.10,8.30L22.08,15.65L14.28,13.21L20.10,8.30z" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.7402302"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M19.50,10.20L18.93,12.04" />
+	<path
+		android:fillColor="?attr/colorAccent"
+		android:strokeColor="?attr/colorAccent"
+		android:fillAlpha="0.000"
+		android:strokeAlpha="1.000"
+		android:fillType="nonZero"
+		android:strokeWidth="0.7402302"
+		android:strokeLineJoin="round"
+		android:strokeLineCap="round"
+		android:pathData="M18.59,13.11L18.59,13.11z" />
+</vector>
+
+

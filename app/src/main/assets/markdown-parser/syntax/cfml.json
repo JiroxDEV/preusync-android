@@ -1,0 +1,30 @@
+{
+  "name": "cfml",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<!---[\\s\\S]*?--->" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abort|application|arguments|array|break|case|catch|cfabort|cfapplication|cfargument|cfbreak|cfcase|cfcatch|cfcomponent|cfcontent|cfcookie|cfdefaultcase|cfdirectory|cferror|cfexecute|cffile|cfform|cfftp|cfheader|cfhttp|cfhttpparam|cfif|cfelseif|cfelse|cfimport|cfinclude|cfindex|cfinvoke|cfinvokeargument|cflocation|cflock|cflog|cfmail|cfmailparam|cfmodule|cfobject|cfoutput|cfparam|cfpop|cfprocessingdirective|cfprocparam|cfprocresult|cfproperty|cfquery|cfqueryparam|cfreport|cfrethrow|cfreturn|cfscript|cfsearch|cfset|cfsetting|cfsilent|cfsleep|cfstoredproc|cfswitch|cfthrow|cftimer|cftransaction|cftry|cfwddx|cfxml|component|continue|default|do|else|false|finally|for|function|if|import|in|include|interface|local|lock|new|null|pageencoding|param|private|property|public|remote|required|return|savecontent|setting|sleep|switch|thread|throw|to|true|try|var|while|writeOutput|writeDump|writeLog)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

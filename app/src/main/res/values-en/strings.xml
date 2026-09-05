@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: strings.xml (English)
+    Versión: v1.6.0
+    Descripción: Recurso de cadenas de texto en inglés para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!-- ==================== APP ==================== -->
+    <string name="app_name">PreuSync</string>
+    <string name="app_tagline">The all-in-one for pre-university students</string>
+
+    <!-- ==================== BOTONES GENÉRICOS ==================== -->
+    <string name="button_accept">Accept</string>
+    <string name="button_apply">Apply</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_check_updates">Check for updates</string>
+    <string name="button_clear">Clear</string>
+    <string name="button_close">Close</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_copy">Copy</string>
+    <string name="button_create">Create</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_done">Done</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_enter">Enter</string>
+    <string name="button_exit">Exit</string>
+    <string name="button_get_started">Get started</string>
+    <string name="button_load_more">Load more</string>
+    <string name="button_login">Log in</string>
+    <string name="button_login_prompt">Already have an account?\nLog in now!</string>
+    <string name="button_logout">Log out</string>
+    <string name="button_new_post">New post</string>
+    <string name="button_next">Next</string>
+    <string name="button_no">No</string>
+    <string name="button_preview">Preview</string>
+    <string name="button_previous">Previous</string>
+    <string name="button_register">Sign up</string>
+    <string name="button_register_prompt">Don\'t have an account?\nSign up now!</string>
+    <string name="button_report">Report</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_retry">Retry</string>
+    <string name="button_save">Save</string>
+    <string name="button_select">Select</string>
+    <string name="button_share">Share</string>
+    <string name="button_update">Update</string>
+    <string name="button_upload">Upload image</string>
+    <string name="button_yes">Yes</string>
+
+    <!-- ==================== ETIQUETAS (HINTS) ==================== -->
+    <string name="hint_content">Content (you can use Markwon style)</string>
+    <string name="hint_current_password">Current password</string>
+    <string name="hint_edit_advanced">Edit advanced data</string>
+    <string name="hint_first_name">First name(s)</string>
+    <string name="hint_group">Group (e.g., 11-2)</string>
+    <string name="hint_id_number">ID number</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_new_password">New password</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_repeat_new_password">Repeat your new password</string>
+    <string name="hint_repeat_password">Repeat your password</string>
+    <string name="hint_responsibilities">Responsibilities (comma separated)</string>
+    <string name="hint_role">Role</string>
+    <string name="hint_school">School</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_tutee">Student under tutelage</string>
+    <string name="hint_username">Username</string>
+
+    <!-- ==================== ETIQUETAS (LABELS) ==================== -->
+    <string name="label_allow_battery_optimization">Allow to ignore optimization</string>
+    <string name="label_author">Author</string>
+    <string name="label_auto_updates">Automatic updates</string>
+    <string name="label_battery_optimization">Battery optimization</string>
+    <string name="label_checking_updates">Checking for updates...</string>
+    <string name="label_code">code</string>
+    <string name="label_creating_account">Creating your account...</string>
+    <string name="label_creating_post">Creating post...</string>
+    <string name="label_date">Date</string>
+    <string name="label_deleting_post">Deleting post...</string>
+    <string name="label_reporting_post">Reporting post...</string>
+    <string name="label_details">Details</string>
+    <string name="label_download_only_wifi">Download only with Wi-Fi</string>
+    <string name="label_featured_news">Featured news</string>
+    <string name="label_featured_posts">Featured posts</string>
+    <string name="label_frequency">Frequency</string>
+    <string name="label_group">Group</string>
+    <string name="label_id">ID</string>
+    <string name="label_lead_time">Lead time</string>
+    <string name="label_loading">Loading...</string>
+    <string name="label_loading_groups">Loading groups...</string>
+    <string name="label_loading_schedule">Loading schedule...</string>
+    <string name="label_logging_in">Logging in...</string>
+    <string name="label_logging_out">Logging out...</string>
+    <string name="label_name">Name</string>
+    <string name="label_place">Place</string>
+    <string name="label_reminders">Event reminders</string>
+    <string name="label_schedule">Schedule</string>
+    <string name="label_select_date">Select date</string>
+    <string name="label_shift">Shift</string>
+    <string name="label_show">Show</string>
+    <string name="label_sound">Sound</string>
+    <string name="label_source">Source</string>
+    <string name="label_time">Time</string>
+    <string name="label_updating_data">Updating data...</string>
+    <string name="label_uploading_avatar">Uploading avatar...</string>
+    <string name="label_verifying_password">Verifying password...</string>
+    <string name="label_version">Version</string>
+    <string name="label_year">Year</string>
+    <string name="label_your_initial">Your initial</string>
+    <string name="label_your_role">Your role</string>
+    <string name="label_verified">Verified</string>
+    <string name="label_content">Content...</string>
+    <string name="label_loading_post">Loading post...</string>
+    <string name="label_loading_news">Loading news...</string>
+    <string name="m3_loading_indicator_content_description">Loading</string>
+
+    <!-- ==================== TÍTULOS DE PANTALLAS Y DIÁLOGOS ==================== -->
+    <string name="title_about">About</string>
+    <string name="title_appearance">Appearance</string>
+    <string name="title_connection_error">Connection error</string>
+    <string name="title_debug_error">An error occurred!</string>
+    <string name="title_delete_post">Delete post</string>
+    <string name="title_dynamic_colors">Dynamic colors (Material You)</string>
+    <string name="title_edit_account">Edit account</string>
+    <string name="title_ephemerides">Ephemerides</string>
+    <string name="title_events">Events</string>
+    <string name="title_general">General</string>
+    <string name="title_home">Home</string>
+    <string name="title_language">Language</string>
+    <string name="title_logout">Log out</string>
+    <string name="title_news">News</string>
+    <string name="title_new_version">New version available</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_permissions_intro">PreuSync needs the following permissions to work properly</string>
+    <string name="title_posts">Posts</string>
+    <string name="title_post_preview">Preview</string>
+    <string name="title_profile">Account</string>
+    <string name="title_schedule">School schedule</string>
+    <string name="title_select_avatar">Select your avatar</string>
+    <string name="title_services">Services</string>
+    <string name="title_session">Session</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_terms_and_conditions">Terms and Conditions</string>
+    <string name="title_theme">Theme</string>
+    <string name="title_warning">Warning</string>
+    <string name="title_your_account">Your account</string>
+
+    <!-- ==================== SECCIONES DE AJUSTES ==================== -->
+    <string name="section_auto_updates">Automatic updates</string>
+    <string name="section_background_sync">Background sync</string>
+    <string name="section_battery">Battery optimization</string>
+    <string name="section_data_storage">Data &amp; storage</string>
+    <string name="section_general_prefs">General preferences</string>
+    <string name="section_home_screen">Home screen</string>
+    <string name="section_notifications">Notifications</string>
+    <string name="section_performance">Performance</string>
+    <string name="section_reminders">Event reminders</string>
+    <string name="section_sync_frequencies">Sync frequencies</string>
+    <string name="section_theme">Theme</string>
+    <string name="section_typography">Typography</string>
+
+    <!-- ==================== OPCIONES DE AJUSTES ==================== -->
+    <string name="allow_battery_optimization">Allow to ignore optimization</string>
+    <string name="anim_fast">Fast</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_slow">Slow</string>
+    <string name="animation_speed">Animation speed</string>
+    <string name="auto_updates_freq">Frequency</string>
+    <string name="auto_updates_sound">Update notification sound</string>
+    <string name="auto_updates_wifi_only">Download only with Wi-Fi</string>
+    <string name="blur_effect">Blur effect</string>
+    <string name="clear_cache">Clear cache</string>
+    <string name="confirm_exit">Confirm exit</string>
+    <string name="data_saver_mode">Data saver mode</string>
+    <string name="default_start_tab">Default start tab</string>
+    <string name="enable_background_sync">Enable background sync</string>
+    <string name="enable_reminders">Enable reminders</string>
+    <string name="enable_auto_updates">Check for updates automatically</string>
+    <string name="font_family">Font family</string>
+    <string name="font_family_monospace">Monospace</string>
+    <string name="font_family_sans">Sans‑serif</string>
+    <string name="font_family_serif">Serif</string>
+    <string name="font_family_system">System</string>
+    <string name="font_size">Font size</string>
+    <string name="font_size_large">Large</string>
+    <string name="font_size_medium">Medium</string>
+    <string name="font_size_small">Small</string>
+    <string name="font_size_xlarge">Extra large</string>
+    <string name="notif_ephemerides">Ephemerides</string>
+    <string name="notif_external_events">External events</string>
+    <string name="notif_news">News</string>
+    <string name="notif_posts">Posts</string>
+    <string name="notif_schedule">Schedule</string>
+    <string name="notif_school_events">School events</string>
+    <string name="reminder_lead_time">Lead time</string>
+    <string name="reminder_sound">Reminder sound</string>
+    <string name="reset_settings">Reset settings</string>
+    <string name="show_featured_news">Show featured news on home</string>
+    <string name="show_featured_posts">Show featured posts on home</string>
+    <string name="show_daily_ephemeris">Show daily ephemeris on home</string>
+    <string name="show_current_shift">Show current shift on home</string>
+    <string name="sound_default">System default</string>
+    <string name="sound_silence">Silence</string>
+    <string name="sync_freq_ephemerides">Ephemerides</string>
+    <string name="sync_freq_external_events">External events</string>
+    <string name="sync_freq_news">News</string>
+    <string name="sync_freq_posts">Posts</string>
+    <string name="sync_freq_schedule">Schedule</string>
+    <string name="sync_freq_school_events">School events</string>
+    <string name="wifi_only_background">Sync only with Wi-Fi</string>
+
+    <!-- ==================== FRECUENCIAS DE SINCRONIZACIÓN ==================== -->
+    <string name="freq_30min">30 minutes</string>
+    <string name="freq_1h">1 hour</string>
+    <string name="freq_2h">2 hours</string>
+    <string name="freq_4h">4 hours</string>
+    <string name="freq_12h">12 hours</string>
+    <string name="freq_24h">24 hours</string>
+
+    <!-- ==================== ANTELACIÓN DE RECORDATORIOS ==================== -->
+    <string name="lead_1h">1 hour</string>
+    <string name="lead_12h">12 hours</string>
+    <string name="lead_24h">1 day</string>
+    <string name="lead_48h">2 days</string>
+
+    <!-- ==================== ACTUALIZACIONES AUTOMÁTICAS ==================== -->
+    <string name="update_3d">3 days</string>
+    <string name="update_7d">7 days</string>
+    <string name="update_15d">15 days</string>
+    <string name="update_30d">30 days</string>
+
+    <!-- ==================== DIÁLOGOS ==================== -->
+    <string name="auto_updates_freq_changed">Update frequency changed</string>
+    <string name="cache_cleared">Cache cleared successfully</string>
+    <string name="cache_clear_error">Error clearing cache</string>
+    <string name="clear_cache_message">All temporary files and cached data will be deleted. Do you want to continue?</string>
+    <string name="clear_cache_title">Clear cache</string>
+    <string name="confirm_exit_message">Are you sure you want to exit?</string>
+    <string name="confirm_exit_title">Exit application</string>
+    <string name="data_saver_disabled">Data saver mode disabled</string>
+    <string name="data_saver_enabled">Data saver mode enabled</string>
+    <string name="default_tab_changed_restart">The change will be applied when you restart the app</string>
+    <string name="reminder_lead_time_changed">Lead time will apply to new events</string>
+    <string name="reset_settings_message">All your custom settings (language, theme, etc.) will be lost. Your account will not be closed. Do you want to continue?</string>
+    <string name="reset_settings_title">Reset settings</string>
+    <string name="sync_freq_changed">Frequency updated (will apply on next sync)</string>
+
+    <!-- ==================== MENSAJES ==================== -->
+    <string name="message_account_updated">Data updated successfully</string>
+    <string name="message_advanced_changes_warning">Changes to the ID number or role will require a new account verification. Do you want to continue?</string>
+    <string name="message_avatar_uploaded">Avatar updated successfully</string>
+    <string name="message_click_hint">Click!</string>
+    <string name="message_delete_post_confirm">Are you sure you want to delete this post? This action cannot be undone.</string>
+    <string name="message_empty_ephemerides">No ephemerides for this date</string>
+    <string name="message_empty_events">No events for these dates</string>
+    <string name="message_empty_news">No news</string>
+    <string name="message_empty_posts">No posts</string>
+    <string name="message_loading_cache">No connection. Showing saved data.</string>
+    <string name="message_load_more_error">Could not load more posts\nTap to retry</string>
+    <string name="message_logout_confirm">Are you sure you want to log out?</string>
+    <string name="message_new_version_details">Version %1$s\n\n%2$s</string>
+    <string name="message_no_connection">Could not connect to the server</string>
+    <string name="message_no_groups">No groups available</string>
+    <string name="message_no_schedule">No schedule for this group</string>
+    <string name="message_offline_mode">Offline mode, data may be outdated</string>
+    <string name="message_password_updated">Password updated successfully</string>
+    <string name="message_preview_empty">You haven\'t written any content</string>
+    <string name="message_select_day_month">Select day and month</string>
+
+    <!-- ==================== PESTAÑAS ==================== -->
+    <string name="tab_ephemerides">Ephemerides</string>
+    <string name="tab_events">Events</string>
+    <string name="tab_external_events">External</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_news">News</string>
+    <string name="tab_posts">Posts</string>
+    <string name="tab_profile">Profile</string>
+    <string name="tab_schedule">School schedule</string>
+    <string name="tab_school_events">School</string>
+
+    <!-- ==================== HOME ==================== -->
+    <string name="title_daily_ephemeris">Daily ephemeris</string>
+    <string name="title_current_shift">Current shift</string>
+    <string name="label_no_ephemeris_today">No ephemeris for today</string>
+    <string name="label_no_shift_assigned">No shift assigned</string>
+    <string name="label_free">Free</string>
+
+    <!-- ==================== ERRORES ==================== -->
+    <string name="error_account_banned">Your account has been temporarily banned for inappropriate behavior</string>
+    <string name="error_account_update">Error updating account data</string>
+    <string name="error_avatar_upload">Error uploading avatar</string>
+    <string name="error_check_update_failed">Error checking for update</string>
+    <string name="error_connection">Connection error</string>
+    <string name="error_content_required">Content is required</string>
+    <string name="error_deleting_post">Error deleting post</string>
+    <string name="error_general">Error</string>
+    <string name="error_group_required">Group is required</string>
+    <string name="error_id_exists">ID number already exists</string>
+    <string name="error_incorrect_password">Incorrect password</string>
+    <string name="error_invalid_first_name">Enter valid names</string>
+    <string name="error_invalid_id">Enter a valid ID number</string>
+    <string name="error_invalid_last_name">Enter valid last names</string>
+    <string name="error_invalid_password">Enter a valid password</string>
+    <string name="error_invalid_username">Enter a valid username</string>
+    <string name="error_loading_data">Error loading data</string>
+    <string name="error_loading_groups">Error loading groups</string>
+    <string name="error_loading_schedule">Error loading schedule</string>
+    <string name="error_login_required">You must be logged in to perform this action</string>
+    <string name="error_parsing_data">Error processing data</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="error_processing_response">Error processing response</string>
+    <string name="error_reporting_post">Error reporting post</string>
+    <string name="error_responsibilities_required">Responsibilities are required</string>
+    <string name="error_school_required">School is required</string>
+    <string name="error_self_vote">You cannot vote on your own post</string>
+    <string name="error_title_required">Title is required</string>
+    <string name="error_tutee_required">Student name is required</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_update_check_connection">Could not check. Verify your connection.</string>
+    <string name="error_user_not_found">User not found</string>
+    <string name="error_username_exists">Username already exists</string>
+
+    <!-- Nuevos errores (hardcode eliminado) -->
+    <string name="error_network_connection">Connection error. Check your internet.</string>
+    <string name="error_profile_not_found">Profile not found.</string>
+    <string name="error_authentication_failed">Session expired. Please login again.</string>
+    <string name="error_data_corrupted">Profile data is corrupted.</string>
+    <string name="error_server">Server error. Please try again later.</string>
+    <string name="error_post_not_found">Post not found.</string>
+    <string name="error_loading_post">Error loading post.</string>
+    <string name="error_event_not_found">Event not found.</string>
+
+    <!-- ==================== TOASTS ==================== -->
+    <string name="toast_disable_battery_optimization_manually">Disable optimization from System Settings</string>
+    <string name="toast_error_loading_posts_fragment">Error: Could not access posts fragment</string>
+    <string name="toast_group_loaded">Group loaded</string>
+    <string name="toast_login_required_delete">You must be logged in to delete a post</string>
+    <string name="toast_login_required_report">You must be logged in to report a post</string>
+    <string name="toast_no_file_selected">No file selected</string>
+    <string name="toast_no_internet">No internet connection</string>
+    <string name="toast_option_only_register">This option is only available during registration</string>
+    <string name="toast_post_created">Post created successfully</string>
+    <string name="toast_post_deleted">Post deleted successfully</string>
+    <string name="toast_report_sent">Report sent successfully</string>
+    <string name="toast_retry_offline">Retry</string>
+    <string name="toast_vote_connection_error">Connection error. Vote could not be sent.</string>
+    <string name="toast_you_have_latest_version">You already have the latest version</string>
+    <string name="toast_at_least_one_element_required">You must keep at least one element visible on the home screen</string>
+
+    <!-- ==================== PERMISOS ==================== -->
+    <string name="permission_battery_optimization_desc">Allows the app to run in the background without delays</string>
+    <string name="permission_battery_optimization_title">Battery optimization</string>
+    <string name="permission_notifications_desc">Allows the app to display notifications on the device</string>
+    <string name="permission_notifications_title">Notifications</string>
+    <string name="permissions_intro">PreuSync needs the following permissions to work properly</string>
+    <string name="permission_optional">Optional</string>
+    <string name="permission_required">Required</string>
+
+    <!-- ==================== ONBOARDING ==================== -->
+    <string name="onboarding_accept_terms">I accept the terms of use</string>
+    <string name="onboarding_already_have_account">I already have a user account</string>
+    <string name="onboarding_desc_1">Interactive platform for students, tutors and teachers of pre-universities in our country</string>
+    <string name="onboarding_desc_2">Enjoy all the features for free</string>
+    <string name="onboarding_desc_3">Now you must authenticate to use our services</string>
+    <string name="onboarding_title_1">Introducing</string>
+    <string name="onboarding_title_3">Ready!</string>
+
+    <!-- ==================== TÉRMINOS Y CONDICIONES ==================== -->
+    <string name="terms_PreuSync">&#10;    To use PreuSync, you must accept the following conditions:&lt;br/&gt;&lt;br/&gt;&#10;    1. &lt;b&gt;License and Use&lt;/b&gt;&lt;br/&gt;&#10;    PreuSync is free software. Monetization of any content generated or obtained through this platform is prohibited.&lt;br/&gt;&lt;br/&gt;&#10;    2. &lt;b&gt;Truthfulness of Information&lt;/b&gt;&lt;br/&gt;&#10;    Data provided during registration must be truthful. If false information is detected, your account and associated device may be suspended temporarily or permanently, depending on the severity of the infringement.&lt;br/&gt;&lt;br/&gt;&#10;    3. &lt;b&gt;Permitted Content&lt;/b&gt;&lt;br/&gt;&#10;    Only content related to the educational community (students, teachers or institutions) of our country is allowed, whether directly or indirectly.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;4. Prohibitions&lt;/b&gt;&lt;br/&gt;&#10;    The following is strictly prohibited:&lt;br/&gt;&#10;    - Posting discriminatory content (based on race, gender, religion, ideology, etc.).&lt;br/&gt;&#10;    - Distributing SPAM or unsolicited material.&lt;br/&gt;&#10;    - Sharing content restricted to over 18 years of age or infringing third-party rights.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;5. Student Accounts&lt;/b&gt;&lt;br/&gt;&#10;    Minors must have the express authorization of their legal guardians to register. Otherwise, the account will be deleted without prior notice.&#10;    </string>
+
+    <!-- ==================== ROLES ==================== -->
+    <string name="role_student">Student</string>
+    <string name="role_teacher">Teacher</string>
+    <string name="role_tutor">Tutor</string>
+
+    <!-- ==================== CANALES DE NOTIFICACIÓN ==================== -->
+    <string name="notification_channel_ephemerides_desc">Notifications for daily ephemerides</string>
+    <string name="notification_channel_ephemerides_name">Ephemerides</string>
+    <string name="notification_channel_events_desc">Notifications for upcoming events</string>
+    <string name="notification_channel_events_name">Events</string>
+    <string name="notification_channel_foreground_desc">This channel shows the main app notification. It allows the app to work in the background.</string>
+    <string name="notification_channel_foreground_name">Background service</string>
+    <string name="notification_channel_general_desc">Channel for common notifications</string>
+    <string name="notification_channel_general_name">General notifications</string>
+    <string name="notification_channel_news_desc">Notifications for new news</string>
+    <string name="notification_channel_news_name">News</string>
+    <string name="notification_channel_posts_desc">Notifications for new posts</string>
+    <string name="notification_channel_posts_name">Posts</string>
+    <string name="notification_channel_reminders_desc">Reminder notifications</string>
+    <string name="notification_channel_reminders_name">Reminders</string>
+    <string name="notification_channel_schedule_desc">Notifications for schedule changes</string>
+    <string name="notification_channel_schedule_name">School schedule</string>
+    <string name="notification_channel_updates_desc">Notifications for new versions</string>
+    <string name="notification_channel_updates_name">Updates</string>
+
+    <!-- ==================== CONTENIDO DE NOTIFICACIONES ==================== -->
+    <string name="notification_ephemeris_title">Ephemeris: %1$s</string>
+    <string name="notification_event_text">Location: %1$s | Time: %2$s</string>
+    <string name="notification_event_title">Event: %1$s</string>
+    <string name="notification_news_title">New news: %1$s</string>
+    <string name="notification_new_version_title">New version available: %1$s</string>
+    <string name="notification_post_text">By: %1$s</string>
+    <string name="notification_post_title">Featured post: %1$s</string>
+    <string name="notification_schedule_text">The schedule for group %1$s has been updated.</string>
+    <string name="notification_schedule_title">Schedule change</string>
+
+    <!-- ==================== ACCESOS DIRECTOS ==================== -->
+    <string name="shortcut_disabled">Shortcut not available</string>
+    <string name="shortcut_news">News</string>
+    <string name="shortcut_news_long">View news</string>
+    <string name="shortcut_new_post">New post</string>
+    <string name="shortcut_new_post_long">Create a new post</string>
+    <string name="shortcut_posts">Posts</string>
+    <string name="shortcut_posts_long">View posts</string>
+    <string name="shortcut_schedule">Schedule</string>
+    <string name="shortcut_schedule_long">View schedule</string>
+
+    <!-- ==================== MENÚS ==================== -->
+    <string name="menu_delete">Delete</string>
+    <string name="menu_report">Report</string>
+    <string name="menu_share">Share...</string>
+
+    <!-- ==================== OPCIONES DE TEMA ==================== -->
+    <string name="theme_dark">Dark</string>
+    <string name="theme_default">System default</string>
+    <string name="theme_light">Light</string>
+
+    <!-- ==================== DESCRIPCIONES DE IMÁGENES ==================== -->
+    <string name="description_event_image">Event image</string>
+
+    <!-- ==================== URLS ==================== -->
+    <string name="update_download_url">https://binaryqva.com/download</string>
+
+    <!-- ==================== PERFIL (adicionales) ==================== -->
+    <string name="profile_connection_error_data">Data are corrupt or broken. Your session will be closed.</string>
+    <string name="profile_continue">Continue</string>
+    <string name="profile_confirm_logout">Log out</string>
+    <string name="profile_correct_errors">Please correct the errors in the form</string>
+    <string name="profile_current_password_required">Current password is required</string>
+    <string name="profile_data_updated">Data updated successfully</string>
+    <string name="profile_error_logout">Error logging out: %1$s</string>
+    <string name="profile_error_logout_server">Unexpected server response</string>
+    <string name="profile_group_label">Group: %1$s</string>
+    <string name="profile_group_required">Group is required</string>
+    <string name="profile_id_empty">ID number cannot be empty</string>
+    <string name="profile_invalid_first_name">Invalid first name(s)</string>
+    <string name="profile_invalid_id">Invalid ID number</string>
+    <string name="profile_invalid_last_name">Invalid last name</string>
+    <string name="profile_invalid_server_response">Invalid server response</string>
+    <string name="profile_invalid_username">Invalid username (minimum 4 alphanumeric characters)</string>
+    <string name="profile_loading_error_data">Error loading account data</string>
+    <string name="profile_logout_confirmation">Are you sure you want to log out?</string>
+    <string name="profile_logout_progress">Logging out...</string>
+    <string name="profile_new_password_required">Please enter a new password</string>
+    <string name="profile_password_complexity">Password must be at least 8 characters, including uppercase, lowercase, numbers and symbols</string>
+    <string name="profile_password_incorrect">Current password is incorrect</string>
+    <string name="profile_passwords_do_not_match">Passwords do not match</string>
+    <string name="profile_responsibilities_label">Responsibilities: %1$s</string>
+    <string name="profile_responsibilities_required">Responsibilities are required</string>
+    <string name="profile_school_label">School: %1$s</string>
+    <string name="profile_school_required">School is required</string>
+    <string name="profile_tutee_label">Student: %1$s</string>
+    <string name="profile_tutee_required">Student name is required</string>
+    <string name="profile_username_empty">Username cannot be empty</string>
+    <string name="profile_warning_message">Changes to the ID number or role will require a new account verification. Do you want to continue?</string>
+    <string name="profile_warning_title">Warning</string>
+    <string name="profile_label_posts">Posts</string>
+    <string name="profile_label_likes">Likes</string>
+    <string name="profile_label_dislikes">Dislikes</string>
+    <string name="profile_title_myposts">My posts</string>
+
+    <!-- ==================== SESIÓN EXPIRADA ==================== -->
+    <string name="session_expired_message">Your session has expired. Please login again to continue.</string>
+
+    <!-- ==================== TEXTOS EXTRAÍDOS AUTOMÁTICAMENTE ==================== -->
+    <string name="toast_logs_cleared">Logs cleared</string>
+    <string name="toast_copied">Copied</string>
+    <string name="button_donate">Donate</string>
+    <string name="label_donation_description">You can voluntarily contribute to our project with a credit donation through the following methods</string>
+    <string name="toast_sent">Sent!</string>
+    <string name="button_send_report_to_github">Send Report to GitHub</string>
+    <string name="error_crash_report_message">The application has encountered an unexpected problem and has crashed. Please report this error to help us improve.</string>
+    <string name="toast_logs_copied">Logs copied to clipboard</string>
+    <string name="hint_describe_error">Please briefly describe what happened</string>
+    <string name="text_bullet">●</string>
+</resources>
+

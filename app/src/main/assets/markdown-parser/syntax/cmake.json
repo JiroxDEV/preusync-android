@@ -1,0 +1,36 @@
+{
+  "name": "cmake",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:cmake_minimum_required|project|add_executable|add_library|target_link_libraries|target_include_directories|target_compile_definitions|target_compile_features|target_compile_options|target_sources|set_target_properties|get_target_property|set|unset|list|string|file|include|include_directories|link_directories|add_subdirectory|enable_testing|add_test|set_tests_properties|install|export|configure_file|find_package|find_library|find_path|find_file|find_program|pkg_check_modules|option|mark_as_advanced|message|variable_watch|add_definitions|remove_definitions|add_compile_options|add_custom_command|add_custom_target|add_dependencies|site_name|build_name|execute_process|try_compile|try_run|ctest_start|ctest_update|ctest_configure|ctest_build|ctest_test|ctest_submit|ctest_coverage|ctest_memcheck|ctest_read_custom_files)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$\\{[^}]+\\}" },
+        { "regex": "\\b[A-Z_][A-Z0-9_]*\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "\\b(?:STREQUAL|EQUAL|LESS|GREATER|LESS_EQUAL|GREATER_EQUAL|AND|OR|NOT|MATCHES|VERSION_EQUAL|VERSION_LESS|VERSION_GREATER|VERSION_LESS_EQUAL|VERSION_GREATER_EQUAL|DEFINED|UNDEFINED|IN_LIST|IS_ABSOLUTE|IS_DIRECTORY|IS_SYMLINK|EXISTS|IS_NEWER_THAN|IS_READABLE|IS_WRITABLE|IS_EXECUTABLE)\\b" }
+      ]
+    },
+    {
+      "name": "property",
+      "patterns": [
+        { "regex": "\\b(?:LINKER_LANGUAGE|LINKER_LANGUAGE|LINK_FLAGS|COMPILE_FLAGS|INCLUDE_DIRECTORIES|COMPILE_DEFINITIONS|COMPILE_FEATURES|COMPILE_OPTIONS|IMPORTED|IMPORTED_LOCATION|IMPORTED_IMPLIB|IMPORTED_LINK_DEPENDENT_LIBRARIES|IMPORTED_LINK_INTERFACE_LANGUAGES|IMPORTED_LINK_INTERFACE_LIBRARIES|IMPORTED_LINK_INTERFACE_MULTIPLICITY|IMPORTED_NO_SONAME|IMPORTED_SONAME|IMPORTED_CONFIGURATIONS|INTERFACE_INCLUDE_DIRECTORIES|INTERFACE_COMPILE_DEFINITIONS|INTERFACE_COMPILE_FEATURES|INTERFACE_COMPILE_OPTIONS|INTERFACE_LINK_LIBRARIES|INTERFACE_SOURCES|INTERFACE_SYSTEM_INCLUDE_DIRECTORIES)\\b" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "zig",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "///[^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\\\\\\\\[^\\n]*", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[oO][0-7]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|callconv|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|false|fn|for|if|inline|linksection|noalias|nosuspend|null|or|orelse|packed|pub|resume|return|struct|suspend|switch|test|threadlocal|true|try|union|unreachable|usingnamespace|var|volatile|while)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:i1|i8|i16|i32|i64|i128|u1|u8|u16|u32|u64|u128|f16|f32|f64|f80|f128|bool|void|noreturn|type|anyerror|c_short|c_ushort|c_int|c_uint|c_long|c_ulong|c_longlong|c_ulonglong|c_longdouble|comptime_int|comptime_float)\\b" }
+      ]
+    }
+  ]
+}

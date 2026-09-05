@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_empty_ephemeris.xml
+    Versión: v1.0.0
+    Descripción: Elemento de lista que indica que no hay efemérides para la fecha seleccionada.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_empty_ephemeris.xml
+    ============================================================================
+
+    📌 ESTADO VACÍO PARA EFEMÉRIDES (TYPE_EMPTY)
+    ============================================================================
+
+    Este layout se muestra cuando no hay efemérides disponibles para la fecha
+    seleccionada en EphemeridesFragment.
+
+    🔥 NOTA: Este layout se muestra como un ítem más del RecyclerView,
+    lo que permite que el RecyclerView siempre esté visible y pueda
+    consumir eventos táctiles, evitando interferencias con el ViewPager.
+
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_32dp"
+    android:minHeight="200dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_empty_events"
+        android:contentDescription="@string/message_empty_ephemerides" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:text="@string/message_empty_ephemerides"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="?attr/colorTextHint"
+        android:gravity="center"
+        tools:text="No hay efemérides para esta fecha" />
+
+</LinearLayout>
+
+

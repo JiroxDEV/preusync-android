@@ -1,0 +1,50 @@
+{
+  "name": "bash",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'[^']*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:alias|bg|bind|builtin|caller|case|command|compgen|complete|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|for|function|getopts|hash|help|history|if|in|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|read|readarray|return|select|set|shift|shopt|source|suspend|test|times|trap|type|typeset|ulimit|umask|unalias|unset|until|variables|wait|while)\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[A-Za-z_]\\w*" },
+        { "regex": "\\$\\{[^}]+\\}" },
+        { "regex": "\\$\\([^)]+\\)" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%!<>=&|]+|\\b(?:eq|ne|lt|le|gt|ge)\\b" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+\\b" }
+      ]
+    }
+  ]
+}

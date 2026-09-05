@@ -1,0 +1,35 @@
+{
+  "name": "smarty",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{\\*[\\s\\S]*?\\*\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "\\{[a-zA-Z_]+[^}]*\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:if|else|elseif|foreach|foreachelse|section|sectionelse|while|include|include_php|insert|literal|nocache|php|assign|capture|config_load|fetch|math|textformat|mailto|cycle|eval|html_select_date|html_select_time|html_table|html_checkboxes|html_radios|html_image|html_options)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[=!<>]+" }
+      ]
+    }
+  ]
+}

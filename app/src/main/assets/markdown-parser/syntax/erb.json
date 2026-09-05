@@ -1,0 +1,30 @@
+{
+  "name": "erb",
+  "tokens": [
+    {
+      "name": "scriptlet",
+      "patterns": [
+        { "regex": "<%[\\s\\S]*?%>", "greedy": true },
+        { "regex": "<%=?[\\s\\S]*?%>", "greedy": true }
+      ]
+    },
+    {
+      "name": "output",
+      "patterns": [
+        { "regex": "<%=[\\s\\S]*?%>", "greedy": true }
+      ]
+    },
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<%#.*?%>" }
+      ]
+    },
+    {
+      "name": "ruby-keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|unless|else|elsif|end|do|while|for|in|begin|rescue|ensure|case|when)\\b" }
+      ]
+    }
+  ]
+}

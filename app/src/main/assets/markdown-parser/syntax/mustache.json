@@ -1,0 +1,41 @@
+{
+  "name": "mustache",
+  "tokens": [
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "\\{\\{\\{?[#^/!>&]?\\s*[^{}]+\\}?\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "\\{\\{#[^}]+\\}\\}[\\s\\S]*?\\{\\{/[^}]+\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "inverted",
+      "patterns": [
+        { "regex": "\\{\\{\\^[^}]+\\}\\}[\\s\\S]*?\\{\\{/[^}]+\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{\\{![^}]*\\}\\}" }
+      ]
+    },
+    {
+      "name": "partial",
+      "patterns": [
+        { "regex": "\\{\\{>[^}]*\\}\\}" }
+      ]
+    },
+    {
+      "name": "unescaped",
+      "patterns": [
+        { "regex": "\\{\\{\\{[^}]+\\}\\}\\}" }
+      ]
+    }
+  ]
+}

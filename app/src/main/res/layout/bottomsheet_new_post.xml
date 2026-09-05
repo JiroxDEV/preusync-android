@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: bottomsheet_new_post.xml
+    Versión: v2.0.1
+    Descripción: Panel deslizable para crear una nueva publicación en la comunidad.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/newPostContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorBackground"
+    android:paddingBottom="@dimen/padding_8dp">
+
+    <!-- Header -->
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/bottomSheetDragHandle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextAppearance.PreuSync.HeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="@dimen/padding_8dp"
+        android:text="@string/button_new_post" />
+
+    <!-- ScrollView -->
+    <ScrollView
+        android:id="@+id/verticalScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/postContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp">
+
+            <!-- Imagen -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/photoCardView"
+                style="@style/Widget.PreuSync.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="@dimen/padding_12dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/photoImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="@dimen/padding_8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_add_photo"
+                    android:contentDescription="@string/button_upload" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Título -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/titleTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_8dp"
+                app:boxStrokeColor="@color/textinputlayout_tint"
+                app:hintTextColor="@color/textinputlayout_tint"
+                app:startIconDrawable="@drawable/ic_rename"
+                app:startIconTint="@color/textinputlayout_tint">
+
+                <EditText
+                    android:id="@+id/titleEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:hint="@string/hint_title"
+                    android:imeOptions="actionNext"
+                    android:padding="@dimen/padding_8dp"
+                    android:singleLine="true"
+                    android:textColor="?attr/colorText"
+                    android:textColorHint="?attr/colorTextHint"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Contenido -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contentTextInputLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_8dp"
+                app:boxStrokeColor="@color/textinputlayout_tint"
+                app:endIconDrawable="@drawable/ic_preview"
+                app:endIconMode="custom"
+                app:endIconTint="@color/textinputlayout_tint"
+                app:hintTextColor="@color/textinputlayout_tint"
+                app:startIconDrawable="@drawable/ic_assignment"
+                app:startIconTint="@color/textinputlayout_tint">
+
+                <EditText
+                    android:id="@+id/contentEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:hint="@string/hint_content"
+                    android:imeOptions="actionDone"
+                    android:padding="@dimen/padding_8dp"
+                    android:textColor="?attr/colorText"
+                    android:textColorHint="?attr/colorTextHint"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botones -->
+    <LinearLayout
+        android:id="@+id/newPostActionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorBackgroundCard"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_6dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCancel"
+                style="@style/Widget.PreuSync.Button.Global"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_6dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:text="@string/button_cancel"
+                android:textSize="@dimen/text_size_14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCreate"
+                style="@style/Widget.PreuSync.Button.Global"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_6dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:text="@string/button_create"
+                android:textSize="@dimen/text_size_14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+

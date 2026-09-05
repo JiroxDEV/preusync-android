@@ -1,0 +1,31 @@
+{
+  "name": "m4",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "dnl .*" },
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:define|defn|undefine|pushdef|popdef|indir|builtin|ifdef|ifelse|incr|decr|eval|len|index|substr|translit|patsubst|format|regexp|esyscmd|syscmd|sysval|m4exit|m4wrap|include|sinclude|divert|undivert|changequote|changecom|debugmode|debugfile|errprint|__file__|__line__|__program__)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[0-9]+" },
+        { "regex": "\\$[*@#]" }
+      ]
+    },
+    {
+      "name": "macro",
+      "patterns": [
+        { "regex": "\\b[A-Za-z_]\\w*\\(" }
+      ]
+    }
+  ]
+}

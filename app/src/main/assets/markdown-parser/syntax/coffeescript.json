@@ -1,0 +1,53 @@
+{
+  "name": "coffeescript",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" },
+        { "regex": "###[\\s\\S]*?###" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "\"\"\"[\\s\\S]*?\"\"\"", "greedy": true },
+        { "regex": "'''[\\s\\S]*?'''", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:break|by|catch|class|continue|debugger|delete|do|else|extends|false|finally|for|if|in|instanceof|loop|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|yes)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Array|Boolean|Date|Function|Math|Number|Object|RegExp|String|Error|global|isNaN|isFinite|parseInt|parseFloat|eval)\\b" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b[a-zA-Z_]\\w*(?=\\s*[:=])" },
+        { "regex": "\\b[a-zA-Z_]\\w*(?=\\s*\\()" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[-+*/%<>=!&|^]+|\\bis\\b|\\bisnt\\b" }
+      ]
+    }
+  ]
+}

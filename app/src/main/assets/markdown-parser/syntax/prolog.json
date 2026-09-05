@@ -1,0 +1,46 @@
+{
+  "name": "prolog",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "/\\*[\\s\\S]*?\\*/" },
+        { "regex": "%.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" },
+        { "regex": "\\b0[oO][0-7]+\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\b[A-Z_][\\w]*\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:true|false|fail|repeat|call|findall|bagof|setof|not|\\+|\\-|\\*|\\/|mod|div|is|=|\\\\=|==|\\=|<|>|=<|>=|\\@<|\\@>|\\@=<|\\@>=|=::|=:=|\\=:=|\\==|\\=@=)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:abolish|asserta|assertz|at_end_of_stream|atom|atom_chars|atom_codes|atom_concat|atom_length|atomic|call|char_code|clause|close|compound|consult|copy_term|current_input|current_op|current_output|current_predicate|display|flush_output|functor|get_char|get_code|halt|listing|nl|nonvar|number|number_chars|number_codes|open|op|peek_char|put_code|read|read_term|repeat|retract|retractall|see|seeing|seen|set_input|set_output|set_prolog_flag|skip|sub_atom|tab|tell|telling|told|true|unify_with_occurs_check|var|write|write_canonical|write_term|writeq)\\b" }
+      ]
+    }
+  ]
+}

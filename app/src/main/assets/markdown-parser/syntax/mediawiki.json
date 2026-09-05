@@ -1,0 +1,54 @@
+{
+  "name": "mediawiki",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<!--[\\s\\S]*?-->" }
+      ]
+    },
+    {
+      "name": "heading",
+      "patterns": [
+        { "regex": "^=+[^=].*=+", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "'''[^']+'''" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "''[^']+''" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "\\[\\[[^\\]\\|]+(?:\\|[^\\]]+)?\\]\\]" }
+      ]
+    },
+    {
+      "name": "template",
+      "patterns": [
+        { "regex": "\\{\\{[^}]+\\}\\}" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\{\\{\\s*#\\w+:" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\w+[^>]*>" },
+        { "regex": "</\\w+>" }
+      ]
+    }
+  ]
+}

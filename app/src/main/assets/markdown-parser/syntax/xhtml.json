@@ -1,0 +1,24 @@
+{
+  "name": "xhtml",
+  "extend": "html",
+  "tokens": [
+    {
+      "name": "doctype",
+      "patterns": [
+        { "regex": "<!DOCTYPE\\s+html[^>]*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "namespace",
+      "patterns": [
+        { "regex": "xmlns(?::[a-z]+)?=\"[^\"]*\"" }
+      ]
+    },
+    {
+      "name": "self-closing",
+      "patterns": [
+        { "regex": "<[^>]+\\/>" }
+      ]
+    }
+  ]
+}

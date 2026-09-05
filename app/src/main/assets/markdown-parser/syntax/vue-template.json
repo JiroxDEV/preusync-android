@@ -1,0 +1,30 @@
+{
+  "name": "vue-template",
+  "extend": "html",
+  "tokens": [
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "\\bv-(?:bind|on|if|else|else-if|for|model|slot|pre|once|cloak|show|text|html|class|style)\\b" }
+      ]
+    },
+    {
+      "name": "interpolation",
+      "patterns": [
+        { "regex": "\\{\\{[^}]+\\}\\}" }
+      ]
+    },
+    {
+      "name": "event",
+      "patterns": [
+        { "regex": "@[a-z]+" }
+      ]
+    },
+    {
+      "name": "component",
+      "patterns": [
+        { "regex": "<[A-Z][\\w-]*[^>]*>" }
+      ]
+    }
+  ]
+}

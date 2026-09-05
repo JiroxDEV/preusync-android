@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_viewpager_news.xml
+    Versión: v1.2.0
+    Descripción: Contenedor para el ViewPager de noticias en el inicio.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/newsCardView"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="@dimen/padding_12dp"
+    app:cardBackgroundColor="?attr/colorBackgroundCard"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="20dp"
+    app:strokeWidth="0dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- RecyclerView horizontal (reemplaza al ViewPager) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/newsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:clipToPadding="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+
+        <!-- Loader (visible durante la carga) -->
+        <LinearLayout
+            android:id="@+id/newsLoader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.loadingindicator.LoadingIndicator
+                android:id="@+id/newsLoadingIndicator"
+                android:layout_width="@dimen/standard_icon_size_state"
+                android:layout_height="@dimen/standard_icon_size_state"
+                app:indicatorSize="@dimen/standard_icon_size_state" />
+        </LinearLayout>
+
+        <!-- Empty (cuando no hay datos) -->
+        <LinearLayout
+            android:id="@+id/newsEmptyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/emptyImageNoticias"
+                android:layout_width="@dimen/standard_icon_size_state"
+                android:layout_height="@dimen/standard_icon_size_state"
+                android:src="@drawable/ic_empty_news" />
+
+            <TextView
+                android:id="@+id/emptyTextViewNoticias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_8dp"
+                android:text="@string/message_empty_news"
+                android:textSize="@dimen/text_size_20sp" />
+        </LinearLayout>
+
+        <!-- Error (cuando falla la carga) -->
+        <LinearLayout
+            android:id="@+id/newsErrorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/errorImageNoticias"
+                android:layout_width="@dimen/standard_icon_size_state"
+                android:layout_height="@dimen/standard_icon_size_state"
+                android:src="@drawable/ic_error_news" />
+
+            <TextView
+                android:id="@+id/errorTextViewNoticias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_8dp"
+                android:text="@string/error_loading_data"
+                android:textSize="@dimen/text_size_20sp" />
+        </LinearLayout>
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>
+
+

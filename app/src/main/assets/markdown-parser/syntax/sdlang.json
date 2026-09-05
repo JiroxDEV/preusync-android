@@ -1,0 +1,56 @@
+{
+  "name": "sdlang",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "`[^`]*`", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[+-]?[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false|on|off)\\b" }
+      ]
+    },
+    {
+      "name": "null",
+      "patterns": [
+        { "regex": "\\bnull\\b" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "^\\s*[a-zA-Z_-][\\w-]*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "[a-zA-Z_-][\\w-]*=" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "\\{|\\}|;" }
+      ]
+    }
+  ]
+}

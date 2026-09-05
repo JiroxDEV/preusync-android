@@ -1,0 +1,35 @@
+{
+  "name": "blade",
+  "tokens": [
+    {
+      "name": "echo",
+      "patterns": [
+        { "regex": "\\{\\{\\{?[^}]+\\}?\\}\\}" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "@[a-zA-Z]+(?:\\([^\\)]*\\))?" }
+      ]
+    },
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{\\{--[\\s\\S]*?--\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "php",
+      "patterns": [
+        { "regex": "@php[\\s\\S]*?@endphp" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[\\w:-]+[^>]*>", "greedy": true }
+      ]
+    }
+  ]
+}

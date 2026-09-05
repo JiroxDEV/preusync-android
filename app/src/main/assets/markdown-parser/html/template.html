@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="file:///android_asset/markdown-parser/html/custom.css">
+</head>
+<body>
+    <div id="content">$$CONTENT$$</div>
+
+    <script>
+        // ─── Botón "Copiar" en bloques de código ───
+        function copyCode(button) {
+            var code = button.parentElement.parentElement.querySelector("pre code").innerText;
+            try {
+                Android.copyToClipboard(code);
+                button.textContent = "Copiado";
+                setTimeout(function() {
+                    button.textContent = "Copiar";
+                }, 2000);
+            } catch(e) {
+                console.error(e);
+            }
+        }
+
+        // ─── Convertir URLs y emails en enlaces clickables ───
+        (function() {
+            var root = document.getElementById("content");
+            var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+            var textNodes = [];
+            while (walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+
+            // Regex combinada: captura emails o URLs sueltas
+            var combinedRegex = /(mailto:)?([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})|(https?:\/\/[\w\-._~:\/?#\[\]@!$&'()*+,;=%]+)/g;
+
+            for (var i = 0; i < textNodes.length; i++) {
+                var node = textNodes[i];
+                var text = node.nodeValue;
+                var match;
+                var lastIdx = 0;
+                var fragment = document.createDocumentFragment();
+
+                while ((match = combinedRegex.exec(text)) !== null) {
+                    if (match.index > lastIdx) {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIdx, match.index)));
+                    }
+
+                    var a = document.createElement("a");
+                    if (match[2]) {
+                        // Es un email (grupo 2 capturado)
+                        a.href = "mailto:" + match[2];
+                        a.textContent = match[2];
+                    } else if (match[3]) {
+                        // Es una URL (grupo 3 capturado)
+                        a.href = match[3];
+                        a.textContent = match[3];
+                    }
+                    fragment.appendChild(a);
+                    lastIdx = combinedRegex.lastIndex;
+                }
+
+                if (lastIdx < text.length) {
+                    fragment.appendChild(document.createTextNode(text.substring(lastIdx)));
+                }
+
+                if (fragment.hasChildNodes()) {
+                    node.parentNode.replaceChild(fragment, node);
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

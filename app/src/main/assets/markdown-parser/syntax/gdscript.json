@@ -1,0 +1,96 @@
+{
+  "name": "gdscript",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "\"\"\"[\\s\\S]*?\"\"\"", "greedy": true },
+        { "regex": "'''[\\s\\S]*?'''", "greedy": true }
+      ]
+    },
+    {
+      "name": "string-format",
+      "patterns": [
+        { "regex": "%[sdoxfFeEgGn%]" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "builtin-constant",
+      "patterns": [
+        { "regex": "\\b(?:INF|NAN|PI|TAU)\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|elif|else|match|when|while|for|continue|break|pass|return|class|class_name|extends|is|as|in|not|and|or|true|false|null|void|self|super)\\b" }
+      ]
+    },
+    {
+      "name": "definition",
+      "patterns": [
+        { "regex": "\\b(func|static func|signal|enum|const|var|static var|onready var|export var|export\\([^)]*\\) var|setget|set|get)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@[a-zA-Z_][\\w_]*" }
+      ]
+    },
+    {
+      "name": "type-hint",
+      "patterns": [
+        { "regex": "->\\s*[a-zA-Z_]\\w*" },
+        { "regex": ":\\s*(?:int|float|String|bool|Array|Dictionary|PackedByteArray|PackedInt32Array|PackedInt64Array|PackedFloat32Array|PackedFloat64Array|PackedStringArray|PackedVector2Array|PackedVector3Array|PackedColorArray|void|Variant|Object|Node|Node2D|Node3D|Control|Resource|RefCounted|Signal|Callable|RID|Rect2|Rect2i|Vector2|Vector2i|Vector3|Vector3i|Vector4|Vector4i|Color|Plane|Quaternion|AABB|Basis|Transform2D|Transform3D|Projection)\\b" }
+      ]
+    },
+    {
+      "name": "builtin-type",
+      "patterns": [
+        { "regex": "\\b(?:int|float|bool|String|Array|Dictionary|Variant|PackedByteArray|PackedInt32Array|PackedInt64Array|PackedFloat32Array|PackedFloat64Array|PackedStringArray|PackedVector2Array|PackedVector3Array|PackedColorArray|Vector2|Vector2i|Vector3|Vector3i|Vector4|Vector4i|Color|Rect2|Rect2i|Plane|Quaternion|AABB|Basis|Transform2D|Transform3D|Projection|NodePath|RID|Signal|Callable|Object|Node|Resource|RefCounted)\\b" }
+      ]
+    },
+    {
+      "name": "builtin-function",
+      "patterns": [
+        { "regex": "\\b(?:print|print_rich|print_debug|printerr|printraw|prints|printt|push_error|push_warning|assert|range|load|preload|inst2dict|dict2inst|str|bool|int|float|typeof|is_instance_of|is_instance_valid|is_same|type_exists|is_zero_approx|is_equal_approx|is_inf|is_nan|len|is_empty|clamp|clampf|lerp|lerpf|wrapi|wrapf|sign|signf|snapped|snappedf|pow|log|exp|sqrt|abs|absf|ceil|ceilf|floor|floorf|round|roundf|fmod|fposmod|posmod|sin|cos|tan|asin|acos|atan|atan2|sinh|cosh|tanh|asinh|acosh|atanh|rad2deg|deg2rad|move_toward|linear2db|db2linear|ease|smoothstep|randf|randi|randfn|randf_range|randi_range|seed|randomize|bytes_to_var|var_to_bytes|bytes_to_var_with_objects|var_to_bytes_with_objects|hash|weakref|char|ord|Array|Dictionary|PackedByteArray|PackedInt32Array|PackedInt64Array|PackedFloat32Array|PackedFloat64Array|PackedStringArray|PackedVector2Array|PackedVector3Array|PackedColorArray|Color|Rect2|Rect2i|Vector2|Vector2i|Vector3|Vector3i|Vector4|Vector4i|Plane|Quaternion|AABB|Basis|Transform2D|Transform3D|Projection)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[A-Za-z]\\w*(?:/[A-Za-z]\\w*)*" },
+        { "regex": "%[A-Za-z]\\w*(?:/[A-Za-z]\\w*)*" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^~]+|\\+\\+|--|:=|&&|\\|\\||\\*\\*" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[(){}\\[\\],.;:]" }
+      ]
+    }
+  ]
+}

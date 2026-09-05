@@ -1,0 +1,41 @@
+{
+  "name": "astro",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "<!--[\\s\\S]*?-->" }
+      ]
+    },
+    {
+      "name": "frontmatter",
+      "patterns": [
+        { "regex": "^---[\\s\\S]*?^---", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[A-Za-z][\\w.]*[^>]*>", "greedy": true }
+      ]
+    },
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "import",
+      "patterns": [
+        { "regex": "^\\s*import\\s", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "slot",
+      "patterns": [
+        { "regex": "<[A-Z][\\w]*\\s*/?>" }
+      ]
+    }
+  ]
+}

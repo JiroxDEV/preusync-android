@@ -1,0 +1,44 @@
+{
+  "name": "haskell",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "--[^\\n]*" },
+        { "regex": "{-[\\s\\S]*?-}" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[oO][0-7]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:case|class|data|default|deriving|do|else|forall|foreign|hiding|if|import|in|infix|infixl|infixr|instance|let|module|newtype|of|qualified|then|type|where)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Int|Integer|Float|Double|Bool|Char|String|Maybe|Either|IO|Show|Read|Eq|Ord|Enum|Bounded|Num|Real|Integral|Fractional|Floating|RealFrac|RealFloat|Monad|Functor|Applicative|Foldable|Traversable)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^@:]+|->|<-|::|=>|\\\\|\\|>|\\$|\\.\\.|\\.\\.\\." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_extra_home.xml
+    Versión: v1.0.0
+    Descripción: Elemento de información adicional en el inicio (ejemplo: turno actual con materia y hora).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="@dimen/padding_8dp"
+    android:layout_marginBottom="@dimen/padding_8dp"
+    android:weightSum="2">
+
+    <!-- Efeméride -->
+    <LinearLayout
+        android:id="@+id/dayEphemeryContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/dayEphemeryTitleContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="@dimen/padding_8dp"
+            android:text="@string/title_daily_ephemeris"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:textSize="@dimen/text_size_16sp"
+            android:singleLine="true" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dayEphemery"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="@dimen/padding_12dp"
+            app:cardBackgroundColor="?attr/colorBackgroundCard"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:id="@+id/dayEphemeryContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_12dp">
+
+                <TextView
+                    android:id="@+id/ephemeryTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorText"
+                    android:maxLines="4"
+                    android:ellipsize="end"
+                    android:text="@string/label_loading" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- Turno actual -->
+    <LinearLayout
+        android:id="@+id/liveMiniScheduleContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/liveMiniScheduleTitleContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="@dimen/padding_8dp"
+            android:text="@string/title_current_shift"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:textSize="@dimen/text_size_16sp"
+            android:singleLine="true" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/liveMiniSchedule"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="@dimen/padding_12dp"
+            app:cardBackgroundColor="?attr/colorBackgroundCard"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="0dp">
+
+            <RelativeLayout
+                android:id="@+id/liveMiniScheduleContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_8dp">
+
+                <TextView
+                    android:id="@+id/shiftNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorAccent"
+                    android:text="3" />
+
+                <TextView
+                    android:id="@+id/currentSubject"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/text_size_14sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorText"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="Matemáticas" />
+
+                <TextView
+                    android:id="@+id/shiftTimeRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/text_size_11sp"
+                    android:textColor="?attr/colorTextHint"
+                    android:text="09:20-10:05" />
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>
+
+

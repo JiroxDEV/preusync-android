@@ -1,0 +1,51 @@
+{
+  "name": "toml",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "table",
+      "patterns": [
+        { "regex": "\\[[^\\]]+\\]" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "^[a-zA-Z0-9_-]+\\s*=", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "\"\"\"[\\s\\S]*?\"\"\"", "greedy": true },
+        { "regex": "'''[\\s\\S]*?'''", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b(?i:nan|inf)\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false)\\b" }
+      ]
+    },
+    {
+      "name": "date",
+      "patterns": [
+        { "regex": "\\b\\d{4}-\\d{2}-\\d{2}(?:[T ]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})?)?\\b" }
+      ]
+    }
+  ]
+}

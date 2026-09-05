@@ -1,0 +1,31 @@
+{
+  "name": "webassembly",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";;[^\\n]*" },
+        { "regex": "\\(;[\\s\\S]*?;\\)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:module|func|param|result|mut|if|then|else|loop|block|end|br|br_if|br_table|return|call|call_indirect|local\\.get|local\\.set|local\\.tee|global\\.get|global\\.set|i32|i64|f32|f64|v128|anyref|funcref|nullref|externref|table|memory|data|elem|import|export|start|type)\\b" }
+      ]
+    }
+  ]
+}

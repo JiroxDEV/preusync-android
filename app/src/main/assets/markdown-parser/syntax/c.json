@@ -1,0 +1,18 @@
+{
+  "name": "c",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|restrict|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|_Bool|_Complex|_Imaginary|_Alignas|_Alignof|_Atomic|_Static_assert|_Noreturn|_Thread_local|_Generic)\\b" }
+      ]
+    },
+    {
+      "name": "preprocessor",
+      "patterns": [
+        { "regex": "^\\s*#\\s*(?:include|define|undef|if|ifdef|ifndef|else|elif|endif|error|pragma|line)\\b", "flags": "MULTILINE" }
+      ]
+    }
+  ]
+}

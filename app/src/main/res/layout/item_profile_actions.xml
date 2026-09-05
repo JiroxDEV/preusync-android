@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_profile_actions.xml
+    Versión: v1.0.0
+    Descripción: Elemento de acciones del perfil (editar, ajustes, cerrar sesión).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_profile_actions.xml
+    ============================================================================
+
+    📌 BOTONES DE ACCIÓN DEL PERFIL (TYPE_PROFILE_ACTIONS)
+    ============================================================================
+
+    Este layout contiene los botones de acción principales del perfil:
+      - Editar perfil (abre el BottomSheet de edición)
+      - Ajustes (abre la pantalla de configuración)
+      - Cerrar sesión (cierra la sesión del usuario)
+
+    🔥 LISTENERS ASIGNADOS DESDE EL FRAGMENT:
+      - setOnEditProfileListener() → abre editor de perfil
+      - setOnSettingsListener() → abre SettingsActivity
+      - setOnLogoutListener() → muestra diálogo de confirmación y cierra sesión
+
+    🔥 NOTA: Los botones ahora son ítems del RecyclerView, lo que elimina
+    el conflicto de scroll anidado y mejora la experiencia de usuario.
+
+    ============================================================================
+-->
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.PreuSync.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/padding_8dp"
+    android:layout_marginEnd="@dimen/padding_8dp"
+    android:layout_marginTop="@dimen/card_elevation"
+    android:layout_marginBottom="@dimen/card_elevation"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_12dp"
+        android:gravity="center"
+        android:weightSum="3"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <!-- Botón Editar -->
+        <LinearLayout
+            android:id="@+id/editButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/padding_8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_edit"
+                app:tint="?attr/colorAccent"
+                android:contentDescription="@string/button_edit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:text="@string/button_edit"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorText"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Botón Configuración -->
+        <LinearLayout
+            android:id="@+id/settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/padding_8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_settings"
+                app:tint="?attr/colorAccent"
+                android:contentDescription="@string/title_settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:text="@string/title_settings"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorText"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Botón Cerrar sesión -->
+        <LinearLayout
+            android:id="@+id/logoutButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/padding_8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_close"
+                app:tint="?attr/colorError"
+                android:contentDescription="@string/button_logout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:text="@string/button_logout"
+                android:textSize="@dimen/text_size_12sp"
+                android:textColor="?attr/colorError"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+

@@ -1,0 +1,50 @@
+{
+  "name": "autoit",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#cs[\\s\\S]*?#ce" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "macro",
+      "patterns": [
+        { "regex": "@[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|then|elseif|else|endif|while|wend|for|to|step|next|in|do|until|select|case|endselect|switch|endswitch|continuecase|continueloop|exitloop|return|func|endfunc|dim|local|global|const|redim|static|volatile|byref|not|and|or|true|false|null|default)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:MsgBox|InputBox|FileOpen|FileClose|FileRead|FileWrite|FileDelete|Run|ShellExecute|Sleep|Send|WinActivate|WinWait|ProcessClose|StringLen|StringMid|StringLeft|StringRight|StringReplace|StringSplit|StringInStr|StringLower|StringUpper|Number|Int|Abs|Mod|Round|Random|ArrayDisplay|_ArrayAdd|_ArrayDelete|_ArraySearch)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

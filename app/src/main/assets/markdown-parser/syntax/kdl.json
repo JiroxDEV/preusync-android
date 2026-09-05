@@ -1,0 +1,59 @@
+{
+  "name": "kdl",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "r\"[^\"]*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[+-]?[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[oO][0-7]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false)\\b" }
+      ]
+    },
+    {
+      "name": "null",
+      "patterns": [
+        { "regex": "\\bnull\\b" }
+      ]
+    },
+    {
+      "name": "node",
+      "patterns": [
+        { "regex": "^\\s*[a-zA-Z_-][\\w-]*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "property",
+      "patterns": [
+        { "regex": "[a-zA-Z_-][\\w-]*\\s*=" }
+      ]
+    },
+    {
+      "name": "children",
+      "patterns": [
+        { "regex": "\\{" },
+        { "regex": "\\}" }
+      ]
+    }
+  ]
+}

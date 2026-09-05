@@ -1,0 +1,30 @@
+{
+  "name": "postcss",
+  "extend": "css",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//.*" }
+      ]
+    },
+    {
+      "name": "at-rule",
+      "patterns": [
+        { "regex": "@(?:custom-media|custom-selector|define-mixin|mixin|add-mixin|apply|each|for|if|else|extend|nest)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_][\\w-]*" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b(?:var|calc|color-mod|gray|hsl|hsla|rgb|rgba|mix|lighten|darken|saturate|desaturate|alpha|percentage|url)\\b" }
+      ]
+    }
+  ]
+}

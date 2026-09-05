@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_error_footer.xml
+    Versión: v1.0.0
+    Descripción: Pie de página de error para listas paginadas, con opción de reintento.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/errorContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="@dimen/padding_16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/errorFooterText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_14sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorText"
+        android:text="@string/message_load_more_error" />
+</LinearLayout>
+
+

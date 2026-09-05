@@ -1,0 +1,47 @@
+{
+  "name": "textile",
+  "tokens": [
+    {
+      "name": "heading",
+      "patterns": [
+        { "regex": "^h[1-6]\\..*" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*[^*]+\\*" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "_[^_]+_" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "\"[^\"]+\":\\S+" }
+      ]
+    },
+    {
+      "name": "image",
+      "patterns": [
+        { "regex": "![^!]+!" }
+      ]
+    },
+    {
+      "name": "list",
+      "patterns": [
+        { "regex": "^\\s*[-#]+\\s", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "code",
+      "patterns": [
+        { "regex": "@[^@]+@" }
+      ]
+    }
+  ]
+}

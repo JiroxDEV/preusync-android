@@ -1,0 +1,43 @@
+{
+  "name": "r",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?[iL]?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|else|for|while|repeat|break|next|function|return|in|NA|NULL|Inf|NaN|TRUE|FALSE)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:c|list|matrix|array|data\\.frame|factor|length|names|dim|rownames|colnames|str|summary|head|tail|table|plot|hist|lm|glm|read\\.csv|write\\.csv|library|require|source|print|cat|message|warning|stop|class|typeof|is\\.numeric|is\\.character|is\\.logical|as\\.numeric|as\\.character|as\\.logical|sum|mean|sd|var|min|max|range|abs|sqrt|log|exp|sin|cos|tan|seq|rep|paste|paste0|grep|gsub|substr|nchar|tolower|toupper)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "<-|->|<<-|->>|%%|%/%|%\\*%|%in%|\\|>|%>%|\\.\\.\\.|\\?\\.|\\.\\.\\d+" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "json5",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[+-]?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b" },
+        { "regex": "\\b(?:Infinity|NaN)\\b" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false)\\b" }
+      ]
+    },
+    {
+      "name": "null",
+      "patterns": [
+        { "regex": "\\bnull\\b" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "(?:[a-zA-Z_]\\w*|[\"'].*?[\"'])\\s*:" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{}\\[\\],:]+" }
+      ]
+    }
+  ]
+}

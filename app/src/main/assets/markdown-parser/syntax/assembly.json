@@ -1,0 +1,49 @@
+{
+  "name": "assembly",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "\\.[a-zA-Z]\\w*" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "register",
+      "patterns": [
+        { "regex": "\\b(?:[re]?[abcd]x|[re]?[sb]p|[re]?[sd]i|[re]?ip|r[0-9]+|[cdefgs]s|cr[0-4]|xmm[0-9]+)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "mnemonic",
+      "patterns": [
+        { "regex": "\\b(?:mov|add|sub|mul|div|inc|dec|call|jmp|je|jne|jg|jl|jge|jle|cmp|test|and|or|xor|not|shl|shr|ret|push|pop|lea|int|nop|hlt)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "label",
+      "patterns": [
+        { "regex": "^[a-zA-Z_]\\w*:", "flags": "MULTILINE" }
+      ]
+    }
+  ]
+}

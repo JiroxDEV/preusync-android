@@ -1,0 +1,51 @@
+{
+  "name": "haml",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "^\\s*-#.*" },
+        { "regex": "^\\s*/[\\s\\S]*?^\\s*[^/\\s]", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "doctype",
+      "patterns": [
+        { "regex": "^!!!.*" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "^\\s*%[\\w-]+" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\{[^}]+\\}" },
+        { "regex": "\\([^\\)]+\\)" },
+        { "regex": "\\[[^\\]]+\\]" }
+      ]
+    },
+    {
+      "name": "id",
+      "patterns": [
+        { "regex": "#[\\w-]+" }
+      ]
+    },
+    {
+      "name": "class",
+      "patterns": [
+        { "regex": "\\.[\\w-]+" }
+      ]
+    },
+    {
+      "name": "ruby-inline",
+      "patterns": [
+        { "regex": "= .*" },
+        { "regex": "- .*" }
+      ]
+    }
+  ]
+}

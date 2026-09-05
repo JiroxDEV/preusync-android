@@ -1,0 +1,48 @@
+{
+  "name": "creole",
+  "tokens": [
+    {
+      "name": "heading",
+      "patterns": [
+        { "regex": "^\\s*=+[^=].*", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "bold",
+      "patterns": [
+        { "regex": "\\*\\*[^*]+\\*\\*" }
+      ]
+    },
+    {
+      "name": "italic",
+      "patterns": [
+        { "regex": "//[^/]+//" }
+      ]
+    },
+    {
+      "name": "link",
+      "patterns": [
+        { "regex": "\\[\\[[^\\]|]+(?:\\|[^\\]]+)?\\]\\]" }
+      ]
+    },
+    {
+      "name": "code",
+      "patterns": [
+        { "regex": "\\{\\{\\{[^}]+\\}\\}\\}" }
+      ]
+    },
+    {
+      "name": "list",
+      "patterns": [
+        { "regex": "^\\s*[-\\*]+\\s", "flags": "MULTILINE" },
+        { "regex": "^\\s*#+\\s", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "table",
+      "patterns": [
+        { "regex": "\\|.*\\|" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "mercury",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "%.*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:module|interface|implementation|import_module|pred|func|mode|type|inst|typeclass|instance|where|if|then|else|some|all|true|false|fail|not|is|trace|require_det|require_semidet|require_multi|require_nondet|require_cc_multi|require_cc_nondet|require_errexit|promise_equivalent_solutions|promise_equivalent_solution_sets|promise_pure|promise_semipure|promise_impure)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:int|float|char|string|bool|io|list|set|map|maybe|pair|unit|univ|c_pointer|type_info|type_desc|typeclass_info|comparison_result|result|success)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/<>=!&|@#:]+|\\\\|->|::-|::" }
+      ]
+    }
+  ]
+}

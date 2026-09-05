@@ -1,0 +1,59 @@
+{
+  "name": "scratch",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "event",
+      "patterns": [
+        { "regex": "\\b(?:when|@greenFlag|green flag|when I start as a clone|when I receive|broadcast|broadcast and wait)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "control",
+      "patterns": [
+        { "regex": "\\b(?:wait|repeat|forever|if|if else|stop|clone|delete this clone|wait until|repeat until|for|each)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "motion",
+      "patterns": [
+        { "regex": "\\b(?:move|turn|go to|glide|point in direction|point towards|change x by|set x to|change y by|set y to|if on edge, bounce|x position|y position|direction)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "looks",
+      "patterns": [
+        { "regex": "\\b(?:say|think|show|hide|switch costume|next costume|switch backdrop|next backdrop|change size|set size|change effect|set effect|clear graphic effects|costume|backdrop|size)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "sound",
+      "patterns": [
+        { "regex": "\\b(?:play sound|start sound|stop all sounds|play drum|rest|play note|set instrument|change volume|set volume|volume|tempo)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/<>=]" }
+      ]
+    }
+  ]
+}

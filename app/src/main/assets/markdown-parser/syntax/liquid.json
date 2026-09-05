@@ -1,0 +1,23 @@
+{
+  "name": "liquid",
+  "tokens": [
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "\\{\\%[\\s]*[a-z]+[^\\}]*\\%\\}", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\{\\{\\s*[a-zA-Z][\\w.]*\\s*(?:\\|[^}]+)?\\}\\}" }
+      ]
+    },
+    {
+      "name": "filter",
+      "patterns": [
+        { "regex": "\\|[\\s]*[a-zA-Z_]+" }
+      ]
+    }
+  ]
+}

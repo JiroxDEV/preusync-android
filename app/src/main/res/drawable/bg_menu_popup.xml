@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: bg_menu_popup.xml
+    Versión: v1.0.0
+    Descripción: Fondo personalizado para los menús emergentes (popup menu)..
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorBackgroundCard" />
+    <corners android:radius="12dp" />
+    <padding
+        android:top="8dp"
+        android:bottom="8dp" />
+</shape>
+
+

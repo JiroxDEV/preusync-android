@@ -1,0 +1,23 @@
+{
+  "name": "csv",
+  "tokens": [
+    {
+      "name": "header",
+      "patterns": [
+        { "regex": "^[^,\\n]+", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "separator",
+      "patterns": [
+        { "regex": "," }
+      ]
+    },
+    {
+      "name": "quoted",
+      "patterns": [
+        { "regex": "\"[^\"]*\"" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_settings_section.xml
+    Versión: v1.0.0
+    Descripción: Contenedor que agrupa elementos de ajustes bajo una misma temática.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.PreuSync.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/padding_8dp"
+    android:layout_marginEnd="@dimen/padding_8dp"
+    android:layout_marginTop="@dimen/card_elevation"
+    android:layout_marginBottom="@dimen/card_elevation">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/innerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
+
+</com.google.android.material.card.MaterialCardView>
+
+

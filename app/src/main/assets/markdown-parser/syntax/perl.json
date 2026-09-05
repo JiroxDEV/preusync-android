@@ -1,0 +1,55 @@
+{
+  "name": "perl",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "pod",
+      "patterns": [
+        { "regex": "^=[a-z]+[\\s\\S]*?^=cut", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "q[qx]?\\{[^}]*\\}", "greedy": true },
+        { "regex": "q[qx]?\\([^\\)]*\\)", "greedy": true },
+        { "regex": "q[qx]?\\[[^\\]]*\\]", "greedy": true },
+        { "regex": "q[qx]?\\/[^\\/]*\\/", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "[\\$@%]\\^?[A-Za-z_]\\w*" },
+        { "regex": "[\\$@%]\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|elsif|else|unless|while|until|for|foreach|continue|last|next|redo|given|when|default|return|die|warn|exit|eval|do|require|use|package|sub|my|our|local|state|no|bless|undef|defined)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^~.]+|=>|->|\\.\\.\\.|\\?\\?" }
+      ]
+    }
+  ]
+}

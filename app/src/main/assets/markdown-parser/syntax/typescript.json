@@ -1,0 +1,24 @@
+{
+  "name": "typescript",
+  "extend": "javascript",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|as|asserts|async|await|break|case|catch|class|const|continue|debugger|declare|default|delete|do|else|enum|export|extends|false|finally|for|function|if|implements|import|in|infer|instanceof|interface|is|keyof|let|module|namespace|never|new|null|of|override|private|protected|public|readonly|require|return|satisfies|static|super|switch|symbol|this|throw|true|try|type|typeof|unique|unknown|var|void|while|with|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:string|number|boolean|any|unknown|never|void|undefined|null|object|symbol|bigint|Array|Map|Set|Promise|Generator|Iterator|Record|Partial|Required|Readonly|Pick|Omit|Exclude|Extract|NonNullable|ReturnType|InstanceType|Parameters)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@\\w+(?:\\([^\\)]*\\))?" }
+      ]
+    }
+  ]
+}

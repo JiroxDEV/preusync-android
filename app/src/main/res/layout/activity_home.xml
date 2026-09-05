@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: activity_home.xml
+    Versión: v2.0.3
+    Descripción: Actividad principal que organiza la navegación global y el enrutamiento de contenidos.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeLayoutCoordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/colorBackground"
+        android:id="@+id/homeLayoutContainer">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- CardView que envuelve el BottomNavigationView -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBottomNav"
+            style="@style/Widget.PreuSync.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_0dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/menu_bottom_nav"
+                android:textSize="@dimen/text_size_14sp"
+                android:background="@android:color/transparent"
+                app:itemIconTint="?attr/colorAccent"
+                app:itemTextColor="?attr/colorAccent"
+                app:itemRippleColor="?attr/colorControlHighlight"
+                app:itemActiveIndicatorStyle="@style/BottomNavigationView.ActiveIndicator" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/homeFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_16dp"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:layout_marginRight="@dimen/padding_16dp"
+        android:layout_marginBottom="@dimen/marginbottom_145dp"
+        android:layout_gravity="right|bottom"
+        app:cornerRadius="100dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: activity_onboarding.xml
+    Versión: v1.0.2
+    Descripción: Flujo introductorio guiado para nuevos usuarios con ViewPager.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:id="@+id/onboardingLayoutContainer">
+	
+<LinearLayout
+		android:id="@+id/mainContainer"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:paddingTop="@dimen/card_corner_radius"
+		android:paddingBottom="@dimen/padding_bottom_50dp"
+		android:background="?attr/colorBackground"
+		android:orientation="vertical">
+		<androidx.viewpager2.widget.ViewPager2
+			android:id="@+id/viewPager"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/padding_8dp"
+			android:layout_weight="1" />
+		<RelativeLayout
+			android:id="@+id/relativeLayout"
+			android:layout_width="match_parent"
+			android:layout_height="20dp">
+			<com.google.android.material.tabs.TabLayout
+				android:id="@+id/tabLayout"
+				android:layout_width="match_parent"
+				android:layout_height="20dp"
+				android:background="?attr/colorBackground"
+				android:enabled="false"
+				app:tabGravity="fill"
+				app:tabMode="fixed"
+				app:tabIndicatorHeight="3dp"
+				app:tabIndicatorColor="@android:color/white"
+				app:tabSelectedTextColor="@android:color/white"
+				app:tabTextColor="@android:color/white"
+				app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+				android:textSize="@dimen/text_size_14sp" />
+			
+<LinearLayout
+				android:id="@+id/linearLayout"
+				android:layout_width="match_parent"
+				android:layout_height="20dp"
+				android:padding="@dimen/padding_8dp"
+				android:orientation="horizontal" />
+		</RelativeLayout>
+	</LinearLayout>
+</LinearLayout>
+
+

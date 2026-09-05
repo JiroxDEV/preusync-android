@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: notification_summary_layout.xml
+    Versión: v1.1.0
+    Descripción: Notificación persistente con accesos directos a secciones clave (servicio en segundo plano).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="6dp"
+    android:weightSum="5">
+
+    <!-- Noticias -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_notification_news"
+            android:contentDescription="@string/title_news" />
+
+        <TextView
+            android:id="@+id/newsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_11sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_notification_badge"
+            android:text="0"
+            android:visibility="gone"
+            android:maxLines="1" />
+    </FrameLayout>
+
+    <!-- Posts -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/postsImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_notification_posts"
+            android:contentDescription="@string/title_posts" />
+
+        <TextView
+            android:id="@+id/postsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_11sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_notification_badge"
+            android:text="0"
+            android:visibility="gone"
+            android:maxLines="1" />
+    </FrameLayout>
+
+    <!-- Eventos -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/eventsImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_notification_events"
+            android:contentDescription="@string/title_events" />
+
+        <TextView
+            android:id="@+id/eventsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_11sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_notification_badge"
+            android:text="0"
+            android:visibility="gone"
+            android:maxLines="1" />
+    </FrameLayout>
+
+    <!-- Efemérides -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ephemerisImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_notification_ephemeris"
+            android:contentDescription="@string/title_ephemerides" />
+
+        <TextView
+            android:id="@+id/ephemerisTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_11sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_notification_badge"
+            android:text="0"
+            android:visibility="gone"
+            android:maxLines="1" />
+    </FrameLayout>
+
+    <!-- Horario -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/scheduleImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_notification_schedule"
+            android:contentDescription="@string/title_schedule" />
+
+        <TextView
+            android:id="@+id/scheduleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_11sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_notification_badge"
+            android:text="•"
+            android:visibility="gone"
+            android:maxLines="1" />
+    </FrameLayout>
+
+</LinearLayout>
+
+

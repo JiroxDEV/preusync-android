@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: ids.xml
+    Versión: v1.1.0
+    Descripción: Recurso de identificadores (ids) para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <item name="tag_post_id" type="id"/>
+    <item name="tag_animation_applied" type="id" />
+    <item name="tag_current_animator" type="id" />
+    <item name="loading_noticia_detalles" type="id"/>
+    <item name="loading_evento_detalles" type="id"/>
+    <item name="loading_efemeride_detalles" type="id"/>
+</resources>
+
+

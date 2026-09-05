@@ -1,0 +1,54 @@
+{
+  "name": "graphql",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "\"\"\"[\\s\\S]*?\"\"\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:query|mutation|subscription|fragment|on|implements|interface|union|enum|input|type|schema|directive|scalar|extend)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Int|Float|String|Boolean|ID)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "@[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[!:,(){}=]+|\\.\\.\\." }
+      ]
+    }
+  ]
+}

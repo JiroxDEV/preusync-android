@@ -1,0 +1,41 @@
+{
+  "name": "json",
+  "tokens": [
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false)\\b" }
+      ]
+    },
+    {
+      "name": "null",
+      "patterns": [
+        { "regex": "\\bnull\\b" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"(?:\\s*:)" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{}\\[\\],:]+" }
+      ]
+    }
+  ]
+}

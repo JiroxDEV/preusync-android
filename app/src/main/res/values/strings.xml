@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Recurso: strings.xml
+    Versión: v1.6.0
+    Descripción: Recurso de cadenas de texto para la aplicación.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<resources>
+    <!-- ==================== APP ==================== -->
+    <string name="app_name">PreuSync</string>
+    <string name="app_tagline">El todo en uno para los estudiantes de preuniversitario</string>
+
+    <!-- ==================== BOTONES GENÉRICOS ==================== -->
+    <string name="button_accept">Aceptar</string>
+    <string name="button_apply">Aplicar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_check_updates">Comprobar actualizaciones</string>
+    <string name="button_clear">Limpiar</string>
+    <string name="button_close">Cerrar</string>
+    <string name="button_continue">Continuar</string>
+    <string name="button_copy">Copiar</string>
+    <string name="button_create">Crear</string>
+    <string name="button_delete">Eliminar</string>
+    <string name="button_done">Listo</string>
+    <string name="button_edit">Editar</string>
+    <string name="button_enter">Entrar</string>
+    <string name="button_exit">Salir</string>
+    <string name="button_get_started">Comenzar</string>
+    <string name="button_load_more">Cargar más</string>
+    <string name="button_login">Iniciar sesión</string>
+    <string name="button_login_prompt">¿Ya tienes una cuenta?\n¡Inicia sesión!</string>
+    <string name="button_logout">Cerrar sesión</string>
+    <string name="button_new_post">Nuevo post</string>
+    <string name="button_next">Siguiente</string>
+    <string name="button_no">No</string>
+    <string name="button_preview">Vista previa</string>
+    <string name="button_previous">Anterior</string>
+    <string name="button_register">Registrarse</string>
+    <string name="button_register_prompt">¿No tienes una cuenta?\n¡Regístrate ahora!</string>
+    <string name="button_report">Reportar</string>
+    <string name="button_reset">Restablecer</string>
+    <string name="button_retry">Reintentar</string>
+    <string name="button_save">Guardar</string>
+    <string name="button_select">Elegir</string>
+    <string name="button_share">Compartir</string>
+    <string name="button_update">Actualizar</string>
+    <string name="button_upload">Subir imagen</string>
+    <string name="button_yes">Sí</string>
+
+    <!-- ==================== ETIQUETAS (HINTS) ==================== -->
+    <string name="hint_content">Contenido (puede utilizar estilo Markwon)</string>
+    <string name="hint_current_password">Contraseña actual</string>
+    <string name="hint_edit_advanced">Editar datos avanzados</string>
+    <string name="hint_first_name">Nombre(s)</string>
+    <string name="hint_group">Grupo (ej. 11 - 2)</string>
+    <string name="hint_id_number">Carnet de identidad</string>
+    <string name="hint_last_name">Apellidos</string>
+    <string name="hint_new_password">Nueva contraseña</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_repeat_new_password">Repita su nueva contraseña</string>
+    <string name="hint_repeat_password">Repita su contraseña</string>
+    <string name="hint_responsibilities">Responsabilidades (separadas por comas)</string>
+    <string name="hint_role">Rol</string>
+    <string name="hint_school">Escuela</string>
+    <string name="hint_title">Título</string>
+    <string name="hint_tutee">Educando bajo tutoría</string>
+    <string name="hint_username">Nombre de usuario</string>
+
+    <!-- ==================== ETIQUETAS (LABELS) ==================== -->
+    <string name="label_allow_battery_optimization">Permitir ignorar optimización</string>
+    <string name="label_author">Autor</string>
+    <string name="label_auto_updates">Actualizaciones automáticas</string>
+    <string name="label_battery_optimization">Optimización de batería</string>
+    <string name="label_checking_updates">Comprobando actualizaciones...</string>
+    <string name="label_code">código</string>
+    <string name="label_creating_account">Creando su cuenta...</string>
+    <string name="label_creating_post">Creando post...</string>
+    <string name="label_date">Fecha</string>
+    <string name="label_deleting_post">Eliminando post...</string>
+    <string name="label_reporting_post">Reportando post...</string>
+    <string name="label_details">Detalles</string>
+    <string name="label_download_only_wifi">Descargar solo con Wi-Fi</string>
+    <string name="label_featured_news">Noticias destacadas</string>
+    <string name="label_featured_posts">Posts destacados</string>
+    <string name="label_frequency">Frecuencia</string>
+    <string name="label_group">Grupo</string>
+    <string name="label_id">ID</string>
+    <string name="label_lead_time">Antelación</string>
+    <string name="label_loading">Cargando...</string>
+    <string name="label_loading_groups">Cargando grupos...</string>
+    <string name="label_loading_schedule">Cargando horario...</string>
+    <string name="label_logging_in">Iniciando sesión...</string>
+    <string name="label_logging_out">Cerrando sesión...</string>
+    <string name="label_name">Nombre</string>
+    <string name="label_place">Lugar</string>
+    <string name="label_reminders">Recordatorios de eventos</string>
+    <string name="label_schedule">Horario</string>
+    <string name="label_select_date">Seleccionar fecha</string>
+    <string name="label_shift">Turno</string>
+    <string name="label_show">Mostrar</string>
+    <string name="label_sound">Sonido</string>
+    <string name="label_source">Fuente</string>
+    <string name="label_time">Hora</string>
+    <string name="label_updating_data">Actualizando datos...</string>
+    <string name="label_uploading_avatar">Subiendo avatar...</string>
+    <string name="label_verifying_password">Verificando contraseña...</string>
+    <string name="label_version">Versión</string>
+    <string name="label_year">Año</string>
+    <string name="label_your_initial">Su inicial</string>
+    <string name="label_your_role">Su rol</string>
+    <string name="label_verified">Verificado</string>
+    <string name="label_content">Contenido...</string>
+    <string name="label_loading_post">Cargando post...</string>
+    <string name="label_loading_news">Cargando noticia...</string>
+    <string name="m3_loading_indicator_content_description">Cargando</string>
+
+    <!-- ==================== TÍTULOS DE PANTALLAS Y DIÁLOGOS ==================== -->
+    <string name="title_about">Acerca de</string>
+    <string name="title_appearance">Apariencia</string>
+    <string name="title_connection_error">Error de conexión</string>
+    <string name="title_debug_error">¡Ha ocurrido un error!</string>
+    <string name="title_delete_post">Eliminar post</string>
+    <string name="title_dynamic_colors">Colores dinámicos (Material You)</string>
+    <string name="title_edit_account">Editar cuenta</string>
+    <string name="title_ephemerides">Efemérides</string>
+    <string name="title_events">Eventos</string>
+    <string name="title_general">General</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_language">Idioma</string>
+    <string name="title_logout">Cerrar sesión</string>
+    <string name="title_news">Noticias</string>
+    <string name="title_new_version">Nueva versión disponible</string>
+    <string name="title_notifications">Notificaciones</string>
+    <string name="title_permissions_intro">PreuSync necesita los siguientes permisos para funcionar correctamente</string>
+    <string name="title_posts">Posts</string>
+    <string name="title_post_preview">Vista previa</string>
+    <string name="title_profile">Cuenta</string>
+    <string name="title_schedule">Horario escolar</string>
+    <string name="title_select_avatar">Seleccione su avatar</string>
+    <string name="title_services">Servicios</string>
+    <string name="title_session">Sesión</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="title_terms_and_conditions">Condiciones de uso</string>
+    <string name="title_theme">Tema</string>
+    <string name="title_warning">Advertencia</string>
+    <string name="title_your_account">Su cuenta</string>
+
+    <!-- ==================== SECCIONES DE AJUSTES ==================== -->
+    <string name="section_auto_updates">Actualizaciones automáticas</string>
+    <string name="section_background_sync">Sincronización en segundo plano</string>
+    <string name="section_battery">Optimización de batería</string>
+    <string name="section_data_storage">Datos y almacenamiento</string>
+    <string name="section_general_prefs">Preferencias generales</string>
+    <string name="section_home_screen">Pantalla de inicio</string>
+    <string name="section_notifications">Notificaciones</string>
+    <string name="section_performance">Rendimiento</string>
+    <string name="section_reminders">Recordatorios de eventos</string>
+    <string name="section_sync_frequencies">Frecuencias de sincronización</string>
+    <string name="section_theme">Tema</string>
+    <string name="section_typography">Tipografía</string>
+
+    <!-- ==================== OPCIONES DE AJUSTES ==================== -->
+    <string name="allow_battery_optimization">Permitir ignorar optimización</string>
+    <string name="anim_fast">Rápida</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_slow">Lenta</string>
+    <string name="animation_speed">Velocidad de animaciones</string>
+    <string name="auto_updates_freq">Frecuencia</string>
+    <string name="auto_updates_sound">Sonido de la notificación</string>
+    <string name="auto_updates_wifi_only">Descargar solo con Wi-Fi</string>
+    <string name="blur_effect">Efecto de desenfoque (blur)</string>
+    <string name="clear_cache">Limpiar caché</string>
+    <string name="confirm_exit">Confirmar al salir</string>
+    <string name="data_saver_mode">Modo de ahorro de datos</string>
+    <string name="default_start_tab">Pestaña de inicio por defecto</string>
+    <string name="enable_background_sync">Activar sincronización</string>
+    <string name="enable_reminders">Activar recordatorios</string>
+    <string name="enable_auto_updates">Comprobar actualizaciones automáticamente</string>
+    <string name="font_family">Familia tipográfica</string>
+    <string name="font_family_monospace">Monoespaciada</string>
+    <string name="font_family_sans">Sans‑serif</string>
+    <string name="font_family_serif">Serif</string>
+    <string name="font_family_system">Sistema</string>
+    <string name="font_size">Tamaño de fuente</string>
+    <string name="font_size_large">Grande</string>
+    <string name="font_size_medium">Mediano</string>
+    <string name="font_size_small">Pequeño</string>
+    <string name="font_size_xlarge">Muy grande</string>
+    <string name="notif_ephemerides">Efemérides</string>
+    <string name="notif_external_events">Eventos externos</string>
+    <string name="notif_news">Noticias</string>
+    <string name="notif_posts">Posts</string>
+    <string name="notif_schedule">Horario</string>
+    <string name="notif_school_events">Eventos escolares</string>
+    <string name="reminder_lead_time">Antelación</string>
+    <string name="reminder_sound">Sonido del recordatorio</string>
+    <string name="reset_settings">Restablecer ajustes</string>
+    <string name="show_featured_news">Mostrar noticias destacadas en inicio</string>
+    <string name="show_featured_posts">Mostrar posts destacados en inicio</string>
+    <string name="show_daily_ephemeris">Mostrar efeméride del día en inicio</string>
+    <string name="show_current_shift">Mostrar turno actual en inicio</string>
+    <string name="sound_default">Predeterminado del sistema</string>
+    <string name="sound_silence">Silencio</string>
+    <string name="sync_freq_ephemerides">Efemérides</string>
+    <string name="sync_freq_external_events">Eventos externos</string>
+    <string name="sync_freq_news">Noticias</string>
+    <string name="sync_freq_posts">Posts</string>
+    <string name="sync_freq_schedule">Horario</string>
+    <string name="sync_freq_school_events">Eventos escolares</string>
+    <string name="wifi_only_background">Sincronizar solo con Wi-Fi</string>
+
+    <!-- ==================== FRECUENCIAS DE SINCRONIZACIÓN ==================== -->
+    <string name="freq_30min">30 minutos</string>
+    <string name="freq_1h">1 hora</string>
+    <string name="freq_2h">2 horas</string>
+    <string name="freq_4h">4 horas</string>
+    <string name="freq_12h">12 horas</string>
+    <string name="freq_24h">24 horas</string>
+
+    <!-- ==================== ANTELACIÓN DE RECORDATORIOS ==================== -->
+    <string name="lead_1h">1 hora</string>
+    <string name="lead_12h">12 horas</string>
+    <string name="lead_24h">1 día</string>
+    <string name="lead_48h">2 días</string>
+
+    <!-- ==================== ACTUALIZACIONES AUTOMÁTICAS ==================== -->
+    <string name="update_3d">3 días</string>
+    <string name="update_7d">7 días</string>
+    <string name="update_15d">15 días</string>
+    <string name="update_30d">30 días</string>
+
+    <!-- ==================== DIÁLOGOS ==================== -->
+    <string name="auto_updates_freq_changed">Frecuencia de actualización cambiada</string>
+    <string name="cache_cleared">Caché limpiada correctamente</string>
+    <string name="cache_clear_error">Error al limpiar la caché</string>
+    <string name="clear_cache_message">Se eliminarán todos los archivos temporales y datos cacheados. ¿Deseas continuar?</string>
+    <string name="clear_cache_title">Limpiar caché</string>
+    <string name="confirm_exit_message">¿Estás seguro de que quieres salir?</string>
+    <string name="confirm_exit_title">Salir de la aplicación</string>
+    <string name="data_saver_disabled">Modo ahorro de datos desactivado</string>
+    <string name="data_saver_enabled">Modo ahorro de datos activado</string>
+    <string name="default_tab_changed_restart">El cambio se aplicará al reiniciar la app</string>
+    <string name="reminder_lead_time_changed">La antelación se aplicará a nuevos eventos</string>
+    <string name="reset_settings_message">Se perderán todas tus configuraciones personalizadas (idioma, tema, etc.). Tu cuenta no se cerrará. ¿Deseas continuar?</string>
+    <string name="reset_settings_title">Restablecer ajustes</string>
+    <string name="sync_freq_changed">Frecuencia actualizada (se aplicará en la próxima sincronización)</string>
+
+    <!-- ==================== MENSAJES ==================== -->
+    <string name="message_account_updated">Datos actualizados correctamente</string>
+    <string name="message_advanced_changes_warning">Los cambios en el carnet de identidad o rol requerirán una nueva verificación de la cuenta. ¿Desea continuar?</string>
+    <string name="message_avatar_uploaded">Avatar actualizado correctamente</string>
+    <string name="message_click_hint">Click!</string>
+    <string name="message_delete_post_confirm">¿Estás seguro de que deseas eliminar este post? Esta acción no se puede deshacer.</string>
+    <string name="message_empty_ephemerides">No hay efemérides para esta fecha</string>
+    <string name="message_empty_events">No hay eventos para estas fechas</string>
+    <string name="message_empty_news">No hay noticias</string>
+    <string name="message_empty_posts">No hay posts</string>
+    <string name="message_loading_cache">No hay conexión. Mostrando datos guardados.</string>
+    <string name="message_load_more_error">No fue posible cargar más posts\nToca para reintentar</string>
+    <string name="message_logout_confirm">¿Estás seguro de que deseas cerrar sesión?</string>
+    <string name="message_new_version_details">Versión %1$s\n\n%2$s</string>
+    <string name="message_no_connection">No se pudo conectar con el servidor</string>
+    <string name="message_no_groups">No hay grupos disponibles</string>
+    <string name="message_no_schedule">No hay horario para este grupo</string>
+    <string name="message_offline_mode">Modo sin conexión, los datos están desactualizados</string>
+    <string name="message_password_updated">Contraseña actualizada correctamente</string>
+    <string name="message_preview_empty">No has escrito ningún contenido</string>
+    <string name="message_select_day_month">Seleccione día y mes</string>
+
+    <!-- ==================== PESTAÑAS ==================== -->
+    <string name="tab_ephemerides">Efemérides</string>
+    <string name="tab_events">Eventos</string>
+    <string name="tab_external_events">Externos</string>
+    <string name="tab_home">Inicio</string>
+    <string name="tab_news">Noticias</string>
+    <string name="tab_posts">Posts</string>
+    <string name="tab_profile">Perfil</string>
+    <string name="tab_schedule">Horario escolar</string>
+    <string name="tab_school_events">Escolares</string>
+
+    <!-- ==================== HOME ==================== -->
+    <string name="title_daily_ephemeris">Efeméride del día</string>
+    <string name="title_current_shift">Turno actual</string>
+    <string name="label_no_ephemeris_today">No hay efeméride para hoy</string>
+    <string name="label_no_shift_assigned">Sin turno asignado</string>
+    <string name="label_free">Libre</string>
+
+    <!-- ==================== ERRORES ==================== -->
+    <string name="error_account_banned">Su cuenta ha sido baneada temporalmente por su comportamiento inadecuado</string>
+    <string name="error_account_update">Error al actualizar los datos</string>
+    <string name="error_avatar_upload">Error al subir el avatar</string>
+    <string name="error_check_update_failed">Error al comprobar la actualización</string>
+    <string name="error_connection">Error de conexión</string>
+    <string name="error_content_required">El contenido es obligatorio</string>
+    <string name="error_deleting_post">Error al eliminar el post</string>
+    <string name="error_general">Error</string>
+    <string name="error_group_required">El grupo es requerido</string>
+    <string name="error_id_exists">El carnet de identidad ya existe</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_invalid_first_name">Introduzca nombres válidos</string>
+    <string name="error_invalid_id">Introduzca un carnet de identidad válido</string>
+    <string name="error_invalid_last_name">Introduzca apellidos válidos</string>
+    <string name="error_invalid_password">Introduzca una contraseña válida</string>
+    <string name="error_invalid_username">Introduzca un usuario válido</string>
+    <string name="error_loading_data">Error al cargar los datos</string>
+    <string name="error_loading_groups">Error al cargar los grupos</string>
+    <string name="error_loading_schedule">Error al cargar el horario</string>
+    <string name="error_login_required">Debes iniciar sesión para realizar esta acción</string>
+    <string name="error_parsing_data">Error al procesar los datos</string>
+    <string name="error_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="error_processing_response">Error al procesar la respuesta</string>
+    <string name="error_reporting_post">Error al reportar el post</string>
+    <string name="error_responsibilities_required">Las responsabilidades son requeridas</string>
+    <string name="error_school_required">La escuela es requerida</string>
+    <string name="error_self_vote">No puedes votar tu propio post</string>
+    <string name="error_title_required">El título es obligatorio</string>
+    <string name="error_tutee_required">El nombre del educando es requerido</string>
+    <string name="error_unknown">Error desconocido</string>
+    <string name="error_update_check_connection">No se pudo comprobar. Verifica tu conexión.</string>
+    <string name="error_user_not_found">Usuario no encontrado</string>
+    <string name="error_username_exists">El nombre de usuario ya existe</string>
+
+    <!-- Nuevos errores (hardcode eliminado) -->
+    <string name="error_network_connection">Error de conexión. Verifica tu internet.</string>
+    <string name="error_profile_not_found">No se encontró el perfil.</string>
+    <string name="error_authentication_failed">Sesión expirada. Inicia sesión nuevamente.</string>
+    <string name="error_data_corrupted">Los datos del perfil están dañados.</string>
+    <string name="error_server">Error en el servidor. Intenta más tarde.</string>
+    <string name="error_post_not_found">Post no encontrado.</string>
+    <string name="error_loading_post">Error al cargar el post.</string>
+    <string name="error_event_not_found">Evento no encontrado.</string>
+
+    <!-- ==================== TOASTS ==================== -->
+    <string name="toast_disable_battery_optimization_manually">Desactiva la optimización desde Ajustes del sistema</string>
+    <string name="toast_error_loading_posts_fragment">Error: no se pudo acceder al fragmento de posts</string>
+    <string name="toast_group_loaded">Grupo cargado</string>
+    <string name="toast_login_required_delete">Debes iniciar sesión para eliminar un post</string>
+    <string name="toast_login_required_report">Debes iniciar sesión para reportar un post</string>
+    <string name="toast_no_file_selected">No ha seleccionado un archivo</string>
+    <string name="toast_no_internet">Sin conexión a Internet</string>
+    <string name="toast_option_only_register">Esta opción solo está disponible al registrarse</string>
+    <string name="toast_post_created">Post creado correctamente</string>
+    <string name="toast_post_deleted">Post eliminado correctamente</string>
+    <string name="toast_report_sent">Reporte enviado correctamente</string>
+    <string name="toast_retry_offline">Reintentar</string>
+    <string name="toast_vote_connection_error">Error de conexión. No se pudo enviar el voto.</string>
+    <string name="toast_you_have_latest_version">Ya tienes la última versión</string>
+    <string name="toast_at_least_one_element_required">Debes mantener al menos un elemento visible en la pantalla de inicio</string>
+
+    <!-- ==================== PERMISOS ==================== -->
+    <string name="permission_battery_optimization_desc">Permite que la app se ejecute en segundo plano sin retrasos</string>
+    <string name="permission_battery_optimization_title">Optimización de batería</string>
+    <string name="permission_notifications_desc">Permite que la app muestre notificaciones en el dispositivo</string>
+    <string name="permission_notifications_title">Notificaciones</string>
+    <string name="permissions_intro">PreuSync necesita los siguientes permisos para funcionar correctamente</string>
+    <string name="permission_optional">Opcional</string>
+    <string name="permission_required">Obligatorio</string>
+
+    <!-- ==================== ONBOARDING ==================== -->
+    <string name="onboarding_accept_terms">Acepto las condiciones de uso</string>
+    <string name="onboarding_already_have_account">Ya tengo una cuenta de usuario</string>
+    <string name="onboarding_desc_1">Plataforma interactiva para educandos, tutores y profesores de los preuniversitarios de nuestro país</string>
+    <string name="onboarding_desc_2">Disfruta de todas las funciones gratuitamente</string>
+    <string name="onboarding_desc_3">Ahora debes autentificarte para poder utilizar nuestros servicios</string>
+    <string name="onboarding_title_1">Le presentamos a</string>
+    <string name="onboarding_title_3">¡Listo!</string>
+
+    <!-- ==================== TÉRMINOS Y CONDICIONES ==================== -->
+    <string name="terms_PreuSync">&#10;    Para utilizar PreuSync, usted debe aceptar las siguientes condiciones:&lt;br/&gt;&lt;br/&gt;&#10;    1. &lt;b&gt;Licencia y Uso&lt;/b&gt;&lt;br/&gt;&#10;    PreuSync es un software gratuito. Queda prohibida la monetización de cualquier contenido generado o obtenido a través de esta plataforma.&lt;br/&gt;&lt;br/&gt;&#10;    2. &lt;b&gt;Veracidad de la Información&lt;/b&gt;&lt;br/&gt;&#10;    Los datos proporcionados durante el registro deben ser verídicos. En caso de detectar información falsa, su cuenta y el dispositivo asociado podrán ser suspendidos temporal o permanentemente, según la gravedad de la infracción.&lt;br/&gt;&lt;br/&gt;&#10;    3. &lt;b&gt;Contenido Permitido&lt;/b&gt;&lt;br/&gt;&#10;    Solo se permite publicar contenido relacionado con la comunidad educativa (estudiantes, profesores o instituciones) de nuestro país, ya sea de forma directa o indirecta.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;4. Prohibiciones&lt;/b&gt;&lt;br/&gt;&#10;    Está estrictamente prohibido:&lt;br/&gt;&#10;    - Publicar contenido discriminatorio (basado en raza, género, religión, ideología, etc.).&lt;br/&gt;&#10;    - Distribuir SPAM o material no solicitado.&lt;br/&gt;&#10;    - Compartir contenido restringido para mayores de 18 años o que infrinja derechos de terceros.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;5. Cuentas de Estudiantes&lt;/b&gt;&lt;br/&gt;&#10;    Los menores de edad deben contar con la autorización expresa de sus tutores legales para registrarse. De lo contrario, la cuenta será eliminada sin previo aviso.&#10;    </string>
+
+    <!-- ==================== ROLES ==================== -->
+    <string name="role_student">Educando</string>
+    <string name="role_teacher">Trabajador docente</string>
+    <string name="role_tutor">Tutor</string>
+
+    <!-- ==================== CANALES DE NOTIFICACIÓN ==================== -->
+    <string name="notification_channel_ephemerides_desc">Notificaciones de efemérides diarias</string>
+    <string name="notification_channel_ephemerides_name">Efemérides</string>
+    <string name="notification_channel_events_desc">Notificaciones de eventos próximos</string>
+    <string name="notification_channel_events_name">Eventos</string>
+    <string name="notification_channel_foreground_desc">En este canal se muestra la notificación principal de la app. Permite que esta trabaje en segundo plano.</string>
+    <string name="notification_channel_foreground_name">Servicio en segundo plano</string>
+    <string name="notification_channel_general_desc">Canal para notificaciones comunes</string>
+    <string name="notification_channel_general_name">Notificaciones generales</string>
+    <string name="notification_channel_news_desc">Notificaciones de nuevas noticias</string>
+    <string name="notification_channel_news_name">Noticias</string>
+    <string name="notification_channel_posts_desc">Notificaciones de nuevos posts</string>
+    <string name="notification_channel_posts_name">Posts</string>
+    <string name="notification_channel_reminders_desc">Notificaciones de recordatorios</string>
+    <string name="notification_channel_reminders_name">Recordatorios</string>
+    <string name="notification_channel_schedule_desc">Notificaciones de cambios en el horario</string>
+    <string name="notification_channel_schedule_name">Horario escolar</string>
+    <string name="notification_channel_updates_desc">Notificaciones de nuevas versiones</string>
+    <string name="notification_channel_updates_name">Actualizaciones</string>
+
+    <!-- ==================== CONTENIDO DE NOTIFICACIONES ==================== -->
+    <string name="notification_ephemeris_title">Efeméride: %1$s</string>
+    <string name="notification_event_text">Lugar: %1$s | Hora: %2$s</string>
+    <string name="notification_event_title">Evento: %1$s</string>
+    <string name="notification_news_title">Nueva noticia: %1$s</string>
+    <string name="notification_new_version_title">Nueva versión disponible: %1$s</string>
+    <string name="notification_post_text">Por: %1$s</string>
+    <string name="notification_post_title">Post destacado: %1$s</string>
+    <string name="notification_schedule_text">El horario del grupo %1$s ha sido actualizado.</string>
+    <string name="notification_schedule_title">Cambio en el horario</string>
+
+    <!-- ==================== ACCESOS DIRECTOS ==================== -->
+    <string name="shortcut_disabled">Acceso directo no disponible</string>
+    <string name="shortcut_news">Noticias</string>
+    <string name="shortcut_news_long">Ver las noticias</string>
+    <string name="shortcut_new_post">Nuevo post</string>
+    <string name="shortcut_new_post_long">Crear un nuevo post</string>
+    <string name="shortcut_posts">Posts</string>
+    <string name="shortcut_posts_long">Ver los posts</string>
+    <string name="shortcut_schedule">Horario</string>
+    <string name="shortcut_schedule_long">Ver el horario</string>
+
+    <!-- ==================== MENÚS ==================== -->
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_report">Reportar</string>
+    <string name="menu_share">Compartir...</string>
+
+    <!-- ==================== OPCIONES DE TEMA ==================== -->
+    <string name="theme_dark">Oscuro</string>
+    <string name="theme_default">Predeterminado del sistema</string>
+    <string name="theme_light">Claro</string>
+
+    <!-- ==================== DESCRIPCIONES DE IMÁGENES ==================== -->
+    <string name="description_event_image">Imagen del evento</string>
+
+    <!-- ==================== URLS ==================== -->
+    <string name="update_download_url">https://binaryqva.com/descargar</string>
+
+    <!-- ==================== PERFIL (adicionales) ==================== -->
+    <string name="profile_connection_error_data">Hubo un error al cargar los datos de tu cuenta, los datos pueden estar corruptos o dañados. Se cerrará la sesión.</string>
+    <string name="profile_continue">Continuar</string>
+    <string name="profile_confirm_logout">Cerrar sesión</string>
+    <string name="profile_correct_errors">Corrija los errores en el formulario</string>
+    <string name="profile_current_password_required">La contraseña actual es requerida</string>
+    <string name="profile_data_updated">Datos actualizados correctamente</string>
+    <string name="profile_error_logout">Error al cerrar sesión: %1$s</string>
+    <string name="profile_error_logout_server">Respuesta inesperada del servidor</string>
+    <string name="profile_group_label">Grupo: %1$s</string>
+    <string name="profile_group_required">El grupo es requerido</string>
+    <string name="profile_id_empty">El carnet de identidad no puede estar vacío</string>
+    <string name="profile_invalid_first_name">Nombre(s) inválido(s)</string>
+    <string name="profile_invalid_id">Carnet de identidad inválido</string>
+    <string name="profile_invalid_last_name">Apellidos inválidos</string>
+    <string name="profile_invalid_server_response">Respuesta inválida del servidor</string>
+    <string name="profile_invalid_username">Usuario inválido (mínimo 4 caracteres alfanuméricos)</string>
+    <string name="profile_loading_error_data">Error al cargar los datos de la cuenta</string>
+    <string name="profile_logout_confirmation">¿Estás seguro de que deseas cerrar sesión?</string>
+    <string name="profile_logout_progress">Cerrando sesión...</string>
+    <string name="profile_new_password_required">Debe ingresar una nueva contraseña</string>
+    <string name="profile_password_complexity">La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos</string>
+    <string name="profile_password_incorrect">Contraseña actual incorrecta</string>
+    <string name="profile_passwords_do_not_match">Las contraseñas no coinciden</string>
+    <string name="profile_responsibilities_label">Responsabilidades: %1$s</string>
+    <string name="profile_responsibilities_required">Las responsabilidades son requeridas</string>
+    <string name="profile_school_label">Escuela: %1$s</string>
+    <string name="profile_school_required">La escuela es requerida</string>
+    <string name="profile_tutee_label">Educando: %1$s</string>
+    <string name="profile_tutee_required">El nombre del educando es requerido</string>
+    <string name="profile_username_empty">El nombre de usuario no puede estar vacío</string>
+    <string name="profile_warning_message">Los cambios en el carnet de identidad o rol requerirán una nueva verificación de la cuenta. ¿Desea continuar?</string>
+    <string name="profile_warning_title">Advertencia</string>
+    <string name="profile_label_posts">Posts</string>
+    <string name="profile_label_likes">Me gusta</string>
+    <string name="profile_label_dislikes">No me gusta</string>
+    <string name="profile_title_myposts">Mis posts</string>
+
+    <!-- ==================== SESIÓN EXPIRADA ==================== -->
+    <string name="session_expired_message">Su sesión ha expirado. Por favor, inicie sesión nuevamente para continuar.</string>
+
+    <!-- ==================== TEXTOS EXTRAÍDOS AUTOMÁTICAMENTE ==================== -->
+    <string name="toast_logs_cleared">Registros vaciados</string>
+    <string name="toast_copied">Copiado</string>
+    <string name="button_donate">Donar</string>
+    <string name="label_donation_description">Puede contribuir a nuestro proyecto de forma voluntaria con una donación de créditos mediante los siguientes métodos</string>
+    <string name="toast_sent">¡Enviado!</string>
+    <string name="button_send_report_to_github">Enviar Reporte a GitHub</string>
+    <string name="error_crash_report_message">La aplicación ha encontrado un problema inesperado y ha tenido que cerrarse. Por favor, reporta este error para ayudarnos a mejorar.</string>
+    <string name="toast_logs_copied">Logs exportados al portapapeles</string>
+    <string name="hint_describe_error">Por favor, describe brevemente qué ocurrió</string>
+    <string name="text_bullet">●</string>
+</resources>
+

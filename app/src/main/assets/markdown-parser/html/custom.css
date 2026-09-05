@@ -1,0 +1,312 @@
+/*:root {
+    --color-primary: rgba(21, 101, 192, 1);
+    --color-primary-dark: rgba(13, 71, 161, 1);
+    --color-accent: rgba(106, 0, 244, 1);
+    --color-controlhighlight: rgba(192, 193, 242, 1);
+    --color-controlnormal: rgba(177, 147, 255, 1);
+    --color-secondary: rgba(21, 101, 192, 0.8);
+    --color-background: rgba(232, 234, 246, 1);
+    --color-background-card: rgba(204, 215, 227, 1);
+    --color-text: rgba(31, 8, 36, 1);
+    --color-text-hint: rgba(177, 147, 255, 0.87);
+    --color-error: rgba(255, 61, 87, 1);
+    --color-warning: rgba(255, 193, 7, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: rgba(124, 77, 255, 0.93);
+        --color-primary-dark: rgba(12, 0, 69, 1);
+        --color-accent: rgba(179, 153, 255, 1);
+        --color-controlhighlight: rgba(179, 153, 255, 0.2);
+        --color-controlnormal: rgba(135, 118, 184, 0.75);
+        --color-secondary: rgba(124, 77, 255, 0.76);
+        --color-background: rgba(12, 0, 53, 1);
+        --color-background-card: rgba(12, 0, 80, 1);
+        --color-text: rgba(247, 230, 255, 0.7);
+        --color-text-hint: rgba(135, 118, 184, 0.8);
+        --color-error: rgba(255, 109, 122, 1);
+        --color-warning: rgba(255, 202, 40, 1);
+    }
+}*/
+
+/* ─── Estilos base para el contenido Markdown ─── */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    padding: 0 12px;
+    margin: 0;
+}
+
+/* Párrafos */
+p { margin: 0 0 12px 0; }
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+h1 { font-size: 28px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+h6 { font-size: 14px; }
+
+/* Citas */
+blockquote {
+    border-left: 4px solid var(--color-accent);
+    margin: 12px 0;
+    padding: 8px 16px;
+    background-color: var(--color-background-card);
+    color: var(--color-text);
+    border-radius: 8px 8px 8px 8px;
+}
+
+/* Separador horizontal */
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-controlnormal));
+    margin: 16px 0;
+    border-radius: 3px;
+}
+
+/* Código inline */
+code.inline-code {
+    background-color: var(--color-background-card);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9em;
+    color: var(--color-text);
+}
+
+/* Bloque de código */
+.code-block {
+    margin: 12px 0;
+    border-radius: 8px;
+    background-color: var(--color-background-card);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Cabecera del bloque de código */
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: var(--color-primary-dark);
+    border-bottom: 1px solid var(--color-controlnormal);
+}
+
+.code-lang {
+    color: var(--color-text);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Botón Copiar */
+.copy-btn {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.copy-btn:active { background-color: var(--color-primary); }
+
+/* Contenido del código */
+.code-block pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+/* ──── Resaltado de sintaxis (tokens) ──── */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata { color: #6a8759; } /* Se mantienen por legibilidad del código */
+
+.token.punctuation { color: var(--color-text); }
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted { color: #b5cea8; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted { color: #ce9178; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string { color: var(--color-text); }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword { color: var(--color-secondary); }
+
+.token.function,
+.token.class-name { color: #dcdcaa; }
+
+.token.regex,
+.token.important,
+.token.variable { color: var(--color-accent); }
+
+/* Tablas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+th, td {
+    border: 1px solid var(--color-controlnormal);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-background-card);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--color-background);
+}
+
+/* ─── Listas de tareas ─── */
+ul.task-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 12px 0;
+}
+
+li.task-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+input.task-checkbox {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: default;
+}
+
+.task-text {
+    line-height: 1.6;
+}
+
+/* ─── Imágenes ─── */
+.image-container {
+    margin: 16px auto;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    overflow: hidden;
+    background-color: var(--color-background-card);
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.image-caption {
+    display: block;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    color: var(--color-text-hint);
+    text-align: center;
+    font-style: italic;
+    background-color: var(--color-background-card);
+}
+
+/* ─── Fórmulas LaTeX ─── */
+.latex-block {
+    display: block;
+    margin: 16px 0;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.latex-block img {
+    max-width: 100%;
+    height: auto;
+    image-rendering: auto;
+}
+
+.latex-inline {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+    image-rendering: auto;
+}
+
+/* ─── Enlaces ─── */
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+a:hover {
+    border-bottom-color: var(--color-secondary);
+}
+
+/* Imágenes genéricas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Texto tachado */
+del {
+    text-decoration: line-through;
+    color: var(--color-text-hint);
+}

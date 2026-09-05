@@ -1,0 +1,30 @@
+{
+  "name": "sgml",
+  "extend": "xml",
+  "tokens": [
+    {
+      "name": "entity-declaration",
+      "patterns": [
+        { "regex": "<!ENTITY\\s+[^>]+>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "element-declaration",
+      "patterns": [
+        { "regex": "<!ELEMENT\\s+[^>]+>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "attlist",
+      "patterns": [
+        { "regex": "<!ATTLIST\\s+[^>]+>", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "notation",
+      "patterns": [
+        { "regex": "<!NOTATION\\s+[^>]+>", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

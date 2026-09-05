@@ -1,0 +1,30 @@
+{
+  "name": "scala",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|case|catch|class|def|do|else|enum|export|extends|false|final|finally|for|given|if|implicit|import|lazy|match|new|null|object|override|package|private|protected|return|sealed|super|then|throw|trait|true|try|type|val|var|while|with|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Int|Long|Float|Double|Boolean|Char|String|Unit|Any|AnyVal|AnyRef|Nothing|Null|List|Set|Map|Option|Either|Try|Future)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^~:]+|<-|=>|->|::|#::" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "css",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "property",
+      "patterns": [
+        { "regex": "[a-zA-Z-]+(?=\\s*:)" }
+      ]
+    },
+    {
+      "name": "selector",
+      "patterns": [
+        { "regex": "[.*#][a-zA-Z0-9_-]+" },
+        { "regex": "[a-zA-Z][\\w-]*" }
+      ]
+    },
+    {
+      "name": "important",
+      "patterns": [
+        { "regex": "!important" }
+      ]
+    },
+    {
+      "name": "at-rule",
+      "patterns": [
+        { "regex": "@(?:media|import|supports|keyframes|font-face|charset|namespace|page|document|scope|custom-media|custom-selector|container)\\b" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: fragment_onboarding_terms.xml
+    Versión: v2.0.0
+    Descripción: Página del onboarding para la aceptación de Términos y Condiciones.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/onboardingTermsLayoutContainer">
+
+    
+<LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_8dp"
+        android:background="?attr/colorBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/termsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:text="@string/title_terms_and_conditions"
+            android:textStyle="bold"
+            android:textColor="?attr/colorText"
+            android:textSize="@dimen/text_size_25sp" />
+
+        <ScrollView
+            android:id="@+id/verticalScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/termsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_8dp"
+                android:text="@string/terms_PreuSync"
+                android:textColor="?attr/colorText"
+                android:textAlignment="textStart"
+                android:breakStrategy="high_quality"
+                android:textSize="@dimen/text_size_16sp" />
+        </ScrollView>
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:gravity="center_vertical"
+            android:text="@string/onboarding_accept_terms"
+            android:textStyle="bold"
+            android:textColor="?attr/colorText"
+            android:layout_gravity="left"
+            android:textSize="@dimen/text_size_16sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/padding_8dp"
+        android:background="?attr/colorBackground"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_25dp"
+            android:padding="@dimen/padding_8dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/button_previous"
+            android:textColor="#FFFFFF"
+            style="@style/Widget.PreuSync.Button.Global"
+            android:textSize="@dimen/text_size_14sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginbottom_25dp"
+            android:padding="@dimen/padding_8dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/button_next"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="?attr/colorControlNormal"
+            style="@style/Widget.PreuSync.Button.Global"
+            android:textSize="@dimen/text_size_14sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</LinearLayout>
+
+

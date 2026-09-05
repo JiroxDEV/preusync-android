@@ -1,0 +1,35 @@
+{
+  "name": "eiffel",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "--[^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:class|feature|inherit|create|convert|deferred|expanded|frozen|local|note|rename|redefine|select|separate|undefine|end|do|once|external|alias|require|ensure|rescue|retry|check|if|then|elseif|else|inspect|when|from|until|loop|across|some|all|as|invariant|variant|agent|old|attached|detachable|like|is|not|and|or|xor|implies|True|False|Current|Result|Precursor|Void)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:INTEGER|REAL|DOUBLE|CHARACTER|BOOLEAN|STRING|ARRAY|LIST|HASH_TABLE|ANY|NONE)\\b" }
+      ]
+    }
+  ]
+}

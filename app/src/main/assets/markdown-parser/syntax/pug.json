@@ -1,0 +1,49 @@
+{
+  "name": "pug",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//-.*" },
+        { "regex": "//[\\s\\S]*?\\n(?!\\s)", "greedy": true }
+      ]
+    },
+    {
+      "name": "doctype",
+      "patterns": [
+        { "regex": "doctype\\s+\\w+" }
+      ]
+    },
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "^\\s*[\\w-]+" }
+      ]
+    },
+    {
+      "name": "id",
+      "patterns": [
+        { "regex": "#[\\w-]+" }
+      ]
+    },
+    {
+      "name": "class",
+      "patterns": [
+        { "regex": "\\.[\\w-]+" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\([^\\)]+\\)" }
+      ]
+    },
+    {
+      "name": "code",
+      "patterns": [
+        { "regex": "=\\s.*" },
+        { "regex": "-\\s.*" }
+      ]
+    }
+  ]
+}

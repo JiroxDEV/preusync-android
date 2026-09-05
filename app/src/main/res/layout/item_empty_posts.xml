@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_empty_posts.xml
+    Versión: v1.0.0
+    Descripción: Elemento de lista que indica que no hay publicaciones disponibles.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<!--
+    ============================================================================
+    item_empty_posts.xml
+    ============================================================================
+
+    📌 ESTADO VACÍO (TYPE_EMPTY)
+    ============================================================================
+
+    Este layout se muestra cuando el usuario no tiene ningún post publicado.
+    Se muestra después de cargar el perfil y obtener una lista vacía de posts.
+
+    🔥 NOTA: Este ítem aparece únicamente cuando no hay posts, a diferencia del
+    loader que aparece durante la carga. Es un estado final que indica que el
+    usuario aún no ha creado contenido.
+
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_32dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_empty_posts"
+        android:contentDescription="@string/message_empty_posts" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:text="@string/message_empty_posts"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="?attr/colorTextHint"
+        android:gravity="center"
+        tools:text="No hay posts" />
+
+</LinearLayout>
+
+

@@ -1,0 +1,36 @@
+{
+  "name": "xquery",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\(:[\\s\\S]*?:\\)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:xquery|version|encoding|module|declare|function|import|schema|namespace|default|element|attribute|text|comment|processing-instruction|document-node|if|then|else|for|let|where|order|by|ascending|descending|return|some|every|in|satisfies|typeswitch|case|as|cast|castable|treat|instance|of|eq|ne|lt|le|gt|ge|is|isnot|and|or|div|idiv|mod|union|intersect|except|to|empty|greatest|least)\\b" }
+      ]
+    },
+    {
+      "name": "function",
+      "patterns": [
+        { "regex": "\\b[a-zA-Z_:][\\w\\-]*:[a-zA-Z_:][\\w\\-]*\\b" }
+      ]
+    }
+  ]
+}

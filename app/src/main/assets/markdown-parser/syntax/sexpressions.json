@@ -1,0 +1,36 @@
+{
+  "name": "sexpressions",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[+-]?[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "symbol",
+      "patterns": [
+        { "regex": "[^\\s()\"]+" }
+      ]
+    },
+    {
+      "name": "paren",
+      "patterns": [
+        { "regex": "\\(" },
+        { "regex": "\\)" }
+      ]
+    }
+  ]
+}

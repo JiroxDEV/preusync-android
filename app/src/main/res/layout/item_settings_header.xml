@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_settings_header.xml
+    Versión: v1.0.0
+    Descripción: Cabecera de sección en los ajustes.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/padding_16dp"
+    android:paddingBottom="@dimen/padding_8dp"
+    android:paddingStart="@dimen/padding_end_24dp"
+    android:paddingEnd="@dimen/padding_end_24dp">
+
+    <TextView
+        android:id="@+id/sectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorAccent"
+        android:textSize="@dimen/text_size_18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sectionSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/colorTextHint"
+        android:textSize="@dimen/text_size_14sp"
+        android:visibility="gone" />
+
+</LinearLayout>
+
+

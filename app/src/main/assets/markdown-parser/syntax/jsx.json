@@ -1,0 +1,25 @@
+{
+  "name": "jsx",
+  "extend": "javascript",
+  "tokens": [
+    {
+      "name": "tag",
+      "patterns": [
+        { "regex": "<\\/?[A-Z][\\w.]*[^>]*>", "greedy": true },
+        { "regex": "<\\/?[a-z][\\w-]*[^>]*>", "greedy": true }
+      ]
+    },
+    {
+      "name": "component",
+      "patterns": [
+        { "regex": "<[A-Z][\\w.]*" }
+      ]
+    },
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\{[^}]+\\}" }
+      ]
+    }
+  ]
+}

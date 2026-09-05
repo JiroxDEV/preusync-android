@@ -1,0 +1,18 @@
+{
+  "name": "opencl",
+  "extend": "c",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:__kernel|__global|__local|__constant|__private|__read_only|__write_only|__read_write|__restrict|__attribute__|get_global_id|get_local_id|get_group_id|get_num_groups|get_local_size|get_global_size|barrier|mem_fence|read_mem_fence|write_mem_fence|async_work_group_copy|wait_group_events|prefetch|vec_step|convert|as_type|select|shuffle|shuffle2|mad|modf|frexp|ldexp|floor|ceil|trunc|round|rint|sqrt|rsqrt|exp|log|sin|cos|tan|asin|acos|atan|atan2|pow|fabs|abs|clamp|min|max|dot|cross|length|distance|normalize|fast_length|fast_distance|fast_normalize)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:char2|char4|char8|char16|uchar2|uchar4|uchar8|uchar16|short2|short4|short8|short16|ushort2|ushort4|ushort8|ushort16|int2|int4|int8|int16|uint2|uint4|uint8|uint16|long2|long4|long8|long16|ulong2|ulong4|ulong8|ulong16|float2|float4|float8|float16|double2|double4|double8|double16|half2|half4|half8|half16|image2d_t|image3d_t|sampler_t|event_t|queue_t|ndrange_t|clk_event_t|reserve_id_t)\\b" }
+      ]
+    }
+  ]
+}

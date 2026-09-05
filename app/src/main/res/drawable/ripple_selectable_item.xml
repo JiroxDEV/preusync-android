@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: ripple_selectable_item.xml
+    Versión: v1.0.1
+    Descripción: Efecto Ripple para elementos seleccionables (listas, tarjetas).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlNormal" >
+        <item>
+            <shape android:shape="rectangle">
+                 <solid android:color="?attr/colorControlHighlight" />
+                 <corners
+                      android:radius="12dp">
+                 </corners>
+            </shape>
+        </item>
+</ripple>
+
+

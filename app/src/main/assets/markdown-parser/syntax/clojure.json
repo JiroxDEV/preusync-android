@@ -1,0 +1,50 @@
+{
+  "name": "clojure",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "#_\\S.*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": ":[a-zA-Z\\*\\+\\!\\-\\_\\?][\\w\\*\\+\\!\\-\\_\\?]*" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b-?[0-9]+[rR][0-9a-zA-Z]+\\b" },
+        { "regex": "\\b-?[0-9]+(?:\\.[0-9]*)?(?:[eE][+-]?[0-9]+)?[M]?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:def|defn|defmacro|defmulti|defmethod|defprotocol|defrecord|deftype|definterface|defstruct|ns|in-ns|import|require|use|refer|gen-class|proxy|reify|extend|extend-type|extend-protocol|let|letfn|fn|if|when|when-let|if-let|cond|condp|case|loop|recur|for|doseq|dotimes|while|try|catch|finally|throw|do|doto|->|->>|as->|some->|some->>|cond->|cond->>)\\b" }
+      ]
+    },
+    {
+      "name": "symbol",
+      "patterns": [
+        { "regex": "[a-zA-Z\\*\\+\\!\\-\\_\\?][\\w\\*\\+\\!\\-\\_\\?]*" }
+      ]
+    },
+    {
+      "name": "character",
+      "patterns": [
+        { "regex": "\\\\.\\S*" }
+      ]
+    }
+  ]
+}

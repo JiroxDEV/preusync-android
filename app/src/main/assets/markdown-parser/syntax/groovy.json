@@ -1,0 +1,33 @@
+{
+  "name": "groovy",
+  "extend": "java",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:as|assert|break|case|catch|class|const|continue|def|default|do|else|enum|extends|false|finally|for|goto|if|implements|import|in|instanceof|interface|new|null|package|return|super|switch|this|throw|throws|trait|true|try|while)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:String|Integer|Long|Float|Double|Boolean|List|Map|Set|Range|Closure|Pattern)\\b" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "\"\"\"[\\s\\S]*?\"\"\"", "greedy": true },
+        { "regex": "'''[\\s\\S]*?'''", "greedy": true }
+      ]
+    },
+    {
+      "name": "gstring",
+      "patterns": [
+        { "regex": "\"[^\"\\\\]*(?:\\.[^\"\\\\]*)*\\$\\{[^}]+\\}[^\"\\\\]*\"", "greedy": true }
+      ]
+    }
+  ]
+}

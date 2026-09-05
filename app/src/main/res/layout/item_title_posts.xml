@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_title_posts.xml
+    Versión: v1.0.0
+    Descripción: Título de sección para publicaciones en el inicio (ej: "Posts destacados").
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/featuredPostsTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp"
+    android:paddingTop="@dimen/padding_8dp"
+    android:text="@string/label_featured_posts"
+    android:textStyle="bold"
+    android:textColor="?attr/colorAccent"
+    android:textSize="@dimen/text_size_20sp"
+    android:singleLine="true" />
+
+

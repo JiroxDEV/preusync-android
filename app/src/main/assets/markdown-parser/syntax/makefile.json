@@ -1,0 +1,30 @@
+{
+  "name": "makefile",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$\\([^()]+\\)" },
+        { "regex": "\\$\\{[^{}]+\\}" }
+      ]
+    },
+    {
+      "name": "target",
+      "patterns": [
+        { "regex": "^[a-zA-Z0-9_./-]+\\s*:", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|ifeq|ifneq|ifdef|ifndef|else|endif|include|define|endef|export|unexport|vpath|wildcard|subst|patsubst|strip|findstring|filter|filter-out|sort|word|words|wordlist|firstword|lastword|dir|notdir|suffix|basename|addsuffix|addprefix|join|realpath|abspath|shell|error|warning|info)\\b" }
+      ]
+    }
+  ]
+}

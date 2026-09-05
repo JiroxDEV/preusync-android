@@ -1,0 +1,38 @@
+{
+  "name": "pascal",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{[^}]*\\}" },
+        { "regex": "\\(\\*[\\s\\S]*?\\*\\)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\$[0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:absolute|and|array|asm|begin|break|case|const|constructor|continue|destructor|div|do|downto|else|end|file|for|function|goto|if|implementation|in|inherited|inline|interface|is|label|mod|nil|not|object|of|on|operator|or|packed|procedure|program|record|reintroduce|repeat|self|set|shl|shr|string|then|to|type|unit|until|uses|var|while|with|xor)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/<>=]+|:=|\\." }
+      ]
+    }
+  ]
+}

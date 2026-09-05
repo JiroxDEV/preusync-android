@@ -1,0 +1,35 @@
+{
+  "name": "handlebars",
+  "tokens": [
+    {
+      "name": "expression",
+      "patterns": [
+        { "regex": "\\{\\{\\{?[^}]+\\}?\\}\\}" }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "\\{\\{#[^}]+\\}\\}[\\s\\S]*?\\{\\{/[^}]+\\}\\}", "greedy": true }
+      ]
+    },
+    {
+      "name": "helper",
+      "patterns": [
+        { "regex": "\\{\\{[^#/][^}]*\\}\\}" }
+      ]
+    },
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\\{\\{![^}]*\\}\\}" }
+      ]
+    },
+    {
+      "name": "partial",
+      "patterns": [
+        { "regex": "\\{\\{>[^}]*\\}\\}" }
+      ]
+    }
+  ]
+}

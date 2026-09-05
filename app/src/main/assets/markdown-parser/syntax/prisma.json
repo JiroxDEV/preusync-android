@@ -1,0 +1,41 @@
+{
+  "name": "prisma",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:model|enum|datasource|generator|provider|output|client|binaryTargets)\\b" }
+      ]
+    },
+    {
+      "name": "type",
+      "patterns": [
+        { "regex": "\\b(?:String|Int|BigInt|Float|Boolean|DateTime|Json|Bytes|Decimal)\\b" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "@[a-zA-Z]+(?:\\.[a-zA-Z]+)?" }
+      ]
+    },
+    {
+      "name": "relation",
+      "patterns": [
+        { "regex": "\\b(?:@id|@default|@unique|@updatedAt|@relation|@map|@\\@\\w+)" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    }
+  ]
+}

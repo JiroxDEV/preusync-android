@@ -1,0 +1,56 @@
+{
+  "name": "smalltalk",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "\"[^\"]*\"" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b2r[01]+\\b" },
+        { "regex": "\\b16r[0-9a-fA-F]+\\b" }
+      ]
+    },
+    {
+      "name": "symbol",
+      "patterns": [
+        { "regex": "#[a-zA-Z_]\\w*" },
+        { "regex": "#:'[^']*'" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:self|super|nil|true|false|thisContext)\\b" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\|[^|]+\\|" }
+      ]
+    },
+    {
+      "name": "block",
+      "patterns": [
+        { "regex": "\\[[^\\]]*\\]" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/\\\\<>=~@&|?!,]+" }
+      ]
+    }
+  ]
+}

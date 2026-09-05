@@ -1,0 +1,30 @@
+{
+  "name": "dart",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:abstract|as|assert|async|await|break|case|catch|class|const|continue|covariant|default|deferred|do|dynamic|else|enum|export|extends|extension|external|factory|false|final|finally|for|Function|get|hide|if|implements|import|in|interface|is|late|library|mixin|new|null|on|operator|part|required|rethrow|return|set|show|static|super|switch|sync|this|throw|true|try|typedef|var|void|while|with|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:int|double|num|String|bool|List|Map|Set|Object|dynamic|Never|void|Future|Stream|Iterable)\\b" }
+      ]
+    },
+    {
+      "name": "annotation",
+      "patterns": [
+        { "regex": "@\\w+" }
+      ]
+    },
+    {
+      "name": "string-interpolation",
+      "patterns": [
+        { "regex": "\\$\\w+" }
+      ]
+    }
+  ]
+}

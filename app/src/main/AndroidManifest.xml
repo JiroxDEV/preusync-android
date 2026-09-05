@@ -1,0 +1,187 @@
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Manifiesto: AndroidManifest.xml
+	Versión: v5.0.0
+    Descripción: Manifiesto de la aplicación. Declara permisos, actividades,
+                 servicios y receptores de broadcast.
+	Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="binaryqva.educative.preusync">
+
+	<!-- ==================== PERMISOS DE RED ==================== -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+	<!-- ==================== PERMISOS DE NOTIFICACIONES ==================== -->
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+	<!-- ==================== PERMISOS DE ALMACENAMIENTO ==================== -->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+		android:maxSdkVersion="32" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+		android:maxSdkVersion="29" />
+	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+	<uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+
+	<!-- ==================== PERMISOS DE SERVICIOS EN SEGUNDO PLANO ==================== -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+	<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+
+	<!-- ==================== APLICACIÓN ==================== -->
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:name=".App"
+		android:usesCleartextTraffic="true"
+		android:enableOnBackInvokedCallback="true"
+		android:theme="@style/Theme.PreuSync.Dynamic">
+
+		<!-- ==================== ACTIVITIES ==================== -->
+		<activity
+			android:name=".ui.activities.SplashActivity"
+			android:theme="@style/Theme.AppSplash"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<meta-data
+				android:name="android.app.shortcuts"
+				android:resource="@xml/shortcuts" />
+		</activity>
+
+		<activity
+			android:name=".ui.activities.AuthActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="adjustResize" />
+
+		<activity
+			android:name=".ui.activities.HomeActivity"
+			android:theme="@style/Theme.AppSplash"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait"
+			android:exported="true"
+			android:launchMode="singleTop">
+			<!-- ACCIONES ACTUALIZADAS A INGLÉS -->
+			<intent-filter>
+				<action android:name="NEW_POST" />
+				<action android:name="NEWS" />
+				<action android:name="SCHEDULE" />
+				<action android:name="POSTS" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".ui.activities.OnboardingActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.SettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.AboutActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.GeneralSettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.DonateActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.AppearanceSettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<activity
+			android:name=".ui.activities.ServicesSettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+
+		<!-- ==================== SERVICES & RECEIVERS ==================== -->
+		<service
+			android:name=".services.PersistentService"
+			android:exported="false"
+			android:foregroundServiceType="specialUse">
+			<property
+				android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+				android:value="Mantener sincronización en segundo plano" />
+		</service>
+
+		<receiver android:name=".services.ReminderReceiver" android:exported="false" />
+		<receiver android:name=".services.BackgroundServiceExecutorReceiver" android:exported="false" />
+
+		<receiver
+			android:name=".services.BootReceiver"
+			android:enabled="true"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.QUICKBOOT_POWERON" />
+			</intent-filter>
+		</receiver>
+
+		<uses-library
+			android:name="org.apache.http.legacy"
+			android:required="false" />
+		<activity
+			android:name=".debug.CrashReportActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait"
+			android:exported="false" />
+
+		<activity
+			android:name=".debug.LogConsoleActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:screenOrientation="portrait"
+			android:exported="false"
+			android:theme="@style/Theme.PreuSync.Dynamic" />
+
+	</application>
+</manifest>

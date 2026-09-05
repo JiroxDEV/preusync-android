@@ -1,0 +1,55 @@
+{
+  "name": "elixir",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#[^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'[^']*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "sigil",
+      "patterns": [
+        { "regex": "~[a-z][\\/[|{<\"'][^\\n]*?[\\/\\]|}>\"']", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "atom",
+      "patterns": [
+        { "regex": ":[a-zA-Z_]\\w*[?!]?" }
+      ]
+    },
+    {
+      "name": "module",
+      "patterns": [
+        { "regex": "\\b[A-Z][\\w]*(?:\\.[A-Z][\\w]*)*\\b" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:fn|end|case|cond|if|unless|else|do|for|in|try|catch|rescue|after|raise|throw|receive|spawn|send|quote|unquote|unquote_splicing|require|import|use|alias|def|defp|defmodule|defmacro|defmacrop|defstruct|defexception|defimpl|defprotocol)\\b" }
+      ]
+    },
+    {
+      "name": "operator",
+      "patterns": [
+        { "regex": "[+\\-*/%<>=!&|^]+|\\|>|<\\||->|::|<-|\\\\" }
+      ]
+    }
+  ]
+}

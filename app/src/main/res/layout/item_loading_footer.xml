@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Layout: item_loading_footer.xml
+    Versión: v1.0.0
+    Descripción: Pie de página de carga para listas paginadas (indicador de más elementos).
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loadingContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="@dimen/padding_16dp"
+    android:orientation="vertical">
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/footerLoadingIndicator"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:indicatorSize="40dp" />
+</LinearLayout>
+
+

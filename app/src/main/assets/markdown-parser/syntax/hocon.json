@@ -1,0 +1,48 @@
+{
+  "name": "hocon",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "#[^\\n]*" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" }
+      ]
+    },
+    {
+      "name": "key",
+      "patterns": [
+        { "regex": "^[a-zA-Z_][\\w.-]*\\s*[:=]?", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "boolean",
+      "patterns": [
+        { "regex": "\\b(?:true|false|yes|no|on|off)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "null",
+      "patterns": [
+        { "regex": "\\b(?:null|none)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "substitution",
+      "patterns": [
+        { "regex": "\\$\\{[^}]+\\}" }
+      ]
+    }
+  ]
+}

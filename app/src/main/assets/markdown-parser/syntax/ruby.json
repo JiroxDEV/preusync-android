@@ -1,0 +1,58 @@
+{
+  "name": "ruby",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" },
+        { "regex": "^=begin[\\s\\S]*?^=end", "flags": "MULTILINE" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true },
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true },
+        { "regex": "%[qQ]?\\{[^}]*\\}", "greedy": true },
+        { "regex": "%[qQ]?\\([^\\)]*\\)", "greedy": true },
+        { "regex": "%[qQ]?\\[[^\\]]*\\]", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\\b" },
+        { "regex": "\\b0[xX][0-9a-fA-F]+\\b" },
+        { "regex": "\\b0[bB][01]+\\b" },
+        { "regex": "\\b0[oO][0-7]+\\b" }
+      ]
+    },
+    {
+      "name": "symbol",
+      "patterns": [
+        { "regex": ":[a-zA-Z_]\\w*[?!]?" },
+        { "regex": ":'[^']*'" },
+        { "regex": ":\"[^\"]*\"" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "@@?[a-zA-Z_]\\w*" },
+        { "regex": "\\$[a-zA-Z_]\\w*" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:BEGIN|END|alias|and|begin|break|case|class|def|defined\\?|do|else|elsif|end|ensure|false|for|if|in|module|next|nil|not|or|redo|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:Array|Hash|String|Symbol|Numeric|Integer|Float|Range|Regexp|Time|Date|DateTime|Exception)\\b" }
+      ]
+    }
+  ]
+}

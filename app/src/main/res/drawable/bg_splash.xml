@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: bg_splash.xml
+    Versión: v1.0.0
+    Descripción: Fondo de la pantalla de inicio con gradiente o color sólido..
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo sólido -->
+    <item android:drawable="@color/colorBackground" />
+
+    <!-- Logo principal: centrado con su tamaño natural -->
+    <item
+        android:drawable="@drawable/splash_logo"
+        android:gravity="center" />
+
+    <!-- Branding en la parte inferior, centrado, sin estirar -->
+    <item>
+        <bitmap
+            android:src="@drawable/ic_branding"
+            android:gravity="bottom|center_horizontal"
+            android:antialias="true"
+            android:filter="true" />
+    </item>
+</layer-list>
+
+

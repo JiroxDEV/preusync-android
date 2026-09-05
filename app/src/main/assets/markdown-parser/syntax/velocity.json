@@ -1,0 +1,31 @@
+{
+  "name": "velocity",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "##.*" },
+        { "regex": "#\\*[\\s\\S]*?\\*#", "greedy": true }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "#[a-zA-Z]+\\([^\\)]*\\)" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "\\$!?[a-zA-Z_]\\w*" },
+        { "regex": "\\$\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:if|else|elseif|end|foreach|in|include|parse|set|macro|stop|break)\\b" }
+      ]
+    }
+  ]
+}

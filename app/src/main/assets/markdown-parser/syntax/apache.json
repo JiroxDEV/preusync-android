@@ -1,0 +1,35 @@
+{
+  "name": "apache",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "#.*" }
+      ]
+    },
+    {
+      "name": "directive",
+      "patterns": [
+        { "regex": "\\b(?:ServerRoot|Listen|ServerName|ServerAdmin|ServerAlias|DocumentRoot|DirectoryIndex|ErrorLog|CustomLog|LogLevel|LoadModule|Include|User|Group|PidFile|Timeout|KeepAlive|MaxKeepAliveRequests|KeepAliveTimeout|HostnameLookups|ErrorDocument|AllowOverride|Options|Require|Order|Allow|Deny|Satisfy|Redirect|RewriteEngine|RewriteRule|RewriteCond|ProxyPass|ProxyPassReverse|SSLEngine|SSLCertificateFile|SSLCertificateKeyFile|SetEnvIf|AddType|AddHandler|AddEncoding)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "variable",
+      "patterns": [
+        { "regex": "%\\{[^}]+\\}" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"[^\"]*\"" }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "<\\/?[A-Za-z]+(?:\\s+\\S+)*>", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

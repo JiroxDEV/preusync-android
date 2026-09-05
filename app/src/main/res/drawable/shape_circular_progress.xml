@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ============================================================================
+    Proyecto: PreuSync
+    Drawable: shape_circular_progress.xml
+    Versión: v1.0.0
+    Descripción: Forma circular para la barra de progreso.
+    Autor: JiroxDEV
+    Licensed under the GNU Affero General Public License v3
+    ============================================================================
+-->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:innerRadiusRatio="3"
+    android:thicknessRatio="8"
+    android:useLevel="false">
+
+    <solid android:color="?attr/colorAccent" />
+    <size
+        android:width="48dp"
+        android:height="48dp" />
+</shape>
+
+

@@ -1,0 +1,48 @@
+{
+  "name": "graphviz-dot",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": "//[^\\n]*" },
+        { "regex": "/\\*[\\s\\S]*?\\*/", "greedy": true }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "\"(?:[^\"\\\\]|\\\\.)*\"", "greedy": true }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:digraph|graph|subgraph|node|edge|strict)\\b" }
+      ]
+    },
+    {
+      "name": "attribute",
+      "patterns": [
+        { "regex": "\\b(?:label|shape|color|fillcolor|style|fontname|fontsize|fontcolor|bgcolor|rankdir|ratio|size|dpi|splines|overlap|concentrate|ordering|orientation|rank|clusterrank|labelloc|labeljust|pad|margin|compound|outputorder|pagedir|rotate|center|nslimit|nslimit1|mclimit|searchsize|maxiter|epsilon)\\b" }
+      ]
+    },
+    {
+      "name": "shape",
+      "patterns": [
+        { "regex": "\\b(?:box|polygon|ellipse|oval|circle|point|egg|triangle|plaintext|plain|diamond|trapezium|parallelogram|house|pentagon|hexagon|septagon|octagon|doublecircle|doubleoctagon|tripleoctagon|invtriangle|invtrapezium|invhouse|Mdiamond|Msquare|Mcircle|rect|rectangle|square|star|cylinder|note|tab|folder|box3d|component|promoter|cds|terminator|utr|primersite|restrictionsite|fivepoverhang|threepoverhang|noverhang|assembly|signature|insulator|ribosite|rnastab|proteasesite|proteinstab|rpromoter|rarrow|larrow|lpromoter)\\b" }
+      ]
+    },
+    {
+      "name": "arrow",
+      "patterns": [
+        { "regex": "->|<->|--" }
+      ]
+    },
+    {
+      "name": "punctuation",
+      "patterns": [
+        { "regex": "[{};=,()\\[\\]]" }
+      ]
+    }
+  ]
+}

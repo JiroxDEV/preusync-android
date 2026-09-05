@@ -1,0 +1,36 @@
+{
+  "name": "inno-setup",
+  "tokens": [
+    {
+      "name": "comment",
+      "patterns": [
+        { "regex": ";.*" },
+        { "regex": "\\{[^}]*\\}" }
+      ]
+    },
+    {
+      "name": "string",
+      "patterns": [
+        { "regex": "'(?:[^'\\\\]|\\\\.)*'", "greedy": true }
+      ]
+    },
+    {
+      "name": "number",
+      "patterns": [
+        { "regex": "\\b[0-9]+\\b" }
+      ]
+    },
+    {
+      "name": "section",
+      "patterns": [
+        { "regex": "\\[Setup\\]|\\[Dirs\\]|\\[Files\\]|\\[Icons\\]|\\[INI\\]|\\[InstallDelete\\]|\\[Languages\\]|\\[Messages\\]|\\[CustomMessages\\]|\\[LangOptions\\]|\\[Code\\]|\\[Tasks\\]|\\[Components\\]|\\[Types\\]|\\[UninstallDelete\\]|\\[UninstallRun\\]|\\[Run\\]|\\[Registry\\]|\\[Setup\\]\\n", "flags": "CASE_INSENSITIVE" }
+      ]
+    },
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:AppName|AppVersion|AppVerName|AppId|AppPublisher|AppPublisherURL|AppSupportURL|AppUpdatesURL|DefaultDirName|DefaultGroupName|AllowNoIcons|AlwaysRestart|AlwaysShowComponentsOnReady|AlwaysShowGroupOnReady|AlwaysShowDirOnReady|AlwaysUsePersonalGroup|AppendDefaultDirName|AppendDefaultGroupName|ArchitecturesAllowed|ArchitecturesInstallIn64BitMode|ASLRCompatible|BackColor|BackColor2|BackColorDirection|BackSolid|ChangesAssociations|ChangesEnvironment|Compression|CompressionThreads|CreateAppDir|CreateUninstallRegKey|DEPCompatible|DirExistsWarning|DisableDirPage|DisableFinishedPage|DisableProgramGroupPage|DisableReadyMemo|DisableReadyPage|DisableStartupPrompt|DisableWelcomePage|DiskClusterSize|DiskSliceSize|DiskSpanning|DontMergeDuplicateFiles|EnableDirDoesntExistWarning|Encryption|ExtraDiskSpaceRequired|FlatComponentsList|InfoAfterFile|InfoBeforeFile|InternalCompressLevel|LanguageDetectionMethod|LicenseFile|LZMAAlgorithm|LZMABlockSize|LZMADictionarySize|LZMAMatchFinder|LZMANumBlockThreads|LZMANumFastBytes|LZMAUseBt4|MergeDuplicateFiles|MessagesFile|MinVersion|OnlyBelowVersion|Output|OutputBaseFilename|OutputDir|OutputManifestFile|Password|PrivilegesRequired|PrivilegesRequiredOverridesAllowed|ReserveBytes|RestartApplications|RestartIfNeededByRun|SetupIconFile|SetupLogging|SetupMutex|ShowComponentSizes|ShowLanguageDialog|ShowUndisplayableLanguages|SignedUninstaller|SignedUninstallerDir|SignTool|SignToolRunMinimized|SlicesPerDisk|SolidCompression|SourceDir|TerminalServicesAware|TimeStampsInUTC|TimeStampRounding|TouchDate|TouchTime|Uninstallable|UninstallDisplayIcon|UninstallDisplayName|UninstallDisplaySize|UninstallFilesDir|UninstallIconFile|UninstallLogMode|UninstallRestartComputer|UpdateUninstallLogAppName|UsePreviousAppDir|UsePreviousGroup|UsePreviousLanguage|UsePreviousPrivileges|UsePreviousSetupType|UsePreviousTasks|UsePreviousUserInfo|UserInfoPage|VersionInfoCompany|VersionInfoCopyright|VersionInfoDescription|VersionInfoProductName|VersionInfoProductTextVersion|VersionInfoProductVersion|VersionInfoTextVersion|VersionInfoVersion|WindowResizable|WindowShowCaption|WindowStartMaximized|WindowVisible|WizardImageAlphaFormat|WizardImageFile|WizardImageStretch|WizardResizable|WizardSmallImageAlphaFormat|WizardSmallImageFile|WizardSizePercent|WizardStyle)\\b", "flags": "CASE_INSENSITIVE" }
+      ]
+    }
+  ]
+}

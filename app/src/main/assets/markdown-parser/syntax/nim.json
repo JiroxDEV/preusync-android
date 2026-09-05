@@ -1,0 +1,24 @@
+{
+  "name": "nim",
+  "extend": "clike",
+  "tokens": [
+    {
+      "name": "keyword",
+      "patterns": [
+        { "regex": "\\b(?:addr|and|as|asm|bind|block|break|case|cast|concept|const|continue|converter|defer|discard|distinct|div|do|elif|else|end|enum|except|export|finally|for|from|func|if|import|in|include|interface|is|isnot|iterator|let|macro|method|mixin|mod|nil|not|notin|object|of|or|out|proc|ptr|raise|ref|return|shared|shl|shr|static|template|try|tuple|type|using|var|when|while|xor|yield)\\b" }
+      ]
+    },
+    {
+      "name": "builtin",
+      "patterns": [
+        { "regex": "\\b(?:int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|float|float32|float64|bool|char|string|cstring|pointer|seq|array|set|tuple|range|ref|ptr|void|auto)\\b" }
+      ]
+    },
+    {
+      "name": "pragma",
+      "patterns": [
+        { "regex": "\\{\\.\\w+[^}]*\\}" }
+      ]
+    }
+  ]
+}
