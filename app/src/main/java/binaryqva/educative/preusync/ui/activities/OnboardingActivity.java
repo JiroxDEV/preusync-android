@@ -2,8 +2,9 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: OnboardingActivity.java
- * Versión: v1.2.1
- * Descripción: Flujo introductorio guiado con ViewPager: muestra características, términos y gestión de permisos iniciales.
+ * Versión: v2.0.1
+ * Descripción: Flujo introductorio modernizado. Centraliza la navegación y 
+ *              el control de estados mediante ViewModel.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -11,14 +12,18 @@
 
 package binaryqva.educative.preusync.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -26,8 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import binaryqva.educative.preusync.R;
-import androidx.lifecycle.ViewModelProvider;
-
 import binaryqva.educative.preusync.ui.viewmodels.OnboardingViewModel;
 import binaryqva.educative.preusync.ui.adapters.ViewPagerAdapter;
 import binaryqva.educative.preusync.ui.fragments.onboarding.OnboardingWelcomeFragment;
@@ -35,18 +38,19 @@ import binaryqva.educative.preusync.ui.fragments.onboarding.OnboardingFeaturesFr
 import binaryqva.educative.preusync.ui.fragments.onboarding.OnboardingTermsFragment;
 import binaryqva.educative.preusync.ui.fragments.onboarding.OnboardingPermissionsFragment;
 import binaryqva.educative.preusync.ui.fragments.onboarding.OnboardingFinalFragment;
-import binaryqva.educative.preusync.utils.theme.ThemeManager;
+import binaryqva.educative.preusync.utils.common.PreferenceManager;
 
-/**
- * Gestor del flujo inicial de usuario. Utiliza un ViewPager2 para navegar
- * entre las diferentes secciones informativas y de configuración.
- */
 public class OnboardingActivity extends BaseActivity {
 
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
+    private MaterialButton buttonBack;
+    private ExtendedFloatingActionButton buttonNext;
+    
+    private OnboardingViewModel viewModel;
+    private ViewPagerAdapter pagerAdapter;
     private List<Fragment> fragments;
-    public int availablePage = 0;
+    private PreferenceManager prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +58,25 @@ public class OnboardingActivity extends BaseActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_onboarding);
 
-        viewPager = findViewById(R.id.viewPager);
-        tabLayout = findViewById(R.id.tabLayout);
-
-        initializeLogic();
+        viewModel = new ViewModelProvider(this).get(OnboardingViewModel.class);
+        prefs = PreferenceManager.getInstance(this);
+        
+        bindViews();
+        setupViewPager();
+        setupObservers();
     }
 
-    private void initializeLogic() {
-        int colorAccent = ThemeManager.getThemeColor(this, R.attr.colorAccent);
-        int colorHighlight = ThemeManager.getThemeColor(this, R.attr.colorControlHighlight);
+    private void bindViews() {
+        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        buttonBack = findViewById(R.id.buttonBack);
+        buttonNext = findViewById(R.id.buttonNext);
 
-        getWindow().setNavigationBarColor(ThemeManager.getThemeColor(this, R.attr.colorBackground));
-        
+        buttonBack.setOnClickListener(v -> previousPage());
+        buttonNext.setOnClickListener(v -> handleNextClick());
+    }
+
+    private void setupViewPager() {
         fragments = new ArrayList<>();
         fragments.add(new OnboardingWelcomeFragment());
         fragments.add(new OnboardingFeaturesFragment());
@@ -73,38 +84,92 @@ public class OnboardingActivity extends BaseActivity {
         fragments.add(new OnboardingPermissionsFragment());
         fragments.add(new OnboardingFinalFragment());
 
-        viewPager.setAdapter(new ViewPagerAdapter(this, fragments));
+        pagerAdapter = new ViewPagerAdapter(this, fragments);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setUserInputEnabled(false);
 
-        // Vinculación de indicadores visuales (dots) con las páginas.
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(getString(R.string.text_bullet))).attach();
+        // Transformación de página moderna y fluida
+        viewPager.setPageTransformer((page, position) -> {
+            float absPos = Math.abs(position);
+            page.setAlpha(1.0f - absPos);
+            
+            float scale = 0.9f + (1.0f - absPos) * 0.1f;
+            page.setScaleX(scale);
+            page.setScaleY(scale);
+            
+            // Efecto sutil de traslación para dar profundidad
+            page.setTranslationX(position * -page.getWidth() * 0.2f);
+        });
 
-        tabLayout.setTabTextColors(colorAccent, colorAccent);
-        tabLayout.setSelectedTabIndicatorColor(colorAccent);
-        tabLayout.setTabRippleColor(new android.content.res.ColorStateList(new int[][]{new int[]{android.R.attr.state_pressed}}, new int[]{colorHighlight}));
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {}).attach();
 
-        // Sistema de bloqueo de páginas: El usuario no puede avanzar si no acepta términos o concede permisos.
+        // Deshabilitar clics en las pestañas para evitar navegación no autorizada
+        LinearLayout tabStrip = (LinearLayout) tabLayout.getChildAt(0);
+        for (int i = 0; i < tabStrip.getChildCount(); i++) {
+            tabStrip.getChildAt(i).setClickable(false);
+            tabStrip.getChildAt(i).setOnTouchListener((v, event) -> true);
+        }
+
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override public void onPageScrolled(int p, float po, int pop) { checkPageAccess(); }
-            @Override public void onPageSelected(int p) { checkPageAccess(); }
+            @Override
+            public void onPageSelected(int position) {
+                updateNavigationButtons(position);
+            }
         });
     }
 
-    public void nextPage() {
-        if (viewPager.getCurrentItem() < fragments.size() - 1) viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+    private void setupObservers() {
+        viewModel.getTermsAccepted().observe(this, accepted -> updateButtonState());
+        viewModel.getPermissionsGranted().observe(this, granted -> updateButtonState());
     }
 
-    public void previousPage() {
-        if (viewPager.getCurrentItem() > 0) viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
+    private void updateNavigationButtons(int position) {
+        buttonBack.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
+        
+        if (position == fragments.size() - 1) {
+            buttonNext.setText(getString(R.string.button_get_started));
+            buttonNext.setIconResource(R.drawable.ic_check);
+        } else {
+            buttonNext.setText(getString(R.string.button_next));
+            buttonNext.setIconResource(R.drawable.ic_arrow_forward);
+        }
+        updateButtonState();
     }
 
-    /**
-     * Valida que el usuario tenga permitido el acceso a la página solicitada.
-     */
-    public void checkPageAccess() {
+    private void updateButtonState() {
         int current = viewPager.getCurrentItem();
-        if (current == 2) availablePage = OnboardingTermsFragment.termsAccepted ? 3 : 2;
-        if (current > availablePage) viewPager.setCurrentItem(availablePage, true);
+        boolean enabled = true;
+
+        if (current == 2) enabled = Boolean.TRUE.equals(viewModel.getTermsAccepted().getValue());
+        if (current == 3) enabled = Boolean.TRUE.equals(viewModel.getPermissionsGranted().getValue());
+
+        buttonNext.setEnabled(enabled);
+        buttonNext.setAlpha(enabled ? 1.0f : 0.5f);
+    }
+
+    private void handleNextClick() {
+        int current = viewPager.getCurrentItem();
+        if (current < fragments.size() - 1) {
+            viewPager.setCurrentItem(current + 1, true);
+        } else {
+            finishOnboarding();
+        }
+    }
+
+    public void nextPage() { handleNextClick(); }
+    public void previousPage() { if (viewPager.getCurrentItem() > 0) viewPager.setCurrentItem(viewPager.getCurrentItem() - 1, true); }
+
+    private void finishOnboarding() {
+        prefs.setOnboardingCompleted(true);
+        Fragment lastFragment = pagerAdapter.getFragment(fragments.size() - 1);
+        boolean hasAccount = false;
+        if (lastFragment instanceof OnboardingFinalFragment) {
+            hasAccount = ((OnboardingFinalFragment) lastFragment).isHasAccountSelected();
+        }
+
+        Intent intent = new Intent(this, AuthActivity.class);
+        intent.putExtra("extra_is_registering", !hasAccount);
+        startActivity(intent);
+        finish();
     }
 }
-
-

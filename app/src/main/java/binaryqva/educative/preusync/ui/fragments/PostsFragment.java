@@ -2,7 +2,7 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: PostsFragment.java
- * Versión: v14.1.1
+ * Versión: v14.1.2
  * Descripción: Fragmento de la comunidad para visualizar e interactuar con 
  *              publicaciones (posts).
  * Autor: JiroxDEV
@@ -22,24 +22,21 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import binaryqva.educative.preusync.R;
 import binaryqva.educative.preusync.network.models.Post;
 import binaryqva.educative.preusync.ui.activities.HomeActivity;
 import binaryqva.educative.preusync.ui.adapters.PostsAdapter;
-import binaryqva.educative.preusync.ui.adapters.common.FooterableAdapter;
 import binaryqva.educative.preusync.ui.viewmodels.PostsViewModel;
 import binaryqva.educative.preusync.ui.viewmodels.HomeViewModel;
-import binaryqva.educative.preusync.utils.common.PaginationState;
 
 public class PostsFragment extends PaginatedFeedFragment<Post> {
 
     private static final String CACHE_KEY = "posts_feed";
 
     private PostsViewModel postsViewModel;
-    private HomeViewModel HomeViewModel;
+    private HomeViewModel homeViewModel;
     private PostsAdapter postsAdapter;
 
     @Override protected int getLayoutResId() { return R.layout.fragment_posts; }
@@ -49,10 +46,10 @@ public class PostsFragment extends PaginatedFeedFragment<Post> {
     protected RecyclerView.Adapter createAdapter(List<Post> data) {
         if (postsAdapter == null) {
             HomeActivity activity = (HomeActivity) getActivity();
-            postsAdapter = new PostsAdapter(getContext(), data, activity, HomeViewModel, swipeRefreshLayout);
+            postsAdapter = new PostsAdapter(getContext(), data, activity, homeViewModel, swipeRefreshLayout);
             postsAdapter.setOnRetryLoadMore(this::loadMoreItems);
         }
-        postsAdapter-+.setData(data);-------------------------------------------------------
+        postsAdapter.setData(data);
         return postsAdapter;
     }
 
@@ -60,7 +57,7 @@ public class PostsFragment extends PaginatedFeedFragment<Post> {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        HomeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
         View view = super.onCreateView(inflater, container, savedInstanceState);
         postsViewModel = new ViewModelProvider(requireActivity()).get(PostsViewModel.class);
         
@@ -98,6 +95,3 @@ public class PostsFragment extends PaginatedFeedFragment<Post> {
         postsViewModel.reportPost(id);
     }
 }
-
-
-

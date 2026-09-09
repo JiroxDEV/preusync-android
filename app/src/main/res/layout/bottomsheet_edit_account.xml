@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: bottomsheet_edit_account.xml
-    Versión: v2.0.1
-    Descripción: Panel deslizable para editar los datos de la cuenta del usuario.
+    Versión: v3.0.0
+    Descripción: Edición de perfil dividida en pasos.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -19,420 +19,311 @@
     android:orientation="vertical"
     android:background="?attr/colorBackground"
     android:paddingBottom="@dimen/padding_8dp">
-    <!-- Header con drag handle y título -->
-    <LinearLayout
-        android:id="@+id/header"
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/bottomSheetDragHandle"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextAppearance.PreuSync.HeaderTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginbottom_15dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/bottomSheetDragHandle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true" />
-        <TextView
-            android:id="@+id/title"
-            style="@style/TextAppearance.PreuSync.HeaderTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_8dp"
-            android:text="@string/title_edit_account" />
-    </LinearLayout>
-    <!-- ScrollView principal -->
-    <ScrollView
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/padding_8dp"
+        android:text="@string/title_edit_account" />
+
+    <ViewFlipper
+        android:id="@+id/editStepFlipper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
-        <LinearLayout
+        android:layout_weight="1">
+
+        <!-- Paso 1: Básico (Index 0) -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="60dp"
-            android:gravity="center_horizontal">
-            <!-- Avatar -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/avatarCardView"
-                style="@style/Widget.PreuSync.CardView"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:layout_marginBottom="@dimen/padding_12dp"
-                app:cardCornerRadius="360dp"
-                app:cardElevation="0dp">
-                <ImageView
-                    android:id="@+id/avatarImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_nav_profile"
-                    android:contentDescription="@string/title_profile" />
-            </com.google.android.material.card.MaterialCardView>
-            <!-- Campos simples (Nombre, Apellidos) -->
+            android:layout_height="match_parent"
+            android:fillViewport="true">
             <LinearLayout
-                android:id="@+id/simpleLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/firstNameTextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:startIconDrawable="@drawable/ic_rename">
-                    <EditText
-                        android:id="@+id/firstNameEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_first_name"
-                        android:imeOptions="actionNext"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold" />
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/lastNameTextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    android:layout_marginBottom="@dimen/padding_8dp"
-                    app:startIconDrawable="@drawable/ic_assignment">
-                    <EditText
-                        android:id="@+id/lastNameEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_last_name"
-                        android:imeOptions="actionNext"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <!-- Campos avanzados (inicialmente ocultos) -->
-            <LinearLayout
-                android:id="@+id/advancedLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:paddingHorizontal="32dp"
+                android:gravity="center_horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/avatarCardView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="2dp">
+                    <ImageView
+                        android:id="@+id/avatarImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_nav_profile" />
+                </com.google.android.material.card.MaterialCardView>
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/registerUsernameTextInputLayout"
+                    android:id="@+id/firstNameTextInputLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:startIconDrawable="@drawable/ic_nav_profile">
-                    <EditText
-                        android:id="@+id/registerUsernameEditText"
+                    app:startIconDrawable="@drawable/ic_rename">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/firstNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_username"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold"
-                        android:autofillHints="username" />
+                        android:hint="@string/hint_first_name" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <!-- Contraseña actual (con ID corregido) -->
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/oldPasswordTextInputLayout"
+                    android:id="@+id/lastNameTextInputLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:boxStrokeColor="@color/textinputlayout_tint"
-                    app:endIconMode="password_toggle"
-                    app:hintTextColor="@color/textinputlayout_tint"
-                    app:startIconDrawable="@drawable/ic_key">
-                    <EditText
-                        android:id="@+id/oldPasswordEditText"
+                    android:layout_marginTop="12dp"
+                    app:startIconDrawable="@drawable/ic_assignment">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lastNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_current_password"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPassword"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold"
-                        android:autofillHints="password" />
+                        android:hint="@string/hint_last_name" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <!-- Nueva contraseña -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/newPasswordTextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:boxStrokeColor="@color/textinputlayout_tint"
-                    app:endIconMode="password_toggle"
-                    app:hintTextColor="@color/textinputlayout_tint"
-                    app:startIconDrawable="@drawable/ic_new">
-                    <EditText
-                        android:id="@+id/newPasswordEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_new_password"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPassword"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold"
-                        android:autofillHints="password" />
-                </com.google.android.material.textfield.TextInputLayout>
-                <!-- Confirmar nueva contraseña -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/confirmPasswordTextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:boxStrokeColor="@color/textinputlayout_tint"
-                    app:endIconMode="password_toggle"
-                    app:hintTextColor="@color/textinputlayout_tint"
-                    app:startIconDrawable="@drawable/ic_repeat">
-                    <EditText
-                        android:id="@+id/confirmPasswordEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_repeat_new_password"
-                        android:inputType="textPassword"
-                        android:padding="@dimen/padding_8dp"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold"
-                        android:autofillHints="password" />
-                </com.google.android.material.textfield.TextInputLayout>
-                <!-- Carnet de identidad -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/idTextInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:startIconDrawable="@drawable/ic_card">
-                    <EditText
-                        android:id="@+id/idEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:hint="@string/hint_id_number"
-                        android:imeOptions="actionDone"
-                        android:inputType="numberSigned"
-                        android:padding="@dimen/padding_8dp"
-                        android:singleLine="true"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold" />
-                </com.google.android.material.textfield.TextInputLayout>
-                <!-- Rol -->
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Paso 2: Rol e Institución (Index 1) -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="32dp">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/roleTextInputLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_8dp"
-                    app:boxStrokeColor="@color/textinputlayout_tint"
-                    app:endIconMode="dropdown_menu"
-                    app:hintTextColor="@color/textinputlayout_tint"
                     app:startIconDrawable="@drawable/ic_work">
                     <AutoCompleteTextView
                         android:id="@+id/roleAutoComplete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="true"
                         android:hint="@string/hint_role"
-                        android:inputType="none"
-                        android:padding="@dimen/padding_8dp"
-                        android:textColor="?attr/colorText"
-                        android:textSize="@dimen/text_size_16sp"
-                        android:textStyle="bold" />
+                        android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <!-- Campos dinámicos según rol -->
+
                 <LinearLayout
                     android:id="@+id/dynamicFieldsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-                    <!-- Educando -->
-                    <LinearLayout
-                        android:id="@+id/studentLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible">
+                    android:orientation="vertical">
+
+                    <LinearLayout android:id="@+id/studentLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/schoolTextInputLayout"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/padding_8dp"
+                            android:layout_marginTop="12dp"
                             app:startIconDrawable="@drawable/ic_school">
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/schoolEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/hint_school"
-                                android:padding="@dimen/padding_8dp"
-                                android:singleLine="true"
-                                android:textColor="?attr/colorText"
-                                android:textSize="@dimen/text_size_16sp"
-                                android:textStyle="bold" />
+                                android:hint="@string/hint_school" />
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/groupTextInputLayout"
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/padding_8dp"
-                            android:layout_marginBottom="@dimen/padding_8dp"
+                            android:layout_marginTop="12dp"
                             app:startIconDrawable="@drawable/ic_group">
-                            <EditText
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/groupEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/hint_group"
-                                android:padding="@dimen/padding_8dp"
-                                android:singleLine="true"
-                                android:textColor="?attr/colorText"
-                                android:textSize="@dimen/text_size_16sp"
-                                android:textStyle="bold" />
+                                android:hint="@string/hint_group" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
-                    <!-- Tutor -->
-                    <LinearLayout
-                        android:id="@+id/tutorLayout"
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tuteeTextInputLayout"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tuteeTextInputLayout"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone"
+                        app:startIconDrawable="@drawable/ic_person">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tuteeEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/padding_8dp"
-                            android:layout_marginBottom="@dimen/padding_8dp"
-                            app:startIconDrawable="@drawable/ic_person">
-                            <EditText
-                                android:id="@+id/tuteeEditText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/hint_tutee"
-                                android:padding="@dimen/padding_8dp"
-                                android:singleLine="true"
-                                android:textColor="?attr/colorText"
-                                android:textSize="@dimen/text_size_16sp"
-                                android:textStyle="bold" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                    <!-- Docente -->
-                    <LinearLayout
-                        android:id="@+id/teacherLayout"
+                            android:hint="@string/hint_tutee" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/responsibilitiesTextInputLayout"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/responsibilitiesTextInputLayout"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone"
+                        app:startIconDrawable="@drawable/ic_work">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/responsibilitiesEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/padding_8dp"
-                            android:layout_marginBottom="@dimen/padding_8dp"
-                            app:startIconDrawable="@drawable/ic_work">
-                            <EditText
-                                android:id="@+id/responsibilitiesEditText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/hint_responsibilities"
-                                android:padding="@dimen/padding_8dp"
-                                android:singleLine="true"
-                                android:textColor="?attr/colorText"
-                                android:textSize="@dimen/text_size_16sp"
-                                android:textStyle="bold" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
+                            android:hint="@string/hint_responsibilities" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    <!-- Switch y botones -->
+        </ScrollView>
+
+        <!-- Paso 3: Avanzado (Index 2) -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="32dp">
+
+                <LinearLayout
+                    android:id="@+id/actionsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/advancedMaterialSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/hint_edit_advanced"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/advancedLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/registerUsernameTextInputLayout"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:startIconDrawable="@drawable/ic_nav_profile">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/registerUsernameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_username" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/idTextInputLayout"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:startIconDrawable="@drawable/ic_card">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/idEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_id_number"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/newPasswordTextInputLayout"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:endIconMode="password_toggle"
+                        app:startIconDrawable="@drawable/ic_new">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/newPasswordEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_new_password"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <!-- Campo de validación para contraseña actual -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/oldPasswordTextInputLayout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@drawable/ic_key">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/oldPasswordEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_current_password"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
+    </ViewFlipper>
+
+    <!-- Indicador de Pasos -->
     <LinearLayout
-        android:id="@+id/editAccountActionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/actionsLinearLayout"
-            android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp">
+        <View android:id="@+id/step1Indicator" android:layout_width="20dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorAccent" />
+        <View android:id="@+id/step2Indicator" android:layout_width="20dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorControlHighlight" />
+        <View android:id="@+id/step3Indicator" android:layout_width="20dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorControlHighlight" />
+    </LinearLayout>
+
+    <!-- Botones de Acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonCancel"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/colorBackgroundCard"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_8dp">
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/advancedMaterialSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:textSize="@dimen/text_size_12sp" />
-            <TextView
-                android:id="@+id/advancedTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8dp"
-                android:text="@string/hint_edit_advanced"
-                android:textColor="?attr/colorAccent"
-                android:textSize="@dimen/text_size_18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/actions"
-            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/button_cancel" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSave"
+            style="@style/Widget.PreuSync.Button.Global"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/colorBackgroundCard"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_6dp">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonCancel"
-                style="@style/Widget.PreuSync.Button.Global"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/padding_6dp"
-                android:layout_weight="1"
-                android:focusable="true"
-                android:padding="@dimen/padding_8dp"
-                android:text="@string/button_cancel"
-                android:textSize="@dimen/text_size_14sp"
-                android:textStyle="bold" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonSave"
-                style="@style/Widget.PreuSync.Button.Global"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_6dp"
-                android:layout_weight="1"
-                android:focusable="true"
-                android:padding="@dimen/padding_8dp"
-                android:text="@string/button_save"
-                android:textSize="@dimen/text_size_14sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/button_next" />
     </LinearLayout>
 </LinearLayout>
-
-

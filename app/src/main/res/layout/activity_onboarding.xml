@@ -3,63 +3,81 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_onboarding.xml
-    Versión: v1.0.2
-    Descripción: Flujo introductorio guiado para nuevos usuarios con ViewPager.
+    Versión: v2.1.0
+    Descripción: Interfaz de bienvenida profesional con navegación no superpuesta.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
 -->
 
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:id="@+id/onboardingLayoutContainer">
-	
-<LinearLayout
-		android:id="@+id/mainContainer"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:paddingTop="@dimen/card_corner_radius"
-		android:paddingBottom="@dimen/padding_bottom_50dp"
-		android:background="?attr/colorBackground"
-		android:orientation="vertical">
-		<androidx.viewpager2.widget.ViewPager2
-			android:id="@+id/viewPager"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:padding="@dimen/padding_8dp"
-			android:layout_weight="1" />
-		<RelativeLayout
-			android:id="@+id/relativeLayout"
-			android:layout_width="match_parent"
-			android:layout_height="20dp">
-			<com.google.android.material.tabs.TabLayout
-				android:id="@+id/tabLayout"
-				android:layout_width="match_parent"
-				android:layout_height="20dp"
-				android:background="?attr/colorBackground"
-				android:enabled="false"
-				app:tabGravity="fill"
-				app:tabMode="fixed"
-				app:tabIndicatorHeight="3dp"
-				app:tabIndicatorColor="@android:color/white"
-				app:tabSelectedTextColor="@android:color/white"
-				app:tabTextColor="@android:color/white"
-				app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-				android:textSize="@dimen/text_size_14sp" />
-			
-<LinearLayout
-				android:id="@+id/linearLayout"
-				android:layout_width="match_parent"
-				android:layout_height="20dp"
-				android:padding="@dimen/padding_8dp"
-				android:orientation="horizontal" />
-		</RelativeLayout>
-	</LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground"
+    android:fitsSystemWindows="true">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintBottom_toTopOf="@+id/navigationBar"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Barra de Navegación Inferior Unificada (Fuera del área de la navbar del sistema) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingHorizontal="24dp"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabBackground="@drawable/selector_onboarding_indicator"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="48dp"
+            app:tabMinWidth="24dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@null"
+            app:tabPaddingStart="6dp"
+            app:tabPaddingEnd="6dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBack"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_previous"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/buttonNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_next"
+            app:icon="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

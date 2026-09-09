@@ -22,8 +22,8 @@ public class UpdateProfileRequest {
     @SerializedName("role")
     private String role;
 
-    @SerializedName("school")
-    private String school;
+    @SerializedName("school_id")
+    private String schoolId;
 
     @SerializedName("group")
     private String group;
@@ -49,7 +49,7 @@ public class UpdateProfileRequest {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setRole(String role) { this.role = role; }
-    public void setSchool(String school) { this.school = school; }
+    public void setSchoolId(String schoolId) { this.schoolId = schoolId; }
     public void setGroup(String group) { this.group = group; }
     public void setTutee(String tutee) { this.tutee = tutee; }
     public void setResponsibilities(String responsibilities) { this.responsibilities = responsibilities; }

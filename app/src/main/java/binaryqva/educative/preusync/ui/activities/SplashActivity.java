@@ -200,7 +200,7 @@ public class SplashActivity extends BaseActivity {
                         startActivity(new Intent(getApplicationContext(), OnboardingActivity.class));
                     } else {
                         Intent intent = new Intent(getApplicationContext(), AuthActivity.class);
-                        intent.putExtra("registrando", String.valueOf(!preferencesManager.hasAccount()));
+                        intent.putExtra("extra_is_registering", !preferencesManager.hasAccount());
                         startActivity(intent);
                     }
                     finish();

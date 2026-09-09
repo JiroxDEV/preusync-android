@@ -1,4 +1,7 @@
 release_date,version_name,version_code,release_type,details
+09/09/2026,v0.99.95,2700,Beta,"🧩 Registro por Etapas: Una experiencia más clara dividiendo el registro en pasos lógicos.
+✨ Interfaz Refinada: Pulido visual en toda la pantalla de inicio, botones y transiciones.
+🚀 Navegación Fluida: Animaciones mejoradas en la bienvenida para una experiencia sin interrupciones."
 04/09/2026,v0.99.90,2690,Beta,"🚀 Rebranding: Nace PreuSync con una nueva identidad y licencia AGPLv3.
 🌍 Despliegue Nacional: Preparación de la infraestructura para conectar a todas las escuelas del país.
 🏛️ Multi-Tenancy: Ahora puedes seleccionar tu Provincia, Municipio y Escuela durante el registro."

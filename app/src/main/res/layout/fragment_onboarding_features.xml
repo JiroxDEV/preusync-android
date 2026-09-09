@@ -104,43 +104,6 @@
             android:layout_alignTop="@id/logo"
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/text_size_25sp" />
-
-        <RelativeLayout
-            android:id="@+id/controls"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_8dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/button_previous"
-                android:textColor="#FFFFFF"
-                android:translationY="-25.0dp"
-                style="@style/Widget.PreuSync.Button.Global"
-                android:textSize="@dimen/text_size_14sp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_8dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/button_next"
-                android:textColor="#FFFFFF"
-                android:translationY="-25.0dp"
-                style="@style/Widget.PreuSync.Button.Global"
-                android:textSize="@dimen/text_size_14sp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
 

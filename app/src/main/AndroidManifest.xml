@@ -2,15 +2,14 @@
     ============================================================================
     Proyecto: PreuSync
     Manifiesto: AndroidManifest.xml
-	Versión: v5.0.0
+	Versión: v5.0.1
     Descripción: Manifiesto de la aplicación. Declara permisos, actividades,
                  servicios y receptores de broadcast.
 	Licensed under the GNU Affero General Public License v3
     ============================================================================
 -->
 <manifest
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="binaryqva.educative.preusync">
+	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<!-- ==================== PERMISOS DE RED ==================== -->
 	<uses-permission android:name="android.permission.INTERNET" />

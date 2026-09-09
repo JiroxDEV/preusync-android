@@ -148,7 +148,7 @@ public class ProfileViewModel extends AndroidViewModel {
         if (updateData.containsKey("first_name")) request.setFirstName((String) updateData.get("first_name"));
         if (updateData.containsKey("last_name")) request.setLastName((String) updateData.get("last_name"));
         if (updateData.containsKey("role")) request.setRole((String) updateData.get("role"));
-        if (updateData.containsKey("school")) request.setSchool((String) updateData.get("school"));
+        if (updateData.containsKey("school_id")) request.setSchoolId((String) updateData.get("school_id"));
         if (updateData.containsKey("group")) request.setGroup((String) updateData.get("group"));
         if (updateData.containsKey("tutee")) request.setTutee((String) updateData.get("tutee"));
         if (updateData.containsKey("responsibilities")) request.setResponsibilities((String) updateData.get("responsibilities"));

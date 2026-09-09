@@ -77,20 +77,6 @@
             android:layout_alignTop="@id/logo"
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/text_size_25sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_30dp"
-            android:padding="@dimen/padding_8dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/button_get_started"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.PreuSync.Button.Global"
-            android:textSize="@dimen/text_size_14sp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </LinearLayout>
 

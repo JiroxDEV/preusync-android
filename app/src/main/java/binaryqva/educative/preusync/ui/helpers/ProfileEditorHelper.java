@@ -2,9 +2,8 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: ProfileEditorHelper.java
- * Versión: v3.1.2
- * Descripción: Ayudante para la edición de perfiles, refactorizado para el 
- *              uso de modelos tipados (Profile).
+ * Versión: v4.0.0
+ * Descripción: Ayudante para la edición de perfiles dividida en pasos.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -16,13 +15,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -39,7 +38,6 @@ import binaryqva.educative.preusync.R;
 import binaryqva.educative.preusync.network.models.Profile;
 import binaryqva.educative.preusync.ui.viewmodels.ProfileViewModel;
 import binaryqva.educative.preusync.utils.common.AvatarHelper;
-import binaryqva.educative.preusync.utils.common.AppUtils;
 import binaryqva.educative.preusync.utils.common.DialogHelper;
 import binaryqva.educative.preusync.utils.common.FilePickerHelper;
 import binaryqva.educative.preusync.utils.common.FileUtils;
@@ -49,41 +47,32 @@ import binaryqva.educative.preusync.utils.common.Validator;
 import binaryqva.educative.preusync.utils.theme.ThemeManager;
 import binaryqva.educative.preusync.utils.ui.ButtonAnimator;
 
-/**
- * Controla el flujo de actualización de datos de cuenta.
- */
 public class ProfileEditorHelper {
 
     private final Context context;
     private final Activity activity;
-    private final PreferenceManager preferencesManager;
     private final ProfileViewModel viewModel;
     private final FilePickerHelper filePickerHelper;
 
     private BottomSheetDialog editBottomSheet;
-    private BottomSheetDialog avatarSelectorBottomSheet;
-
-    private EditText firstNameEditText, lastNameEditText, usernameEditText;
-    private EditText oldPasswordEditText, newPasswordEditText, confirmPasswordEditText;
-    private EditText idNumberEditText;
-    private AutoCompleteTextView roleAutoComplete;
+    private ViewFlipper editStepFlipper;
+    private View step1Ind, step2Ind, step3Ind;
+    
+    private EditText firstNameET, lastNameET, usernameET, oldPasswordET, newPasswordET, idET;
+    private TextInputLayout firstNameTIL, lastNameTIL, usernameTIL, oldPasswordTIL, newPasswordTIL, idTIL;
+    private AutoCompleteTextView roleAC;
+    private EditText schoolET, groupET, tuteeET, responsibilitiesET;
+    private View studentLayout, tutorLayout, teacherLayout;
+    private ImageView avatarIV;
     private MaterialSwitch advancedSwitch;
+    private View advancedFields;
     private Button saveButton, cancelButton;
-    private ImageView editAvatarImageView;
-    private LinearLayout studentLayout, tutorLayout, teacherLayout;
-    private ViewGroup advancedFieldsLayout;
-    private TextInputLayout firstNameTextInputLayout, lastNameTextInputLayout;
-    private TextInputLayout usernameTextInputLayout, oldPasswordTextInputLayout;
-    private TextInputLayout newPasswordTextInputLayout, confirmPasswordTextInputLayout;
-    private TextInputLayout idNumberTextInputLayout, roleTextInputLayout;
-    private TextInputLayout schoolTextInputLayout, groupTextInputLayout;
-    private TextInputLayout tuteeTextInputLayout, responsibilitiesTextInputLayout;
-    private EditText schoolEditText, groupEditText, tuteeEditText, responsibilitiesEditText;
 
-    private boolean ignoreSwitchChange = false;
+    private int currentStep = 0;
     private String pathBase64 = "";
     private boolean isEditAvatarInitial = true;
     private String currentRoleValue = RoleHelper.ROLE_STUDENT;
+    private boolean ignoreSwitchChange = false;
 
     public interface OnSaveListener {
         void onSave(HashMap<String, Object> updateData);
@@ -93,28 +82,31 @@ public class ProfileEditorHelper {
     public ProfileEditorHelper(Activity activity, ProfileViewModel viewModel, FilePickerHelper filePickerHelper) {
         this.context = activity; this.activity = activity;
         this.viewModel = viewModel; this.filePickerHelper = filePickerHelper;
-        this.preferencesManager = PreferenceManager.getInstance(context);
     }
 
     public void showEditBottomSheet(Profile userData, OnSaveListener listener) {
         if (userData == null) return;
         if (editBottomSheet == null) initializeEditBottomSheet();
+        currentStep = 0;
         fillData(userData);
-        cancelButton.setOnClickListener(v -> { editBottomSheet.dismiss(); if (listener != null) listener.onCancel(); });
+        updateStepUi();
+        
+        cancelButton.setOnClickListener(v -> {
+            if (currentStep > 0) goBackStep();
+            else { editBottomSheet.dismiss(); if (listener != null) listener.onCancel(); }
+        });
+        
         saveButton.setOnClickListener(v -> {
-            HashMap<String, Object> data = collectData();
-            if (data != null && listener != null) listener.onSave(data);
+            if (validateStep(currentStep)) {
+                if (currentStep < 2) goNextStep();
+                else {
+                    HashMap<String, Object> data = collectData();
+                    if (data != null && listener != null) listener.onSave(data);
+                }
+            }
         });
         editBottomSheet.show();
     }
-
-    public void dismiss() {
-        if (editBottomSheet != null) editBottomSheet.dismiss();
-        if (avatarSelectorBottomSheet != null) avatarSelectorBottomSheet.dismiss();
-    }
-
-    public boolean isAdvancedMode() { return advancedSwitch != null && advancedSwitch.isChecked(); }
-    public String getCurrentPassword() { return oldPasswordEditText != null ? oldPasswordEditText.getText().toString().trim() : ""; }
 
     private void initializeEditBottomSheet() {
         editBottomSheet = new BottomSheetDialog(activity);
@@ -123,152 +115,132 @@ public class ProfileEditorHelper {
         editBottomSheet.setContentView(v);
         editBottomSheet.getWindow().findViewById(com.google.android.material.R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
         editBottomSheet.setCancelable(false);
-        bindViews(v);
-        setupStyling(v);
+        
+        editStepFlipper = v.findViewById(R.id.editStepFlipper);
+        step1Ind = v.findViewById(R.id.step1Indicator);
+        step2Ind = v.findViewById(R.id.step2Indicator);
+        step3Ind = v.findViewById(R.id.step3Indicator);
+        
+        firstNameET = v.findViewById(R.id.firstNameEditText); lastNameET = v.findViewById(R.id.lastNameEditText);
+        firstNameTIL = v.findViewById(R.id.firstNameTextInputLayout); lastNameTIL = v.findViewById(R.id.lastNameTextInputLayout);
+        usernameET = v.findViewById(R.id.registerUsernameEditText); oldPasswordET = v.findViewById(R.id.oldPasswordEditText);
+        newPasswordET = v.findViewById(R.id.newPasswordEditText); idET = v.findViewById(R.id.idEditText);
+        usernameTIL = v.findViewById(R.id.registerUsernameTextInputLayout); oldPasswordTIL = v.findViewById(R.id.oldPasswordTextInputLayout);
+        newPasswordTIL = v.findViewById(R.id.newPasswordTextInputLayout); idTIL = v.findViewById(R.id.idTextInputLayout);
+        
+        roleAC = v.findViewById(R.id.roleAutoComplete);
+        schoolET = v.findViewById(R.id.schoolEditText); groupET = v.findViewById(R.id.groupEditText);
+        tuteeET = v.findViewById(R.id.tuteeEditText); responsibilitiesET = v.findViewById(R.id.responsibilitiesEditText);
+        studentLayout = v.findViewById(R.id.studentLayout); tutorLayout = v.findViewById(R.id.tuteeTextInputLayout); teacherLayout = v.findViewById(R.id.responsibilitiesTextInputLayout);
+        
+        avatarIV = v.findViewById(R.id.avatarImageView);
+        advancedSwitch = v.findViewById(R.id.advancedMaterialSwitch);
+        advancedFields = v.findViewById(R.id.advancedLayout);
+        saveButton = v.findViewById(R.id.buttonSave);
+        cancelButton = v.findViewById(R.id.buttonCancel);
+
         setupLogic();
-    }
-
-    private void bindViews(View v) {
-        firstNameEditText = v.findViewById(R.id.firstNameEditText); lastNameEditText = v.findViewById(R.id.lastNameEditText);
-        firstNameTextInputLayout = v.findViewById(R.id.firstNameTextInputLayout); lastNameTextInputLayout = v.findViewById(R.id.lastNameTextInputLayout);
-        usernameEditText = v.findViewById(R.id.registerUsernameEditText); oldPasswordEditText = v.findViewById(R.id.oldPasswordEditText);
-        newPasswordEditText = v.findViewById(R.id.newPasswordEditText); confirmPasswordEditText = v.findViewById(R.id.confirmPasswordEditText);
-        idNumberEditText = v.findViewById(R.id.idEditText); roleAutoComplete = v.findViewById(R.id.roleAutoComplete);
-        usernameTextInputLayout = v.findViewById(R.id.registerUsernameTextInputLayout); oldPasswordTextInputLayout = v.findViewById(R.id.oldPasswordTextInputLayout);
-        newPasswordTextInputLayout = v.findViewById(R.id.newPasswordTextInputLayout); confirmPasswordTextInputLayout = v.findViewById(R.id.confirmPasswordTextInputLayout);
-        idNumberTextInputLayout = v.findViewById(R.id.idTextInputLayout); roleTextInputLayout = v.findViewById(R.id.roleTextInputLayout);
-        studentLayout = v.findViewById(R.id.studentLayout); tutorLayout = v.findViewById(R.id.tutorLayout); teacherLayout = v.findViewById(R.id.teacherLayout);
-        schoolEditText = v.findViewById(R.id.schoolEditText); groupEditText = v.findViewById(R.id.groupEditText);
-        tuteeEditText = v.findViewById(R.id.tuteeEditText); responsibilitiesEditText = v.findViewById(R.id.responsibilitiesEditText);
-        schoolTextInputLayout = v.findViewById(R.id.schoolTextInputLayout); groupTextInputLayout = v.findViewById(R.id.groupTextInputLayout);
-        tuteeTextInputLayout = v.findViewById(R.id.tuteeTextInputLayout); responsibilitiesTextInputLayout = v.findViewById(R.id.responsibilitiesTextInputLayout);
-        editAvatarImageView = v.findViewById(R.id.avatarImageView); advancedSwitch = v.findViewById(R.id.advancedMaterialSwitch);
-        saveButton = v.findViewById(R.id.buttonSave); cancelButton = v.findViewById(R.id.buttonCancel);
-        advancedFieldsLayout = v.findViewById(R.id.advancedLayout);
-    }
-
-    private void setupStyling(View v) {
-        int cB = ThemeManager.getThemeColor(context, R.attr.colorBackground);
-        int cBC = ThemeManager.getThemeColor(context, R.attr.colorBackgroundCard);
-        int cH = ThemeManager.getColorControlHighlight(context);
-        int d = (int) context.getResources().getDisplayMetrics().density;
-        v.findViewById(R.id.editAccountContainer).setBackground(createRoundedBg(cB, d * 14));
-        v.findViewById(R.id.actionsLinearLayout).setBackground(createRippleBg(cBC, cH, d * 14));
     }
 
     private void setupLogic() {
         List<String> roles = RoleHelper.getLocalizedRoles(context);
-        roleAutoComplete.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, roles));
-        roleAutoComplete.setOnItemClickListener((p, view, pos, id) -> {
+        roleAC.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, roles));
+        roleAC.setOnItemClickListener((p, view, pos, id) -> {
             currentRoleValue = RoleHelper.getRoleValueFromLocalized(roles.get(pos), context);
             updateRoleFields(currentRoleValue);
-            if (!isEditAvatarInitial) {
-                pathBase64 = "{\"tipo\":\"rol\",\"rol\":\"" + currentRoleValue + "\"}";
-                editAvatarImageView.setImageBitmap(AvatarHelper.generateRoleAvatar(context, currentRoleValue, ThemeManager.getColorAccent(context)));
-            }
         });
+        
         advancedSwitch.setOnCheckedChangeListener((btn, isChecked) -> {
             if (ignoreSwitchChange) { ignoreSwitchChange = false; return; }
-            if (isChecked) showAdvancedWarning(); else advancedFieldsLayout.setVisibility(View.GONE);
+            if (isChecked) {
+                DialogHelper.showConfirmDialog(activity, context.getString(R.string.profile_warning_title), context.getString(R.string.profile_warning_message),
+                    context.getString(R.string.profile_continue), context.getString(R.string.button_cancel), 
+                    () -> advancedFields.setVisibility(View.VISIBLE),
+                    () -> { ignoreSwitchChange = true; advancedSwitch.setChecked(false); advancedFields.setVisibility(View.GONE); });
+            } else advancedFields.setVisibility(View.GONE);
         });
-        editAvatarImageView.setOnClickListener(v -> showAvatarSelector());
-        initializeAvatarSelector();
+        
+        avatarIV.setOnClickListener(v -> showAvatarSelector());
     }
 
-    private void showAdvancedWarning() {
-        DialogHelper.showConfirmDialog(activity, context.getString(R.string.profile_warning_title), context.getString(R.string.profile_warning_message),
-            context.getString(R.string.profile_continue), context.getString(R.string.button_cancel), () -> advancedFieldsLayout.setVisibility(View.VISIBLE),
-            () -> { ignoreSwitchChange = true; advancedSwitch.setChecked(false); advancedFieldsLayout.setVisibility(View.GONE); }).setCancelable(false);
+    private void updateStepUi() {
+        editStepFlipper.setDisplayedChild(currentStep);
+        cancelButton.setText(currentStep == 0 ? R.string.button_cancel : R.string.button_previous);
+        saveButton.setText(currentStep == 2 ? R.string.button_save : R.string.button_next);
+        
+        int accent = ThemeManager.getColorAccent(context);
+        int highlight = ThemeManager.getColorControlHighlight(context);
+        step1Ind.setBackgroundColor(currentStep >= 0 ? accent : highlight);
+        step2Ind.setBackgroundColor(currentStep >= 1 ? accent : highlight);
+        step3Ind.setBackgroundColor(currentStep >= 2 ? accent : highlight);
+    }
+
+    private void goNextStep() {
+        currentStep++;
+        editStepFlipper.setInAnimation(context, R.anim.slide_in_right);
+        editStepFlipper.setOutAnimation(context, R.anim.slide_out_left);
+        updateStepUi();
+    }
+
+    private void goBackStep() {
+        currentStep--;
+        editStepFlipper.setInAnimation(context, R.anim.slide_in_left);
+        editStepFlipper.setOutAnimation(context, R.anim.slide_out_right);
+        updateStepUi();
+    }
+
+    private boolean validateStep(int step) {
+        if (step == 0) {
+            boolean v1 = Validator.isValidFirstName(firstNameET.getText().toString());
+            firstNameTIL.setError(v1 ? null : context.getString(R.string.profile_invalid_first_name));
+            boolean v2 = Validator.isValidLastName(lastNameET.getText().toString());
+            lastNameTIL.setError(v2 ? null : context.getString(R.string.profile_invalid_last_name));
+            return v1 && v2;
+        } else if (step == 2) {
+            boolean v3 = !advancedSwitch.isChecked() || Validator.isValidUsername(usernameET.getText().toString());
+            usernameTIL.setError(v3 ? null : context.getString(R.string.profile_invalid_username));
+            boolean v4 = !oldPasswordET.getText().toString().isEmpty();
+            oldPasswordTIL.setError(v4 ? null : context.getString(R.string.profile_current_password_required));
+            return v3 && v4;
+        }
+        return true;
     }
 
     private void fillData(Profile p) {
-        firstNameEditText.setText(p.getFirstName());
-        lastNameEditText.setText(p.getLastName());
-        usernameEditText.setText(p.getUsername());
-        idNumberEditText.setText(p.getIdCard());
-
+        firstNameET.setText(p.getFirstName()); lastNameET.setText(p.getLastName());
+        usernameET.setText(p.getUsername()); idET.setText(p.getIdCard());
         currentRoleValue = p.getRole() != null ? p.getRole() : RoleHelper.ROLE_STUDENT;
-        roleAutoComplete.setText(RoleHelper.getLocalizedFromRoleValue(currentRoleValue, context), false);
+        roleAC.setText(RoleHelper.getLocalizedFromRoleValue(currentRoleValue, context), false);
         updateRoleFields(currentRoleValue);
-
-        if (currentRoleValue.equals(RoleHelper.ROLE_STUDENT)) {
-            schoolEditText.setText(p.getSchool()); groupEditText.setText(p.getGroup());
-        } else if (currentRoleValue.equals(RoleHelper.ROLE_TUTOR)) tuteeEditText.setText(p.getTutee());
-        else responsibilitiesEditText.setText(p.getResponsibilities());
-
+        schoolET.setText(p.getSchool()); groupET.setText(p.getGroup());
+        tuteeET.setText(p.getTutee()); responsibilitiesET.setText(p.getResponsibilities());
         renderAvatar(p);
     }
 
     private void renderAvatar(Profile p) {
         String url = p.getAvatarUrl();
-        isEditAvatarInitial = (url == null || url.isEmpty() || url.contains("\"tipo\":\"inicial\""));
-        if (isEditAvatarInitial) updateEditInitialAvatar();
-        else if (url.startsWith("{")) {
-            try {
-                JSONObject j = new JSONObject(url);
-                if (j.getString("tipo").equals("rol")) editAvatarImageView.setImageBitmap(AvatarHelper.generateRoleAvatar(context, j.getString("rol"), ThemeManager.getColorAccent(context)));
-            } catch (Exception ignored) {}
-        } else Glide.with(context).load(url).into(editAvatarImageView);
+        if (url != null && !url.isEmpty() && !url.startsWith("{")) Glide.with(context).load(url).into(avatarIV);
+        else avatarIV.setImageResource(R.drawable.ic_nav_profile);
     }
 
-    public HashMap<String, Object> collectData() {
-        if (!validateForm()) return null;
+    private HashMap<String, Object> collectData() {
         LinkedHashMap<String, Object> data = new LinkedHashMap<>();
-        data.put("first_name", firstNameEditText.getText().toString().trim());
-        data.put("last_name", lastNameEditText.getText().toString().trim());
+        data.put("first_name", firstNameET.getText().toString().trim());
+        data.put("last_name", lastNameET.getText().toString().trim());
         data.put("role", currentRoleValue);
-        if (currentRoleValue.equals(RoleHelper.ROLE_STUDENT)) {
-            data.put("school", schoolEditText.getText().toString().trim()); data.put("group", groupEditText.getText().toString().trim());
-        } else if (currentRoleValue.equals(RoleHelper.ROLE_TUTOR)) data.put("tutee", tuteeEditText.getText().toString().trim());
-        else data.put("responsibilities", responsibilitiesEditText.getText().toString().trim());
+        if (currentRoleValue.equals(RoleHelper.ROLE_STUDENT)) { data.put("school", schoolET.getText().toString().trim()); data.put("group", groupET.getText().toString().trim()); }
+        else if (currentRoleValue.equals(RoleHelper.ROLE_TUTOR)) data.put("tutee", tuteeET.getText().toString().trim());
+        else data.put("responsibilities", responsibilitiesET.getText().toString().trim());
+        
         if (advancedSwitch.isChecked()) {
-            data.put("username", usernameEditText.getText().toString().trim());
-            data.put("id_card", idNumberEditText.getText().toString().trim());
-            String pass = newPasswordEditText.getText().toString().trim();
+            data.put("username", usernameET.getText().toString().trim());
+            data.put("id_card", idET.getText().toString().trim());
+            String pass = newPasswordET.getText().toString().trim();
             if (!pass.isEmpty()) data.put("password", pass);
         }
         if (!pathBase64.isEmpty()) data.put("avatar_url", pathBase64);
+        data.put("current_password", oldPasswordET.getText().toString().trim());
         return data;
-    }
-
-    private boolean validateForm() {
-        boolean ok = true;
-        if (!Validator.isValidFirstName(firstNameEditText.getText().toString())) { firstNameTextInputLayout.setError(context.getString(R.string.profile_invalid_first_name)); ok = false; }
-        if (!Validator.isValidLastName(lastNameEditText.getText().toString())) { lastNameTextInputLayout.setError(context.getString(R.string.profile_invalid_last_name)); ok = false; }
-        return ok;
-    }
-
-    private void initializeAvatarSelector() {
-        avatarSelectorBottomSheet = new BottomSheetDialog(activity);
-        View v = LayoutInflater.from(context).inflate(R.layout.bottomsheet_avatar_selector, null);
-        avatarSelectorBottomSheet.setContentView(v);
-        avatarSelectorBottomSheet.getWindow().findViewById(com.google.android.material.R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
-        v.findViewById(R.id.uploadImageLayout).setOnClickListener(view -> filePickerHelper.pickFile("image/jpeg", new FilePickerHelper.OnFilePickedListener() {
-            @Override public void onFilePicked(String path, String name, String mime, String base64) {
-                pathBase64 = base64; isEditAvatarInitial = false;
-                editAvatarImageView.setImageBitmap(FileUtils.decodeSampleBitmapFromPath(path, 256, 256));
-                avatarSelectorBottomSheet.dismiss();
-            }
-            @Override public void onPickCancelled() {}
-        }));
-        v.findViewById(R.id.initialLayout).setOnClickListener(view -> { isEditAvatarInitial = true; updateEditInitialAvatar(); avatarSelectorBottomSheet.dismiss(); });
-        v.findViewById(R.id.roleLayout).setOnClickListener(view -> {
-            isEditAvatarInitial = false; pathBase64 = "{\"tipo\":\"rol\",\"rol\":\"" + currentRoleValue + "\"}";
-            editAvatarImageView.setImageBitmap(AvatarHelper.generateRoleAvatar(context, currentRoleValue, ThemeManager.getColorAccent(context)));
-            avatarSelectorBottomSheet.dismiss();
-        });
-        v.findViewById(R.id.avatarSelectorContainer).setBackground(createRoundedBg(ThemeManager.getThemeColor(context, R.attr.colorBackground), (int)(14 * context.getResources().getDisplayMetrics().density)));
-    }
-
-    private void showAvatarSelector() { if (avatarSelectorBottomSheet != null) avatarSelectorBottomSheet.show(); }
-
-    private void updateEditInitialAvatar() {
-        if (!isEditAvatarInitial) return;
-        String name = firstNameEditText.getText().toString().trim();
-        String initial = name.isEmpty() ? usernameEditText.getText().toString().trim() : name;
-        initial = initial.isEmpty() ? "?" : initial.substring(0, 1).toUpperCase();
-        pathBase64 = "{\"tipo\":\"inicial\",\"inicial\":\"" + initial + "\"}";
-        editAvatarImageView.setImageBitmap(AvatarHelper.generateInitialAvatar(context, initial, ThemeManager.getColorAccent(context)));
     }
 
     private void updateRoleFields(String val) {
@@ -277,16 +249,19 @@ public class ProfileEditorHelper {
         teacherLayout.setVisibility(val.equals(RoleHelper.ROLE_TEACHER) ? View.VISIBLE : View.GONE);
     }
 
-    private android.graphics.drawable.Drawable createRoundedBg(int c, float r) {
-        android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
-        gd.setColor(c); gd.setCornerRadii(new float[]{r, r, r, r, 0, 0, 0, 0}); return gd;
+    private void showAvatarSelector() {
+        BottomSheetDialog selector = new BottomSheetDialog(activity);
+        View v = LayoutInflater.from(context).inflate(R.layout.bottomsheet_avatar_selector, null);
+        selector.setContentView(v);
+        v.findViewById(R.id.uploadImageLayout).setOnClickListener(view -> filePickerHelper.pickFile("image/jpeg", new FilePickerHelper.OnFilePickedListener() {
+            @Override public void onFilePicked(String path, String name, String mime, String base64) {
+                pathBase64 = base64; avatarIV.setImageBitmap(FileUtils.decodeSampleBitmapFromPath(path, 256, 256));
+                selector.dismiss();
+            }
+            @Override public void onPickCancelled() {}
+        }));
+        selector.show();
     }
 
-    private android.graphics.drawable.Drawable createRippleBg(int c, int rip, float r) {
-        android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
-        gd.setColor(c); gd.setCornerRadii(new float[]{r, r, r, r, 0, 0, 0, 0});
-        return new android.graphics.drawable.RippleDrawable(android.content.res.ColorStateList.valueOf(rip), gd, null);
-    }
+    public void dismiss() { if (editBottomSheet != null) editBottomSheet.dismiss(); }
 }
-
-

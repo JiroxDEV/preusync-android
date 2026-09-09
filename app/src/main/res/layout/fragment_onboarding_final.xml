@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: fragment_onboarding_final.xml
-    Versión: v1.1.0
-    Descripción: Página final del onboarding que prepara la transición a la autenticación.
+    Versión: v2.0.0
+    Descripción: Página final del onboarding.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -41,7 +41,8 @@
                 android:textColor="?attr/colorText"
                 android:layout_alignTop="@id/logo"
                 android:layout_centerHorizontal="true"
-                android:textSize="@dimen/text_size_30sp" />
+                android:textSize="@dimen/text_size_30sp"
+                android:translationY="-60dp"/>
 
             <ImageView
                 android:id="@+id/logo"
@@ -74,7 +75,7 @@
             android:text="@string/onboarding_desc_3"
             android:textStyle="bold"
             android:textColor="?attr/colorText"
-            android:translationY="20.0dp"
+            android:translationY="40.0dp"
             android:layout_alignBottom="@id/relativeLayoutLogo"
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/text_size_16sp" />
@@ -87,24 +88,10 @@
             android:text="@string/onboarding_already_have_account"
             android:textStyle="bold"
             android:textColor="?attr/colorText"
-            android:translationY="-60.0dp"
-            android:textSize="@dimen/text_size_14sp"
-            android:layout_alignTop="@id/materialButton2" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:textSize="@dimen/text_size_14sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_40dp"
-            android:padding="@dimen/padding_8dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/button_enter"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.PreuSync.Button.Global"
-            android:textSize="@dimen/text_size_14sp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </LinearLayout>
-
-

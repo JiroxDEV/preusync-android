@@ -47,43 +47,6 @@
             android:layout_weight="1"
             tools:listitem="@layout/item_permission" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/controls"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:padding="@dimen/padding_8dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_25dp"
-            android:padding="@dimen/padding_8dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/button_previous"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.PreuSync.Button.Global"
-            android:textSize="@dimen/text_size_14sp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/marginbottom_25dp"
-            android:padding="@dimen/padding_8dp"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/button_next"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.PreuSync.Button.Global"
-            android:textSize="@dimen/text_size_14sp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
 </LinearLayout>
 
 

@@ -1,13 +1,3 @@
-/**
- * ============================================================================
- * Proyecto: PreuSync
- * Clase: OnboardingPermissionsFragment.java
- * Versión: v2.0.1
- * Descripción: Gestión de permisos críticos durante el primer inicio.
- * Autor: JiroxDEV
- * Licensed under the GNU Affero General Public License v3
- * ============================================================================
- */
 package binaryqva.educative.preusync.ui.fragments.onboarding;
 
 import android.Manifest;
@@ -34,25 +24,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import binaryqva.educative.preusync.R;
-import binaryqva.educative.preusync.ui.activities.OnboardingActivity;
 import binaryqva.educative.preusync.ui.viewmodels.OnboardingViewModel;
 import binaryqva.educative.preusync.utils.theme.ThemeManager;
 
-/**
- * Presenta una lista interactiva de permisos necesarios para el correcto
- * funcionamiento de los servicios en segundo plano y avisos en tiempo real.
- */
 public class OnboardingPermissionsFragment extends Fragment {
 
     private OnboardingViewModel viewModel;
-    private MaterialButton nextButton;
     private RecyclerView permissionsRecyclerView;
     private final ArrayList<HashMap<String, Object>> permissionsList = new ArrayList<>();
 
@@ -62,44 +45,19 @@ public class OnboardingPermissionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_onboarding_permissions, container, false);
         
         viewModel = new ViewModelProvider(requireActivity()).get(OnboardingViewModel.class);
-        
         permissionsRecyclerView = view.findViewById(R.id.permissions);
-        nextButton = view.findViewById(R.id.materialButton4);
-
-        view.findViewById(R.id.materialButton3).setOnClickListener(v -> {
-            if (getActivity() instanceof OnboardingActivity) ((OnboardingActivity) getActivity()).previousPage();
-        });
-
-        nextButton.setOnClickListener(v -> {
-            checkPermissions();
-            Boolean granted = viewModel.getPermissionsGranted().getValue();
-            if (granted != null && granted && getActivity() instanceof OnboardingActivity) {
-                ((OnboardingActivity) getActivity()).nextPage();
-            }
-        });
 
         setupPermissionsList();
-        setupObservers();
         return view;
-    }
-
-    private void setupObservers() {
-        viewModel.getPermissionsGranted().observe(getViewLifecycleOwner(), granted -> {
-            int color = ThemeManager.getThemeColor(requireContext(), granted ? R.attr.colorAccent : R.attr.colorControlNormal);
-            nextButton.setBackgroundTintList(ColorStateList.valueOf(color));
-        });
     }
 
     private void setupPermissionsList() {
         permissionsList.clear();
-        // PERMISO: Optimización de batería (Opcional).
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             addPermission(getString(R.string.permission_battery_optimization_title), 
                          getString(R.string.permission_battery_optimization_desc), 
                          "IGNORE_BATTERY_OPTIMIZATIONS");
         }
-        
-        // PERMISO: Notificaciones (Crítico para Android 13+).
         if (Build.VERSION.SDK_INT >= 33) {
             addPermission(getString(R.string.permission_notifications_title), 
                          getString(R.string.permission_notifications_desc), 
@@ -190,5 +148,3 @@ public class OnboardingPermissionsFragment extends Fragment {
         }
     }
 }
-
-

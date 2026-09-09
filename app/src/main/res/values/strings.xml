@@ -61,6 +61,8 @@
     <string name="hint_id_number">Carnet de identidad</string>
     <string name="hint_last_name">Apellidos</string>
     <string name="hint_new_password">Nueva contraseña</string>
+    <string name="hint_province">Provincia</string>
+    <string name="hint_municipality">Municipio</string>
     <string name="hint_password">Contraseña</string>
     <string name="hint_repeat_new_password">Repita su nueva contraseña</string>
     <string name="hint_repeat_password">Repita su contraseña</string>

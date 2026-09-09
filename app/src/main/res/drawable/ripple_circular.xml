@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ============================================================================
-    Proyecto: PreuSync
-    Drawable: ripple_circular.xml
-    Versión: v1.0.3
-    Descripción: Efecto Ripple circular para botones e imágenes.
-    Autor: JiroxDEV
-    Licensed under the GNU Affero General Public License v3
-    ============================================================================
--->
-
-
-<ripple 
-xmlns:android="http://schemas.android.com/apk/res/android" 
-android:color="?attr/colorControlHighlight" />
-
-
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <item android:id="@android:id/mask">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+</ripple>

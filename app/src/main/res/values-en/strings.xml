@@ -61,6 +61,8 @@
     <string name="hint_id_number">ID number</string>
     <string name="hint_last_name">Last name</string>
     <string name="hint_new_password">New password</string>
+    <string name="hint_province">Province</string>
+    <string name="hint_municipality">Municipality</string>
     <string name="hint_password">Password</string>
     <string name="hint_repeat_new_password">Repeat your new password</string>
     <string name="hint_repeat_password">Repeat your password</string>
