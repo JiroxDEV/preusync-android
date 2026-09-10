@@ -20,18 +20,23 @@ public class School {
     @SerializedName("name")
     private String name;
 
-    @SerializedName("municipalityId")
+    @SerializedName("municipality_id")
     private String municipalityId;
 
-    public School(String id, String name, String municipalityId) {
+    @SerializedName("is_available")
+    private boolean isAvailable;
+
+    public School(String id, String name, String municipalityId, boolean isAvailable) {
         this.id = id;
         this.name = name;
         this.municipalityId = municipalityId;
+        this.isAvailable = isAvailable;
     }
 
     public String getId() { return id; }
     public String getName() { return name; }
     public String getMunicipalityId() { return municipalityId; }
+    public boolean isAvailable() { return isAvailable; }
 
     @Override
     public String toString() { return name; }

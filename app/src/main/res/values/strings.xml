@@ -373,7 +373,30 @@
     <string name="onboarding_title_3">¡Listo!</string>
 
     <!-- ==================== TÉRMINOS Y CONDICIONES ==================== -->
-    <string name="terms_PreuSync">&#10;    Para utilizar PreuSync, usted debe aceptar las siguientes condiciones:&lt;br/&gt;&lt;br/&gt;&#10;    1. &lt;b&gt;Licencia y Uso&lt;/b&gt;&lt;br/&gt;&#10;    PreuSync es un software gratuito. Queda prohibida la monetización de cualquier contenido generado o obtenido a través de esta plataforma.&lt;br/&gt;&lt;br/&gt;&#10;    2. &lt;b&gt;Veracidad de la Información&lt;/b&gt;&lt;br/&gt;&#10;    Los datos proporcionados durante el registro deben ser verídicos. En caso de detectar información falsa, su cuenta y el dispositivo asociado podrán ser suspendidos temporal o permanentemente, según la gravedad de la infracción.&lt;br/&gt;&lt;br/&gt;&#10;    3. &lt;b&gt;Contenido Permitido&lt;/b&gt;&lt;br/&gt;&#10;    Solo se permite publicar contenido relacionado con la comunidad educativa (estudiantes, profesores o instituciones) de nuestro país, ya sea de forma directa o indirecta.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;4. Prohibiciones&lt;/b&gt;&lt;br/&gt;&#10;    Está estrictamente prohibido:&lt;br/&gt;&#10;    - Publicar contenido discriminatorio (basado en raza, género, religión, ideología, etc.).&lt;br/&gt;&#10;    - Distribuir SPAM o material no solicitado.&lt;br/&gt;&#10;    - Compartir contenido restringido para mayores de 18 años o que infrinja derechos de terceros.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;5. Cuentas de Estudiantes&lt;/b&gt;&lt;br/&gt;&#10;    Los menores de edad deben contar con la autorización expresa de sus tutores legales para registrarse. De lo contrario, la cuenta será eliminada sin previo aviso.&#10;    </string>
+    <string name="terms_PreuSync">
+Para utilizar **PreuSync**, usted debe aceptar las siguientes condiciones:\n\n
+1. **Licencia y Uso**\n
+PreuSync es un software gratuito. Queda prohibida la monetización de cualquier contenido generado o obtenido a través de esta plataforma.\n\n
+2. **Veracidad de la Información**\n
+Los datos proporcionados durante el registro deben ser verídicos. En caso de detectar información falsa, su cuenta y el dispositivo asociado podrán ser suspendidos temporal o permanentemente, según la gravedad de la infracción.\n\n
+3. **Contenido Permitido**\n
+Solo se permite publicar contenido relacionado con la comunidad educativa (estudiantes, profesores o instituciones) de nuestro país, ya sea de forma directa o indirecta.\n\n
+4. **Prohibiciones**\n
+Está estrictamente prohibido:\n
+- Publicar contenido discriminatorio (basado en raza, género, religión, ideología, etc.).\n
+- Distribuir SPAM o material no solicitado.\n
+- Compartir contenido restringido para mayores de 18 años o que infrinja derechos de terceros.\n\n
+5. **Cuentas de Estudiantes**\n
+Los menores de edad deben contar con la autorización expresa de sus tutores legales para registrarse. De lo contrario, la cuenta será eliminada sin previo aviso.
+    </string>
+
+    <string name="onboarding_title_welcome_red">¡Bienvenido a la red!</string>
+    <string name="onboarding_feature_sync_title">Sincronización Nacional</string>
+    <string name="onboarding_feature_sync_desc">Toda la red de preuniversitarios conectada en tiempo real.</string>
+    <string name="onboarding_feature_schedule_title">Gestión de Horarios</string>
+    <string name="onboarding_feature_schedule_desc">Consulta tus turnos, clases y eventos institucionales.</string>
+    <string name="onboarding_feature_security_title">Privacidad y Libertad</string>
+    <string name="onboarding_feature_security_desc">Software libre bajo licencia AGPLv3. Tus datos están seguros.</string>
 
     <!-- ==================== ROLES ==================== -->
     <string name="role_student">Educando</string>

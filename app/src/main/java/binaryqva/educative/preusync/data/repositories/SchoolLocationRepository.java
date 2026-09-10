@@ -19,6 +19,7 @@ import binaryqva.educative.preusync.network.models.ApiResponse;
 import binaryqva.educative.preusync.network.models.Municipality;
 import binaryqva.educative.preusync.network.models.Province;
 import binaryqva.educative.preusync.network.models.School;
+import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.network.retrofit.ApiService;
 import binaryqva.educative.preusync.network.retrofit.RetrofitClient;
 import retrofit2.Call;
@@ -42,5 +43,13 @@ public class SchoolLocationRepository {
 
     public void getSchools(String municipalityId, Callback<ApiResponse<List<School>>> callback) {
         apiService.getSchools(municipalityId).enqueue(callback);
+    }
+
+    public void getGroups(String schoolId, Callback<ApiResponse<List<SchoolGroup>>> callback) {
+        apiService.getGroups(schoolId).enqueue(callback);
+    }
+
+    public void getResponsibilities(Callback<ApiResponse<List<String>>> callback) {
+        apiService.getResponsibilities().enqueue(callback);
     }
 }

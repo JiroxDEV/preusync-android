@@ -60,6 +60,10 @@ public class AuthRepository {
         apiService.verifyPassword(new VerifyPasswordRequest(password)).enqueue(callback);
     }
 
+    public void checkUserExists(String username, Callback<ApiResponse<Boolean>> callback) {
+        apiService.checkUserExists(username).enqueue(callback);
+    }
+
     public void logout(Callback<ApiResponse<Void>> callback) {
         apiService.logout().enqueue(callback);
     }

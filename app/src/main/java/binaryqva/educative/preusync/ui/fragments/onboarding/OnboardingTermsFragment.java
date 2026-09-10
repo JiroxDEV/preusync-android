@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import binaryqva.educative.preusync.R;
 import binaryqva.educative.preusync.ui.viewmodels.OnboardingViewModel;
+import binaryqva.educative.preusync.utils.markdown.MarkdownWebViewHelper;
 import binaryqva.educative.preusync.utils.theme.ThemeManager;
 
 public class OnboardingTermsFragment extends Fragment {
@@ -33,7 +34,7 @@ public class OnboardingTermsFragment extends Fragment {
         checkBox = view.findViewById(R.id.checkbox1);
         TextView termsText = view.findViewById(R.id.termsTextView);
         
-        termsText.setText(HtmlCompat.fromHtml(getString(R.string.terms_PreuSync), HtmlCompat.FROM_HTML_MODE_LEGACY));
+        MarkdownWebViewHelper.replaceWithWebView(requireContext(), termsText, getString(R.string.terms_PreuSync), "terms_cache", 0);
         
         checkBox.setOnCheckedChangeListener((btn, isChecked) -> viewModel.setTermsAccepted(isChecked));
         

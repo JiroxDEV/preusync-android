@@ -26,6 +26,7 @@ import binaryqva.educative.preusync.network.models.Event;
 import binaryqva.educative.preusync.network.models.Municipality;
 import binaryqva.educative.preusync.network.models.Province;
 import binaryqva.educative.preusync.network.models.School;
+import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.network.requests.BugReportRequest;
 import binaryqva.educative.preusync.network.requests.CreatePostRequest;
 import binaryqva.educative.preusync.network.requests.LoginRequest;
@@ -85,6 +86,9 @@ public interface ApiService {
     @GET("auth/user/{username}")
     Call<ApiResponse<Profile>> getUserByUsername(@Path("username") String username);
 
+    @GET("auth/exists/{username}")
+    Call<ApiResponse<Boolean>> checkUserExists(@Path("username") String username);
+
     // ==================== PUBLICACIONES (POSTS) ====================
     @GET("posts/{id}")
     Call<ApiResponse<Post>> getPostById(@Path("id") String postId);
@@ -143,7 +147,7 @@ public interface ApiService {
     Call<ApiResponse<List<Schedule>>> getSchedule(@Query("group") String group, @Query("schoolId") String schoolId);
 
     @GET("groups")
-    Call<ApiResponse<List<String>>> getGroups(@Query("schoolId") String schoolId);
+    Call<ApiResponse<List<SchoolGroup>>> getGroups(@Query("schoolId") String schoolId);
 
     // ==================== LOCALIZACIONES (NACIONAL) ====================
     @GET("schools/provinces")
@@ -154,6 +158,9 @@ public interface ApiService {
 
     @GET("schools/institutions")
     Call<ApiResponse<List<School>>> getSchools(@Query("municipalityId") String municipalityId);
+
+    @GET("schools/responsibilities")
+    Call<ApiResponse<List<String>>> getResponsibilities();
 }
 
 

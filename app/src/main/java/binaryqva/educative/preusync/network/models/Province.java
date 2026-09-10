@@ -20,13 +20,18 @@ public class Province {
     @SerializedName("name")
     private String name;
 
-    public Province(String id, String name) {
+    @SerializedName("is_available")
+    private boolean isAvailable;
+
+    public Province(String id, String name, boolean isAvailable) {
         this.id = id;
         this.name = name;
+        this.isAvailable = isAvailable;
     }
 
     public String getId() { return id; }
     public String getName() { return name; }
+    public boolean isAvailable() { return isAvailable; }
     
     @Override
     public String toString() { return name; }

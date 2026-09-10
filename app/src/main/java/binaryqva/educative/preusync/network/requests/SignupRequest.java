@@ -34,8 +34,11 @@ public class SignupRequest {
     @SerializedName("school_id")
     private String schoolId;
 
-    @SerializedName("group")
-    private String group;
+    @SerializedName("groupId")
+    private String groupId;
+
+    @SerializedName("groupName")
+    private String groupName;
 
     @SerializedName("tutee")
     private String tutee;
@@ -56,7 +59,8 @@ public class SignupRequest {
     public void setIdCard(String idCard) { this.idCard = idCard; }
     public void setRole(String role) { this.role = role; }
     public void setSchoolId(String schoolId) { this.schoolId = schoolId; }
-    public void setGroup(String group) { this.group = group; }
+    public void setGroupId(String groupId) { this.groupId = groupId; }
+    public void setGroupName(String groupName) { this.groupName = groupName; }
     public void setTutee(String tutee) { this.tutee = tutee; }
     public void setResponsibilities(String responsibilities) { this.responsibilities = responsibilities; }
     public void setAvatar(String avatar) { this.avatar = avatar; }

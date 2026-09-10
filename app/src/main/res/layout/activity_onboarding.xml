@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_onboarding.xml
-    Versión: v2.1.0
-    Descripción: Interfaz de bienvenida profesional con navegación no superpuesta.
+    Versión: v2.2.0
+    Descripción: Interfaz de bienvenida con navegación centrada y fluida.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -23,48 +23,27 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:clipChildren="false"
         app:layout_constraintBottom_toTopOf="@+id/navigationBar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Barra de Navegación Inferior Unificada (Fuera del área de la navbar del sistema) -->
+    <!-- Barra de Navegación Inferior Unificada -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:paddingHorizontal="24dp"
+        android:paddingBottom="24dp"
         android:background="?attr/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="12dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@drawable/selector_onboarding_indicator"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="48dp"
-            app:tabMinWidth="24dp"
-            app:tabMode="fixed"
-            app:tabRippleColor="@null"
-            app:tabPaddingStart="6dp"
-            app:tabPaddingEnd="6dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonBack"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:text="@string/button_previous"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
@@ -74,9 +53,28 @@
             android:layout_height="wrap_content"
             android:text="@string/button_next"
             app:icon="@drawable/ic_arrow_forward"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- TabLayout centrado por debajo de los botones -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonNext"
+            app:tabBackground="@drawable/selector_onboarding_indicator"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="48dp"
+            app:tabMinWidth="24dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@null"
+            app:tabPaddingStart="0dp"
+            app:tabPaddingEnd="0dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

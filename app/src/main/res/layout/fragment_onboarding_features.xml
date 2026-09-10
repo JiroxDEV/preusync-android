@@ -3,108 +3,171 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: fragment_onboarding_features.xml
-    Versión: v1.2.0
-    Descripción: Página del onboarding que destaca las funciones principales de la aplicación.
+    Versión: v1.4.1
+    Descripción: Página del onboarding que destaca las funciones principales.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
 -->
 
-<LinearLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/onboardingFeaturesLayoutContainer">
+    android:fillViewport="true"
+    android:background="?attr/colorBackground">
 
-    <RelativeLayout
-        android:id="@+id/mainContainer"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/logo"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_centerInParent="true">
-
-            <ImageView
-                android:id="@+id/chats"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_nav_posts"
-                android:scaleType="fitCenter"
-                android:rotation="340"
-                android:translationY="-50.0dp"
-                android:layout_alignLeft="@id/icon"
-                android:layout_centerVertical="true"
-                style="@style/ImageViewIconStyle" />
-
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/logo"
-                android:scaleType="fitCenter"
-                android:layout_centerInParent="true"
-                style="@style/ImageViewIconStyle" />
-
-            <ImageView
-                android:id="@+id/news"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_nav_news"
-                android:scaleType="fitCenter"
-                android:rotation="5"
-                android:translationX="-20.0dp"
-                android:translationY="40.0dp"
-                android:layout_alignTop="@id/logo"
-                android:layout_centerHorizontal="true"
-                style="@style/ImageViewIconStyle" />
-
-            <ImageView
-                android:id="@+id/school"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_school"
-                android:scaleType="fitCenter"
-                android:rotation="30"
-                android:translationY="-40.0dp"
-                android:layout_alignRight="@id/icon"
-                android:layout_centerVertical="true"
-                style="@style/ImageViewIconStyle" />
-
-            <ImageView
-                android:id="@+id/secure"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_verified"
-                android:scaleType="fitCenter"
-                android:rotation="355"
-                android:translationX="10.0dp"
-                android:translationY="55.0dp"
-                android:layout_alignLeft="@id/icon"
-                android:layout_centerVertical="true"
-                style="@style/ImageViewIconStyle" />
-        </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/featuresDescription"
+            style="@style/TextAppearance.PreuSync.HeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="8dp"
-            android:paddingTop="@dimen/padding_8dp"
-            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/onboarding_title_welcome_red"
+            android:textSize="28sp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Feature 1: Sincronización Nacional -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.PreuSync.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_language"
+                    app:tint="?attr/colorAccent"
+                    android:contentDescription="@string/onboarding_feature_sync_title" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_sync_title"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_sync_desc"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorTextHint" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Feature 2: Gestión Escolar -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.PreuSync.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_assignment"
+                    app:tint="?attr/colorAccent"
+                    android:contentDescription="@string/onboarding_feature_schedule_title" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_schedule_title"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_schedule_desc"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorTextHint" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Feature 3: Seguridad AGPLv3 -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.PreuSync.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_verified"
+                    app:tint="?attr/colorAccent"
+                    android:contentDescription="@string/onboarding_feature_security_title" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_security_title"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_feature_security_desc"
+                        android:textSize="14sp"
+                        android:textColor="?attr/colorTextHint" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="@string/onboarding_desc_2"
-            android:textStyle="bold"
-            android:textColor="?attr/colorText"
-            android:translationY="-40.0dp"
-            android:layout_alignTop="@id/logo"
-            android:layout_centerHorizontal="true"
-            android:textSize="@dimen/text_size_25sp" />
-    </RelativeLayout>
-</LinearLayout>
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:textColor="?attr/colorAccent"
+            android:gravity="center" />
 
-
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

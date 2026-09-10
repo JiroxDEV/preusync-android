@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_auth.xml
-    Versión: v6.0.0
-    Descripción: Interfaz de autenticación modernizada. Registro dividido en pasos.
+    Versión: v8.0.0
+    Descripción: Interfaz de autenticación minimalista y funcional.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -19,6 +19,34 @@
     android:fitsSystemWindows="true"
     android:background="?attr/colorBackground">
 
+    <!-- Cabecera Minimalista -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/logo"
+            app:tint="?attr/colorAccent" />
+
+        <TextView
+            android:id="@+id/appName"
+            style="@style/TextAppearance.PreuSync.HeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/app_name"
+            android:textSize="22sp" />
+    </LinearLayout>
+
     <ImageButton
         android:id="@+id/settingsButton"
         android:layout_width="40dp"
@@ -29,75 +57,34 @@
         android:src="@drawable/ic_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorAccent" />
+        app:tint="?attr/colorAccent"
+        android:contentDescription="@string/title_settings" />
 
-    <!-- Cabecera de Marca Simplificada -->
-    <LinearLayout
-        android:id="@+id/headerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="32dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/appLogo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/logo" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/appName"
-                style="@style/TextAppearance.PreuSync.HeaderTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_tagline"
-                android:textColor="?attr/colorTextHint"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Contenedor Principal de Formularios -->
+    <!-- Tarjeta de Formulario -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/formCard"
         style="@style/Widget.PreuSync.CardView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="0dp"
         app:strokeWidth="1dp"
         app:strokeColor="?attr/colorControlHighlight"
-        app:layout_constraintBottom_toTopOf="@+id/authFab"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
 
-            <!-- Toggle Login/Register con bordes corregidos -->
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/authToggleGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 app:checkedButton="@+id/toggleLogin"
                 app:singleSelection="true"
                 app:selectionRequired="true"
@@ -120,7 +107,6 @@
                     android:text="@string/button_register" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
-            <!-- ViewFlipper para alternar entre Login y Registro -->
             <ViewFlipper
                 android:id="@+id/authViewFlipper"
                 android:layout_width="match_parent"
@@ -129,18 +115,17 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/authToggleGroup">
 
-                <!-- Panel de Login (Index 0) -->
+                <!-- Panel Login (0) -->
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fillViewport="true"
                     android:scrollbars="none">
                     <LinearLayout
-                        android:id="@+id/loginFields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/usernameTextInputLayout"
                             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -151,10 +136,8 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/usernameEditText"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text" />
+                                android:layout_height="wrap_content" />
                         </com.google.android.material.textfield.TextInputLayout>
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/passwordTextInputLayout"
                             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -173,276 +156,21 @@
                     </LinearLayout>
                 </ScrollView>
 
-                <!-- Panel de Registro Paso a Paso (Index 1) -->
+                <!-- Panel Register (1) -->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/registerFields"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
                     <ViewFlipper
                         android:id="@+id/registerStepFlipper"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         app:layout_constraintBottom_toTopOf="@id/stepNavigationLayout"
                         app:layout_constraintTop_toTopOf="parent">
-
-                        <!-- Paso 1: Cuenta -->
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fillViewport="true"
-                            android:scrollbars="none">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:paddingBottom="16dp">
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/avatarCardView"
-                                    android:layout_width="72dp"
-                                    android:layout_height="72dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginBottom="16dp"
-                                    app:cardCornerRadius="36dp"
-                                    app:cardElevation="2dp">
-                                    <ImageView
-                                        android:id="@+id/avatarImageView"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_nav_profile" />
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/registerUsernameTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/hint_username"
-                                    app:startIconDrawable="@drawable/ic_nav_profile">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/registerUsernameEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/newPasswordTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_password"
-                                    app:endIconMode="password_toggle"
-                                    app:startIconDrawable="@drawable/ic_key">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/newPasswordEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="textPassword" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/confirmPasswordTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_repeat_password"
-                                    app:endIconMode="password_toggle"
-                                    app:startIconDrawable="@drawable/ic_repeat">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/confirmPasswordEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="textPassword" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                        </ScrollView>
-
-                        <!-- Paso 2: Información Personal -->
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fillViewport="true"
-                            android:scrollbars="none">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/firstNameTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/hint_first_name"
-                                    app:startIconDrawable="@drawable/ic_rename">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/firstNameEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/lastNameTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_last_name"
-                                    app:startIconDrawable="@drawable/ic_assignment">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/lastNameEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/idTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_id_number"
-                                    app:startIconDrawable="@drawable/ic_card">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/idEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="number" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                        </ScrollView>
-
-                        <!-- Paso 3: Institución y Rol -->
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fillViewport="true"
-                            android:scrollbars="none">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/roleTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="@string/hint_role"
-                                    app:startIconDrawable="@drawable/ic_work">
-                                    <AutoCompleteTextView
-                                        android:id="@+id/roleAutoComplete"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="none" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/studentLayout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <com.google.android.material.textfield.TextInputLayout
-                                        android:id="@+id/provinceTextInputLayout"
-                                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="12dp"
-                                        android:hint="@string/hint_province"
-                                        app:startIconDrawable="@drawable/ic_place">
-                                        <AutoCompleteTextView
-                                            android:id="@+id/provinceAutoComplete"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="none" />
-                                    </com.google.android.material.textfield.TextInputLayout>
-
-                                    <com.google.android.material.textfield.TextInputLayout
-                                        android:id="@+id/municipalityTextInputLayout"
-                                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="12dp"
-                                        android:hint="@string/hint_municipality"
-                                        android:enabled="false"
-                                        app:startIconDrawable="@drawable/ic_place">
-                                        <AutoCompleteTextView
-                                            android:id="@+id/municipalityAutoComplete"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="none" />
-                                    </com.google.android.material.textfield.TextInputLayout>
-
-                                    <com.google.android.material.textfield.TextInputLayout
-                                        android:id="@+id/schoolTextInputLayout"
-                                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="12dp"
-                                        android:hint="@string/hint_school"
-                                        android:enabled="false"
-                                        app:startIconDrawable="@drawable/ic_school">
-                                        <AutoCompleteTextView
-                                            android:id="@+id/schoolAutoComplete"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:inputType="none" />
-                                    </com.google.android.material.textfield.TextInputLayout>
-
-                                    <com.google.android.material.textfield.TextInputLayout
-                                        android:id="@+id/groupTextInputLayout"
-                                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="12dp"
-                                        android:hint="@string/hint_group"
-                                        app:startIconDrawable="@drawable/ic_group">
-                                        <com.google.android.material.textfield.TextInputEditText
-                                            android:id="@+id/groupEditText"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content" />
-                                    </com.google.android.material.textfield.TextInputLayout>
-                                </LinearLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/tuteeTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_tutee"
-                                    android:visibility="gone"
-                                    app:startIconDrawable="@drawable/ic_person">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/tuteeEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/responsibilitiesTextInputLayout"
-                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:hint="@string/hint_responsibilities"
-                                    android:visibility="gone"
-                                    app:startIconDrawable="@drawable/ic_work">
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:id="@+id/responsibilitiesEditText"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-                        </ScrollView>
+                        <!-- Pasos del registro igual que antes -->
+                        <include layout="@layout/layout_register_step1" />
+                        <include layout="@layout/layout_register_step2" />
+                        <include layout="@layout/layout_register_step3" />
                     </ViewFlipper>
-
-                    <!-- Indicador de Pasos -->
                     <LinearLayout
                         android:id="@+id/stepNavigationLayout"
                         android:layout_width="match_parent"
@@ -451,11 +179,10 @@
                         android:orientation="horizontal"
                         android:paddingTop="8dp"
                         app:layout_constraintBottom_toBottomOf="parent">
-                        <View android:id="@+id/step1Indicator" android:layout_width="24dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorAccent" />
-                        <View android:id="@+id/step2Indicator" android:layout_width="24dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorControlHighlight" />
-                        <View android:id="@+id/step3Indicator" android:layout_width="24dp" android:layout_height="4dp" android:layout_margin="2dp" android:background="?attr/colorControlHighlight" />
+                        <View android:id="@+id/step1Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
+                        <View android:id="@+id/step2Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
+                        <View android:id="@+id/step3Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
                     </LinearLayout>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ViewFlipper>
         </androidx.constraintlayout.widget.ConstraintLayout>

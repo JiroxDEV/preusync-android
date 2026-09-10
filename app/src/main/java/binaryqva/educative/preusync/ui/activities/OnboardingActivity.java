@@ -86,19 +86,18 @@ public class OnboardingActivity extends BaseActivity {
 
         pagerAdapter = new ViewPagerAdapter(this, fragments);
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setUserInputEnabled(false);
+        viewPager.setUserInputEnabled(true);
 
-        // Transformación de página moderna y fluida
+        // Transformación de página moderna y fluida con duración extendida
         viewPager.setPageTransformer((page, position) -> {
             float absPos = Math.abs(position);
             page.setAlpha(1.0f - absPos);
             
-            float scale = 0.9f + (1.0f - absPos) * 0.1f;
+            float scale = 0.85f + (1.0f - absPos) * 0.15f;
             page.setScaleX(scale);
             page.setScaleY(scale);
             
-            // Efecto sutil de traslación para dar profundidad
-            page.setTranslationX(position * -page.getWidth() * 0.2f);
+            page.setTranslationX(position * -page.getWidth() * 0.5f);
         });
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {}).attach();

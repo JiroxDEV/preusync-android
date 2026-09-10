@@ -373,7 +373,30 @@
     <string name="onboarding_title_3">Ready!</string>
 
     <!-- ==================== TÉRMINOS Y CONDICIONES ==================== -->
-    <string name="terms_PreuSync">&#10;    To use PreuSync, you must accept the following conditions:&lt;br/&gt;&lt;br/&gt;&#10;    1. &lt;b&gt;License and Use&lt;/b&gt;&lt;br/&gt;&#10;    PreuSync is free software. Monetization of any content generated or obtained through this platform is prohibited.&lt;br/&gt;&lt;br/&gt;&#10;    2. &lt;b&gt;Truthfulness of Information&lt;/b&gt;&lt;br/&gt;&#10;    Data provided during registration must be truthful. If false information is detected, your account and associated device may be suspended temporarily or permanently, depending on the severity of the infringement.&lt;br/&gt;&lt;br/&gt;&#10;    3. &lt;b&gt;Permitted Content&lt;/b&gt;&lt;br/&gt;&#10;    Only content related to the educational community (students, teachers or institutions) of our country is allowed, whether directly or indirectly.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;4. Prohibitions&lt;/b&gt;&lt;br/&gt;&#10;    The following is strictly prohibited:&lt;br/&gt;&#10;    - Posting discriminatory content (based on race, gender, religion, ideology, etc.).&lt;br/&gt;&#10;    - Distributing SPAM or unsolicited material.&lt;br/&gt;&#10;    - Sharing content restricted to over 18 years of age or infringing third-party rights.&lt;br/&gt;&lt;br/&gt;&#10;    &lt;b&gt;5. Student Accounts&lt;/b&gt;&lt;br/&gt;&#10;    Minors must have the express authorization of their legal guardians to register. Otherwise, the account will be deleted without prior notice.&#10;    </string>
+    <string name="terms_PreuSync">
+To use **PreuSync**, you must accept the following conditions:\n\n
+1. **License and Use**\n
+PreuSync is free software. Monetization of any content generated or obtained through this platform is prohibited.\n\n
+2. **Truthfulness of Information**\n
+Data provided during registration must be truthful. If false information is detected, your account and associated device may be suspended temporarily or permanently, depending on the severity of the infringement.\n\n
+3. **Permitted Content**\n
+Only content related to the educational community (students, teachers or institutions) of our country is allowed, whether directly or indirectly.\n\n
+4. **Prohibitions**\n
+The following is strictly prohibited:\n
+- Posting discriminatory content (based on race, gender, religion, ideology, etc.).\n
+- Distributing SPAM or unsolicited material.\n
+- Sharing content restricted to over 18 years of age or infringing third-party rights.\n\n
+5. **Student Accounts**\n
+Minors must have the express authorization of their legal guardians to register. Otherwise, the account will be deleted without prior notice.
+    </string>
+
+    <string name="onboarding_title_welcome_red">Welcome to the network!</string>
+    <string name="onboarding_feature_sync_title">National Synchronization</string>
+    <string name="onboarding_feature_sync_desc">The entire pre-university network connected in real time.</string>
+    <string name="onboarding_feature_schedule_title">Schedule Management</string>
+    <string name="onboarding_feature_schedule_desc">Check your shifts, classes and institutional events.</string>
+    <string name="onboarding_feature_security_title">Privacy and Freedom</string>
+    <string name="onboarding_feature_security_desc">Free software under AGPLv3 license. Your data is safe.</string>
 
     <!-- ==================== ROLES ==================== -->
     <string name="role_student">Student</string>

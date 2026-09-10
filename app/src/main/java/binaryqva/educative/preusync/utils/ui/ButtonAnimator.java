@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import binaryqva.educative.preusync.R;
@@ -55,8 +56,9 @@ public class ButtonAnimator {
     }
 
     private static void applyToView(View view) {
-        // Omitimos componentes que ya tienen sus propias animaciones complejas.
+        // Omitimos componentes que ya tienen sus propias animaciones complejas o gestión de bordes especial.
         if (view instanceof ExtendedFloatingActionButton) return;
+        if (view.getParent() instanceof MaterialButtonToggleGroup) return;
 
         if (view instanceof MaterialButton) {
             setupAnimation((MaterialButton) view);
