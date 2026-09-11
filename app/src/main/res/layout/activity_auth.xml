@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_auth.xml
-    Versión: v8.0.0
-    Descripción: Interfaz de autenticación minimalista y funcional.
+    Versión: v9.0.0
+    Descripción: Interfaz de autenticación minimalista. Tarjeta ajustada al contenido.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -14,17 +14,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authRootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:animateLayoutChanges="true"
     android:background="?attr/colorBackground">
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/padding_16dp"
+        android:background="@drawable/ripple_circular"
+        android:padding="8dp"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/colorAccent"
+        android:contentDescription="@string/title_settings" />
 
     <!-- Cabecera Minimalista -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/padding_24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +50,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/logo"
-            app:tint="?attr/colorAccent" />
+            app:tint="?attr/colorAccent"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/appName"
@@ -47,50 +63,33 @@
             android:textSize="22sp" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/ripple_circular"
-        android:padding="8dp"
-        android:src="@drawable/ic_settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorAccent"
-        android:contentDescription="@string/title_settings" />
-
-    <!-- Tarjeta de Formulario -->
+    <!-- Tarjeta de Formulario Ajustada al Contenido -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/formCard"
         style="@style/Widget.PreuSync.CardView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_24dp"
+        android:layout_marginBottom="@dimen/padding_24dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="0dp"
         app:strokeWidth="1dp"
         app:strokeColor="?attr/colorControlHighlight"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/authFab"
         app:layout_constraintTop_toBottomOf="@id/headerLayout"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.5">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_20dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/authToggleGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:checkedButton="@+id/toggleLogin"
-                app:singleSelection="true"
-                app:selectionRequired="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/authToggleGroup"
+                        style="@style/Widget.PreuSync.ButtonToggleGroup"
+                        android:layout_marginBottom="16dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/toggleLogin"
@@ -110,82 +109,74 @@
             <ViewFlipper
                 android:id="@+id/authViewFlipper"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/authToggleGroup">
+                android:layout_height="wrap_content"
+                android:measureAllChildren="false">
 
                 <!-- Panel Login (0) -->
-                <ScrollView
+                <LinearLayout
+                    android:id="@+id/loginFields"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true"
-                    android:scrollbars="none">
-                    <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/usernameTextInputLayout"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_vertical">
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/usernameTextInputLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:hint="@string/hint_username"
+                        app:startIconDrawable="@drawable/ic_nav_profile">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/usernameEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/passwordTextInputLayout"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="@string/hint_password"
+                        app:endIconMode="password_toggle"
+                        app:startIconDrawable="@drawable/ic_key">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/passwordEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_username"
-                            app:startIconDrawable="@drawable/ic_nav_profile">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/usernameEditText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/passwordTextInputLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:hint="@string/hint_password"
-                            app:endIconMode="password_toggle"
-                            app:startIconDrawable="@drawable/ic_key">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/passwordEditText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textPassword" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                </ScrollView>
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
                 <!-- Panel Register (1) -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
+                    android:id="@+id/registerFields"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                     <ViewFlipper
                         android:id="@+id/registerStepFlipper"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toTopOf="@id/stepNavigationLayout"
-                        app:layout_constraintTop_toTopOf="parent">
-                        <!-- Pasos del registro igual que antes -->
+                        android:layout_height="wrap_content"
+                        android:measureAllChildren="false">
                         <include layout="@layout/layout_register_step1" />
                         <include layout="@layout/layout_register_step2" />
                         <include layout="@layout/layout_register_step3" />
                     </ViewFlipper>
+
                     <LinearLayout
                         android:id="@+id/stepNavigationLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:paddingTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent">
+                        android:paddingTop="12dp">
                         <View android:id="@+id/step1Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
                         <View android:id="@+id/step2Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
                         <View android:id="@+id/step3Indicator" android:layout_width="32dp" android:layout_height="6dp" android:layout_margin="4dp" android:background="@drawable/bg_onboarding_indicator_inactive" />
                     </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </ViewFlipper>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
@@ -193,7 +184,7 @@
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/padding_24dp"
         android:text="@string/button_previous"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +194,7 @@
         android:id="@+id/authFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/padding_24dp"
         android:text="@string/button_login"
         app:icon="@drawable/ic_check"
         app:layout_constraintBottom_toBottomOf="parent"

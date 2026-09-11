@@ -2,9 +2,8 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: ScheduleRepository.java
- * Versión: v2.0.0
- * Descripción: Repositorio de horarios con soporte híbrido de red y 
- *              persistencia local mediante Room.
+ * Versión: v2.2.0
+ * Descripción: Repositorio de horarios con soporte para modelos tipados.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -28,15 +27,13 @@ import binaryqva.educative.preusync.data.local.dao.ScheduleDao;
 import binaryqva.educative.preusync.data.local.entities.ScheduleEntity;
 import binaryqva.educative.preusync.network.models.ApiResponse;
 import binaryqva.educative.preusync.network.models.Schedule;
+import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.network.retrofit.ApiService;
 import binaryqva.educative.preusync.network.retrofit.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Orquestador de datos para horarios. Gestiona el flujo entre la API y la DB.
- */
 public class ScheduleRepository {
 
     private final ApiService apiService;
@@ -66,7 +63,7 @@ public class ScheduleRepository {
         });
     }
 
-    public void getGroups(String schoolId, Callback<ApiResponse<List<String>>> callback) {
+    public void getGroups(String schoolId, Callback<ApiResponse<List<SchoolGroup>>> callback) {
         apiService.getGroups(schoolId).enqueue(callback);
     }
 
@@ -93,5 +90,3 @@ public class ScheduleRepository {
         void onDataLoaded(T data);
     }
 }
-
-

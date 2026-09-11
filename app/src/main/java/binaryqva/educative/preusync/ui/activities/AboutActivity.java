@@ -12,6 +12,7 @@
 package binaryqva.educative.preusync.ui.activities;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -86,7 +87,7 @@ public class AboutActivity extends BaseActivity {
 		
 		// Obtención de la versión instalada mediante el PackageManager.
 		try {
-			android.content.pm.PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			versionName = packageInfo.versionName;
 			versionCode = packageInfo.versionCode;
 		} catch (Exception ignored) {
@@ -94,7 +95,8 @@ public class AboutActivity extends BaseActivity {
 		}
 		versionText.setText(versionName + " (" + versionCode + ")");
 
-		// EASTER EGG: 5 toques rápidos en el texto de versión para abrir la consola técnica.
+		// EASTER EGG: Comentado para producción
+		/*
 		versionText.setOnClickListener(v -> {
 			long currentTime = System.currentTimeMillis();
 			if (currentTime - lastClickTime < 500) clickCount++;
@@ -107,6 +109,7 @@ public class AboutActivity extends BaseActivity {
 				startActivity(new Intent(this, LogConsoleActivity.class));
 			}
 		});
+		*/
 		
 		checkUpdateButton.setOnClickListener(v -> checkForUpdates());
 	}

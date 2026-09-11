@@ -1,72 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none">
-    <LinearLayout
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarCardView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/padding_16dp"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="2dp">
+        <ImageView
+            android:id="@+id/avatarImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_nav_profile"
+            android:contentDescription="@string/title_profile" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/registerUsernameTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="16dp">
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/avatarCardView"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="36dp"
-            app:cardElevation="2dp">
-            <ImageView
-                android:id="@+id/avatarImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_nav_profile"
-                android:contentDescription="@string/title_profile" />
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/registerUsernameTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:hint="@string/hint_username"
+        app:startIconDrawable="@drawable/ic_nav_profile">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerUsernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/newPasswordTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_key">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_username"
-            app:startIconDrawable="@drawable/ic_nav_profile">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerUsernameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newPasswordTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_repeat_password"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_repeat">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_password"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_key">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/newPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/confirmPasswordTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_repeat_password"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_repeat">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/confirmPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-</ScrollView>
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

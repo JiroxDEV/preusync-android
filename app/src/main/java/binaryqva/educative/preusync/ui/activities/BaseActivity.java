@@ -75,20 +75,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 	
 	private void applyFontTheme(String fontFamily, boolean useDynamic) {
 		boolean isS = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
+		int themeId;
 		switch (fontFamily) {
 			case "sans-serif":
-				setTheme(useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Sans : R.style.Theme_PreuSync_Static_Sans);
+				themeId = (useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Sans : R.style.Theme_PreuSync_Static_Sans);
 				break;
 			case "serif":
-				setTheme(useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Serif : R.style.Theme_PreuSync_Static_Serif);
+				themeId = (useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Serif : R.style.Theme_PreuSync_Static_Serif);
 				break;
 			case "monospace":
-				setTheme(useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Mono : R.style.Theme_PreuSync_Static_Mono);
+				themeId = (useDynamic && isS ? R.style.Theme_PreuSync_Dynamic_Mono : R.style.Theme_PreuSync_Static_Mono);
 				break;
 			default:
-				setTheme((useDynamic && isS) ? R.style.Theme_PreuSync_Dynamic : R.style.Theme_PreuSync_Static);
+				themeId = (useDynamic && isS ? R.style.Theme_PreuSync_Dynamic : R.style.Theme_PreuSync_Static);
 				break;
 		}
+		setTheme(themeId);
 	}
 	
 	@Override

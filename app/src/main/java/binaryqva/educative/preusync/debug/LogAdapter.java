@@ -2,7 +2,7 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: LogAdapter.java
- * Versión: v1.2.0
+ * Versión: v1.3.0
  * Descripción: Adaptador para la visualización de logs en la consola interna.
  *              Aplica colores según el nivel de severidad del log.
  * Autor: JiroxDEV
@@ -19,21 +19,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import binaryqva.educative.preusync.R;
 
-/**
- * Gestiona el listado dinámico de logs internos.
- */
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
     private final List<AppLogger.LogEntry> allLogs;
     private final List<AppLogger.LogEntry> filteredLogs;
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault());
 
     public LogAdapter(List<AppLogger.LogEntry> logs) {
         this.allLogs = logs;
@@ -49,15 +42,13 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AppLogger.LogEntry entry = filteredLogs.get(position);
-        String time = dateFormat.format(new Date(entry.timestamp));
-        holder.logText.setText(String.format("[%s] [%s/%s]: %s", time, entry.level.name(), entry.tag, entry.message));
+        holder.logText.setText(String.format("[%s] [%s/%s]: %s", entry.timestamp, entry.level.name(), entry.tag, entry.message));
         
-        // CODIFICACIÓN DE COLORES POR SEVERIDAD:
         int color;
         switch (entry.level) {
-            case ERROR: color = Color.parseColor("#EF5350"); break; // Rojo
-            case WARN:  color = Color.parseColor("#FFCA28"); break; // Ámbar
-            case INFO:  color = Color.parseColor("#66BB6A"); break; // Verde
+            case ERROR: color = Color.parseColor("#EF5350"); break;
+            case WARN:  color = Color.parseColor("#FFCA28"); break;
+            case INFO:  color = Color.parseColor("#66BB6A"); break;
             default:    color = Color.GRAY; break;
         }
         holder.logText.setTextColor(color);
@@ -66,9 +57,6 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
     @Override
     public int getItemCount() { return filteredLogs.size(); }
 
-    /**
-     * Filtra los logs mostrados basándose en una cadena de texto (búsqueda).
-     */
     public void filter(String query) {
         filteredLogs.clear();
         if (query.isEmpty()) filteredLogs.addAll(allLogs);
@@ -92,5 +80,3 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         ViewHolder(View view) { super(view); logText = view.findViewById(R.id.logText); }
     }
 }
-
-

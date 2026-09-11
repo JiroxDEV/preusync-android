@@ -16,7 +16,7 @@
     <color name="colorPrimaryDark">#003544</color>
     <color name="colorAccent">#006684</color>
     <color name="colorControlNormal">#70787D</color>
-    <color name="colorControlHighlight">#D0E4FF</color>
+    <color name="colorControlHighlight">#80BFE9FF</color>
     <color name="colorSecondary">#BFE9FF</color>
     <color name="colorBackground">#F8FDFF</color>
     <color name="colorBackgroundCard">#DCE4E9</color>
@@ -25,6 +25,9 @@
     <color name="colorError">#BA1A1A</color>
     <color name="colorExito">#006B4F</color>
     <color name="colorWarning">#7F5700</color>
+
+    <!-- Onboarding / UI Indicators -->
+    <color name="colorInactiveIndicator">#757575</color>
 
     <!-- Horario Light -->
     <color name="colorHorarioPrincipal">#BFE9FF</color>

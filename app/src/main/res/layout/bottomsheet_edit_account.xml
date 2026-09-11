@@ -69,7 +69,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/firstNameTextInputLayout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_rename">
@@ -82,7 +82,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/lastNameTextInputLayout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -130,7 +130,7 @@
                     <LinearLayout android:id="@+id/studentLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/schoolTextInputLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
@@ -143,7 +143,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/groupTextInputLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
@@ -158,7 +158,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tuteeTextInputLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -173,7 +173,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/responsibilitiesTextInputLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -228,7 +228,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/registerUsernameTextInputLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:startIconDrawable="@drawable/ic_nav_profile">
@@ -241,7 +241,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/idTextInputLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -256,7 +256,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/newPasswordTextInputLayout"
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -275,7 +275,7 @@
                 <!-- Campo de validación para contraseña actual -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/oldPasswordTextInputLayout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"

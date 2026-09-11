@@ -3,7 +3,7 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_onboarding.xml
-    Versión: v2.2.0
+    Versión: v2.3.0
     Descripción: Interfaz de bienvenida con navegación centrada y fluida.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
@@ -26,7 +26,6 @@
         app:layout_constraintBottom_toTopOf="@+id/navigationBar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Barra de Navegación Inferior Unificada -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
@@ -56,12 +55,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TabLayout centrado por debajo de los botones -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="12dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -3,7 +3,7 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: fragment_onboarding_features.xml
-    Versión: v1.4.1
+    Versión: v1.6.2
     Descripción: Página del onboarding que destaca las funciones principales.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="@dimen/padding_24dp"
         android:gravity="center_horizontal">
 
         <TextView
@@ -33,12 +33,12 @@
             android:textSize="28sp"
             android:layout_marginBottom="32dp" />
 
-        <!-- Feature 1: Sincronización Nacional -->
+        <!-- Feature 1: Comunidad -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.PreuSync.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/padding_16dp"
             app:cardCornerRadius="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,38 +49,38 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_language"
+                    android:src="@drawable/ic_nav_posts"
                     app:tint="?attr/colorAccent"
-                    android:contentDescription="@string/onboarding_feature_sync_title" />
+                    android:contentDescription="@string/onboarding_feature_community_title" />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/padding_16dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/onboarding_feature_sync_title"
+                        android:text="@string/onboarding_feature_community_title"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="?attr/colorText" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/onboarding_feature_sync_desc"
+                        android:text="@string/onboarding_feature_community_desc"
                         android:textSize="14sp"
                         android:textColor="?attr/colorTextHint" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Feature 2: Gestión Escolar -->
+        <!-- Feature 2: Gestión Académica -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.PreuSync.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/padding_16dp"
             app:cardCornerRadius="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/padding_16dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -117,12 +117,12 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Feature 3: Seguridad AGPLv3 -->
+        <!-- Feature 3: Seguridad -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.PreuSync.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/padding_16dp"
             app:cardCornerRadius="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/padding_16dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/padding_24dp"
             android:text="@string/onboarding_desc_2"
             android:textSize="16sp"
             android:textStyle="bold|italic"

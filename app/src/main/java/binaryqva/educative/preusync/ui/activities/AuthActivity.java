@@ -2,7 +2,7 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: AuthActivity.java
- * Versión: v18.0.0
+ * Versión: v19.0.0
  * Descripción: Actividad de Autenticación avanzada con registro nacional
  *              jerárquico, validación de roles y diseño minimalista.
  * Autor: JiroxDEV
@@ -17,8 +17,10 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -49,6 +51,7 @@ import binaryqva.educative.preusync.network.models.School;
 import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.ui.viewmodels.AuthViewModel;
 import binaryqva.educative.preusync.utils.common.AppUtils;
+import binaryqva.educative.preusync.utils.common.AvatarHelper;
 import binaryqva.educative.preusync.utils.common.DialogHelper;
 import binaryqva.educative.preusync.utils.common.FilePickerHelper;
 import binaryqva.educative.preusync.utils.common.FileUtils;
@@ -59,6 +62,7 @@ import binaryqva.educative.preusync.utils.theme.ThemeManager;
 
 public class AuthActivity extends BaseActivity {
 
+    private ViewGroup authRootLayout;
     private ViewFlipper authViewFlipper, registerStepFlipper;
     private MaterialButtonToggleGroup authToggle;
     private ExtendedFloatingActionButton authFab;
@@ -109,6 +113,7 @@ public class AuthActivity extends BaseActivity {
     }
 
     private void bindViews() {
+        authRootLayout = findViewById(R.id.authRootLayout);
         authViewFlipper = findViewById(R.id.authViewFlipper);
         registerStepFlipper = findViewById(R.id.registerStepFlipper);
         authToggle = findViewById(R.id.authToggleGroup);
@@ -119,8 +124,6 @@ public class AuthActivity extends BaseActivity {
         step2Ind = findViewById(R.id.step2Indicator);
         step3Ind = findViewById(R.id.step3Indicator);
 
-        // Pasos dinámicos cargados por include tienen sus propios IDs únicos o compartidos.
-        // Como están en ViewFlipper, findViewById los encontrará.
         usernameET = findViewById(R.id.usernameEditText);
         passwordET = findViewById(R.id.passwordEditText);
         regUsernameET = findViewById(R.id.registerUsernameEditText);
@@ -162,6 +165,7 @@ public class AuthActivity extends BaseActivity {
     private void setupListeners() {
         authToggle.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (!isChecked) return;
+            TransitionManager.beginDelayedTransition(authRootLayout);
             if (checkedId == R.id.toggleLogin) switchToLogin();
             else switchToRegister();
         });
@@ -190,7 +194,7 @@ public class AuthActivity extends BaseActivity {
         });
 
         municipalityAC.setOnTouchListener((v, event) -> { 
-            if (provinceAC.getText().toString().isEmpty()) provinceTIL.setError("Seleccione una provincia");
+            if (provinceAC.getText().toString().isEmpty()) provinceTIL.setError(getString(R.string.error_select_province));
             return false; 
         });
         municipalityAC.setOnItemClickListener((p, v, pos, id) -> {
@@ -199,7 +203,7 @@ public class AuthActivity extends BaseActivity {
         });
 
         schoolAC.setOnTouchListener((v, event) -> {
-            if (municipalityAC.getText().toString().isEmpty()) municipalityTIL.setError("Seleccione un municipio");
+            if (municipalityAC.getText().toString().isEmpty()) municipalityTIL.setError(getString(R.string.error_select_municipality));
             return false;
         });
         schoolAC.setOnItemClickListener((p, v, pos, id) -> {
@@ -208,19 +212,11 @@ public class AuthActivity extends BaseActivity {
         });
 
         groupAC.setOnTouchListener((v, event) -> {
-            if (schoolAC.getText().toString().isEmpty()) schoolTIL.setError("Seleccione una escuela");
+            if (schoolAC.getText().toString().isEmpty()) schoolTIL.setError(getString(R.string.error_select_school));
             return false;
-        });
-        groupAC.setOnItemClickListener((p, v, pos, id) -> {
-            Object item = p.getItemAtPosition(pos);
-            if (item instanceof SchoolGroup) {
-                // Selección válida
-                groupTIL.setError(null);
-            }
         });
 
         responsibilitiesET.setOnClickListener(v -> showResponsibilitiesDialog());
-        // El listener del avatar se debe asignar cada vez que se entra en el paso 1 o al inicio si ya existe
         findViewById(R.id.avatarCardView).setOnClickListener(v -> showAvatarSelector());
     }
 
@@ -238,7 +234,7 @@ public class AuthActivity extends BaseActivity {
             @Override public void afterTextChanged(Editable s) {
                 String u = s.toString().trim();
                 if (u.length() >= 4) viewModel.checkUserExists(u);
-                else tuteeTIL.setHelperText("Mínimo 4 caracteres");
+                else tuteeTIL.setHelperText(getString(R.string.label_min_characters));
             }
         });
     }
@@ -257,7 +253,7 @@ public class AuthActivity extends BaseActivity {
         viewModel.getUserExistsResult().observe(this, exists -> {
             if (currentRole.equals(RoleHelper.ROLE_TUTOR) && !tuteeET.getText().toString().isEmpty()) {
                 boolean ok = Boolean.TRUE.equals(exists);
-                tuteeTIL.setHelperText(ok ? "Usuario verificado ✅" : "Usuario no encontrado ❌");
+                tuteeTIL.setHelperText(ok ? getString(R.string.label_tutee_verified) + " ✅" : getString(R.string.label_tutee_not_found) + " ❌");
                 tuteeTIL.setHelperTextColor(ColorStateList.valueOf(ThemeManager.getThemeColor(this, ok ? R.attr.colorAccent : R.attr.colorError)));
             }
         });
@@ -269,7 +265,7 @@ public class AuthActivity extends BaseActivity {
 
     private <T> void setSelectorAdapter(AutoCompleteTextView ac, List<T> list) {
         if (list == null || list.isEmpty()) {
-            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{"Sin datos disponibles"}));
+            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}));
             return;
         }
         
@@ -280,12 +276,11 @@ public class AuthActivity extends BaseActivity {
             else if (item instanceof Municipality) available = ((Municipality) item).isAvailable();
             else if (item instanceof School) available = ((School) item).isAvailable();
             else if (item instanceof SchoolGroup) available = ((SchoolGroup) item).isAvailable();
-            
             if (available) availableItems.add(item);
         }
 
         if (availableItems.isEmpty()) {
-            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{"No disponible temporalmente"}));
+            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}));
         } else {
             ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, availableItems));
         }
@@ -296,6 +291,9 @@ public class AuthActivity extends BaseActivity {
         authFab.setText(R.string.button_login);
         authFab.setIconResource(R.drawable.ic_check);
         backStepButton.setVisibility(View.GONE);
+        
+        authViewFlipper.setInAnimation(this, R.anim.slide_in_left);
+        authViewFlipper.setOutAnimation(this, R.anim.slide_out_right);
         authViewFlipper.setDisplayedChild(0);
     }
 
@@ -303,6 +301,9 @@ public class AuthActivity extends BaseActivity {
         isRegistering = true;
         currentRegStep = 0;
         updateStepUi();
+        
+        authViewFlipper.setInAnimation(this, R.anim.slide_in_right);
+        authViewFlipper.setOutAnimation(this, R.anim.slide_out_left);
         authViewFlipper.setDisplayedChild(1);
     }
 
@@ -339,7 +340,7 @@ public class AuthActivity extends BaseActivity {
             String[] items = list.toArray(new String[0]);
             boolean[] checked = new boolean[items.length];
             for (int i = 0; i < items.length; i++) checked[i] = selectedResponsibilities.contains(items[i]);
-            new AlertDialog.Builder(this).setTitle("Seleccione Responsabilidades")
+            new AlertDialog.Builder(this).setTitle(getString(R.string.title_select_responsibilities))
                 .setMultiChoiceItems(items, checked, (dialog, which, isChecked) -> { if (isChecked) selectedResponsibilities.add(items[which]); else selectedResponsibilities.remove(items[which]); })
                 .setPositiveButton(R.string.button_done, (dialog, which) -> responsibilitiesET.setText(String.join(", ", selectedResponsibilities))).show();
         });
@@ -349,14 +350,33 @@ public class AuthActivity extends BaseActivity {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         View v = LayoutInflater.from(this).inflate(R.layout.bottomsheet_avatar_selector, null);
         dialog.setContentView(v);
-        v.findViewById(R.id.uploadImageLayout).setOnClickListener(view -> filePicker.pickFile("image/jpeg", new FilePickerHelper.OnFilePickedListener() {
+        v.findViewById(R.id.uploadImageLayout).setOnClickListener(view -> filePicker.pickFile("image/*", new FilePickerHelper.OnFilePickedListener() {
             @Override public void onFilePicked(String path, String name, String mime, String base64) {
                 avatarBase64 = base64; avatarIV.setImageBitmap(FileUtils.decodeSampleBitmapFromPath(path, 512, 512));
                 dialog.dismiss();
             }
             @Override public void onPickCancelled() {}
         }));
+        v.findViewById(R.id.initialLayout).setOnClickListener(view -> {
+            String name = regUsernameET.getText().toString().trim();
+            if (name.isEmpty()) name = "?";
+            String initial = name.substring(0, 1).toUpperCase();
+            avatarIV.setImageBitmap(AvatarHelper.generateInitialAvatar(this, initial, ThemeManager.getColorAccent(this)));
+            avatarBase64 = "{\"tipo\":\"inicial\",\"inicial\":\"" + initial + "\"}";
+            dialog.dismiss();
+        });
+        v.findViewById(R.id.roleLayout).setOnClickListener(view -> {
+            avatarIV.setImageBitmap(AvatarHelper.generateRoleAvatar(this, currentRole, ThemeManager.getColorAccent(this)));
+            avatarBase64 = "{\"tipo\":\"rol\",\"rol\":\"" + currentRole + "\"}";
+            dialog.dismiss();
+        });
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (filePicker != null) filePicker.handleActivityResult(requestCode, resultCode, data);
     }
 
     private void handleAuthAction() {
@@ -393,18 +413,17 @@ public class AuthActivity extends BaseActivity {
             idCardTIL.setError(v6 ? null : getString(R.string.error_invalid_id));
             return v4 && v5 && v6;
         } else {
-            // Validación de paso 3: Jerarquía Nacional y Rol
-            if (provinceAC.getText().toString().isEmpty() || provinceAC.getText().toString().contains("No disponible")) {
-                provinceTIL.setError("Seleccione una provincia válida"); return false;
+            if (provinceAC.getText().toString().isEmpty() || provinceAC.getText().toString().contains(getString(R.string.label_not_available_temp))) {
+                provinceTIL.setError(getString(R.string.error_select_province)); return false;
             }
-            if (municipalityAC.getText().toString().isEmpty() || municipalityAC.getText().toString().contains("No disponible")) {
-                municipalityTIL.setError("Seleccione un municipio válido"); return false;
+            if (municipalityAC.getText().toString().isEmpty() || municipalityAC.getText().toString().contains(getString(R.string.label_not_available_temp))) {
+                municipalityTIL.setError(getString(R.string.error_select_municipality)); return false;
             }
-            if (selectedSchoolId == null || schoolAC.getText().toString().contains("No disponible")) {
-                schoolTIL.setError(getString(R.string.error_school_required)); return false;
+            if (selectedSchoolId == null || schoolAC.getText().toString().contains(getString(R.string.label_not_available_temp))) {
+                schoolTIL.setError(getString(R.string.error_select_school)); return false;
             }
             if (currentRole.equals(RoleHelper.ROLE_STUDENT)) {
-                if (groupAC.getText().toString().isEmpty() || groupAC.getText().toString().contains("No disponible")) {
+                if (groupAC.getText().toString().isEmpty() || groupAC.getText().toString().contains(getString(R.string.label_not_available_temp))) {
                     groupTIL.setError(getString(R.string.error_group_required)); return false;
                 }
             }
@@ -418,23 +437,13 @@ public class AuthActivity extends BaseActivity {
     private void submitRegister() {
         HashMap<String, Object> extra = new HashMap<>();
         extra.put("schoolId", selectedSchoolId);
-        
         if (currentRole.equals(RoleHelper.ROLE_STUDENT)) {
-            String selectedText = groupAC.getText().toString();
-            extra.put("groupName", selectedText);
-            // Search for group ID in current list
-            List<SchoolGroup> currentGroups = viewModel.getGroups().getValue();
-            if (currentGroups != null) {
-                for (SchoolGroup g : currentGroups) {
-                    if (g.getName().equals(selectedText)) {
-                        extra.put("groupId", g.getId());
-                        break;
-                    }
-                }
-            }
+            String sel = groupAC.getText().toString();
+            extra.put("groupName", sel);
+            List<SchoolGroup> list = viewModel.getGroups().getValue();
+            if (list != null) for (SchoolGroup g : list) if (g.getName().equals(sel)) { extra.put("groupId", g.getId()); break; }
         } else if (currentRole.equals(RoleHelper.ROLE_TUTOR)) extra.put("tutee", tuteeET.getText().toString().trim());
         else if (currentRole.equals(RoleHelper.ROLE_TEACHER)) extra.put("responsibilities", responsibilitiesET.getText().toString().trim());
-        
         if (!avatarBase64.isEmpty()) extra.put("avatar", avatarBase64);
         
         viewModel.signup(regUsernameET.getText().toString().trim(), regPasswordET.getText().toString().trim(),

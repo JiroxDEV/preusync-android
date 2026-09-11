@@ -34,7 +34,7 @@ public class OnboardingTermsFragment extends Fragment {
         checkBox = view.findViewById(R.id.checkbox1);
         TextView termsText = view.findViewById(R.id.termsTextView);
         
-        MarkdownWebViewHelper.replaceWithWebView(requireContext(), termsText, getString(R.string.terms_PreuSync), "terms_cache", 0);
+        MarkdownWebViewHelper.replaceWithWebView(requireContext(), termsText, getString(R.string.terms_PreuSync), "terms_cache", R.id.termsProgressBar);
         
         checkBox.setOnCheckedChangeListener((btn, isChecked) -> viewModel.setTermsAccepted(isChecked));
         

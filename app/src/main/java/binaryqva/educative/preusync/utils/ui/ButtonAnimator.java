@@ -2,7 +2,7 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: ButtonAnimator.java
- * Versión: v1.1.0
+ * Versión: v1.1.2
  * Descripción: Utilidad para la animación reactiva de botones. Gestiona el
  *              cambio dinámico de radio de bordes al presionar.
  * Autor: JiroxDEV
@@ -18,6 +18,7 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -58,7 +59,7 @@ public class ButtonAnimator {
     private static void applyToView(View view) {
         // Omitimos componentes que ya tienen sus propias animaciones complejas o gestión de bordes especial.
         if (view instanceof ExtendedFloatingActionButton) return;
-        if (view.getParent() instanceof MaterialButtonToggleGroup) return;
+        if (isInsideToggleGroup(view)) return;
 
         if (view instanceof MaterialButton) {
             setupAnimation((MaterialButton) view);
@@ -68,6 +69,15 @@ public class ButtonAnimator {
                 applyToView(g.getChildAt(i));
             }
         }
+    }
+
+    private static boolean isInsideToggleGroup(View view) {
+        ViewParent parent = view.getParent();
+        while (parent != null) {
+            if (parent instanceof MaterialButtonToggleGroup) return true;
+            parent = parent.getParent();
+        }
+        return false;
     }
 
     @SuppressLint("ClickableViewAccessibility")

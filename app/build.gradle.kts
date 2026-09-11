@@ -29,8 +29,8 @@ android {
         applicationId = "binaryqva.educative.preusync"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2706
-        versionName = "0.99.96"
+        versionCode = 2707
+        versionName = "0.99.97"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         versionNameSuffix = "-Beta"

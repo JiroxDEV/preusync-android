@@ -1,116 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none">
-    <LinearLayout
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_8dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/roleTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/roleTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:hint="@string/hint_role"
+        app:startIconDrawable="@drawable/ic_work">
+        <AutoCompleteTextView
+            android:id="@+id/roleAutoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_role"
-            app:startIconDrawable="@drawable/ic_work">
-            <AutoCompleteTextView
-                android:id="@+id/roleAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/provinceTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/provinceTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_province"
+        app:startIconDrawable="@drawable/ic_place">
+        <AutoCompleteTextView
+            android:id="@+id/provinceAutoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_province"
-            app:startIconDrawable="@drawable/ic_place">
-            <AutoCompleteTextView
-                android:id="@+id/provinceAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/municipalityTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/municipalityTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_municipality"
+        android:enabled="false"
+        app:startIconDrawable="@drawable/ic_place">
+        <AutoCompleteTextView
+            android:id="@+id/municipalityAutoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_municipality"
-            android:enabled="false"
-            app:startIconDrawable="@drawable/ic_place">
-            <AutoCompleteTextView
-                android:id="@+id/municipalityAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/schoolTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/schoolTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_school"
+        android:enabled="false"
+        app:startIconDrawable="@drawable/ic_school">
+        <AutoCompleteTextView
+            android:id="@+id/schoolAutoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_school"
-            android:enabled="false"
-            app:startIconDrawable="@drawable/ic_school">
-            <AutoCompleteTextView
-                android:id="@+id/schoolAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/groupTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/groupTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_group"
+        android:enabled="false"
+        app:startIconDrawable="@drawable/ic_group">
+        <AutoCompleteTextView
+            android:id="@+id/groupAutoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_group"
-            android:enabled="false"
-            app:startIconDrawable="@drawable/ic_group">
-            <AutoCompleteTextView
-                android:id="@+id/groupAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tuteeTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tuteeTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_tutee"
+        android:visibility="gone"
+        app:helperText="Nombre de usuario del educando"
+        app:startIconDrawable="@drawable/ic_person">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tuteeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/responsibilitiesTextInputLayout"
+        style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_12dp"
+        android:hint="@string/hint_responsibilities"
+        android:visibility="gone"
+        app:startIconDrawable="@drawable/ic_work">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/responsibilitiesEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_tutee"
-            android:visibility="gone"
-            app:helperText="Nombre de usuario del educando"
-            app:startIconDrawable="@drawable/ic_person">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tuteeEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/responsibilitiesTextInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/hint_responsibilities"
-            android:visibility="gone"
-            app:startIconDrawable="@drawable/ic_work">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/responsibilitiesEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:clickable="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-</ScrollView>
+            android:focusable="false"
+            android:clickable="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

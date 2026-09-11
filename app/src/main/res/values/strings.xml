@@ -3,7 +3,7 @@
     ============================================================================
     Proyecto: PreuSync
     Recurso: strings.xml
-    Versión: v1.6.0
+    Versión: v1.8.0
     Descripción: Recurso de cadenas de texto para la aplicación.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
@@ -374,29 +374,46 @@
 
     <!-- ==================== TÉRMINOS Y CONDICIONES ==================== -->
     <string name="terms_PreuSync">
-Para utilizar **PreuSync**, usted debe aceptar las siguientes condiciones:\n\n
-1. **Licencia y Uso**\n
-PreuSync es un software gratuito. Queda prohibida la monetización de cualquier contenido generado o obtenido a través de esta plataforma.\n\n
-2. **Veracidad de la Información**\n
-Los datos proporcionados durante el registro deben ser verídicos. En caso de detectar información falsa, su cuenta y el dispositivo asociado podrán ser suspendidos temporal o permanentemente, según la gravedad de la infracción.\n\n
-3. **Contenido Permitido**\n
-Solo se permite publicar contenido relacionado con la comunidad educativa (estudiantes, profesores o instituciones) de nuestro país, ya sea de forma directa o indirecta.\n\n
-4. **Prohibiciones**\n
-Está estrictamente prohibido:\n
-- Publicar contenido discriminatorio (basado en raza, género, religión, ideología, etc.).\n
-- Distribuir SPAM o material no solicitado.\n
-- Compartir contenido restringido para mayores de 18 años o que infrinja derechos de terceros.\n\n
-5. **Cuentas de Estudiantes**\n
-Los menores de edad deben contar con la autorización expresa de sus tutores legales para registrarse. De lo contrario, la cuenta será eliminada sin previo aviso.
+# Condiciones de Uso de PreuSync (v1.0.0)
+
+Para utilizar **PreuSync**, usted debe aceptar las siguientes condiciones:
+
+1. **Licencia y Uso AGPLv3**
+PreuSync es un software gratuito y de código abierto bajo la licencia GNU Affero General Public License v3. Queda prohibida la monetización de cualquier contenido generado u obtenido a través de esta plataforma sin cumplir con dicha licencia.
+
+2. **Veracidad de la Información**
+Los datos proporcionados durante el registro deben ser verídicos. En caso de detectar información falsa o suplantación de identidad, su cuenta y el dispositivo asociado podrán ser suspendidos permanentemente.
+
+3. **Contenido Comunitario**
+Solo se permite publicar contenido relacionado con la comunidad educativa (estudiantes, profesores o instituciones) de nuestro país. El respeto mutuo es la base de nuestra red.
+
+4. **Prohibiciones Estrictas**
+Está estrictamente prohibido:
+- Publicar contenido discriminatorio (basado en raza, género, religión, ideología, etc.).
+- Distribuir SPAM, material publicitario no autorizado o archivos maliciosos.
+- Compartir contenido restringido para mayores de 18 años.
+
+5. **Privacidad de Datos**
+Sus datos están cifrados localmente y protegidos por nuestra infraestructura propia, cumpliendo con los estándares de seguridad nacional.
     </string>
 
     <string name="onboarding_title_welcome_red">¡Bienvenido a la red!</string>
-    <string name="onboarding_feature_sync_title">Sincronización Nacional</string>
-    <string name="onboarding_feature_sync_desc">Toda la red de preuniversitarios conectada en tiempo real.</string>
-    <string name="onboarding_feature_schedule_title">Gestión de Horarios</string>
-    <string name="onboarding_feature_schedule_desc">Consulta tus turnos, clases y eventos institucionales.</string>
+    <string name="onboarding_feature_community_title">Universo Estudiantil</string>
+    <string name="onboarding_feature_community_desc">Accede a Posts, Noticias, Eventos, Horarios y Efemérides de toda la comunidad nacional en una sola App.</string>
+    <string name="onboarding_feature_schedule_title">Gestión Inteligente</string>
+    <string name="onboarding_feature_schedule_desc">Organiza tu vida escolar con notificaciones de turnos, recordatorios de eventos y actualizaciones de tu centro.</string>
     <string name="onboarding_feature_security_title">Privacidad y Libertad</string>
     <string name="onboarding_feature_security_desc">Software libre bajo licencia AGPLv3. Tus datos están seguros.</string>
+
+    <string name="error_select_province">Seleccione una provincia</string>
+    <string name="error_select_municipality">Seleccione un municipio</string>
+    <string name="error_select_school">Seleccione una escuela</string>
+    <string name="helper_tutee_username">Nombre de usuario del educando</string>
+    <string name="label_tutee_verified">Usuario verificado</string>
+    <string name="label_tutee_not_found">Usuario no encontrado</string>
+    <string name="label_not_available_temp">No disponible temporalmente</string>
+    <string name="label_min_characters">Mínimo 4 caracteres</string>
+    <string name="title_select_responsibilities">Seleccione Responsabilidades</string>
 
     <!-- ==================== ROLES ==================== -->
     <string name="role_student">Educando</string>

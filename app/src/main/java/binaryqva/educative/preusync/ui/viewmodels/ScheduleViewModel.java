@@ -2,9 +2,9 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: ScheduleViewModel.java
- * Versión: v7.0.0
- * Descripción: ViewModel para la gestión del horario escolar. Implementa 
- *              soporte híbrido Room/API.
+ * Versión: v8.0.0
+ * Descripción: ViewModel para la gestión del horario escolar. Soporta modelos
+ *              tipados para grupos nacionales.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -27,6 +27,7 @@ import java.util.Map;
 import binaryqva.educative.preusync.data.repositories.ScheduleRepository;
 import binaryqva.educative.preusync.network.models.ApiResponse;
 import binaryqva.educative.preusync.network.models.Schedule;
+import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.utils.common.AppUtils;
 import binaryqva.educative.preusync.utils.common.PreferenceManager;
 import retrofit2.Call;
@@ -40,7 +41,7 @@ public class ScheduleViewModel extends AndroidViewModel {
     public static final int STATE_EMPTY = 2;
     public static final int STATE_ERROR = 3;
 
-    private final MutableLiveData<List<String>> groupsList = new MutableLiveData<>(new ArrayList<>());
+    private final MutableLiveData<List<SchoolGroup>> groupsList = new MutableLiveData<>(new ArrayList<>());
     private final MutableLiveData<Integer> groupsState = new MutableLiveData<>(STATE_LOADING);
     
     private final MutableLiveData<Map<String, String[][]>> normalScheduleMap = new MutableLiveData<>(new HashMap<>());
@@ -59,7 +60,7 @@ public class ScheduleViewModel extends AndroidViewModel {
         this.preferenceManager = PreferenceManager.getInstance(application);
     }
 
-    public LiveData<List<String>> getGroupsList() { return groupsList; }
+    public LiveData<List<SchoolGroup>> getGroupsList() { return groupsList; }
     public LiveData<Map<String, String[][]>> getNormalScheduleMap() { return normalScheduleMap; }
     public LiveData<Map<String, String[][]>> getContinuousScheduleMap() { return continuousScheduleMap; }
     public LiveData<Map<String, Boolean>> getScheduleTypeByGroup() { return scheduleTypeByGroup; }
@@ -76,26 +77,29 @@ public class ScheduleViewModel extends AndroidViewModel {
         }
 
         if (!AppUtils.isConnected(getApplication())) {
-            // Grupos aún dependen de CacheManager/SharedPreferences por ser lista de Strings simple.
             updateCombinedState(); return;
         }
 
-        repository.getGroups(schoolId, new Callback<ApiResponse<List<String>>>() {
+        repository.getGroups(schoolId, new Callback<ApiResponse<List<SchoolGroup>>>() {
             @Override
-            public void onResponse(@NonNull Call<ApiResponse<List<String>>> call, @NonNull Response<ApiResponse<List<String>>> response) {
+            public void onResponse(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Response<ApiResponse<List<SchoolGroup>>> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    List<String> groups = response.body().getData();
+                    List<SchoolGroup> groups = response.body().getData();
                     groupsList.setValue(groups);
                     groupsState.setValue(groups.isEmpty() ? STATE_EMPTY : STATE_SUCCESS);
                     if (!groups.isEmpty()) {
                         String last = preferenceManager.getLastScheduleGroup();
-                        String g = (last != null && groups.contains(last)) ? last : groups.get(0);
+                        boolean found = false;
+                        if (last != null) {
+                            for (SchoolGroup sg : groups) if (last.equals(sg.getName())) { found = true; break; }
+                        }
+                        String g = found ? last : groups.get(0).getName();
                         selectGroup(g);
                     }
                 } else groupsState.setValue(STATE_ERROR);
                 updateCombinedState();
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<String>>> call, @NonNull Throwable t) {
+            @Override public void onFailure(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Throwable t) {
                 groupsState.setValue(STATE_ERROR);
                 updateCombinedState();
             }
@@ -209,5 +213,3 @@ public class ScheduleViewModel extends AndroidViewModel {
         else combinedState.setValue(STATE_SUCCESS);
     }
 }
-
-

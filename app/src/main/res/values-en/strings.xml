@@ -3,7 +3,7 @@
     ============================================================================
     Proyecto: PreuSync
     Recurso: strings.xml (English)
-    Versión: v1.6.0
+    Versión: v1.8.0
     Descripción: Recurso de cadenas de texto en inglés para la aplicación.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
@@ -391,12 +391,22 @@ Minors must have the express authorization of their legal guardians to register.
     </string>
 
     <string name="onboarding_title_welcome_red">Welcome to the network!</string>
-    <string name="onboarding_feature_sync_title">National Synchronization</string>
-    <string name="onboarding_feature_sync_desc">The entire pre-university network connected in real time.</string>
-    <string name="onboarding_feature_schedule_title">Schedule Management</string>
-    <string name="onboarding_feature_schedule_desc">Check your shifts, classes and institutional events.</string>
+    <string name="onboarding_feature_community_title">Student Universe</string>
+    <string name="onboarding_feature_community_desc">Access Posts, News, Events, Schedules and Ephemerides of the entire national community in a single App.</string>
+    <string name="onboarding_feature_schedule_title">Smart Management</string>
+    <string name="onboarding_feature_schedule_desc">Organize your school life with shift notifications, event reminders and updates from your center.</string>
     <string name="onboarding_feature_security_title">Privacy and Freedom</string>
     <string name="onboarding_feature_security_desc">Free software under AGPLv3 license. Your data is safe.</string>
+
+    <string name="error_select_province">Select a province</string>
+    <string name="error_select_municipality">Select a municipality</string>
+    <string name="error_select_school">Select a school</string>
+    <string name="helper_tutee_username">Student\'s username</string>
+    <string name="label_tutee_verified">User verified</string>
+    <string name="label_tutee_not_found">User not found</string>
+    <string name="label_not_available_temp">Temporarily unavailable</string>
+    <string name="label_min_characters">Minimum 4 characters</string>
+    <string name="title_select_responsibilities">Select Responsibilities</string>
 
     <!-- ==================== ROLES ==================== -->
     <string name="role_student">Student</string>

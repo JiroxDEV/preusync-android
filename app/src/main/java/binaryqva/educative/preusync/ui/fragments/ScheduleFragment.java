@@ -2,9 +2,8 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: ScheduleFragment.java
- * Versión: v6.0.0
- * Descripción: Fragmento de horario escolar. Implementa el patrón BaseFragment
- *              y soporte híbrido Room/API.
+ * Versión: v8.0.0
+ * Descripción: Fragmento de horario escolar. Soporta modelos tipados para grupos.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -32,11 +31,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import binaryqva.educative.preusync.R;
+import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.ui.viewmodels.ScheduleViewModel;
 import binaryqva.educative.preusync.utils.ui.SmartSwipeRefreshLayout;
 import binaryqva.educative.preusync.utils.ui.SwipeRefreshHelper;
@@ -102,11 +103,14 @@ public class ScheduleFragment extends BaseFragment {
 
         viewModel.getGroupsList().observe(getViewLifecycleOwner(), groups -> {
             if (groups != null && !groups.isEmpty()) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, groups);
+                List<String> names = new ArrayList<>();
+                for (SchoolGroup sg : groups) names.add(sg.getName());
+                
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, names);
                 groupAutoComplete.setAdapter(adapter);
-                groupAutoComplete.setOnItemClickListener((p, v, pos, id) -> viewModel.selectGroup(groups.get(pos)));
+                groupAutoComplete.setOnItemClickListener((p, v, pos, id) -> viewModel.selectGroup(names.get(pos)));
                 String current = viewModel.getCurrentGroup().getValue();
-                groupAutoComplete.setText(current != null && groups.contains(current) ? current : groups.get(0), false);
+                groupAutoComplete.setText(current != null && names.contains(current) ? current : names.get(0), false);
             }
         });
 
@@ -132,7 +136,7 @@ public class ScheduleFragment extends BaseFragment {
         String[][] matrix = isContinuous ? viewModel.getContinuousScheduleMap().getValue().get(group) : viewModel.getNormalScheduleMap().getValue().get(group);
         
         currentTimeRanges = isContinuous ? new String[]{"08:00-08:45", "08:45-08:50", "08:50-09:35", "09:35-09:40", "09:40-10:25", "10:25-10:45", "10:45-11:30", "11:30-11:35", "11:35-12:20", "12:20-13:20", "13:20-14:05", "14:05-14:10", "14:10-14:55", "14:55-15:00", "15:00-15:45"} 
-                                         : new String[]{"07:40-08:25", "08:25-08:30", "08:30-09:15", "09:15-09:20", "09:20-10:05", "10:05-10:25", "10:25-11:10", "11:10-11:15", "11:15-12:00", "12:00-13:00", "13:00-13:45", "13:45-13:50", "13:50-14:35", "14:45-14:40", "14:40-15:25"};
+                                         : new String[]{"07:40-08:25", "08:25-08:30", "08:30-09:15", "09:15-09:20", "09:20-10:05", "10:05-10:25", "10:25-11:10", "11:10-11:15", "11:15-12:00", "12:00-13:00", "13:00-13:45", "13:45-13:50", "13:50-14:35", "14:40-15:25", "14:40-15:25"};
 
         if (matrix == null) return;
         renderTable(matrix);
@@ -231,5 +235,3 @@ public class ScheduleFragment extends BaseFragment {
     @Override public void onResume() { super.onResume(); }
     @Override public void onPause() { super.onPause(); stopPeriodicUpdate(); }
 }
-
-
