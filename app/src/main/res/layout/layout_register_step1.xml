@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/padding_8dp">
+    android:paddingBottom="8dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/avatarCardView"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/padding_16dp"
+        android:layout_marginBottom="16dp"
         app:cardCornerRadius="36dp"
         app:cardElevation="2dp">
         <ImageView
@@ -33,7 +33,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registerUsernameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:importantForAutofill="yes"
+            android:autofillHints="username"
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +44,7 @@
         style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_12dp"
+        android:layout_marginTop="12dp"
         android:hint="@string/hint_password"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/ic_key">
@@ -49,6 +52,8 @@
             android:id="@+id/newPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:importantForAutofill="yes"
+            android:autofillHints="newPassword"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +62,7 @@
         style="@style/Widget.PreuSync.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_12dp"
+        android:layout_marginTop="12dp"
         android:hint="@string/hint_repeat_password"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/ic_repeat">
@@ -65,6 +70,8 @@
             android:id="@+id/confirmPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:importantForAutofill="yes"
+            android:autofillHints="newPassword"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

@@ -48,9 +48,12 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/buttonNext"
+            style="@style/Base.Widget.Material3.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_next"
+            android:clickable="true"
+            android:focusable="true"
             app:icon="@drawable/ic_arrow_forward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

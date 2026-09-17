@@ -2,9 +2,10 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: DialogHelper.java
- * Versión: v7.1.0
+ * Versión: v7.2.0
  * Descripción: Centralizador de cuadros de diálogo. Estandariza la visualización
  *              de alertas, estados de carga y selectores con estilo Material 3.
+ *              Incluye protección contra diálogos duplicados.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -26,6 +27,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.text.DateFormatSymbols;
 import java.util.List;
 
 import binaryqva.educative.preusync.R;
@@ -33,11 +35,11 @@ import binaryqva.educative.preusync.utils.theme.ThemeManager;
 
 import androidx.annotation.Nullable;
 
-/**
- * Proporciona métodos estáticos para lanzar diálogos de interfaz consistentes.
- * Soporta Activities y Fragments, asegurando que no se produzcan filtraciones de memoria.
- */
 public class DialogHelper {
+
+    private static String lastShownTitle = "";
+    private static String lastShownMessage = "";
+    private static AlertDialog currentActiveDialog = null;
 	
 	// ==================== DIÁLOGOS DE PROGRESO (SPINNER) ====================
 
@@ -45,9 +47,6 @@ public class DialogHelper {
 		return showProgressDialog(activity, message, false);
 	}
 	
-	/**
-	 * Muestra un diálogo de espera no cancelable por defecto.
-	 */
 	public static AlertDialog showProgressDialog(Activity activity, String message, boolean cancelable) {
 		MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 		View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_progress_circular, null);
@@ -71,10 +70,9 @@ public class DialogHelper {
 		showAlertDialog(activity, title, message, null);
 	}
 	
-	/**
-	 * Presenta un aviso estándar con botón de aceptación.
-	 */
 	public static AlertDialog showAlertDialog(Activity activity, String title, String message, Runnable onPositive) {
+        if (isAlreadyShowing(title, message)) return currentActiveDialog;
+
 		MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 		View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_alert, null);
 		builder.setView(inflate);
@@ -83,11 +81,15 @@ public class DialogHelper {
 		tvTitle.setText(title);
 		tvMessage.setText(message);
 		builder.setPositiveButton(activity.getString(R.string.button_accept), (dialog, which) -> {
+            clearTracking();
 			if (onPositive != null) onPositive.run();
 		});
 		builder.setCancelable(true);
+        builder.setOnCancelListener(dialog -> clearTracking());
+
 		AlertDialog dialog = builder.create();
 		dialog.show();
+        trackDialog(title, message, dialog);
 		return dialog;
 	}
 	
@@ -97,11 +99,9 @@ public class DialogHelper {
 		showAlertDialog(activity, activity.getString(R.string.error_general), message);
 	}
 	
-	/**
-	 * Diálogo especializado para fallos de red con opción de reintento.
-	 */
-	public static void showRetryDialog(Activity activity, String title, String message,
-	Runnable onRetry, Runnable onExit) {
+	public static void showRetryDialog(Activity activity, String title, String message, Runnable onRetry, Runnable onExit) {
+        if (isAlreadyShowing(title, message)) return;
+
 		MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 		View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_alert, null);
 		builder.setView(inflate);
@@ -110,15 +110,21 @@ public class DialogHelper {
 		tvTitle.setText(title);
 		tvMessage.setText(message);
 		builder.setPositiveButton(activity.getString(R.string.button_retry), (dialog, which) -> {
+            clearTracking();
 			if (onRetry != null) onRetry.run();
 		});
 		if (onExit != null) {
-			builder.setNegativeButton(activity.getString(R.string.button_exit), (dialog, which) -> onExit.run());
+			builder.setNegativeButton(activity.getString(R.string.button_exit), (dialog, which) -> {
+                clearTracking();
+                onExit.run();
+            });
 		} else {
-			builder.setNegativeButton(activity.getString(R.string.button_cancel), null);
+			builder.setNegativeButton(activity.getString(R.string.button_cancel), (dialog, which) -> clearTracking());
 		}
 		builder.setCancelable(true);
-		builder.show();
+        builder.setOnCancelListener(dialog -> clearTracking());
+		AlertDialog dialog = builder.show();
+        trackDialog(title, message, dialog);
 	}
 	
 	public static AlertDialog showConfirmDialog(Activity activity, String title, String message,
@@ -140,9 +146,6 @@ public class DialogHelper {
 	
 	public interface OnOptionSelectedListener { void onOptionSelected(String value); }
 	
-	/**
-	 * Muestra una lista de opciones excluyentes (RadioButtons) en un diálogo estilizado.
-	 */
 	public static void showRadioDialog(Activity activity, String title,
 	List<RadioOption> options, String selectedValue,
 	OnOptionSelectedListener listener) {
@@ -153,7 +156,6 @@ public class DialogHelper {
 		tvTitle.setText(title);
 		radioGroup.removeAllViews();
 		
-		// Aplicación de colores dinámicos del tema actual.
 		int colorAccent = ThemeManager.getThemeColor(activity, R.attr.colorAccent);
 		int colorControlNormal = ThemeManager.getThemeColor(activity, R.attr.colorControlNormal);
 		int colorText = ThemeManager.getThemeColor(activity, R.attr.colorText);
@@ -191,9 +193,6 @@ public class DialogHelper {
 		showRadioDialog(activity, title, options, selectedValue, listener);
 	}
 
-	/**
-	 * Selector de fecha simplificado para efemérides (Día y Mes).
-	 */
 	public static void showDatePickerDialog(Activity activity, String title,
 	int initialDay, int initialMonth, OnDateSetListener listener) {
 		View dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_date_picker, null);
@@ -204,7 +203,7 @@ public class DialogHelper {
 		tvTitle.setText(title);
 		dayPicker.setMinValue(1); dayPicker.setMaxValue(31); dayPicker.setValue(initialDay);
 		
-		String[] monthNames = new java.text.DateFormatSymbols(activity.getResources().getConfiguration().locale).getMonths();
+		String[] monthNames = new DateFormatSymbols(activity.getResources().getConfiguration().locale).getMonths();
 		monthPicker.setMinValue(0); monthPicker.setMaxValue(11);
 		monthPicker.setDisplayedValues(monthNames);
 		monthPicker.setValue(initialMonth);
@@ -218,7 +217,22 @@ public class DialogHelper {
 		builder.show();
 	}
 
+    private static boolean isAlreadyShowing(String title, String message) {
+        return currentActiveDialog != null && currentActiveDialog.isShowing() 
+            && lastShownTitle.equals(title) && lastShownMessage.equals(message);
+    }
+
+    private static void trackDialog(String title, String message, AlertDialog dialog) {
+        lastShownTitle = title;
+        lastShownMessage = message;
+        currentActiveDialog = dialog;
+    }
+
+    private static void clearTracking() {
+        lastShownTitle = "";
+        lastShownMessage = "";
+        currentActiveDialog = null;
+    }
+
     public interface OnDateSetListener { void onDateSet(int day, int month); }
 }
-
-

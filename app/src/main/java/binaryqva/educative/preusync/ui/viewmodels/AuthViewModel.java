@@ -18,9 +18,18 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.gson.Gson;
+
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
+import java.net.UnknownHostException;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 
+import binaryqva.educative.preusync.R;
 import binaryqva.educative.preusync.data.repositories.AuthRepository;
 import binaryqva.educative.preusync.data.repositories.SchoolLocationRepository;
 import binaryqva.educative.preusync.network.models.ApiResponse;
@@ -30,6 +39,7 @@ import binaryqva.educative.preusync.network.models.Province;
 import binaryqva.educative.preusync.network.models.School;
 import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.network.requests.SignupRequest;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,9 +88,16 @@ public class AuthViewModel extends AndroidViewModel {
         locationRepository.getProvinces(new Callback<ApiResponse<List<Province>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<Province>>> call, @NonNull Response<ApiResponse<List<Province>>> response) {
                 isLocationLoading.setValue(false);
-                if (response.isSuccessful() && response.body() != null) provinces.setValue(response.body().getData());
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    provinces.setValue(response.body().getData());
+                } else {
+                    error.setValue("Error al cargar provincias: " + response.code());
+                }
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<Province>>> call, @NonNull Throwable t) { isLocationLoading.setValue(false); error.setValue("Fallo al cargar provincias"); }
+            @Override public void onFailure(@NonNull Call<ApiResponse<List<Province>>> call, @NonNull Throwable t) {
+                isLocationLoading.setValue(false);
+                handleError(t);
+            }
         });
     }
 
@@ -89,9 +106,16 @@ public class AuthViewModel extends AndroidViewModel {
         locationRepository.getMunicipalities(provinceId, new Callback<ApiResponse<List<Municipality>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<Municipality>>> call, @NonNull Response<ApiResponse<List<Municipality>>> response) {
                 isLocationLoading.setValue(false);
-                if (response.isSuccessful() && response.body() != null) municipalities.setValue(response.body().getData());
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    municipalities.setValue(response.body().getData());
+                } else {
+                    error.setValue("Error al cargar municipios: " + response.code());
+                }
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<Municipality>>> call, @NonNull Throwable t) { isLocationLoading.setValue(false); error.setValue("Fallo al cargar municipios"); }
+            @Override public void onFailure(@NonNull Call<ApiResponse<List<Municipality>>> call, @NonNull Throwable t) {
+                isLocationLoading.setValue(false);
+                handleError(t);
+            }
         });
     }
 
@@ -100,9 +124,16 @@ public class AuthViewModel extends AndroidViewModel {
         locationRepository.getSchools(municipalityId, new Callback<ApiResponse<List<School>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<School>>> call, @NonNull Response<ApiResponse<List<School>>> response) {
                 isLocationLoading.setValue(false);
-                if (response.isSuccessful() && response.body() != null) schools.setValue(response.body().getData());
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    schools.setValue(response.body().getData());
+                } else {
+                    error.setValue("Error al cargar escuelas: " + response.code());
+                }
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<School>>> call, @NonNull Throwable t) { isLocationLoading.setValue(false); error.setValue("Fallo al cargar escuelas"); }
+            @Override public void onFailure(@NonNull Call<ApiResponse<List<School>>> call, @NonNull Throwable t) {
+                isLocationLoading.setValue(false);
+                handleError(t);
+            }
         });
     }
 
@@ -111,9 +142,16 @@ public class AuthViewModel extends AndroidViewModel {
         locationRepository.getGroups(schoolId, new Callback<ApiResponse<List<SchoolGroup>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Response<ApiResponse<List<SchoolGroup>>> response) {
                 isLocationLoading.setValue(false);
-                if (response.isSuccessful() && response.body() != null) groups.setValue(response.body().getData());
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    groups.setValue(response.body().getData());
+                } else {
+                    error.setValue("Error al cargar grupos: " + response.code());
+                }
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Throwable t) { isLocationLoading.setValue(false); error.setValue("Fallo al cargar grupos"); }
+            @Override public void onFailure(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Throwable t) {
+                isLocationLoading.setValue(false);
+                handleError(t);
+            }
         });
     }
 
@@ -137,15 +175,41 @@ public class AuthViewModel extends AndroidViewModel {
         });
     }
 
+    private void handleError(Throwable t) {
+        String msg = t.getMessage();
+        if (t instanceof UnknownHostException) msg = getApplication().getString(R.string.error_network_connection);
+        else if (t instanceof ConnectException) msg = getApplication().getString(R.string.error_server);
+        else if (t instanceof SocketTimeoutException) msg = getApplication().getString(R.string.error_connection);
+        error.setValue(msg);
+    }
+
     public void login(String username, String password) {
         isLoading.setValue(true);
         authRepository.login(username, password, new Callback<ApiResponse<AuthResponse>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<AuthResponse>> call, @NonNull Response<ApiResponse<AuthResponse>> response) {
                 isLoading.setValue(false);
-                if (response.isSuccessful() && response.body() != null) loginResult.setValue(response.body());
-                else error.setValue("Credenciales inválidas");
+                if (response.isSuccessful() && response.body() != null) {
+                    loginResult.setValue(response.body());
+                } else {
+                    String msg = "";
+                    try (ResponseBody errorBody = response.errorBody()) {
+                        if (errorBody != null) {
+                            String errorJson = errorBody.string();
+                            ApiResponse<?> errorResp = new Gson().fromJson(errorJson, ApiResponse.class);
+                            if (errorResp != null && errorResp.getError() != null) msg = errorResp.getError();
+                        }
+                    } catch (Exception ignored) {}
+                    
+                    if (response.code() == 404 || "Usuario no encontrado".equals(msg)) {
+                        error.setValue("AUTH_USER_NOT_FOUND");
+                    } else if (response.code() == 401 || "Credenciales inválidas".equals(msg)) {
+                        error.setValue("AUTH_INVALID_CREDENTIALS");
+                    } else {
+                        error.setValue(msg.isEmpty() ? "Error del servidor: " + response.code() : msg);
+                    }
+                }
             }
-            @Override public void onFailure(@NonNull Call<ApiResponse<AuthResponse>> call, @NonNull Throwable t) { isLoading.setValue(false); error.setValue(t.getMessage()); }
+            @Override public void onFailure(@NonNull Call<ApiResponse<AuthResponse>> call, @NonNull Throwable t) { isLoading.setValue(false); handleError(t); }
         });
     }
 

@@ -13,6 +13,7 @@ package binaryqva.educative.preusync.utils.markdown;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -63,6 +64,14 @@ public class MarkdownWebViewHelper {
             public void onPageFinished(WebView view, String url) {
                 if (loader != null) loader.setVisibility(View.GONE);
             }
+        });
+
+        // Optimización de desplazamiento para evitar conflictos con ViewPager/SwipeRefresh
+        webView.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+            }
+            return false;
         });
 
         webView.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", null);

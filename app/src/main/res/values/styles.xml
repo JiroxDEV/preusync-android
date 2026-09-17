@@ -3,7 +3,7 @@
     ============================================================================
     Proyecto: PreuSync
     Recurso: styles.xml
-    Versión: v4.5.4
+    Versión: v4.6.1
     Descripción: Recurso de estilos para la aplicación.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
@@ -32,15 +32,20 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <!-- Estilo para el FAB extendido -->
+    <!-- Estilo para el FAB extendido corregido -->
     <style name="Base.Widget.Material3.ExtendedFloatingActionButton" parent="Widget.Material3.ExtendedFloatingActionButton.Primary">
         <item name="android:textAppearance">?textAppearanceLabelLarge</item>
-        <item name="android:textColor">?attr/colorText</item>
-        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+        <item name="backgroundTint">?attr/colorPrimaryContainer</item>
+        <item name="rippleColor">?attr/colorControlHighlight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
     <!-- Estilo para el Selector de Login/Register -->
-    <style name="Widget.PreuSync.ButtonToggleGroup">
+    <style name="Widget.PreuSync.ButtonToggleGroup" parent="Widget.Material3.MaterialButtonToggleGroup">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="singleSelection">true</item>

@@ -27,7 +27,7 @@
     <color name="colorWarning">#7F5700</color>
 
     <!-- Onboarding / UI Indicators -->
-    <color name="colorInactiveIndicator">#757575</color>
+    <color name="colorInactiveIndicator">#555555</color>
 
     <!-- Horario Light -->
     <color name="colorHorarioPrincipal">#BFE9FF</color>

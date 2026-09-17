@@ -17,7 +17,10 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.ChangeBounds;
+import android.transition.Fade;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -165,7 +168,17 @@ public class AuthActivity extends BaseActivity {
     private void setupListeners() {
         authToggle.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (!isChecked) return;
-            TransitionManager.beginDelayedTransition(authRootLayout);
+            
+            // Animación combinada de Fade y Desplazamiento
+            Fade fade = new Fade();
+            ChangeBounds changeBounds = new ChangeBounds();
+            TransitionSet set = new TransitionSet();
+            set.addTransition(fade).addTransition(changeBounds);
+            set.setOrdering(TransitionSet.ORDERING_TOGETHER);
+            set.setDuration(300);
+            
+            TransitionManager.beginDelayedTransition(authRootLayout, set);
+            
             if (checkedId == R.id.toggleLogin) switchToLogin();
             else switchToRegister();
         });
@@ -260,7 +273,16 @@ public class AuthActivity extends BaseActivity {
 
         viewModel.getLoginResult().observe(this, res -> { if (res != null && res.isSuccess()) loginSuccess(res.getData()); });
         viewModel.getSignupResult().observe(this, res -> { if (res != null && res.isSuccess()) loginSuccess(res.getData()); });
-        viewModel.getError().observe(this, err -> { if (err != null) DialogHelper.showErrorDialog(this, err); });
+        viewModel.getError().observe(this, err -> {
+            if (err == null) return;
+            if ("AUTH_INVALID_CREDENTIALS".equals(err)) {
+                passwordTIL.setError(getString(R.string.error_incorrect_password));
+            } else if ("AUTH_USER_NOT_FOUND".equals(err)) {
+                usernameTIL.setError(getString(R.string.error_user_not_found));
+            } else {
+                DialogHelper.showErrorDialog(this, err);
+            }
+        });
     }
 
     private <T> void setSelectorAdapter(AutoCompleteTextView ac, List<T> list) {

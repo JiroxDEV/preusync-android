@@ -1,3 +1,15 @@
+/**
+ * ============================================================================
+ * Proyecto: PreuSync
+ * Clase: OnboardingPermissionsFragment.java
+ * Versión: v2.1.0
+ * Descripción: Fragmento para la gestión de permisos en el onboarding.
+ *              Organiza los permisos de requeridos a opcionales.
+ * Autor: JiroxDEV
+ * Licensed under the GNU Affero General Public License v3
+ * ============================================================================
+ */
+
 package binaryqva.educative.preusync.ui.fragments.onboarding;
 
 import android.Manifest;
@@ -53,24 +65,28 @@ public class OnboardingPermissionsFragment extends Fragment {
 
     private void setupPermissionsList() {
         permissionsList.clear();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            addPermission(getString(R.string.permission_battery_optimization_title), 
-                         getString(R.string.permission_battery_optimization_desc), 
-                         "IGNORE_BATTERY_OPTIMIZATIONS");
-        }
+        
+        // 1. PERMISOS REQUERIDOS (Ej. Notificaciones en Android 13+)
         if (Build.VERSION.SDK_INT >= 33) {
             addPermission(getString(R.string.permission_notifications_title), 
                          getString(R.string.permission_notifications_desc), 
-                         "POST_NOTIFICATIONS");
+                         "POST_NOTIFICATIONS", true);
+        }
+
+        // 2. PERMISOS OPCIONALES (Ej. Optimización de batería)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            addPermission(getString(R.string.permission_battery_optimization_title), 
+                         getString(R.string.permission_battery_optimization_desc), 
+                         "IGNORE_BATTERY_OPTIMIZATIONS", false);
         }
 
         permissionsRecyclerView.setAdapter(new PermissionsAdapter(permissionsList));
         permissionsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void addPermission(String name, String desc, String key) {
+    private void addPermission(String name, String desc, String key, boolean required) {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("nombre", name); map.put("detalles", desc); map.put("permiso", key); map.put("permitido", false);
+        map.put("nombre", name); map.put("detalles", desc); map.put("permiso", key); map.put("permitido", false); map.put("requerido", required);
         permissionsList.add(map);
     }
 
@@ -100,7 +116,7 @@ public class OnboardingPermissionsFragment extends Fragment {
     private void checkPermissions() {
         boolean allRequired = true;
         for (HashMap<String, Object> p : permissionsList) {
-            if (!"IGNORE_BATTERY_OPTIMIZATIONS".equals(p.get("permiso")) && !(Boolean) p.get("permitido")) { 
+            if ((Boolean) p.get("requerido") && !(Boolean) p.get("permitido")) { 
                 allRequired = false; 
                 break; 
             }
@@ -122,11 +138,13 @@ public class OnboardingPermissionsFragment extends Fragment {
             h.desc.setText((String) item.get("detalles"));
 
             boolean granted = (Boolean) item.get("permitido");
-            boolean required = "POST_NOTIFICATIONS".equals(item.get("permiso"));
+            boolean required = (Boolean) item.get("requerido");
 
             h.tagReq.setVisibility(required ? View.VISIBLE : View.GONE);
             h.tagOpt.setVisibility(!required ? View.VISIBLE : View.GONE);
-            h.radio.setButtonTintList(ColorStateList.valueOf(ThemeManager.getThemeColor(requireContext(), granted ? R.attr.colorAccent : R.attr.colorError)));
+            
+            int color = ThemeManager.getThemeColor(requireContext(), granted ? R.attr.colorAccent : R.attr.colorError);
+            h.radio.setButtonTintList(ColorStateList.valueOf(color));
             h.radio.setChecked(granted);
 
             if (!granted) h.card.setOnClickListener(v -> requestPermission((String) item.get("permiso")));
@@ -135,7 +153,9 @@ public class OnboardingPermissionsFragment extends Fragment {
 
         private void requestPermission(String key) {
             if ("IGNORE_BATTERY_OPTIMIZATIONS".equals(key)) {
-                startActivity(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).setData(Uri.parse("package:" + requireContext().getPackageName())));
+                try {
+                    startActivity(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).setData(Uri.parse("package:" + requireContext().getPackageName())));
+                } catch (Exception ignored) {}
             } else if ("POST_NOTIFICATIONS".equals(key)) {
                 if (Build.VERSION.SDK_INT >= 33) requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1000);
             }
