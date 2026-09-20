@@ -2,8 +2,8 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: AppLogger.java
- * Versión: v2.2.0
- * Descripción: Sistema de logs personalizado. (DESHABILITADO PARA PRODUCCIÓN)
+ * Versión: v2.3.0
+ * Descripción: Sistema de logs personalizado. (REACTIVADO PARA DEPURACIÓN)
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -23,7 +23,7 @@ import java.util.Locale;
 public class AppLogger {
     public enum LogLevel { DEBUG, INFO, WARN, ERROR }
 
-    private static final int MAX_LOGS = 200;
+    private static final int MAX_LOGS = 500;
     private static final List<LogEntry> logs = new ArrayList<>();
     private static LogListener listener;
 
@@ -31,21 +31,24 @@ public class AppLogger {
     public static void setListener(LogListener l) { listener = l; }
 
     public static void d(String tag, String msg) { 
-        // addLog(LogLevel.DEBUG, tag, msg); 
+        Log.d(tag, msg); 
+        addLog(LogLevel.DEBUG, tag, msg); 
     }
     public static void i(String tag, String msg) { 
-        // addLog(LogLevel.INFO, tag, msg); 
+        Log.i(tag, msg); 
+        addLog(LogLevel.INFO, tag, msg); 
     }
     public static void w(String tag, String msg) { 
-        // addLog(LogLevel.WARN, tag, msg); 
+        Log.w(tag, msg); 
+        addLog(LogLevel.WARN, tag, msg); 
     }
     public static void e(String tag, String msg) { 
         Log.e(tag, msg); 
-        // addLog(LogLevel.ERROR, tag, msg); 
+        addLog(LogLevel.ERROR, tag, msg); 
     }
     public static void e(String tag, String msg, Throwable t) { 
         Log.e(tag, msg, t); 
-        // addLog(LogLevel.ERROR, tag, msg + " | " + t.getMessage()); 
+        addLog(LogLevel.ERROR, tag, msg + " | " + t.getMessage()); 
     }
 
     public static String getStackTraceString(Throwable t) {

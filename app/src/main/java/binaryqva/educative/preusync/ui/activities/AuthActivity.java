@@ -2,9 +2,9 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: AuthActivity.java
- * Versión: v19.0.0
+ * Versión: v21.0.0
  * Descripción: Actividad de Autenticación avanzada con registro nacional
- *              jerárquico, validación de roles y diseño minimalista.
+ *              jerárquico, caché inteligente y UX optimizada.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -12,6 +12,7 @@
 
 package binaryqva.educative.preusync.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.transition.Fade;
 import android.transition.TransitionManager;
 import android.transition.TransitionSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -33,6 +35,7 @@ import android.widget.ViewFlipper;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -47,6 +50,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import binaryqva.educative.preusync.R;
+import binaryqva.educative.preusync.debug.AppLogger;
 import binaryqva.educative.preusync.network.models.AuthResponse;
 import binaryqva.educative.preusync.network.models.Municipality;
 import binaryqva.educative.preusync.network.models.Province;
@@ -65,6 +69,7 @@ import binaryqva.educative.preusync.utils.theme.ThemeManager;
 
 public class AuthActivity extends BaseActivity {
 
+    private static final String TAG = "AuthActivity";
     private ViewGroup authRootLayout;
     private ViewFlipper authViewFlipper, registerStepFlipper;
     private MaterialButtonToggleGroup authToggle;
@@ -169,7 +174,6 @@ public class AuthActivity extends BaseActivity {
         authToggle.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (!isChecked) return;
             
-            // Animación combinada de Fade y Desplazamiento
             Fade fade = new Fade();
             ChangeBounds changeBounds = new ChangeBounds();
             TransitionSet set = new TransitionSet();
@@ -191,46 +195,129 @@ public class AuthActivity extends BaseActivity {
         setupInputWatchers();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setupSelectors() {
         List<String> roles = RoleHelper.getLocalizedRoles(this);
         roleAC.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, roles));
         roleAC.setText(RoleHelper.getLocalizedFromRoleValue(RoleHelper.ROLE_STUDENT, this), false);
         roleAC.setOnItemClickListener((p, v, pos, id) -> {
             currentRole = RoleHelper.getRoleValueFromLocalized(roles.get(pos), this);
+            AppLogger.d(TAG, "Rol: " + currentRole);
             updateRoleFields();
         });
 
-        provinceAC.setOnTouchListener((v, event) -> { if (viewModel.getProvinces().getValue() == null) viewModel.loadProvinces(); return false; });
+        provinceAC.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (viewModel.getProvinces().getValue() == null || viewModel.getProvinces().getValue().isEmpty()) {
+                    setTempAdapter(provinceAC, getString(R.string.label_loading));
+                    viewModel.loadProvinces();
+                } else {
+                    provinceAC.showDropDown();
+                }
+            }
+            return false;
+        });
         provinceAC.setOnItemClickListener((p, v, pos, id) -> {
             Object item = p.getItemAtPosition(pos);
-            if (item instanceof Province) { viewModel.loadMunicipalities(((Province) item).getId()); clearDownstreamSelectors(true, true, true); }
+            if (item instanceof Province) {
+                String pid = ((Province) item).getId();
+                AppLogger.d(TAG, "Selección Provincia: " + pid);
+                clearDownstreamSelectors(true, true, true);
+                viewModel.loadMunicipalities(pid);
+            }
         });
 
-        municipalityAC.setOnTouchListener((v, event) -> { 
-            if (provinceAC.getText().toString().isEmpty()) provinceTIL.setError(getString(R.string.error_select_province));
-            return false; 
+        municipalityAC.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (provinceAC.getText().toString().isEmpty()) {
+                    provinceTIL.setError(getString(R.string.error_select_province));
+                } else if (viewModel.getMunicipalities().getValue() == null || viewModel.getMunicipalities().getValue().isEmpty()) {
+                    String pid = getSelectedProvinceId();
+                    if (pid != null) {
+                        setTempAdapter(municipalityAC, getString(R.string.label_loading));
+                        viewModel.loadMunicipalities(pid);
+                    }
+                } else {
+                    municipalityAC.showDropDown();
+                }
+            }
+            return false;
         });
         municipalityAC.setOnItemClickListener((p, v, pos, id) -> {
             Object item = p.getItemAtPosition(pos);
-            if (item instanceof Municipality) { viewModel.loadSchools(((Municipality) item).getId()); clearDownstreamSelectors(false, true, true); }
+            if (item instanceof Municipality) {
+                String mid = ((Municipality) item).getId();
+                AppLogger.d(TAG, "Selección Municipio: " + mid);
+                clearDownstreamSelectors(false, true, true);
+                viewModel.loadSchools(mid);
+            }
         });
 
         schoolAC.setOnTouchListener((v, event) -> {
-            if (municipalityAC.getText().toString().isEmpty()) municipalityTIL.setError(getString(R.string.error_select_municipality));
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (municipalityAC.getText().toString().isEmpty()) {
+                    municipalityTIL.setError(getString(R.string.error_select_municipality));
+                } else if (viewModel.getSchools().getValue() == null || viewModel.getSchools().getValue().isEmpty()) {
+                    String mid = getSelectedMunicipalityId();
+                    if (mid != null) {
+                        setTempAdapter(schoolAC, getString(R.string.label_loading));
+                        viewModel.loadSchools(mid);
+                    }
+                } else {
+                    schoolAC.showDropDown();
+                }
+            }
             return false;
         });
         schoolAC.setOnItemClickListener((p, v, pos, id) -> {
             Object item = p.getItemAtPosition(pos);
-            if (item instanceof School) { selectedSchoolId = ((School) item).getId(); viewModel.loadGroups(selectedSchoolId); clearDownstreamSelectors(false, false, true); }
+            if (item instanceof School) {
+                selectedSchoolId = ((School) item).getId();
+                AppLogger.d(TAG, "Selección Escuela: " + selectedSchoolId);
+                clearDownstreamSelectors(false, false, true);
+                viewModel.loadGroups(selectedSchoolId);
+            }
         });
 
         groupAC.setOnTouchListener((v, event) -> {
-            if (schoolAC.getText().toString().isEmpty()) schoolTIL.setError(getString(R.string.error_select_school));
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (schoolAC.getText().toString().isEmpty()) {
+                    schoolTIL.setError(getString(R.string.error_select_school));
+                } else if (viewModel.getGroups().getValue() == null || viewModel.getGroups().getValue().isEmpty()) {
+                    if (selectedSchoolId != null) {
+                        setTempAdapter(groupAC, getString(R.string.label_loading));
+                        viewModel.loadGroups(selectedSchoolId);
+                    }
+                } else {
+                    groupAC.showDropDown();
+                }
+            }
             return false;
+        });
+        groupAC.setOnItemClickListener((p, v, pos, id) -> {
+            if (p.getItemAtPosition(pos) instanceof SchoolGroup) {
+                groupTIL.setError(null);
+            }
         });
 
         responsibilitiesET.setOnClickListener(v -> showResponsibilitiesDialog());
         findViewById(R.id.avatarCardView).setOnClickListener(v -> showAvatarSelector());
+    }
+
+    @Nullable
+    private String getSelectedProvinceId() {
+        String name = provinceAC.getText().toString();
+        List<Province> list = viewModel.getProvinces().getValue();
+        if (list != null) for (Province p : list) if (p.getName().equals(name)) return p.getId();
+        return null;
+    }
+
+    @Nullable
+    private String getSelectedMunicipalityId() {
+        String name = municipalityAC.getText().toString();
+        List<Municipality> list = viewModel.getMunicipalities().getValue();
+        if (list != null) for (Municipality m : list) if (m.getName().equals(name)) return m.getId();
+        return null;
     }
 
     private void clearDownstreamSelectors(boolean mun, boolean sch, boolean grp) {
@@ -258,6 +345,16 @@ public class AuthActivity extends BaseActivity {
             else if (progressDialog != null) progressDialog.dismiss();
         });
 
+        viewModel.getIsLocationLoading().observe(this, loading -> {
+            if (Boolean.TRUE.equals(loading)) {
+                String l = getString(R.string.label_loading);
+                if (provinceAC.isFocused() && (viewModel.getProvinces().getValue() == null || viewModel.getProvinces().getValue().isEmpty())) setTempAdapter(provinceAC, l);
+                else if (municipalityAC.isFocused() && (viewModel.getMunicipalities().getValue() == null || viewModel.getMunicipalities().getValue().isEmpty())) setTempAdapter(municipalityAC, l);
+                else if (schoolAC.isFocused() && (viewModel.getSchools().getValue() == null || viewModel.getSchools().getValue().isEmpty())) setTempAdapter(schoolAC, l);
+                else if (groupAC.isFocused() && (viewModel.getGroups().getValue() == null || viewModel.getGroups().getValue().isEmpty())) setTempAdapter(groupAC, l);
+            }
+        });
+
         viewModel.getProvinces().observe(this, list -> setSelectorAdapter(provinceAC, list));
         viewModel.getMunicipalities().observe(this, list -> { setSelectorAdapter(municipalityAC, list); municipalityTIL.setEnabled(true); });
         viewModel.getSchools().observe(this, list -> { setSelectorAdapter(schoolAC, list); schoolTIL.setEnabled(true); });
@@ -275,19 +372,27 @@ public class AuthActivity extends BaseActivity {
         viewModel.getSignupResult().observe(this, res -> { if (res != null && res.isSuccess()) loginSuccess(res.getData()); });
         viewModel.getError().observe(this, err -> {
             if (err == null) return;
-            if ("AUTH_INVALID_CREDENTIALS".equals(err)) {
-                passwordTIL.setError(getString(R.string.error_incorrect_password));
-            } else if ("AUTH_USER_NOT_FOUND".equals(err)) {
-                usernameTIL.setError(getString(R.string.error_user_not_found));
-            } else {
-                DialogHelper.showErrorDialog(this, err);
-            }
+            if ("AUTH_INVALID_CREDENTIALS".equals(err)) passwordTIL.setError(getString(R.string.error_incorrect_password));
+            else if ("AUTH_USER_NOT_FOUND".equals(err)) usernameTIL.setError(getString(R.string.error_user_not_found));
+            else DialogHelper.showErrorDialog(this, err);
         });
+    }
+
+    private void setTempAdapter(AutoCompleteTextView ac, String text) {
+        ac.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new String[]{text}) {
+            @Override public boolean isEnabled(int position) { return false; }
+            @Override public boolean areAllItemsEnabled() { return false; }
+        });
+        ac.showDropDown();
     }
 
     private <T> void setSelectorAdapter(AutoCompleteTextView ac, List<T> list) {
         if (list == null || list.isEmpty()) {
-            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}));
+            ac.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}) {
+                @Override public boolean isEnabled(int position) { return false; }
+                @Override public boolean areAllItemsEnabled() { return false; }
+            });
+            if (ac.isFocused()) ac.showDropDown();
             return;
         }
         
@@ -302,9 +407,16 @@ public class AuthActivity extends BaseActivity {
         }
 
         if (availableItems.isEmpty()) {
-            ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}));
+            ac.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new String[]{getString(R.string.label_not_available_temp)}) {
+                @Override public boolean isEnabled(int position) { return false; }
+                @Override public boolean areAllItemsEnabled() { return false; }
+            });
         } else {
             ac.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, availableItems));
+        }
+        
+        if (ac.isFocused()) {
+            ac.post(ac::showDropDown);
         }
     }
 
@@ -313,7 +425,6 @@ public class AuthActivity extends BaseActivity {
         authFab.setText(R.string.button_login);
         authFab.setIconResource(R.drawable.ic_check);
         backStepButton.setVisibility(View.GONE);
-        
         authViewFlipper.setInAnimation(this, R.anim.slide_in_left);
         authViewFlipper.setOutAnimation(this, R.anim.slide_out_right);
         authViewFlipper.setDisplayedChild(0);
@@ -323,7 +434,6 @@ public class AuthActivity extends BaseActivity {
         isRegistering = true;
         currentRegStep = 0;
         updateStepUi();
-        
         authViewFlipper.setInAnimation(this, R.anim.slide_in_right);
         authViewFlipper.setOutAnimation(this, R.anim.slide_out_left);
         authViewFlipper.setDisplayedChild(1);
@@ -334,7 +444,6 @@ public class AuthActivity extends BaseActivity {
         backStepButton.setVisibility(currentRegStep == 0 ? View.GONE : View.VISIBLE);
         authFab.setText(currentRegStep == 2 ? R.string.button_register : R.string.button_next);
         authFab.setIconResource(currentRegStep == 2 ? R.drawable.ic_check : R.drawable.ic_arrow_forward);
-        
         step1Ind.setBackgroundResource(currentRegStep >= 0 ? R.drawable.bg_onboarding_indicator_active : R.drawable.bg_onboarding_indicator_inactive);
         step2Ind.setBackgroundResource(currentRegStep >= 1 ? R.drawable.bg_onboarding_indicator_active : R.drawable.bg_onboarding_indicator_inactive);
         step3Ind.setBackgroundResource(currentRegStep >= 2 ? R.drawable.bg_onboarding_indicator_active : R.drawable.bg_onboarding_indicator_inactive);
