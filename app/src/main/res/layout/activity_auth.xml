@@ -3,8 +3,8 @@
     ============================================================================
     Proyecto: PreuSync
     Layout: activity_auth.xml
-    Versión: v15.0.0
-    Descripción: Interfaz de autenticación con protección de cabecera y scroll total.
+    Versión: v16.0.0
+    Descripción: Interfaz de autenticación con protección de cabecera y scroll inteligente.
     Autor: JiroxDEV
     Licensed under the GNU Affero General Public License v3
     ============================================================================
@@ -63,6 +63,14 @@
         app:tint="?attr/colorAccent"
         android:contentDescription="@string/title_settings" />
 
+    <!-- Guideline para evitar que la tarjeta tape la cabecera -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/headerGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="96dp" />
+
     <!-- Card Principal Adaptable -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/formCard"
@@ -79,7 +87,7 @@
         app:layout_constraintHeight_default="wrap"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@+id/authFab"
-        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintTop_toBottomOf="@id/headerGuideline"
         app:layout_constraintVertical_bias="0.5">
 
         <androidx.core.widget.NestedScrollView
@@ -92,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_20dp"
-                android:paddingBottom="60dp"
+                android:paddingBottom="48dp"
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 
@@ -195,7 +203,6 @@
         </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Navegación de Pasos -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/backStepButton"
         style="@style/Widget.Material3.Button.TextButton"

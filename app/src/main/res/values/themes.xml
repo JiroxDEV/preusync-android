@@ -27,9 +27,12 @@
         <item name="colorOnSecondary">?attr/colorText</item>
         <item name="colorOnSurface">@color/colorText</item>
         <item name="colorError">@color/colorError</item>
+        <item name="colorErrorContainer">#FFDAD6</item>
         <item name="colorOnError">@android:color/white</item>
         <item name="colorExito">@color/colorExito</item>
         <item name="colorWarning">@color/colorWarning</item>
+        <item name="colorSecondaryContainer">@color/colorSecondary</item>
+        <item name="colorOnSecondaryContainer">?attr/colorAccent</item>
         <item name="colorHorarioPrincipal">@color/colorHorarioPrincipal</item>
         <item name="colorBackground">@color/colorBackground</item>
         <item name="colorBackgroundCard">@color/colorBackgroundCard</item>
@@ -58,9 +61,12 @@
         <item name="colorOnSecondary">@color/colorText</item>
         <item name="colorOnSurface">?attr/colorText</item>
         <item name="colorError">@color/colorError</item>
+        <item name="colorErrorContainer">?attr/colorErrorContainer</item>
         <item name="colorOnError">@color/colorText</item>
         <item name="colorExito">?colorPrimaryContainer</item>
         <item name="colorWarning">?colorTertiaryContainer</item>
+        <item name="colorSecondaryContainer">?attr/colorSecondaryContainer</item>
+        <item name="colorOnSecondaryContainer">?attr/colorOnSecondaryContainer</item>
         <item name="colorHorarioPrincipal">@android:color/system_accent3_700</item>
         <item name="colorHorarioAsignatura">@android:color/system_accent3_700</item>
         <item name="colorHorarioLibre">@android:color/system_neutral2_800</item>

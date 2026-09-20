@@ -2,8 +2,8 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: MarkdownWebViewHelper.java
- * Versión: v2.6.0
- * Descripción: Orquestador de visualización de Markdown.
+ * Versión: v2.7.0
+ * Descripción: Orquestador de visualización de Markdown con scroll mejorado.
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -11,6 +11,7 @@
 
 package binaryqva.educative.preusync.utils.markdown;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.MotionEvent;
@@ -28,6 +29,7 @@ public class MarkdownWebViewHelper {
 
     private static final Map<String, String> htmlCache = new HashMap<>();
 
+    @SuppressLint("ClickableViewAccessibility")
     public static void replaceWithWebView(Context context, TextView target, String markdown, String cacheKey, int loaderId) {
         if (target == null || markdown == null) return;
 
@@ -66,10 +68,17 @@ public class MarkdownWebViewHelper {
             }
         });
 
-        // Optimización de desplazamiento para evitar conflictos con ViewPager/SwipeRefresh
+        // BLOQUEO DE INTERCEPCIÓN DE TOUCH: Garantiza scroll fluido dentro de ViewPager2
         webView.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                case MotionEvent.ACTION_MOVE:
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    v.getParent().requestDisallowInterceptTouchEvent(false);
+                    break;
             }
             return false;
         });

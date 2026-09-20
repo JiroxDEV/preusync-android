@@ -2,9 +2,9 @@
  * ============================================================================
  * Proyecto: PreuSync
  * Clase: AuthViewModel.java
- * Versión: v7.0.0
- * Descripción: ViewModel de Autenticación. Gestiona el registro jerárquico
- *              nacional ampliado (Provincias/Municipios/Escuelas/Grupos).
+ * Versión: v8.1.0
+ * Descripción: ViewModel de Autenticación con sistema de caché inteligente
+ *              para la jerarquía nacional (Multi-Tenancy).
  * Autor: JiroxDEV
  * Licensed under the GNU Affero General Public License v3
  * ============================================================================
@@ -19,19 +19,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.net.UnknownHostException;
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
 
 import binaryqva.educative.preusync.R;
 import binaryqva.educative.preusync.data.repositories.AuthRepository;
 import binaryqva.educative.preusync.data.repositories.SchoolLocationRepository;
+import binaryqva.educative.preusync.debug.AppLogger;
 import binaryqva.educative.preusync.network.models.ApiResponse;
 import binaryqva.educative.preusync.network.models.AuthResponse;
 import binaryqva.educative.preusync.network.models.Municipality;
@@ -39,6 +39,7 @@ import binaryqva.educative.preusync.network.models.Province;
 import binaryqva.educative.preusync.network.models.School;
 import binaryqva.educative.preusync.network.models.SchoolGroup;
 import binaryqva.educative.preusync.network.requests.SignupRequest;
+import binaryqva.educative.preusync.utils.common.CacheManager;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,8 +47,10 @@ import retrofit2.Response;
 
 public class AuthViewModel extends AndroidViewModel {
 
+    private static final String TAG = "AuthViewModel";
     private final AuthRepository authRepository;
     private final SchoolLocationRepository locationRepository;
+    private final CacheManager cache;
 
     private final MutableLiveData<List<Province>> provinces = new MutableLiveData<>();
     private final MutableLiveData<List<Municipality>> municipalities = new MutableLiveData<>();
@@ -66,6 +69,8 @@ public class AuthViewModel extends AndroidViewModel {
         super(application);
         this.authRepository = new AuthRepository(application);
         this.locationRepository = new SchoolLocationRepository(application);
+        this.cache = CacheManager.getInstance();
+        this.cache.init(application);
     }
 
     // Getters
@@ -81,76 +86,105 @@ public class AuthViewModel extends AndroidViewModel {
     public LiveData<String> getError() { return error; }
     public LiveData<Boolean> getUserExistsResult() { return userExistsResult; }
 
-    // --- Lógica de Ubicación ---
+    // --- Lógica de Ubicación con Caché ---
 
     public void loadProvinces() {
+        String cacheKey = "cache_provinces";
+        List<Province> cached = cache.loadCache(cacheKey, CacheManager.CacheSecurity.SENSITIVE, new TypeToken<List<Province>>(){}.getType());
+        if (cached != null) provinces.setValue(cached);
+
+        AppLogger.d(TAG, "Cargando provincias...");
         isLocationLoading.setValue(true);
         locationRepository.getProvinces(new Callback<ApiResponse<List<Province>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<Province>>> call, @NonNull Response<ApiResponse<List<Province>>> response) {
                 isLocationLoading.setValue(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    provinces.setValue(response.body().getData());
-                } else {
-                    error.setValue("Error al cargar provincias: " + response.code());
+                    List<Province> data = response.body().getData();
+                    if (data != null && !data.equals(cached)) {
+                        provinces.setValue(data);
+                        cache.saveCache(cacheKey, data, CacheManager.CacheSecurity.SENSITIVE);
+                    }
                 }
             }
             @Override public void onFailure(@NonNull Call<ApiResponse<List<Province>>> call, @NonNull Throwable t) {
+                AppLogger.e(TAG, "Error red provincias", t);
                 isLocationLoading.setValue(false);
-                handleError(t);
+                if (provinces.getValue() == null) handleError(t);
             }
         });
     }
 
     public void loadMunicipalities(String provinceId) {
+        String cacheKey = "cache_mun_" + provinceId;
+        List<Municipality> cached = cache.loadCache(cacheKey, CacheManager.CacheSecurity.SENSITIVE, new TypeToken<List<Municipality>>(){}.getType());
+        if (cached != null) municipalities.setValue(cached);
+
+        AppLogger.d(TAG, "Cargando municipios: " + provinceId);
         isLocationLoading.setValue(true);
         locationRepository.getMunicipalities(provinceId, new Callback<ApiResponse<List<Municipality>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<Municipality>>> call, @NonNull Response<ApiResponse<List<Municipality>>> response) {
                 isLocationLoading.setValue(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    municipalities.setValue(response.body().getData());
-                } else {
-                    error.setValue("Error al cargar municipios: " + response.code());
+                    List<Municipality> data = response.body().getData();
+                    if (data != null && !data.equals(cached)) {
+                        municipalities.setValue(data);
+                        cache.saveCache(cacheKey, data, CacheManager.CacheSecurity.SENSITIVE);
+                    }
                 }
             }
             @Override public void onFailure(@NonNull Call<ApiResponse<List<Municipality>>> call, @NonNull Throwable t) {
                 isLocationLoading.setValue(false);
-                handleError(t);
+                if (municipalities.getValue() == null) handleError(t);
             }
         });
     }
 
     public void loadSchools(String municipalityId) {
+        String cacheKey = "cache_sch_" + municipalityId;
+        List<School> cached = cache.loadCache(cacheKey, CacheManager.CacheSecurity.SENSITIVE, new TypeToken<List<School>>(){}.getType());
+        if (cached != null) schools.setValue(cached);
+
+        AppLogger.d(TAG, "Cargando escuelas: " + municipalityId);
         isLocationLoading.setValue(true);
         locationRepository.getSchools(municipalityId, new Callback<ApiResponse<List<School>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<School>>> call, @NonNull Response<ApiResponse<List<School>>> response) {
                 isLocationLoading.setValue(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    schools.setValue(response.body().getData());
-                } else {
-                    error.setValue("Error al cargar escuelas: " + response.code());
+                    List<School> data = response.body().getData();
+                    if (data != null && !data.equals(cached)) {
+                        schools.setValue(data);
+                        cache.saveCache(cacheKey, data, CacheManager.CacheSecurity.SENSITIVE);
+                    }
                 }
             }
             @Override public void onFailure(@NonNull Call<ApiResponse<List<School>>> call, @NonNull Throwable t) {
                 isLocationLoading.setValue(false);
-                handleError(t);
+                if (schools.getValue() == null) handleError(t);
             }
         });
     }
 
     public void loadGroups(String schoolId) {
+        String cacheKey = "cache_grp_" + schoolId;
+        List<SchoolGroup> cached = cache.loadCache(cacheKey, CacheManager.CacheSecurity.SENSITIVE, new TypeToken<List<SchoolGroup>>(){}.getType());
+        if (cached != null) groups.setValue(cached);
+
+        AppLogger.d(TAG, "Cargando grupos: " + schoolId);
         isLocationLoading.setValue(true);
         locationRepository.getGroups(schoolId, new Callback<ApiResponse<List<SchoolGroup>>>() {
             @Override public void onResponse(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Response<ApiResponse<List<SchoolGroup>>> response) {
                 isLocationLoading.setValue(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    groups.setValue(response.body().getData());
-                } else {
-                    error.setValue("Error al cargar grupos: " + response.code());
+                    List<SchoolGroup> data = response.body().getData();
+                    if (data != null && !data.equals(cached)) {
+                        groups.setValue(data);
+                        cache.saveCache(cacheKey, data, CacheManager.CacheSecurity.SENSITIVE);
+                    }
                 }
             }
             @Override public void onFailure(@NonNull Call<ApiResponse<List<SchoolGroup>>> call, @NonNull Throwable t) {
                 isLocationLoading.setValue(false);
-                handleError(t);
+                if (groups.getValue() == null) handleError(t);
             }
         });
     }

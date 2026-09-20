@@ -95,8 +95,7 @@ public class AboutActivity extends BaseActivity {
 		}
 		versionText.setText(versionName + " (" + versionCode + ")");
 
-		// EASTER EGG: Comentado para producción
-		/*
+		// EASTER EGG: Activado para depuración
 		versionText.setOnClickListener(v -> {
 			long currentTime = System.currentTimeMillis();
 			if (currentTime - lastClickTime < 500) clickCount++;
@@ -109,7 +108,6 @@ public class AboutActivity extends BaseActivity {
 				startActivity(new Intent(this, LogConsoleActivity.class));
 			}
 		});
-		*/
 		
 		checkUpdateButton.setOnClickListener(v -> checkForUpdates());
 	}
